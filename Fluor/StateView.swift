@@ -19,7 +19,7 @@ class StateView: NSView {
     @IBAction func changeState(_ sender: NSButton) {
         let state = button.state == NSOnState
         let userInfo = ["state": state]
-        let not = Notification(name: NSNotification.Name.StateViewDidChangeState, object: self, userInfo: userInfo)
+        let not = Notification(name: Notification.Name.StateViewDidChangeState, object: self, userInfo: userInfo)
         NotificationCenter.default.post(not)
     }
 }

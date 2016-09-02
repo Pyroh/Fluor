@@ -38,6 +38,10 @@ class CurrentAppView: NSView {
     }
     
     @IBAction func behaviorChanged(_ sender: NSSegmentedControl) {
-        Swift.print(sender.selectedSegment)
+        if let behavior = AppBehavior(rawValue: sender.selectedSegment) {
+            let userInfo = ["behavior": behavior]
+            let not = Notification(name: Notification.Name.BehaviorDidChangeForApp, object: self, userInfo: userInfo)
+            NotificationCenter.default.post(not)
+        }
     }
 }

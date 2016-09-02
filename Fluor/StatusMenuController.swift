@@ -10,7 +10,7 @@ import Cocoa
 
 extension NSNotification.Name {
     public static let StateViewDidChangeState = NSNotification.Name("kStateViewDidChangeState")
-    public static let AppDidChangeBehavior = NSNotification.Name("kAppDidChangeBehavior")
+    public static let BehaviorDidChangeForApp = NSNotification.Name("kBehaviorDidChangeForApp")
 }
 
 class StatusMenuController: NSObject {
@@ -18,6 +18,7 @@ class StatusMenuController: NSObject {
     @IBOutlet weak var stateView: StateView!
     @IBOutlet weak var currentAppView: CurrentAppView!
     
+    private var currentKeyboardState: KeyboardState = .error
     private var currentID: String = ""
     private var currentBehavior: AppBehavior = .infered
     
@@ -28,6 +29,7 @@ class StatusMenuController: NSObject {
     }
     
     override func awakeFromNib() {
+        currentKeyboardState = BehaviorManager.default.getActualStateAccordingToPreferences()
         setupStatusItem()
         applyAsObserver()
     }
@@ -39,6 +41,7 @@ class StatusMenuController: NSObject {
             let id = app.bundleIdentifier else { return }
         currentID = id
         updateAppBehaviorViewFor(app: app, id: id)
+        adaptBehaviorForApp(id: id)
     }
     
     @objc private func stateViewDidChangeState(notification: NSNotification) {
@@ -48,7 +51,7 @@ class StatusMenuController: NSObject {
     
     @objc private func appDidChangeBehavior(notification: NSNotification) {
         guard let behavior = notification.userInfo?["behavior"] as? AppBehavior else { return }
-        print(behavior)
+        setBehaviorForApp(id: currentID, behavior: behavior)
     }
     
     // MARK: Private functions
@@ -65,7 +68,8 @@ class StatusMenuController: NSObject {
     
     
     private func applyAsObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(stateViewDidChangeState(notification:)), name: NSNotification.Name.StateViewDidChangeState, object: stateView)
+        NotificationCenter.default.addObserver(self, selector: #selector(stateViewDidChangeState(notification:)), name: Notification.Name.StateViewDidChangeState, object: stateView)
+        NotificationCenter.default.addObserver(self, selector: #selector(appDidChangeBehavior(notification:)), name: Notification.Name.BehaviorDidChangeForApp, object: currentAppView)
         NSWorkspace.shared().notificationCenter.addObserver(self, selector: #selector(activeAppDidChange(notification:)), name: NSNotification.Name.NSWorkspaceDidActivateApplication, object: nil)
     }
     
@@ -74,29 +78,30 @@ class StatusMenuController: NSObject {
         NSWorkspace.shared().notificationCenter.removeObserver(self)
     }
     
-    private func getActualStateAccordingToPreferences() -> Bool {
-        switch getCurrentFnKeyState() {
-        case AppleMode:
-            return false
-        case OtherMode:
-            return true
-        default:
-            assertionFailure()
-            return false
-        }
-    }
-    
     private func updateAppBehaviorViewFor(app: NSRunningApplication, id: String) {
         currentAppView.enabled(id != Bundle.main.bundleIdentifier!)
-        currentAppView.setCurrent(app: app, behavior: .apple)
+        currentAppView.setCurrent(app: app, behavior: BehaviorManager.default.behaviorForApp(id: id))
     }
     
     private func setBehaviorForApp(id: String, behavior: AppBehavior) {
-        
+        BehaviorManager.default.setBehaviorForApp(id: id, behavior: behavior)
+        adaptBehaviorForApp(id: id)
     }
     
-    private func changeBehaviorForApp(id: String) {
-        
+    private func adaptBehaviorForApp(id: String) {
+        let behavior = BehaviorManager.default.behaviorForApp(id: id)
+        let state = BehaviorManager.keyboardStateFor(behavior: behavior, currentState: currentKeyboardState)
+        guard state != currentKeyboardState else { return }
+        currentKeyboardState = state
+        switch state {
+        case .apple:
+            setFnKeysToAppleMode()
+        case .other:
+            setFnKeysToOtherMode()
+        default:
+            // Soneone should handle this, no ?
+            return
+        }
     }
     
     // MARK: IBActions
@@ -105,6 +110,7 @@ class StatusMenuController: NSObject {
     }
     
     @IBAction func quitApplication(_ sender: AnyObject) {
+        setFnKeysToAppleMode()
         NSApp.terminate(self)
     }
 }
