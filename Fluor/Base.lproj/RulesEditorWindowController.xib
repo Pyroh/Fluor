@@ -17,21 +17,20 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Rules" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="300" height="452"/>
+            <rect key="contentRect" x="196" y="240" width="300" height="351"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="300" height="452"/>
+                <rect key="frame" x="0.0" y="0.0" width="300" height="351"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="66" horizontalPageScroll="10" verticalLineScroll="66" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4X-A8-IfS">
-                        <rect key="frame" x="0.0" y="24" width="300" height="428"/>
+                        <rect key="frame" x="0.0" y="24" width="300" height="327"/>
                         <clipView key="contentView" drawsBackground="NO" id="GDe-2e-Ktr">
-                            <rect key="frame" x="0.0" y="0.0" width="300" height="428"/>
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="327"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" rowSizeStyle="automatic" viewBased="YES" id="hPw-GT-0aL">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="428"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="327"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -194,7 +193,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="61" y="242"/>
+            <point key="canvasLocation" x="61" y="191.5"/>
         </window>
     </objects>
     <resources>

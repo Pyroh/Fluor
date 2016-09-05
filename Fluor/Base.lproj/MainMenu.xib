@@ -32,7 +32,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="Xdx-op-wZZ"/>
-                <menuItem title="Edit rules" id="MHf-OK-jHk">
+                <menuItem title="Edit rules..." id="MHf-OK-jHk">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="editRules:" target="e3h-DP-voU" id="pRc-Y7-dds"/>
@@ -42,6 +42,11 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <binding destination="08K-lI-3Rh" name="value" keyPath="self.launchAtLogin" id="heU-8m-SR5"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Preferences..." keyEquivalent="," id="sjb-Ql-h6c">
+                    <connections>
+                        <action selector="showPreferences:" target="e3h-DP-voU" id="R1g-ZB-Dbo"/>
                     </connections>
                 </menuItem>
                 <menuItem title="About Fluor" id="Ib7-Rw-HnK">

@@ -9,26 +9,23 @@
 import Cocoa
 
 enum KeyboardState: Int {
-    case error
     case apple
     case other
+    case error
 }
 
 struct DefaultsKeys {
     static let defaultState = "DefaultKeyboardState"
     static let appRules = "AppRules"
-    static let resetStateOnQuit = "ResetBehaviorOnQuit"
-    static let onQuitState = "OnQuitBehavior"
+    static let resetStateOnQuit = "ResetModeOnQuit"
+    static let sameStateAsBeforeStartup = "SameStateAsBeforeStartup"
+    static let onQuitState = "OnQuitState"
 }
 
 class BehaviorManager {
     static let `default`: BehaviorManager = BehaviorManager()
     
-    var defaultKeyboardState: KeyboardState {
-        didSet {
-            defaults.set(defaultKeyboardState.rawValue, forKey: DefaultsKeys.defaultState)
-        }
-    }
+    var defaultKeyboardState: KeyboardState
     
     private var behaviorDict: [String: (behavior: AppBehavior, url: URL)]
     private let defaults = UserDefaults.standard
@@ -113,8 +110,20 @@ class BehaviorManager {
         }
     }
     
+    func shouldRestoreStateOnQuit() -> Bool {
+        return defaults.bool(forKey: DefaultsKeys.resetStateOnQuit)
+    }
+    
+    func shouldRestorePreviousState() -> Bool {
+        return defaults.bool(forKey: DefaultsKeys.sameStateAsBeforeStartup)
+    }
+    
+    func onQuitState() -> KeyboardState {
+        return KeyboardState(rawValue: defaults.integer(forKey: DefaultsKeys.onQuitState))!
+    }
+    
     private func loadPrefs() {
-        let factoryDefaults: [String: Any] = [DefaultsKeys.defaultState: KeyboardState.apple.rawValue, DefaultsKeys.appRules: [Any](), DefaultsKeys.resetStateOnQuit: false, DefaultsKeys.onQuitState: KeyboardState.apple.rawValue]
+        let factoryDefaults: [String: Any] = [DefaultsKeys.defaultState: KeyboardState.apple.rawValue, DefaultsKeys.appRules: [Any](), DefaultsKeys.resetStateOnQuit: false, DefaultsKeys.sameStateAsBeforeStartup: true, DefaultsKeys.onQuitState: KeyboardState.apple.rawValue]
         defaults.register(defaults: factoryDefaults)
         
         defaultKeyboardState = KeyboardState(rawValue: defaults.integer(forKey: DefaultsKeys.defaultState))!

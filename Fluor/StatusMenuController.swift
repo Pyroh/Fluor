@@ -20,6 +20,7 @@ class StatusMenuController: NSObject {
     
     private var rulesController: RulesEditorWindowController?
     private var aboutController: AboutWindowController?
+    private var preferencesController: PreferencesWindowController?
     
     private var currentState: KeyboardState = .error
     private var onLaunchKeyboardState: KeyboardState = .error
@@ -79,6 +80,11 @@ class StatusMenuController: NSObject {
     @objc private func aboutWindowWillClose(notification: Notification) {
         NotificationCenter.default.removeObserver(self, name: Notification.Name.NSWindowWillClose, object: aboutController?.window)
         aboutController = nil
+    }
+    
+    @objc private func preferencesWindowWillClose(notification: Notification) {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.NSWindowWillClose, object: preferencesController?.window)
+        preferencesController = nil
     }
     
     // MARK: Private functions
@@ -161,8 +167,28 @@ class StatusMenuController: NSObject {
         aboutController?.window?.orderFrontRegardless()
     }
     
+    @IBAction func showPreferences(_ sender: AnyObject) {
+        preferencesController = PreferencesWindowController(windowNibName: "PreferencesWindowController")
+        preferencesController?.window?.becomeMain()
+        NotificationCenter.default.addObserver(self, selector: #selector(preferencesWindowWillClose(notification:)), name: Notification.Name.NSWindowWillClose, object: preferencesController?.window)
+        preferencesController?.window?.orderFrontRegardless()
+    }
+    
     @IBAction func quitApplication(_ sender: AnyObject) {
-        setFnKeysToAppleMode()
+        if BehaviorManager.default.shouldRestoreStateOnQuit() {
+            let state: KeyboardState
+            if BehaviorManager.default.shouldRestorePreviousState() {
+                state = onLaunchKeyboardState
+            } else {
+                state = BehaviorManager.default.onQuitState()
+            }
+            switch state {
+            case .apple:
+                setFnKeysToAppleMode()
+            default:
+                setFnKeysToOtherMode()
+            }
+        }
         NSApp.terminate(self)
     }
 }

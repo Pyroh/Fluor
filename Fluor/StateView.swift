@@ -21,7 +21,7 @@ class StateView: NSView {
     }
     
     @IBAction func changeState(_ sender: NSSegmentedControl) {
-        let state = KeyboardState(rawValue: sender.selectedSegment + 1)
+        let state = KeyboardState(rawValue: sender.selectedSegment)
         let userInfo = ["state": state]
         let not = Notification(name: Notification.Name.StateViewDidChangeState, object: self, userInfo: userInfo)
         NotificationCenter.default.post(not)
