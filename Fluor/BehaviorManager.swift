@@ -15,7 +15,7 @@ enum KeyboardState: Int {
 }
 
 struct DefaultsKeys {
-    static let appleIsDefaultBehavior = "AppleBehaviorIsDefault"
+    static let defaultState = "DefaultKeyboardState"
     static let appRules = "AppRules"
     static let resetStateOnQuit = "ResetBehaviorOnQuit"
     static let onQuitState = "OnQuitBehavior"
@@ -24,38 +24,17 @@ struct DefaultsKeys {
 class BehaviorManager {
     static let `default`: BehaviorManager = BehaviorManager()
     
-    static func keyboardStateFor(behavior: AppBehavior, currentState state: KeyboardState) -> KeyboardState {
-        if case state = KeyboardState.error { return state }
-        
-        switch behavior {
-        case .infered:
-            return `default`.defaultKeyBoardState()
-        case .apple:
-            return .apple
-        case .other:
-            return .other
-        case .negate:
-            switch state {
-            case .apple:
-                return .other
-            case .other:
-                return .apple
-            default:
-                return .error
-            }
+    var defaultKeyboardState: KeyboardState {
+        didSet {
+            defaults.set(defaultKeyboardState.rawValue, forKey: DefaultsKeys.defaultState)
         }
     }
     
-    private var isAppleDefaultBehavior: Bool {
-        didSet {
-            defaults.set(isAppleDefaultBehavior, forKey: DefaultsKeys.appleIsDefaultBehavior)
-        }
-    }
     private var behaviorDict: [String: (behavior: AppBehavior, url: URL)]
     private let defaults = UserDefaults.standard
     
     private init() {
-        isAppleDefaultBehavior = true
+        defaultKeyboardState = .apple
         behaviorDict = [:]
         
         loadPrefs()
@@ -80,10 +59,6 @@ class BehaviorManager {
             rules.append(item)
         })
         return rules
-    }
-    
-    func defaultKeyBoardState() -> KeyboardState {
-        return isAppleDefaultBehavior ? .apple : .other
     }
     
     func behaviorForApp(id: String) -> AppBehavior {
@@ -118,11 +93,31 @@ class BehaviorManager {
         }
     }
     
+    func keyboardStateFor(behavior: AppBehavior) -> KeyboardState {
+        switch behavior {
+        case .infered:
+            return defaultKeyboardState
+        case .apple:
+            return .apple
+        case .other:
+            return .other
+        case .negate:
+            switch defaultKeyboardState {
+            case .apple:
+                return .other
+            case .other:
+                return .apple
+            default:
+                return .error
+            }
+        }
+    }
+    
     private func loadPrefs() {
-        let factoryDefaults: [String: Any] = [DefaultsKeys.appleIsDefaultBehavior: true, DefaultsKeys.appRules: [Any](), DefaultsKeys.resetStateOnQuit: false, DefaultsKeys.onQuitState: KeyboardState.apple.rawValue]
+        let factoryDefaults: [String: Any] = [DefaultsKeys.defaultState: KeyboardState.apple.rawValue, DefaultsKeys.appRules: [Any](), DefaultsKeys.resetStateOnQuit: false, DefaultsKeys.onQuitState: KeyboardState.apple.rawValue]
         defaults.register(defaults: factoryDefaults)
         
-        isAppleDefaultBehavior = defaults.bool(forKey: DefaultsKeys.appleIsDefaultBehavior)
+        defaultKeyboardState = KeyboardState(rawValue: defaults.integer(forKey: DefaultsKeys.defaultState))!
         
         guard let arr = defaults.array(forKey: DefaultsKeys.appRules) else { return }
         for item in arr {

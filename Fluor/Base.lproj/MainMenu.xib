@@ -76,14 +76,17 @@
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="Vfh-zJ-Axi">
                         <font key="font" metaFont="cellTitle"/>
                         <segments>
-                            <segment image="appleModeTemplate" width="40" selected="YES">
+                            <segment toolTip="Switch to Apple mode" image="appleModeTemplate" width="40" selected="YES">
                                 <nil key="label"/>
                             </segment>
-                            <segment image="otherModeTemplate" width="40" tag="1">
+                            <segment toolTip="Switch to Function mode" image="otherModeTemplate" width="40" tag="1">
                                 <nil key="label"/>
                             </segment>
                         </segments>
                     </segmentedCell>
+                    <connections>
+                        <action selector="changeState:" target="u6O-d0-7Hq" id="27I-hs-rsm"/>
+                    </connections>
                 </segmentedControl>
             </subviews>
             <constraints>
@@ -93,6 +96,9 @@
                 <constraint firstAttribute="bottom" secondItem="kdK-wj-mRZ" secondAttribute="bottom" constant="8" id="d3Y-vD-TKu"/>
                 <constraint firstAttribute="trailing" secondItem="kdK-wj-mRZ" secondAttribute="trailing" constant="20" id="sqB-3L-HW3"/>
             </constraints>
+            <connections>
+                <outlet property="stateSelector" destination="kdK-wj-mRZ" id="Egq-Rm-zuG"/>
+            </connections>
             <point key="canvasLocation" x="442" y="-343"/>
         </customView>
         <customView id="o8r-mD-TI5" customClass="CurrentAppView" customModule="Fluor" customModuleProvider="target">
@@ -126,16 +132,16 @@
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="1I5-bW-HGh">
                                 <font key="font" metaFont="cellTitle"/>
                                 <segments>
-                                    <segment toolTip="Default" image="defaultModeTemplate" width="32" selected="YES">
+                                    <segment toolTip="Same as default mode" image="defaultModeTemplate" width="32" selected="YES">
                                         <nil key="label"/>
                                     </segment>
-                                    <segment toolTip="Apple keys" image="appleModeTemplate" width="32" tag="1">
+                                    <segment toolTip="Switch to Apple mode" image="appleModeTemplate" width="32" tag="1">
                                         <nil key="label"/>
                                     </segment>
-                                    <segment toolTip="Function keys" image="otherModeTemplate" width="32">
+                                    <segment toolTip="Switch to Function mode" image="otherModeTemplate" width="32">
                                         <nil key="label"/>
                                     </segment>
-                                    <segment toolTip="Negate default" image="negateModeTemplate">
+                                    <segment toolTip="Negate default mode" image="negateModeTemplate" width="32">
                                         <nil key="label"/>
                                     </segment>
                                 </segments>

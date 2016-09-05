@@ -9,15 +9,19 @@
 import Cocoa
 
 class StateView: NSView {
-    @IBOutlet weak var button: NSButton!
+    @IBOutlet weak var stateSelector: NSSegmentedControl!
     
-    func setState(flag: Bool) {
-        button.state = flag ? NSOnState : NSOffState
-        button.title = flag ? "Apple Mode" : "Other Mode"
+    func setState(flag: KeyboardState) {
+        switch flag {
+        case .apple:
+            stateSelector.setSelected(true, forSegment: 0)
+        default:
+            stateSelector.setSelected(true, forSegment: 1)
+        }
     }
     
-    @IBAction func changeState(_ sender: NSButton) {
-        let state = button.state == NSOnState
+    @IBAction func changeState(_ sender: NSSegmentedControl) {
+        let state = KeyboardState(rawValue: sender.selectedSegment + 1)
         let userInfo = ["state": state]
         let not = Notification(name: Notification.Name.StateViewDidChangeState, object: self, userInfo: userInfo)
         NotificationCenter.default.post(not)

@@ -20,7 +20,8 @@ class StatusMenuController: NSObject {
     
     private var rulesController: RulesEditorWindowController?
     
-    private var currentKeyboardState: KeyboardState = .error
+    private var currentState: KeyboardState = .error
+    private var onLaunchKeyboardState: KeyboardState = .error
     private var currentID: String = ""
     private var currentBehavior: AppBehavior = .infered
     
@@ -31,7 +32,8 @@ class StatusMenuController: NSObject {
     }
     
     override func awakeFromNib() {
-        currentKeyboardState = BehaviorManager.default.getActualStateAccordingToPreferences()
+        onLaunchKeyboardState = BehaviorManager.default.getActualStateAccordingToPreferences()
+        currentState = onLaunchKeyboardState
         setupStatusItem()
         applyAsObserver()
     }
@@ -47,8 +49,9 @@ class StatusMenuController: NSObject {
     }
     
     @objc private func stateViewDidChangeState(notification: NSNotification) {
-        guard let passedState = notification.userInfo?["state"] as? Bool else { return }
-        print(passedState)
+        guard let passedState = notification.userInfo?["state"] as? KeyboardState else { return }
+        BehaviorManager.default.defaultKeyboardState = passedState
+        adaptBehaviorForApp(id: currentID)
     }
     
     @objc private func behaviorDidChangeForApp(notification: NSNotification) {
@@ -82,6 +85,7 @@ class StatusMenuController: NSObject {
         let currentPlaceHolder = statusMenu.item(withTitle: "Current")
         statePlaceHolder?.view = stateView
         currentPlaceHolder?.view = currentAppView
+        stateView.setState(flag: BehaviorManager.default.defaultKeyboardState)
     }
     
     private func applyAsObserver() {
@@ -106,9 +110,9 @@ class StatusMenuController: NSObject {
     
     private func adaptBehaviorForApp(id: String) {
         let behavior = BehaviorManager.default.behaviorForApp(id: id)
-        let state = BehaviorManager.keyboardStateFor(behavior: behavior, currentState: currentKeyboardState)
-        guard state != currentKeyboardState else { return }
-        currentKeyboardState = state
+        let state = BehaviorManager.default.keyboardStateFor(behavior: behavior)
+        guard state != currentState else { return }
+        currentState = state
         switch state {
         case .apple:
             NSLog("Switch to Apple Mode for %@", id)
