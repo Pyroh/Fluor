@@ -77,7 +77,7 @@ class StatusMenuController: NSObject {
     /// Setup the status bar's item
     private func setupStatusItem() {
         statusItem.menu = statusMenu
-        statusItem.image = NSImage(named: NSImageNameActionTemplate)
+        statusItem.image = #imageLiteral(resourceName: "iconAppleModeTemplate")
         let statePlaceHolder = statusMenu.item(withTitle: "State")
         let currentPlaceHolder = statusMenu.item(withTitle: "Current")
         statePlaceHolder?.view = stateView
@@ -112,9 +112,11 @@ class StatusMenuController: NSObject {
         switch state {
         case .apple:
             NSLog("Switch to Apple Mode for %@", id)
+            statusItem.image = #imageLiteral(resourceName: "iconAppleModeTemplate")
             setFnKeysToAppleMode()
         case .other:
             NSLog("Switch to Other Mode for %@", id)
+            statusItem.image = #imageLiteral(resourceName: "iconOtherModeTemplate")
             setFnKeysToOtherMode()
         default:
             // Soneone should handle this, no ?

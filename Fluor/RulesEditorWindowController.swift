@@ -59,7 +59,26 @@ class RulesEditorWindowController: NSWindowController, NSTableViewDataSource {
         return rulesArray[row]
     }
     
-    @IBAction func behaviorChange(_ sender: NSSegmentedControl) {
-        tableView.row(for: sender)
+    @IBAction func addRule(_ sender: AnyObject) {
+        let openPanel = NSOpenPanel()
+        openPanel.allowsMultipleSelection = true
+        openPanel.allowedFileTypes = ["com.apple.bundle"]
+        openPanel.canChooseDirectories = false
+        openPanel.directoryURL = URL(fileURLWithPath: "/Applications")
+        openPanel.runModal()
+        openPanel.urls.forEach { (url) in
+            let id = Bundle(url: url)!.bundleIdentifier!
+            BehaviorManager.default.setBehaviorForApp(id: id, behavior: .apple, url: url)
+        }
+        if !openPanel.urls.isEmpty { loadData() }
+    }
+    
+    @IBAction func removeRule(_ sender: AnyObject) {
+        let indexes = tableView.selectedRowIndexes
+        indexes.forEach { (index) in
+            let item = rulesArray[index]
+            BehaviorManager.default.setBehaviorForApp(id: item.id, behavior: .infered, url: item.url)
+        }
+        if !indexes.isEmpty { loadData() }
     }
 }

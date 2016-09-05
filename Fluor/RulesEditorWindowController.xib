@@ -29,7 +29,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="300" height="428"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" rowSizeStyle="automatic" viewBased="YES" id="hPw-GT-0aL">
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" rowSizeStyle="automatic" viewBased="YES" id="hPw-GT-0aL">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="428"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
@@ -84,13 +84,13 @@
                                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="Qxd-AD-Hgm">
                                                                         <font key="font" metaFont="cellTitle"/>
                                                                         <segments>
-                                                                            <segment toolTip="Default" image="NSActionTemplate" width="32" selected="YES">
+                                                                            <segment toolTip="Default" image="appleModeTemplate" width="32" selected="YES">
                                                                                 <nil key="label"/>
                                                                             </segment>
-                                                                            <segment toolTip="Apple keys" image="NSAddTemplate" width="32" tag="1">
+                                                                            <segment toolTip="Apple keys" image="otherModeTemplate" width="32" tag="1">
                                                                                 <nil key="label"/>
                                                                             </segment>
-                                                                            <segment toolTip="Function keys" image="NSBluetoothTemplate" width="32">
+                                                                            <segment toolTip="Function keys" image="negateModeTemplate" width="32">
                                                                                 <nil key="label"/>
                                                                             </segment>
                                                                         </segments>
@@ -156,6 +156,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="addRule:" target="-2" id="GZ0-Z8-Rt0"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uDU-hq-ED5">
                         <rect key="frame" x="23" y="-1" width="25" height="25"/>
@@ -163,6 +166,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="removeRule:" target="-2" id="3qC-dN-lZM"/>
+                        </connections>
                     </button>
                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="SdN-eh-ayo">
                         <rect key="frame" x="0.0" y="21" width="300" height="5"/>
@@ -191,10 +197,11 @@
         </window>
     </objects>
     <resources>
-        <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSApplicationIcon" width="128" height="128"/>
-        <image name="NSBluetoothTemplate" width="7" height="14"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
+        <image name="appleModeTemplate" width="16" height="16"/>
+        <image name="negateModeTemplate" width="16" height="16"/>
+        <image name="otherModeTemplate" width="16" height="16"/>
     </resources>
 </document>
