@@ -20,7 +20,10 @@ class CurrentAppView: NSView {
     @IBOutlet weak var appNameLabel: NSTextField!
     @IBOutlet weak var behaviorSegment: NSSegmentedControl!
     
+    private var currentApp: NSRunningApplication?
+    
     func setCurrent(app: NSRunningApplication, behavior: AppBehavior) {
+        currentApp = app
         behaviorSegment.setSelected(true, forSegment: behavior.rawValue)
         appIconView.image = app.icon
         if let name = app.localizedName {
@@ -28,6 +31,10 @@ class CurrentAppView: NSView {
         } else {
             appNameLabel.stringValue = "An app"
         }
+    }
+    
+    func updateBehaviorForCurrentApp(_ behavior: AppBehavior) {
+        behaviorSegment.setSelected(true, forSegment: behavior.rawValue)
     }
     
     func enabled(_ flag: Bool) {
@@ -39,7 +46,7 @@ class CurrentAppView: NSView {
     
     @IBAction func behaviorChanged(_ sender: NSSegmentedControl) {
         if let behavior = AppBehavior(rawValue: sender.selectedSegment) {
-            let userInfo = ["behavior": behavior]
+            let userInfo = StatusMenuController.behaviorDidChangeUserInfoConstructor(id: currentApp!.bundleIdentifier!, url: currentApp!.bundleURL!, behavior: behavior)
             let not = Notification(name: Notification.Name.BehaviorDidChangeForApp, object: self, userInfo: userInfo)
             NotificationCenter.default.post(not)
         }

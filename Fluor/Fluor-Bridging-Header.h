@@ -3,3 +3,4 @@
 //
 
 #include "utils.h"
+#include "LaunchAtLoginController.h"

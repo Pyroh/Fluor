@@ -18,6 +18,8 @@ class StatusMenuController: NSObject {
     @IBOutlet weak var stateView: StateView!
     @IBOutlet weak var currentAppView: CurrentAppView!
     
+    private var rulesController: RulesEditorWindowController?
+    
     private var currentKeyboardState: KeyboardState = .error
     private var currentID: String = ""
     private var currentBehavior: AppBehavior = .infered
@@ -49,9 +51,25 @@ class StatusMenuController: NSObject {
         print(passedState)
     }
     
-    @objc private func appDidChangeBehavior(notification: NSNotification) {
-        guard let behavior = notification.userInfo?["behavior"] as? AppBehavior else { return }
-        setBehaviorForApp(id: currentID, behavior: behavior)
+    @objc private func behaviorDidChangeForApp(notification: NSNotification) {
+        guard let userInfo = notification.userInfo,
+            let info = StatusMenuController.behaviorDidChangeUserInfoFor(dict: userInfo) else { return }
+        setBehaviorForApp(id: info.id, behavior: info.behavior, url: info.url)
+        switch notification.object! {
+        case is CurrentAppView:
+            rulesController?.loadData()
+            adaptBehaviorForApp(id: info.id)
+        default:
+            if info.id == currentID {
+                adaptBehaviorForApp(id: info.id)
+                currentAppView.updateBehaviorForCurrentApp(info.behavior)
+            }
+        }
+    }
+    
+    @objc private func rulesEditorWindowWillClose(notification: Notification) {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.NSWindowWillClose, object: rulesController?.window)
+        rulesController = nil
     }
     
     // MARK: Private functions
@@ -66,10 +84,9 @@ class StatusMenuController: NSObject {
         currentPlaceHolder?.view = currentAppView
     }
     
-    
     private func applyAsObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(stateViewDidChangeState(notification:)), name: Notification.Name.StateViewDidChangeState, object: stateView)
-        NotificationCenter.default.addObserver(self, selector: #selector(appDidChangeBehavior(notification:)), name: Notification.Name.BehaviorDidChangeForApp, object: currentAppView)
+        NotificationCenter.default.addObserver(self, selector: #selector(behaviorDidChangeForApp(notification:)), name: Notification.Name.BehaviorDidChangeForApp, object: nil)
         NSWorkspace.shared().notificationCenter.addObserver(self, selector: #selector(activeAppDidChange(notification:)), name: NSNotification.Name.NSWorkspaceDidActivateApplication, object: nil)
     }
     
@@ -83,9 +100,8 @@ class StatusMenuController: NSObject {
         currentAppView.setCurrent(app: app, behavior: BehaviorManager.default.behaviorForApp(id: id))
     }
     
-    private func setBehaviorForApp(id: String, behavior: AppBehavior) {
-        BehaviorManager.default.setBehaviorForApp(id: id, behavior: behavior)
-        adaptBehaviorForApp(id: id)
+    private func setBehaviorForApp(id: String, behavior: AppBehavior, url: URL) {
+        BehaviorManager.default.setBehaviorForApp(id: id, behavior: behavior, url: url)
     }
     
     private func adaptBehaviorForApp(id: String) {
@@ -95,8 +111,10 @@ class StatusMenuController: NSObject {
         currentKeyboardState = state
         switch state {
         case .apple:
+            NSLog("Switch to Apple Mode for %@", id)
             setFnKeysToAppleMode()
         case .other:
+            NSLog("Switch to Other Mode for %@", id)
             setFnKeysToOtherMode()
         default:
             // Soneone should handle this, no ?
@@ -104,9 +122,30 @@ class StatusMenuController: NSObject {
         }
     }
     
+    static func behaviorDidChangeUserInfoConstructor(id: String, url: URL, behavior: AppBehavior) -> [String: Any] {
+        return ["id": id, "url": url, "behavior": behavior]
+    }
+    
+    static func behaviorDidChangeUserInfoFor(dict: [AnyHashable: Any]) -> (id: String, url: URL, behavior: AppBehavior)? {
+        guard let behavior = dict["behavior"] as? AppBehavior,
+            let url = dict["url"] as? URL,
+            let id = dict["id"] as? String else { return nil }
+        return (id, url, behavior)
+    }
+    
     // MARK: IBActions
     @IBAction func editRules(_ sender: AnyObject) {
-        NSLog("Should edit rules...")
+//        if rulesController == nil {
+            rulesController = RulesEditorWindowController(windowNibName: "RulesEditorWindowController")
+            rulesController?.window?.becomeMain()
+            rulesController?.loadData()
+//        } else {
+//            rulesController?.showWindow(self)
+//            rulesController?.window?.becomeMain()
+//            rulesController?.loadData()
+//        }
+        NotificationCenter.default.addObserver(self, selector: #selector(rulesEditorWindowWillClose(notification:)), name: Notification.Name.NSWindowWillClose, object: rulesController?.window)
+        rulesController?.window?.orderFrontRegardless()
     }
     
     @IBAction func quitApplication(_ sender: AnyObject) {

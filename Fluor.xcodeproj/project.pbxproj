@@ -15,6 +15,11 @@
 		3FCD16A71D79793600C57B22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FCD16A61D79793600C57B22 /* Assets.xcassets */; };
 		3FCD16AA1D79793600C57B22 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FCD16A81D79793600C57B22 /* MainMenu.xib */; };
 		3FCD16B41D79797600C57B22 /* utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD16B31D79797600C57B22 /* utils.m */; };
+		3FE7E0E01D7CA14600DC754D /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE7E0DF1D7CA14600DC754D /* LaunchAtLoginController.m */; };
+		3FE7E0E31D7CBE1700DC754D /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE7E0E11D7CBE1700DC754D /* AboutWindowController.swift */; };
+		3FE7E0E41D7CBE1700DC754D /* AboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FE7E0E21D7CBE1700DC754D /* AboutWindowController.xib */; };
+		3FE7E0EA1D7CC01B00DC754D /* RulesEditorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE7E0E81D7CC01B00DC754D /* RulesEditorWindowController.swift */; };
+		3FE7E0EB1D7CC01B00DC754D /* RulesEditorWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FE7E0E91D7CC01B00DC754D /* RulesEditorWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +35,12 @@
 		3FCD16B11D79797600C57B22 /* Fluor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fluor-Bridging-Header.h"; sourceTree = "<group>"; };
 		3FCD16B21D79797600C57B22 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
 		3FCD16B31D79797600C57B22 /* utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = utils.m; sourceTree = "<group>"; };
+		3FE7E0DE1D7CA14600DC754D /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
+		3FE7E0DF1D7CA14600DC754D /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
+		3FE7E0E11D7CBE1700DC754D /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
+		3FE7E0E21D7CBE1700DC754D /* AboutWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutWindowController.xib; sourceTree = "<group>"; };
+		3FE7E0E81D7CC01B00DC754D /* RulesEditorWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulesEditorWindowController.swift; sourceTree = "<group>"; };
+		3FE7E0E91D7CC01B00DC754D /* RulesEditorWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RulesEditorWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,19 +73,49 @@
 		3FCD16A31D79793600C57B22 /* Fluor */ = {
 			isa = PBXGroup;
 			children = (
+				3FCD16B11D79797600C57B22 /* Fluor-Bridging-Header.h */,
 				3FCD16A41D79793600C57B22 /* AppDelegate.swift */,
-				3FCD16A81D79793600C57B22 /* MainMenu.xib */,
-				3F2FA4021D7A059F003E2AD8 /* CurrentAppView.swift */,
-				3F2FA4001D79D66D003E2AD8 /* StateView.swift */,
-				3F2FA3FE1D79D094003E2AD8 /* StatusMenuController.swift */,
 				3F2FA4041D7A1F87003E2AD8 /* BehaviorManager.swift */,
+				3FE7E0E51D7CBEAE00DC754D /* Controllers */,
+				3FE7E0E61D7CBEB900DC754D /* Views */,
+				3FE7E0E71D7CBEC700DC754D /* XIBs */,
 				3FCD16A61D79793600C57B22 /* Assets.xcassets */,
 				3FCD16AB1D79793600C57B22 /* Info.plist */,
 				3FCD16B21D79797600C57B22 /* utils.h */,
 				3FCD16B31D79797600C57B22 /* utils.m */,
-				3FCD16B11D79797600C57B22 /* Fluor-Bridging-Header.h */,
 			);
 			path = Fluor;
+			sourceTree = "<group>";
+		};
+		3FE7E0E51D7CBEAE00DC754D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3FE7E0DE1D7CA14600DC754D /* LaunchAtLoginController.h */,
+				3FE7E0DF1D7CA14600DC754D /* LaunchAtLoginController.m */,
+				3F2FA3FE1D79D094003E2AD8 /* StatusMenuController.swift */,
+				3FE7E0E11D7CBE1700DC754D /* AboutWindowController.swift */,
+				3FE7E0E81D7CC01B00DC754D /* RulesEditorWindowController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3FE7E0E61D7CBEB900DC754D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3F2FA4021D7A059F003E2AD8 /* CurrentAppView.swift */,
+				3F2FA4001D79D66D003E2AD8 /* StateView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		3FE7E0E71D7CBEC700DC754D /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				3FCD16A81D79793600C57B22 /* MainMenu.xib */,
+				3FE7E0E21D7CBE1700DC754D /* AboutWindowController.xib */,
+				3FE7E0E91D7CC01B00DC754D /* RulesEditorWindowController.xib */,
+			);
+			name = XIBs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,7 +184,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FE7E0E41D7CBE1700DC754D /* AboutWindowController.xib in Resources */,
 				3FCD16A71D79793600C57B22 /* Assets.xcassets in Resources */,
+				3FE7E0EB1D7CC01B00DC754D /* RulesEditorWindowController.xib in Resources */,
 				3FCD16AA1D79793600C57B22 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,6 +203,9 @@
 				3FCD16A51D79793600C57B22 /* AppDelegate.swift in Sources */,
 				3F2FA4011D79D66D003E2AD8 /* StateView.swift in Sources */,
 				3FCD16B41D79797600C57B22 /* utils.m in Sources */,
+				3FE7E0EA1D7CC01B00DC754D /* RulesEditorWindowController.swift in Sources */,
+				3FE7E0E31D7CBE1700DC754D /* AboutWindowController.swift in Sources */,
+				3FE7E0E01D7CA14600DC754D /* LaunchAtLoginController.m in Sources */,
 				3F2FA4051D7A1F87003E2AD8 /* BehaviorManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,6 +319,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Q2E884V952;
 				INFOPLIST_FILE = Fluor/Info.plist;
@@ -290,6 +337,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Q2E884V952;
 				INFOPLIST_FILE = Fluor/Info.plist;

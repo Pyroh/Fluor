@@ -6,12 +6,19 @@
 //  Copyright © 2016 Pyrolyse. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
-enum KeyboardState {
+enum KeyboardState: Int {
     case error
     case apple
     case other
+}
+
+struct DefaultsKeys {
+    static let appleIsDefaultBehavior = "AppleBehaviorIsDefault"
+    static let appRules = "AppRules"
+    static let resetStateOnQuit = "ResetBehaviorOnQuit"
+    static let onQuitState = "OnQuitBehavior"
 }
 
 class BehaviorManager {
@@ -39,8 +46,13 @@ class BehaviorManager {
         }
     }
     
-    private var isAppleDefaultBehavior: Bool
-    private var behaviorDict: [String: AppBehavior]
+    private var isAppleDefaultBehavior: Bool {
+        didSet {
+            defaults.set(isAppleDefaultBehavior, forKey: DefaultsKeys.appleIsDefaultBehavior)
+        }
+    }
+    private var behaviorDict: [String: (behavior: AppBehavior, url: URL)]
+    private let defaults = UserDefaults.standard
     
     private init() {
         isAppleDefaultBehavior = true
@@ -49,29 +61,50 @@ class BehaviorManager {
         loadPrefs()
     }
     
+    func retrieveRules() -> [RulesTableItem] {
+        guard let rawRules = defaults.array(forKey: DefaultsKeys.appRules) as? [[String: Any]] else { return [] }
+        var rules = [RulesTableItem]()
+        rawRules.forEach({ (dict) in
+            let appId = dict["id"] as! String
+            let appBehavior = dict["behavior"] as! Int - 1
+            let appPath = dict["path"] as! String
+            let appUrl = URL(fileURLWithPath: appPath)
+            let appIcon = NSWorkspace.shared().icon(forFile: appPath)
+            let appName: String
+            if let name = Bundle(path: appPath)?.localizedInfoDictionary?["CFBundleName"] as? String {
+                appName = name
+            } else {
+                appName = appUrl.deletingPathExtension().lastPathComponent
+            }
+            let item = RulesTableItem(id: appId, url: appUrl, icon: appIcon, name: appName, behavior: appBehavior)
+            rules.append(item)
+        })
+        return rules
+    }
+    
     func defaultKeyBoardState() -> KeyboardState {
         return isAppleDefaultBehavior ? .apple : .other
     }
     
     func behaviorForApp(id: String) -> AppBehavior {
-        return behaviorDict[id] ?? .infered
+        return behaviorDict[id]?.behavior ?? .infered
     }
     
-    func setBehaviorForApp(id: String, behavior: AppBehavior) {
+    func setBehaviorForApp(id: String, behavior: AppBehavior, url: URL) {
         var change = false
         if behavior == .infered {
             behaviorDict.removeValue(forKey: id)
             change = true
-        } else if let previousBehavior = behaviorDict[id] {
+        } else if let previousBehavior = behaviorDict[id]?.behavior {
             if previousBehavior != behavior {
-                behaviorDict[id] = behavior
+                behaviorDict[id]?.behavior = behavior
                 change = true
             }
         } else {
-            behaviorDict[id] = behavior
+            behaviorDict[id] = (behavior, url)
             change = true
         }
-        if change { synchronizePrefs() }
+        if change { synchronizeRules() }
     }
     
     func getActualStateAccordingToPreferences() -> KeyboardState {
@@ -86,10 +119,28 @@ class BehaviorManager {
     }
     
     private func loadPrefs() {
+        let factoryDefaults: [String: Any] = [DefaultsKeys.appleIsDefaultBehavior: true, DefaultsKeys.appRules: [Any](), DefaultsKeys.resetStateOnQuit: false, DefaultsKeys.onQuitState: KeyboardState.apple.rawValue]
+        defaults.register(defaults: factoryDefaults)
         
+        isAppleDefaultBehavior = defaults.bool(forKey: DefaultsKeys.appleIsDefaultBehavior)
+        
+        guard let arr = defaults.array(forKey: DefaultsKeys.appRules) else { return }
+        for item in arr {
+            let dict = item as! [String: Any]
+            let key = dict["id"] as! String
+            let behavior = AppBehavior(rawValue: dict["behavior"] as! Int)!
+            let path = dict["path"] as! String
+            let url = URL(fileURLWithPath: path)
+            behaviorDict[key] = (behavior, url)
+        }
     }
     
-    private func synchronizePrefs() {
-        
+    private func synchronizeRules() {
+        var arr = [Any]()
+        behaviorDict.forEach { (key: String, value: (behavior: AppBehavior, url: URL)) in
+            let dict: [String: Any] = ["id": key, "behavior": value.behavior.rawValue, "path": value.url.path]
+            arr.append(dict)
+        }
+        defaults.set(arr, forKey: DefaultsKeys.appRules)
     }
 }
