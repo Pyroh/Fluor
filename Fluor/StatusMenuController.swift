@@ -19,6 +19,7 @@ class StatusMenuController: NSObject {
     @IBOutlet weak var currentAppView: CurrentAppView!
     
     private var rulesController: RulesEditorWindowController?
+    private var aboutController: AboutWindowController?
     
     private var currentState: KeyboardState = .error
     private var onLaunchKeyboardState: KeyboardState = .error
@@ -73,6 +74,11 @@ class StatusMenuController: NSObject {
     @objc private func rulesEditorWindowWillClose(notification: Notification) {
         NotificationCenter.default.removeObserver(self, name: Notification.Name.NSWindowWillClose, object: rulesController?.window)
         rulesController = nil
+    }
+    
+    @objc private func aboutWindowWillClose(notification: Notification) {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.NSWindowWillClose, object: aboutController?.window)
+        aboutController = nil
     }
     
     // MARK: Private functions
@@ -141,17 +147,18 @@ class StatusMenuController: NSObject {
     
     // MARK: IBActions
     @IBAction func editRules(_ sender: AnyObject) {
-//        if rulesController == nil {
-            rulesController = RulesEditorWindowController(windowNibName: "RulesEditorWindowController")
-            rulesController?.window?.becomeMain()
-            rulesController?.loadData()
-//        } else {
-//            rulesController?.showWindow(self)
-//            rulesController?.window?.becomeMain()
-//            rulesController?.loadData()
-//        }
+        rulesController = RulesEditorWindowController(windowNibName: "RulesEditorWindowController")
+        rulesController?.window?.becomeMain()
+        rulesController?.loadData()
         NotificationCenter.default.addObserver(self, selector: #selector(rulesEditorWindowWillClose(notification:)), name: Notification.Name.NSWindowWillClose, object: rulesController?.window)
         rulesController?.window?.orderFrontRegardless()
+    }
+    
+    @IBAction func showAbout(_ sender: AnyObject) {
+        aboutController = AboutWindowController(windowNibName: "AboutWindowController")
+        aboutController?.window?.becomeMain()
+        NotificationCenter.default.addObserver(self, selector: #selector(aboutWindowWillClose(notification:)), name: Notification.Name.NSWindowWillClose, object: aboutController?.window)
+        aboutController?.window?.orderFrontRegardless()
     }
     
     @IBAction func quitApplication(_ sender: AnyObject) {

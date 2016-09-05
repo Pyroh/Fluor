@@ -46,6 +46,9 @@
                 </menuItem>
                 <menuItem title="About Fluor" id="Ib7-Rw-HnK">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showAbout:" target="e3h-DP-voU" id="VAz-Kx-NL8"/>
+                    </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="dNi-gO-s9S"/>
                 <menuItem title="Quit" keyEquivalent="q" id="QjA-WT-wFW">
@@ -57,19 +60,19 @@
             <point key="canvasLocation" x="-70" y="-283"/>
         </menu>
         <customView id="u6O-d0-7Hq" customClass="StateView" customModule="Fluor" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="189" height="34"/>
+            <rect key="frame" x="0.0" y="0.0" width="229" height="34"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DvO-d4-urd">
-                    <rect key="frame" x="18" y="10" width="53" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Default" id="S28-Jt-nN1">
-                        <font key="font" metaFont="systemHeavy" size="13"/>
+                    <rect key="frame" x="18" y="10" width="91" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Default mode" id="S28-Jt-nN1">
+                        <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kdK-wj-mRZ">
-                    <rect key="frame" x="83" y="7" width="87" height="20"/>
+                    <rect key="frame" x="123" y="7" width="87" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="DFc-vh-F3H"/>
                     </constraints>
@@ -91,6 +94,7 @@
             </subviews>
             <constraints>
                 <constraint firstItem="kdK-wj-mRZ" firstAttribute="top" secondItem="u6O-d0-7Hq" secondAttribute="top" constant="8" id="0pW-Lh-f5f"/>
+                <constraint firstItem="kdK-wj-mRZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DvO-d4-urd" secondAttribute="trailing" constant="8" id="K8p-bd-pGC"/>
                 <constraint firstItem="DvO-d4-urd" firstAttribute="baseline" secondItem="kdK-wj-mRZ" secondAttribute="baseline" id="SAX-m8-xIz"/>
                 <constraint firstItem="DvO-d4-urd" firstAttribute="leading" secondItem="u6O-d0-7Hq" secondAttribute="leading" constant="20" id="b2B-Vd-Tpz"/>
                 <constraint firstAttribute="bottom" secondItem="kdK-wj-mRZ" secondAttribute="bottom" constant="8" id="d3Y-vD-TKu"/>
@@ -99,7 +103,7 @@
             <connections>
                 <outlet property="stateSelector" destination="kdK-wj-mRZ" id="Egq-Rm-zuG"/>
             </connections>
-            <point key="canvasLocation" x="442" y="-343"/>
+            <point key="canvasLocation" x="461.5" y="-343"/>
         </customView>
         <customView id="o8r-mD-TI5" customClass="CurrentAppView" customModule="Fluor" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="248" height="80"/>
@@ -122,7 +126,7 @@
                                 <constraint firstAttribute="width" constant="136" id="R5y-ap-31T"/>
                             </constraints>
                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" id="nND-dO-QEg">
-                                <font key="font" metaFont="systemBold"/>
+                                <font key="font" metaFont="systemSemibold" size="13"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
