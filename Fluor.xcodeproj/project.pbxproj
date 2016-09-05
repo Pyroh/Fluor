@@ -11,6 +11,8 @@
 		3F2FA4011D79D66D003E2AD8 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA4001D79D66D003E2AD8 /* StateView.swift */; };
 		3F2FA4031D7A059F003E2AD8 /* CurrentAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA4021D7A059F003E2AD8 /* CurrentAppView.swift */; };
 		3F2FA4051D7A1F87003E2AD8 /* BehaviorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA4041D7A1F87003E2AD8 /* BehaviorManager.swift */; };
+		3F6FA1A71D7E027F00DB9289 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6FA1A51D7E027F00DB9289 /* PreferencesWindowController.swift */; };
+		3F6FA1A81D7E027F00DB9289 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F6FA1A61D7E027F00DB9289 /* PreferencesWindowController.xib */; };
 		3FCD16A51D79793600C57B22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD16A41D79793600C57B22 /* AppDelegate.swift */; };
 		3FCD16A71D79793600C57B22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FCD16A61D79793600C57B22 /* Assets.xcassets */; };
 		3FCD16AA1D79793600C57B22 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FCD16A81D79793600C57B22 /* MainMenu.xib */; };
@@ -27,6 +29,8 @@
 		3F2FA4001D79D66D003E2AD8 /* StateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
 		3F2FA4021D7A059F003E2AD8 /* CurrentAppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentAppView.swift; sourceTree = "<group>"; };
 		3F2FA4041D7A1F87003E2AD8 /* BehaviorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorManager.swift; sourceTree = "<group>"; };
+		3F6FA1A51D7E027F00DB9289 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
+		3F6FA1A61D7E027F00DB9289 /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindowController.xib; path = Base.lproj/PreferencesWindowController.xib; sourceTree = "<group>"; };
 		3FCD16A11D79793600C57B22 /* Fluor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fluor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FCD16A41D79793600C57B22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FCD16A61D79793600C57B22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,9 +42,9 @@
 		3FE7E0DE1D7CA14600DC754D /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
 		3FE7E0DF1D7CA14600DC754D /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
 		3FE7E0E11D7CBE1700DC754D /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
-		3FE7E0E21D7CBE1700DC754D /* AboutWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutWindowController.xib; sourceTree = "<group>"; };
+		3FE7E0E21D7CBE1700DC754D /* AboutWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutWindowController.xib; path = Base.lproj/AboutWindowController.xib; sourceTree = "<group>"; };
 		3FE7E0E81D7CC01B00DC754D /* RulesEditorWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulesEditorWindowController.swift; sourceTree = "<group>"; };
-		3FE7E0E91D7CC01B00DC754D /* RulesEditorWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RulesEditorWindowController.xib; sourceTree = "<group>"; };
+		3FE7E0E91D7CC01B00DC754D /* RulesEditorWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RulesEditorWindowController.xib; path = Base.lproj/RulesEditorWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,7 @@
 				3F2FA3FE1D79D094003E2AD8 /* StatusMenuController.swift */,
 				3FE7E0E11D7CBE1700DC754D /* AboutWindowController.swift */,
 				3FE7E0E81D7CC01B00DC754D /* RulesEditorWindowController.swift */,
+				3F6FA1A51D7E027F00DB9289 /* PreferencesWindowController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -111,6 +116,7 @@
 		3FE7E0E71D7CBEC700DC754D /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
+				3F6FA1A61D7E027F00DB9289 /* PreferencesWindowController.xib */,
 				3FCD16A81D79793600C57B22 /* MainMenu.xib */,
 				3FE7E0E21D7CBE1700DC754D /* AboutWindowController.xib */,
 				3FE7E0E91D7CC01B00DC754D /* RulesEditorWindowController.xib */,
@@ -187,6 +193,7 @@
 				3FE7E0E41D7CBE1700DC754D /* AboutWindowController.xib in Resources */,
 				3FCD16A71D79793600C57B22 /* Assets.xcassets in Resources */,
 				3FE7E0EB1D7CC01B00DC754D /* RulesEditorWindowController.xib in Resources */,
+				3F6FA1A81D7E027F00DB9289 /* PreferencesWindowController.xib in Resources */,
 				3FCD16AA1D79793600C57B22 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,6 +207,7 @@
 			files = (
 				3F2FA4031D7A059F003E2AD8 /* CurrentAppView.swift in Sources */,
 				3F2FA3FF1D79D094003E2AD8 /* StatusMenuController.swift in Sources */,
+				3F6FA1A71D7E027F00DB9289 /* PreferencesWindowController.swift in Sources */,
 				3FCD16A51D79793600C57B22 /* AppDelegate.swift in Sources */,
 				3F2FA4011D79D66D003E2AD8 /* StateView.swift in Sources */,
 				3FCD16B41D79797600C57B22 /* utils.m in Sources */,
