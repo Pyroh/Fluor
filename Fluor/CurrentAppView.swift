@@ -8,13 +8,6 @@
 
 import Cocoa
 
-enum AppBehavior: Int {
-    case infered
-    case apple
-    case other
-    case negate
-}
-
 class CurrentAppView: NSView {
     @IBOutlet weak var appIconView: NSImageView!
     @IBOutlet weak var appNameLabel: NSTextField!

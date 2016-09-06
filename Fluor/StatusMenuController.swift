@@ -8,9 +8,9 @@
 
 import Cocoa
 
-extension NSNotification.Name {
-    public static let StateViewDidChangeState = NSNotification.Name("kStateViewDidChangeState")
-    public static let BehaviorDidChangeForApp = NSNotification.Name("kBehaviorDidChangeForApp")
+extension Notification.Name {
+    public static let StateViewDidChangeState = Notification.Name("kStateViewDidChangeState")
+    public static let BehaviorDidChangeForApp = Notification.Name("kBehaviorDidChangeForApp")
 }
 
 class StatusMenuController: NSObject {
@@ -21,6 +21,7 @@ class StatusMenuController: NSObject {
     private var rulesController: RulesEditorWindowController?
     private var aboutController: AboutWindowController?
     private var preferencesController: PreferencesWindowController?
+    private var runningAppsController: RunningAppsWindowController?
     
     private var currentState: KeyboardState = .error
     private var onLaunchKeyboardState: KeyboardState = .error
@@ -57,18 +58,27 @@ class StatusMenuController: NSObject {
     }
     
     @objc private func behaviorDidChangeForApp(notification: NSNotification) {
+        func updateIfCurrent(id: String, behavior: AppBehavior) {
+            if id == currentID {
+                adaptBehaviorForApp(id: id)
+                currentAppView.updateBehaviorForCurrentApp(behavior)
+            }
+        }
+        
         guard let userInfo = notification.userInfo,
             let info = StatusMenuController.behaviorDidChangeUserInfoFor(dict: userInfo) else { return }
         setBehaviorForApp(id: info.id, behavior: info.behavior, url: info.url)
         switch notification.object! {
         case is CurrentAppView:
-            rulesController?.loadData()
+            rulesController?.loadRules()
+            runningAppsController?.updateBehaviorForApp(id: info.id, behavior: info.behavior)
             adaptBehaviorForApp(id: info.id)
+        case is RunningAppsTableItem:
+            rulesController?.loadRules()
+            updateIfCurrent(id: info.id, behavior: info.behavior)
         default:
-            if info.id == currentID {
-                adaptBehaviorForApp(id: info.id)
-                currentAppView.updateBehaviorForCurrentApp(info.behavior)
-            }
+            runningAppsController?.updateBehaviorForApp(id: info.id, behavior: info.behavior)
+            updateIfCurrent(id: info.id, behavior: info.behavior)
         }
     }
     
@@ -85,6 +95,11 @@ class StatusMenuController: NSObject {
     @objc private func preferencesWindowWillClose(notification: Notification) {
         NotificationCenter.default.removeObserver(self, name: Notification.Name.NSWindowWillClose, object: preferencesController?.window)
         preferencesController = nil
+    }
+    
+    @objc private func runningAppsWindowWillClose(notification: Notification) {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.NSWindowWillClose, object: runningAppsController?.window)
+        runningAppsController = nil
     }
     
     // MARK: Private functions
@@ -155,7 +170,7 @@ class StatusMenuController: NSObject {
     @IBAction func editRules(_ sender: AnyObject) {
         rulesController = RulesEditorWindowController(windowNibName: "RulesEditorWindowController")
         rulesController?.window?.becomeMain()
-        rulesController?.loadData()
+        rulesController?.loadRules()
         NotificationCenter.default.addObserver(self, selector: #selector(rulesEditorWindowWillClose(notification:)), name: Notification.Name.NSWindowWillClose, object: rulesController?.window)
         rulesController?.window?.orderFrontRegardless()
     }
@@ -163,6 +178,7 @@ class StatusMenuController: NSObject {
     @IBAction func showAbout(_ sender: AnyObject) {
         aboutController = AboutWindowController(windowNibName: "AboutWindowController")
         aboutController?.window?.becomeMain()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(aboutWindowWillClose(notification:)), name: Notification.Name.NSWindowWillClose, object: aboutController?.window)
         aboutController?.window?.orderFrontRegardless()
     }
@@ -172,6 +188,13 @@ class StatusMenuController: NSObject {
         preferencesController?.window?.becomeMain()
         NotificationCenter.default.addObserver(self, selector: #selector(preferencesWindowWillClose(notification:)), name: Notification.Name.NSWindowWillClose, object: preferencesController?.window)
         preferencesController?.window?.orderFrontRegardless()
+    }
+    
+    @IBAction func showRunningApps(_ sender: AnyObject) {
+        runningAppsController = RunningAppsWindowController(windowNibName: "RunningAppsWindowController")
+        runningAppsController?.window?.becomeMain()
+        NotificationCenter.default.addObserver(self, selector: #selector(runningAppsWindowWillClose(notification:)), name: Notification.Name.NSWindowWillClose, object: runningAppsController?.window)
+        runningAppsController?.window?.orderFrontRegardless()
     }
     
     @IBAction func quitApplication(_ sender: AnyObject) {

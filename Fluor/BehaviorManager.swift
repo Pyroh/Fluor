@@ -8,21 +8,15 @@
 
 import Cocoa
 
-enum KeyboardState: Int {
-    case apple
-    case other
-    case error
-}
-
-struct DefaultsKeys {
-    static let defaultState = "DefaultKeyboardState"
-    static let appRules = "AppRules"
-    static let resetStateOnQuit = "ResetModeOnQuit"
-    static let sameStateAsBeforeStartup = "SameStateAsBeforeStartup"
-    static let onQuitState = "OnQuitState"
-}
-
 class BehaviorManager {
+    struct DefaultsKeys {
+        static let defaultState = "DefaultKeyboardState"
+        static let appRules = "AppRules"
+        static let resetStateOnQuit = "ResetModeOnQuit"
+        static let sameStateAsBeforeStartup = "SameStateAsBeforeStartup"
+        static let onQuitState = "OnQuitState"
+    }
+    
     static let `default`: BehaviorManager = BehaviorManager()
     
     var defaultKeyboardState: KeyboardState

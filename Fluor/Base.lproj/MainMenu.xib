@@ -38,6 +38,13 @@
                         <action selector="editRules:" target="e3h-DP-voU" id="pRc-Y7-dds"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Running apps..." id="Ark-Du-XrQ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showRunningApps:" target="e3h-DP-voU" id="O2m-f1-TT5"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="AyI-Ds-a1s"/>
                 <menuItem title="Start Fluor at login" id="eWy-d7-62P">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -65,7 +72,7 @@
             <point key="canvasLocation" x="-70" y="-283"/>
         </menu>
         <customView id="u6O-d0-7Hq" customClass="StateView" customModule="Fluor" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="229" height="34"/>
+            <rect key="frame" x="0.0" y="0.0" width="219" height="34"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DvO-d4-urd">
@@ -77,17 +84,17 @@
                     </textFieldCell>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kdK-wj-mRZ">
-                    <rect key="frame" x="123" y="7" width="87" height="20"/>
+                    <rect key="frame" x="129" y="7" width="71" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="DFc-vh-F3H"/>
                     </constraints>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="Vfh-zJ-Axi">
                         <font key="font" metaFont="cellTitle"/>
                         <segments>
-                            <segment toolTip="Switch to Apple mode" image="appleModeTemplate" width="40" selected="YES">
+                            <segment toolTip="Switch to Apple mode" image="appleModeTemplate" width="32" selected="YES">
                                 <nil key="label"/>
                             </segment>
-                            <segment toolTip="Switch to Function mode" image="otherModeTemplate" width="40" tag="1">
+                            <segment toolTip="Switch to Function mode" image="otherModeTemplate" width="32" tag="1">
                                 <nil key="label"/>
                             </segment>
                         </segments>
@@ -108,7 +115,7 @@
             <connections>
                 <outlet property="stateSelector" destination="kdK-wj-mRZ" id="Egq-Rm-zuG"/>
             </connections>
-            <point key="canvasLocation" x="461.5" y="-343"/>
+            <point key="canvasLocation" x="456.5" y="-343"/>
         </customView>
         <customView id="o8r-mD-TI5" customClass="CurrentAppView" customModule="Fluor" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="248" height="80"/>

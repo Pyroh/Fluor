@@ -17,20 +17,20 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Rules" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="196" y="240" width="300" height="351"/>
+            <rect key="contentRect" x="196" y="240" width="300" height="417"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="300" height="351"/>
+                <rect key="frame" x="0.0" y="0.0" width="300" height="417"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="66" horizontalPageScroll="10" verticalLineScroll="66" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4X-A8-IfS">
-                        <rect key="frame" x="0.0" y="24" width="300" height="327"/>
+                        <rect key="frame" x="0.0" y="24" width="300" height="354"/>
                         <clipView key="contentView" drawsBackground="NO" id="GDe-2e-Ktr">
-                            <rect key="frame" x="0.0" y="0.0" width="300" height="327"/>
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="354"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" rowSizeStyle="automatic" viewBased="YES" id="hPw-GT-0aL">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="327"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="354"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -127,7 +127,7 @@
                                         </tableColumn>
                                     </tableColumns>
                                     <connections>
-                                        <outlet property="dataSource" destination="-2" id="d2k-3D-avh"/>
+                                        <binding destination="Cai-D8-Yrn" name="content" keyPath="arrangedObjects" id="dsW-Cq-d7K"/>
                                     </connections>
                                 </tableView>
                             </subviews>
@@ -173,28 +173,58 @@
                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="SdN-eh-ayo">
                         <rect key="frame" x="0.0" y="21" width="300" height="5"/>
                     </box>
+                    <searchField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C9t-2H-PLG">
+                        <rect key="frame" x="20" y="387" width="260" height="22"/>
+                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" id="YKO-Fb-4aN">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </searchFieldCell>
+                        <connections>
+                            <binding destination="Cai-D8-Yrn" name="predicate" keyPath="filterPredicate" id="OaD-6w-vXp">
+                                <dictionary key="options">
+                                    <string key="NSDisplayName">predicate</string>
+                                    <string key="NSPredicateFormat">self.name contains[cd] $value</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </searchField>
+                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="SE9-rL-q9S">
+                        <rect key="frame" x="0.0" y="376" width="300" height="5"/>
+                    </box>
                 </subviews>
                 <constraints>
                     <constraint firstItem="V0G-K2-HLw" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="-1" id="5IN-Ap-uuK"/>
-                    <constraint firstItem="g4X-A8-IfS" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="6f2-fb-rAz"/>
                     <constraint firstItem="uDU-hq-ED5" firstAttribute="leading" secondItem="V0G-K2-HLw" secondAttribute="trailing" constant="-1" id="HaM-G8-5Kh"/>
+                    <constraint firstAttribute="trailing" secondItem="SE9-rL-q9S" secondAttribute="trailing" id="IUC-Yv-gKR"/>
                     <constraint firstItem="SdN-eh-ayo" firstAttribute="top" secondItem="g4X-A8-IfS" secondAttribute="bottom" id="ImC-FJ-TLC"/>
                     <constraint firstAttribute="bottom" secondItem="V0G-K2-HLw" secondAttribute="bottom" constant="-1" id="LXO-aA-Do0"/>
+                    <constraint firstItem="C9t-2H-PLG" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="8" id="NHR-gI-2kQ"/>
+                    <constraint firstItem="g4X-A8-IfS" firstAttribute="top" secondItem="SE9-rL-q9S" secondAttribute="bottom" id="Ncc-fq-46w"/>
+                    <constraint firstItem="C9t-2H-PLG" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="OVW-eE-zxI"/>
                     <constraint firstAttribute="trailing" secondItem="SdN-eh-ayo" secondAttribute="trailing" id="cTf-i5-i7f"/>
                     <constraint firstAttribute="trailing" secondItem="g4X-A8-IfS" secondAttribute="trailing" id="fIF-gH-seG"/>
                     <constraint firstItem="uDU-hq-ED5" firstAttribute="width" secondItem="V0G-K2-HLw" secondAttribute="width" id="jaa-hF-Gwu"/>
                     <constraint firstItem="uDU-hq-ED5" firstAttribute="top" secondItem="SdN-eh-ayo" secondAttribute="bottom" constant="-1" id="loP-nY-HS8"/>
                     <constraint firstAttribute="bottom" secondItem="uDU-hq-ED5" secondAttribute="bottom" constant="-1" id="o1O-2E-wgv"/>
                     <constraint firstItem="g4X-A8-IfS" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="pqw-bb-Qod"/>
+                    <constraint firstAttribute="trailing" secondItem="C9t-2H-PLG" secondAttribute="trailing" constant="20" id="q5K-4O-whR"/>
                     <constraint firstItem="SdN-eh-ayo" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="qLm-Kj-tr6"/>
+                    <constraint firstItem="SE9-rL-q9S" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="qwi-rm-sYm"/>
+                    <constraint firstItem="SE9-rL-q9S" firstAttribute="top" secondItem="C9t-2H-PLG" secondAttribute="bottom" constant="8" id="wWj-Jt-XwR"/>
                     <constraint firstItem="uDU-hq-ED5" firstAttribute="height" secondItem="V0G-K2-HLw" secondAttribute="height" id="zXC-DK-Q8E"/>
                 </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="61" y="191.5"/>
+            <point key="canvasLocation" x="28" y="235.5"/>
         </window>
+        <arrayController objectClassName="RulesTableItem" id="Cai-D8-Yrn">
+            <connections>
+                <binding destination="-2" name="contentArray" keyPath="self.rulesArray" id="9cl-aj-6kn"/>
+            </connections>
+        </arrayController>
     </objects>
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>
