@@ -13,18 +13,39 @@ class RulesEditorWindowController: NSWindowController {
     @IBOutlet var rulesArrayController: NSArrayController!
     
     dynamic var rulesArray = [RuleItem]()
-
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         window?.styleMask.formUnion(.nonactivatingPanel)
         window?.setFrameAutosaveName("EditRulesWindowAutosaveName")
         
+        NotificationCenter.default.addObserver(self, selector: #selector(ruleDidChangeForApp(notification:)), name: Notification.Name.RuleDidChangeForApp, object: nil)
+        
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
         rulesArrayController.sortDescriptors = [sortDescriptor]
+        
+        rulesArray = BehaviorManager.default.retrieveRules()
     }
     
-    func loadRules() {
-        rulesArray = BehaviorManager.default.retrieveRules()
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc private func ruleDidChangeForApp(notification: Notification) {
+        guard let userInfo = notification.userInfo as? [String: Any], let appId = userInfo["id"] as? String, let appBehavior = userInfo["behavior"] as? AppBehavior, let appURL = userInfo["url"] as? URL else { return }
+        let appPath = appURL.path
+        let appIcon = NSWorkspace.shared().icon(forFile: appPath)
+        let appName = Bundle(path: appPath)?.localizedInfoDictionary?["CFBundleName"] as? String ?? appURL.deletingPathExtension().lastPathComponent
+        let item = RuleItem(id: appId, url: appURL, icon: appIcon, name: appName, behavior: appBehavior.rawValue - 1)
+        if let index = rulesArray.index(where: { $0.id == appId }) {
+            if case .infered = appBehavior {
+                rulesArray.remove(at: index)
+            } else {
+                rulesArray[index] = RuleItem(id: appId, url: appURL, icon: appIcon, name: appName, behavior: appBehavior.rawValue - 1)
+            }
+        } else {
+            rulesArray.append(item)
+        }
     }
     
     @IBAction func addRule(_ sender: AnyObject) {

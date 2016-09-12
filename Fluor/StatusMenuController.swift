@@ -11,6 +11,7 @@ import Cocoa
 extension Notification.Name {
     public static let StateViewDidChangeState = Notification.Name("kStateViewDidChangeState")
     public static let BehaviorDidChangeForApp = Notification.Name("kBehaviorDidChangeForApp")
+    public static let RuleDidChangeForApp = Notification.Name("RuleDidChangeForApp")
 }
 
 class StatusMenuController: NSObject {
@@ -82,11 +83,13 @@ class StatusMenuController: NSObject {
         setBehaviorForApp(id: info.id, behavior: info.behavior, url: info.url)
         switch notification.object! {
         case is CurrentAppView:
-            rulesController?.loadRules()
+            let notification = Notification(name: Notification.Name.RuleDidChangeForApp, object: nil, userInfo: userInfo)
+            NotificationCenter.default.post(notification)
             runningAppsController?.updateBehaviorForApp(id: info.id, behavior: info.behavior)
             adaptBehaviorForApp(id: info.id)
         case is RunningAppItem:
-            rulesController?.loadRules()
+            let notification = Notification(name: Notification.Name.RuleDidChangeForApp, object: nil, userInfo: userInfo)
+            NotificationCenter.default.post(notification)
             updateIfCurrent(id: info.id, behavior: info.behavior)
         default:
             runningAppsController?.updateBehaviorForApp(id: info.id, behavior: info.behavior)
@@ -209,7 +212,6 @@ class StatusMenuController: NSObject {
             return
         }
         rulesController = RulesEditorWindowController(windowNibName: "RulesEditorWindowController")
-        rulesController?.loadRules()
         NotificationCenter.default.addObserver(self, selector: #selector(someWindowWillClose(notification:)), name: Notification.Name.NSWindowWillClose, object: rulesController?.window)
         rulesController?.window?.orderFrontRegardless()
     }
