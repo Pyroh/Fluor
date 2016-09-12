@@ -14,7 +14,7 @@
 		3F6FA1A71D7E027F00DB9289 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6FA1A51D7E027F00DB9289 /* PreferencesWindowController.swift */; };
 		3F6FA1A81D7E027F00DB9289 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F6FA1A61D7E027F00DB9289 /* PreferencesWindowController.xib */; };
 		3FC44EFA1D7F169A0065D433 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC44EF91D7F169A0065D433 /* Enums.swift */; };
-		3FC44EFC1D7F16CB0065D433 /* RulesTableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC44EFB1D7F16CB0065D433 /* RulesTableItem.swift */; };
+		3FC44EFC1D7F16CB0065D433 /* RulesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC44EFB1D7F16CB0065D433 /* RulesItem.swift */; };
 		3FC44EFF1D7F464C0065D433 /* RunningAppsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC44EFD1D7F464C0065D433 /* RunningAppsWindowController.swift */; };
 		3FC44F001D7F464C0065D433 /* RunningAppsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FC44EFE1D7F464C0065D433 /* RunningAppsWindowController.xib */; };
 		3FCD16A51D79793600C57B22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD16A41D79793600C57B22 /* AppDelegate.swift */; };
@@ -36,7 +36,7 @@
 		3F6FA1A51D7E027F00DB9289 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		3F6FA1A61D7E027F00DB9289 /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindowController.xib; path = Base.lproj/PreferencesWindowController.xib; sourceTree = "<group>"; };
 		3FC44EF91D7F169A0065D433 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		3FC44EFB1D7F16CB0065D433 /* RulesTableItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulesTableItem.swift; sourceTree = "<group>"; };
+		3FC44EFB1D7F16CB0065D433 /* RulesItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulesItem.swift; sourceTree = "<group>"; };
 		3FC44EFD1D7F464C0065D433 /* RunningAppsWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningAppsWindowController.swift; sourceTree = "<group>"; };
 		3FC44EFE1D7F464C0065D433 /* RunningAppsWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RunningAppsWindowController.xib; path = Base.lproj/RunningAppsWindowController.xib; sourceTree = "<group>"; };
 		3FCD16A11D79793600C57B22 /* Fluor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fluor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,7 +71,7 @@
 			children = (
 				3F2FA4041D7A1F87003E2AD8 /* BehaviorManager.swift */,
 				3FC44EF91D7F169A0065D433 /* Enums.swift */,
-				3FC44EFB1D7F16CB0065D433 /* RulesTableItem.swift */,
+				3FC44EFB1D7F16CB0065D433 /* RulesItem.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -154,6 +154,7 @@
 				3FCD169D1D79793600C57B22 /* Sources */,
 				3FCD169E1D79793600C57B22 /* Frameworks */,
 				3FCD169F1D79793600C57B22 /* Resources */,
+				3F5A67D61D81601200F8D87F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -221,13 +222,29 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3F5A67D61D81601200F8D87F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3FCD169D1D79793600C57B22 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				3F2FA4031D7A059F003E2AD8 /* CurrentAppView.swift in Sources */,
-				3FC44EFC1D7F16CB0065D433 /* RulesTableItem.swift in Sources */,
+				3FC44EFC1D7F16CB0065D433 /* RulesItem.swift in Sources */,
 				3F2FA3FF1D79D094003E2AD8 /* StatusMenuController.swift in Sources */,
 				3F6FA1A71D7E027F00DB9289 /* PreferencesWindowController.swift in Sources */,
 				3FCD16A51D79793600C57B22 /* AppDelegate.swift in Sources */,

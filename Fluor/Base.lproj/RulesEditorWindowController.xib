@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11198.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="RulesEditorWindowController" customModule="Fluor" customModuleProvider="target">
             <connections>
+                <outlet property="rulesArrayController" destination="Cai-D8-Yrn" id="Bb5-Lo-SKU"/>
                 <outlet property="tableView" destination="hPw-GT-0aL" id="EYh-hM-K7b"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -18,7 +19,7 @@
         <window title="Rules" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="196" y="240" width="300" height="417"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="300" height="417"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -128,6 +129,7 @@
                                     </tableColumns>
                                     <connections>
                                         <binding destination="Cai-D8-Yrn" name="content" keyPath="arrangedObjects" id="dsW-Cq-d7K"/>
+                                        <binding destination="Cai-D8-Yrn" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="dsW-Cq-d7K" id="X1I-Ck-hAy"/>
                                     </connections>
                                 </tableView>
                             </subviews>
@@ -220,7 +222,7 @@
             </connections>
             <point key="canvasLocation" x="28" y="235.5"/>
         </window>
-        <arrayController objectClassName="RulesTableItem" id="Cai-D8-Yrn">
+        <arrayController objectClassName="RuleItem" id="Cai-D8-Yrn" userLabel="Rules Array Controller">
             <connections>
                 <binding destination="-2" name="contentArray" keyPath="self.rulesArray" id="9cl-aj-6kn"/>
             </connections>

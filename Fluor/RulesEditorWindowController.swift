@@ -10,18 +10,21 @@ import Cocoa
 
 class RulesEditorWindowController: NSWindowController {
     @IBOutlet weak var tableView: NSTableView!
+    @IBOutlet var rulesArrayController: NSArrayController!
     
-    dynamic var rulesArray = [RulesTableItem]()
+    dynamic var rulesArray = [RuleItem]()
 
     override func windowDidLoad() {
         super.windowDidLoad()
         window?.styleMask.formUnion(.nonactivatingPanel)
         window?.setFrameAutosaveName("EditRulesWindowAutosaveName")
+        
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
+        rulesArrayController.sortDescriptors = [sortDescriptor]
     }
     
     func loadRules() {
-        let rules = BehaviorManager.default.retrieveRules()
-        rulesArray = rules.sorted { $0.name < $1.name }
+        rulesArray = BehaviorManager.default.retrieveRules()
     }
     
     @IBAction func addRule(_ sender: AnyObject) {
@@ -31,19 +34,24 @@ class RulesEditorWindowController: NSWindowController {
         openPanel.canChooseDirectories = false
         openPanel.directoryURL = URL(fileURLWithPath: "/Applications")
         openPanel.runModal()
-        openPanel.urls.forEach { (url) in
-            let id = Bundle(url: url)!.bundleIdentifier!
-            BehaviorManager.default.setBehaviorForApp(id: id, behavior: .apple, url: url)
+        openPanel.urls.forEach { (appURL) in
+            let appBundle = Bundle(url: appURL)!
+            let appId = appBundle.bundleIdentifier!
+            let appPath = appURL.path
+            let appIcon = NSWorkspace.shared().icon(forFile: appPath)
+            let appName = Bundle(path: appPath)?.localizedInfoDictionary?["CFBundleName"] as? String ?? appURL.deletingPathExtension().lastPathComponent
+            BehaviorManager.default.setBehaviorForApp(id: appId, behavior: .apple, url: appURL)
+            let item = RuleItem(id: appId, url: appURL, icon: appIcon, name: appName, behavior: AppBehavior.apple.rawValue)
+            rulesArray.append(item)
         }
-        if !openPanel.urls.isEmpty { loadRules() }
     }
     
     @IBAction func removeRule(_ sender: AnyObject) {
-        let indexes = tableView.selectedRowIndexes
-        indexes.forEach { (index) in
-            let item = rulesArray[index]
+        let items = rulesArrayController.selectedObjects as! [RuleItem]
+        items.forEach { (item) in
             BehaviorManager.default.setBehaviorForApp(id: item.id, behavior: .infered, url: item.url)
+            let index = rulesArray.index(of: item)!
+            rulesArray.remove(at: index)
         }
-        if !indexes.isEmpty { loadRules() }
     }
 }

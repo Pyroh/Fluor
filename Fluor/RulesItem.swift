@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class RulesTableItem: NSObject {
+class RuleItem: NSObject {
     let id: String
     let url: URL
     let icon: NSImage
@@ -34,7 +34,7 @@ class RulesTableItem: NSObject {
     }
 }
 
-class RunningAppsTableItem: RulesTableItem {
+class RunningAppItem: RuleItem {
     fileprivate override func postChangeNotification() {
         let info = StatusMenuController.behaviorDidChangeUserInfoConstructor(id: id, url: url, behavior: AppBehavior(rawValue: behavior)!)
         let not = Notification(name: Notification.Name.BehaviorDidChangeForApp, object: self, userInfo: info)

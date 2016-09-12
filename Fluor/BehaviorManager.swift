@@ -31,22 +31,17 @@ class BehaviorManager {
         loadPrefs()
     }
     
-    func retrieveRules() -> [RulesTableItem] {
+    func retrieveRules() -> [RuleItem] {
         guard let rawRules = defaults.array(forKey: DefaultsKeys.appRules) as? [[String: Any]] else { return [] }
-        var rules = [RulesTableItem]()
+        var rules = [RuleItem]()
         rawRules.forEach({ (dict) in
             let appId = dict["id"] as! String
             let appBehavior = dict["behavior"] as! Int - 1
             let appPath = dict["path"] as! String
-            let appUrl = URL(fileURLWithPath: appPath)
+            let appURL = URL(fileURLWithPath: appPath)
             let appIcon = NSWorkspace.shared().icon(forFile: appPath)
-            let appName: String
-            if let name = Bundle(path: appPath)?.localizedInfoDictionary?["CFBundleName"] as? String {
-                appName = name
-            } else {
-                appName = appUrl.deletingPathExtension().lastPathComponent
-            }
-            let item = RulesTableItem(id: appId, url: appUrl, icon: appIcon, name: appName, behavior: appBehavior)
+            let appName = Bundle(path: appPath)?.localizedInfoDictionary?["CFBundleName"] as? String ?? appURL.deletingPathExtension().lastPathComponent
+            let item = RuleItem(id: appId, url: appURL, icon: appIcon, name: appName, behavior: appBehavior)
             rules.append(item)
         })
         return rules

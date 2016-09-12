@@ -10,13 +10,16 @@ import Cocoa
 
 class RunningAppsWindowController: NSWindowController {
     @IBOutlet weak var tableView: NSTableView!
+    @IBOutlet var runningAppsArrayController: NSArrayController!
     
-    dynamic var runningAppsArray = [RunningAppsTableItem]()
+    dynamic var runningAppsArray = [RunningAppItem]()
     
     override func windowDidLoad() {
         super.windowDidLoad()
         window?.styleMask.formUnion(.nonactivatingPanel)
         window?.setFrameAutosaveName("RunningAppsWindowAutosaveName")
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
+        runningAppsArrayController.sortDescriptors = [sortDescriptor]
         loadData()
         applyAsObserver()
     }
@@ -28,20 +31,14 @@ class RunningAppsWindowController: NSWindowController {
     @objc private func appDidLaunch(notification: Notification) {
         guard let app = notification.userInfo?[NSWorkspaceApplicationKey] as? NSRunningApplication,
             let appId = app.bundleIdentifier,
-            let appUrl = app.bundleURL,
+            let appURL = app.bundleURL,
             let appIcon = app.icon else { return }
-        let appName: String
-        if let name = Bundle(path: appUrl.path)?.localizedInfoDictionary?["CFBundleName"] as? String {
-            appName = name
-        } else {
-            appName = appUrl.deletingPathExtension().lastPathComponent
-        }
+        let appPath = appURL.path
+        let appName = Bundle(path: appPath)?.localizedInfoDictionary?["CFBundleName"] as? String ?? appURL.deletingPathExtension().lastPathComponent
         let behavior = BehaviorManager.default.behaviorForApp(id: appId).rawValue
-        let item = RunningAppsTableItem(id: appId, url: appUrl, icon: appIcon, name: appName, behavior: behavior)
+        let item = RunningAppItem(id: appId, url: appURL, icon: appIcon, name: appName, behavior: behavior)
         
-        var tmp = runningAppsArray
-        tmp.append(item)
-        runningAppsArray = tmp.sorted { $0.name.lowercased() < $1.name.lowercased() }
+        runningAppsArray.append(item)
     }
     
     @objc private func appDidTerminate(notification: Notification) {
@@ -57,7 +54,7 @@ class RunningAppsWindowController: NSWindowController {
     }
     
     private func loadData() {
-        let runningApps = NSWorkspace.shared().runningApplications.flatMap { (app) -> RunningAppsTableItem? in
+        runningAppsArray = NSWorkspace.shared().runningApplications.flatMap { (app) -> RunningAppItem? in
             guard let appId = app.bundleIdentifier, let appUrl = app.bundleURL, let appIcon = app.icon else { return nil }
             let appName: String
             if let name = Bundle(path: appUrl.path)?.localizedInfoDictionary?["CFBundleName"] as? String {
@@ -66,9 +63,8 @@ class RunningAppsWindowController: NSWindowController {
                 appName = appUrl.deletingPathExtension().lastPathComponent
             }
             let behavior = BehaviorManager.default.behaviorForApp(id: appId).rawValue
-            return RunningAppsTableItem(id: appId, url: appUrl, icon: appIcon, name: appName, behavior: behavior)
+            return RunningAppItem(id: appId, url: appUrl, icon: appIcon, name: appName, behavior: behavior)
         }
-        runningAppsArray = runningApps.sorted { $0.name.lowercased() < $1.name.lowercased() }
     }
     
     func updateBehaviorForApp(id: String, behavior: AppBehavior) {
