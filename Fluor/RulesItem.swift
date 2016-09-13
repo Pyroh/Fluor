@@ -27,6 +27,10 @@ class RuleItem: NSObject {
         self.behavior = behavior
     }
     
+    convenience init(fromItem item: RuleItem, withBehavior behavior: Int) {
+        self.init(id: item.id, url: item.url, icon: item.icon, name: item.name, behavior: behavior)
+    }
+    
     fileprivate func postChangeNotification() {
         let info = StatusMenuController.behaviorDidChangeUserInfoConstructor(id: id, url: url, behavior: AppBehavior(rawValue: behavior + 1)!)
         let not = Notification(name: Notification.Name.BehaviorDidChangeForApp, object: self, userInfo: info)
