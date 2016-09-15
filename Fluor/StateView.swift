@@ -11,6 +11,10 @@ import Cocoa
 class StateView: NSView {
     @IBOutlet weak var stateSelector: NSSegmentedControl!
     
+    
+    /// Set the current default keyboard state.
+    ///
+    /// - parameter flag: The keyboard state.
     func setState(flag: KeyboardState) {
         switch flag {
         case .apple:
@@ -20,6 +24,10 @@ class StateView: NSView {
         }
     }
     
+    
+    /// Change the current keyboard state.
+    ///
+    /// - parameter sender: The object that sent the action.
     @IBAction func changeState(_ sender: NSSegmentedControl) {
         let state = KeyboardState(rawValue: sender.selectedSegment)
         let userInfo = ["state": state]

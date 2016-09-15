@@ -13,8 +13,7 @@ enum KeyboardState: Int {
 }
 
 enum AppBehavior: Int {
-    case infered
+    case inferred
     case apple
     case other
-    case negate
 }

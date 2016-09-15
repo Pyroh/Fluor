@@ -19,7 +19,7 @@
         <window title="Rules" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="196" y="240" width="300" height="417"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="300" height="417"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -89,9 +89,6 @@
                                                                                 <nil key="label"/>
                                                                             </segment>
                                                                             <segment toolTip="Apple keys" image="otherModeTemplate" width="32" tag="1">
-                                                                                <nil key="label"/>
-                                                                            </segment>
-                                                                            <segment toolTip="Function keys" image="negateModeTemplate" width="32">
                                                                                 <nil key="label"/>
                                                                             </segment>
                                                                         </segments>
@@ -233,7 +230,6 @@
         <image name="NSApplicationIcon" width="128" height="128"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="appleModeTemplate" width="16" height="16"/>
-        <image name="negateModeTemplate" width="16" height="16"/>
         <image name="otherModeTemplate" width="16" height="16"/>
     </resources>
 </document>

@@ -21,6 +21,7 @@
 		3FCD16A71D79793600C57B22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FCD16A61D79793600C57B22 /* Assets.xcassets */; };
 		3FCD16AA1D79793600C57B22 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FCD16A81D79793600C57B22 /* MainMenu.xib */; };
 		3FCD16B41D79797600C57B22 /* utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD16B31D79797600C57B22 /* utils.m */; };
+		3FE213291D89A6940023FAC2 /* Notification-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE213281D89A6940023FAC2 /* Notification-Extension.swift */; };
 		3FE7E0E01D7CA14600DC754D /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE7E0DF1D7CA14600DC754D /* LaunchAtLoginController.m */; };
 		3FE7E0E31D7CBE1700DC754D /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE7E0E11D7CBE1700DC754D /* AboutWindowController.swift */; };
 		3FE7E0E41D7CBE1700DC754D /* AboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FE7E0E21D7CBE1700DC754D /* AboutWindowController.xib */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F0E64141D8A8A59003243FE /* Fluor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fluor-Bridging-Header.h"; sourceTree = "<group>"; };
 		3F2FA3FE1D79D094003E2AD8 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		3F2FA4001D79D66D003E2AD8 /* StateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
 		3F2FA4021D7A059F003E2AD8 /* CurrentAppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentAppView.swift; sourceTree = "<group>"; };
@@ -44,9 +46,9 @@
 		3FCD16A61D79793600C57B22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3FCD16A91D79793600C57B22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		3FCD16AB1D79793600C57B22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3FCD16B11D79797600C57B22 /* Fluor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fluor-Bridging-Header.h"; sourceTree = "<group>"; };
 		3FCD16B21D79797600C57B22 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
 		3FCD16B31D79797600C57B22 /* utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = utils.m; sourceTree = "<group>"; };
+		3FE213281D89A6940023FAC2 /* Notification-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification-Extension.swift"; sourceTree = "<group>"; };
 		3FE7E0DE1D7CA14600DC754D /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
 		3FE7E0DF1D7CA14600DC754D /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
 		3FE7E0E11D7CBE1700DC754D /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				3F2FA4041D7A1F87003E2AD8 /* BehaviorManager.swift */,
 				3FC44EF91D7F169A0065D433 /* Enums.swift */,
 				3FC44EFB1D7F16CB0065D433 /* RulesItem.swift */,
+				3FE213281D89A6940023FAC2 /* Notification-Extension.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -95,7 +98,7 @@
 		3FCD16A31D79793600C57B22 /* Fluor */ = {
 			isa = PBXGroup;
 			children = (
-				3FCD16B11D79797600C57B22 /* Fluor-Bridging-Header.h */,
+				3F0E64141D8A8A59003243FE /* Fluor-Bridging-Header.h */,
 				3FCD16A41D79793600C57B22 /* AppDelegate.swift */,
 				3FC44EF81D7F16630065D433 /* Models */,
 				3FE7E0E51D7CBEAE00DC754D /* Controllers */,
@@ -251,6 +254,7 @@
 				3F2FA4011D79D66D003E2AD8 /* StateView.swift in Sources */,
 				3FCD16B41D79797600C57B22 /* utils.m in Sources */,
 				3FC44EFF1D7F464C0065D433 /* RunningAppsWindowController.swift in Sources */,
+				3FE213291D89A6940023FAC2 /* Notification-Extension.swift in Sources */,
 				3FE7E0EA1D7CC01B00DC754D /* RulesEditorWindowController.swift in Sources */,
 				3FE7E0E31D7CBE1700DC754D /* AboutWindowController.swift in Sources */,
 				3FE7E0E01D7CA14600DC754D /* LaunchAtLoginController.m in Sources */,

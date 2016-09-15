@@ -8,12 +8,6 @@
 
 import Cocoa
 
-extension Notification.Name {
-    public static let StateViewDidChangeState = Notification.Name("kStateViewDidChangeState")
-    public static let BehaviorDidChangeForApp = Notification.Name("kBehaviorDidChangeForApp")
-    public static let RuleDidChangeForApp = Notification.Name("RuleDidChangeForApp")
-}
-
 class StatusMenuController: NSObject {
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var stateView: StateView!
@@ -27,7 +21,7 @@ class StatusMenuController: NSObject {
     private var currentState: KeyboardState = .error
     private var onLaunchKeyboardState: KeyboardState = .error
     private var currentID: String = ""
-    private var currentBehavior: AppBehavior = .infered
+    private var currentBehavior: AppBehavior = .inferred
     
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     
@@ -126,6 +120,9 @@ class StatusMenuController: NSObject {
         statePlaceHolder?.view = stateView
         currentPlaceHolder?.view = currentAppView
         stateView.setState(flag: BehaviorManager.default.defaultKeyboardState)
+        if let currentApp = NSWorkspace.shared().frontmostApplication, let id = currentApp.bundleIdentifier {
+            updateAppBehaviorViewFor(app: currentApp, id: id)
+        }
     }
     
     
@@ -153,6 +150,12 @@ class StatusMenuController: NSObject {
         currentAppView.setCurrent(app: app, behavior: BehaviorManager.default.behaviorForApp(id: id))
     }
     
+    
+    /// Set the behavior for an application.
+    ///
+    /// - parameter id:       The application's bundle id.
+    /// - parameter behavior: The new behavior.
+    /// - parameter url:      The application's bundle url.
     private func setBehaviorForApp(id: String, behavior: AppBehavior, url: URL) {
         BehaviorManager.default.setBehaviorForApp(id: id, behavior: behavior, url: url)
     }
@@ -206,6 +209,10 @@ class StatusMenuController: NSObject {
     }
     
     // MARK: IBActions
+    
+    /// Show the *Edit Rules* window.
+    ///
+    /// - parameter sender: The object that sent the action.
     @IBAction func editRules(_ sender: AnyObject) {
         guard rulesController == nil else {
             rulesController?.window?.orderFrontRegardless()
@@ -216,6 +223,10 @@ class StatusMenuController: NSObject {
         rulesController?.window?.orderFrontRegardless()
     }
     
+    
+    /// Show the *About* window.
+    ///
+    /// - parameter sender: The object that sent the action.
     @IBAction func showAbout(_ sender: AnyObject) {
         guard aboutController == nil else {
             aboutController?.window?.orderFrontRegardless()
@@ -226,6 +237,9 @@ class StatusMenuController: NSObject {
         aboutController?.window?.orderFrontRegardless()
     }
     
+    /// Show the *Preferences* window.
+    ///
+    /// - parameter sender: The object that sent the action.
     @IBAction func showPreferences(_ sender: AnyObject) {
         guard preferencesController == nil else {
             preferencesController?.window?.orderFrontRegardless()
@@ -236,6 +250,9 @@ class StatusMenuController: NSObject {
         preferencesController?.window?.orderFrontRegardless()
     }
     
+    /// Show the *Running Applications* window.
+    ///
+    /// - parameter sender: The object that sent the action.
     @IBAction func showRunningApps(_ sender: AnyObject) {
         guard runningAppsController == nil else {
             runningAppsController?.window?.orderFrontRegardless()
@@ -246,6 +263,9 @@ class StatusMenuController: NSObject {
         runningAppsController?.window?.orderFrontRegardless()
     }
     
+    /// Terminate the application.
+    ///
+    /// - parameter sender: The object that sent the action.
     @IBAction func quitApplication(_ sender: AnyObject) {
         if BehaviorManager.default.shouldRestoreStateOnQuit() {
             let state: KeyboardState

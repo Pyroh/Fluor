@@ -31,10 +31,14 @@ class RulesEditorWindowController: NSWindowController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    
+    /// Called when a rule change for an application.
+    ///
+    /// - parameter notification: The notification.
     @objc private func ruleDidChangeForApp(notification: Notification) {
         guard let userInfo = notification.userInfo as? [String: Any], let appId = userInfo["id"] as? String, let appBehavior = userInfo["behavior"] as? AppBehavior, let appURL = userInfo["url"] as? URL else { return }
         if let index = rulesArray.index(where: { $0.id == appId }) {
-            if case .infered = appBehavior {
+            if case .inferred = appBehavior {
                 rulesArray.remove(at: index)
             } else {
                 rulesArray[index] = RuleItem(fromItem: rulesArray[index], withBehavior: appBehavior.rawValue - 1)
@@ -48,6 +52,10 @@ class RulesEditorWindowController: NSWindowController {
         }
     }
     
+    
+    /// Add a rule for a given application.
+    ///
+    /// - parameter sender: The object that sent the action.
     @IBAction func addRule(_ sender: AnyObject) {
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = true
@@ -67,10 +75,14 @@ class RulesEditorWindowController: NSWindowController {
         }
     }
     
+    
+    /// Remove a rule for a given application.
+    ///
+    /// - parameter sender: The object that sent the action.
     @IBAction func removeRule(_ sender: AnyObject) {
         let items = rulesArrayController.selectedObjects as! [RuleItem]
         items.forEach { (item) in
-            BehaviorManager.default.setBehaviorForApp(id: item.id, behavior: .infered, url: item.url)
+            BehaviorManager.default.setBehaviorForApp(id: item.id, behavior: .inferred, url: item.url)
             let index = rulesArray.index(of: item)!
             rulesArray.remove(at: index)
         }
