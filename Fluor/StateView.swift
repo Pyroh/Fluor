@@ -11,7 +11,6 @@ import Cocoa
 class StateView: NSView {
     @IBOutlet weak var stateSelector: NSSegmentedControl!
     
-    
     /// Set the current default keyboard state.
     ///
     /// - parameter flag: The keyboard state.
@@ -29,7 +28,7 @@ class StateView: NSView {
     ///
     /// - parameter sender: The object that sent the action.
     @IBAction func changeState(_ sender: NSSegmentedControl) {
-        let state = KeyboardState(rawValue: sender.selectedSegment)
+        let state = KeyboardState(rawValue: sender.selectedSegment)!
         let userInfo = ["state": state]
         let not = Notification(name: Notification.Name.StateViewDidChangeState, object: self, userInfo: userInfo)
         NotificationCenter.default.post(not)

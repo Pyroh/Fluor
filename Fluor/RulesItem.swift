@@ -8,6 +8,8 @@
 
 import Cocoa
 
+
+/// Models a rule in the *Rules* panel's table view.
 class RuleItem: NSObject {
     let id: String
     let url: URL
@@ -38,6 +40,8 @@ class RuleItem: NSObject {
     }
 }
 
+
+/// Models an entry in the *Running Applications* panel's table view.
 class RunningAppItem: RuleItem {
     fileprivate override func postChangeNotification() {
         let info = StatusMenuController.behaviorDidChangeUserInfoConstructor(id: id, url: url, behavior: AppBehavior(rawValue: behavior)!)

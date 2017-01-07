@@ -17,7 +17,7 @@ class AboutWindowController: NSWindowController {
         window?.styleMask.formUnion(.fullSizeContentView)
         window?.titleVisibility = .hidden
         window?.titlebarAppearsTransparent = true
-        window?.setFrameAutosaveName("AboutWindowAutosaveName")
+        window?.setFrameAutosaveName("Fluor_AboutWindowAutosaveName")
         
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
         let build = Bundle.main.infoDictionary?[kCFBundleVersionKey as String] as! String

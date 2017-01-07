@@ -13,11 +13,12 @@ class RunningAppsWindowController: NSWindowController {
     @IBOutlet var runningAppsArrayController: NSArrayController!
     
     dynamic var runningAppsArray = [RunningAppItem]()
+    dynamic var runningAppsCount: Int = 0
     
     override func windowDidLoad() {
         super.windowDidLoad()
         window?.styleMask.formUnion(.nonactivatingPanel)
-        window?.setFrameAutosaveName("RunningAppsWindowAutosaveName")
+        window?.setFrameAutosaveName("Fluor_RunningAppsWindowAutosaveName")
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
         runningAppsArrayController.sortDescriptors = [sortDescriptor]
         loadData()
@@ -78,6 +79,7 @@ class RunningAppsWindowController: NSWindowController {
     private func loadData() {
         runningAppsArray = NSWorkspace.shared().runningApplications.flatMap { (app) -> RunningAppItem? in
             guard let appId = app.bundleIdentifier, let appURL = app.bundleURL, let appIcon = app.icon else { return nil }
+            guard app.activationPolicy == .regular else { return nil }
             let appPath = appURL.path
             let appName = Bundle(path: appPath)?.localizedInfoDictionary?["CFBundleName"] as? String ?? appURL.deletingPathExtension().lastPathComponent
             let behavior = BehaviorManager.default.behaviorForApp(id: appId).rawValue

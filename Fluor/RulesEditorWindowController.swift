@@ -13,11 +13,12 @@ class RulesEditorWindowController: NSWindowController {
     @IBOutlet var rulesArrayController: NSArrayController!
     
     dynamic var rulesArray = [RuleItem]()
+    dynamic var rulesCount: Int = 0
     
     override func windowDidLoad() {
         super.windowDidLoad()
         window?.styleMask.formUnion(.nonactivatingPanel)
-        window?.setFrameAutosaveName("EditRulesWindowAutosaveName")
+        window?.setFrameAutosaveName("Fluor_EditRulesWindowAutosaveName")
         
         NotificationCenter.default.addObserver(self, selector: #selector(ruleDidChangeForApp(notification:)), name: Notification.Name.RuleDidChangeForApp, object: nil)
         

@@ -30,14 +30,14 @@ class BehaviorManager {
     private let defaults = UserDefaults.standard
     
     private init() {
-        defaultKeyboardState = .apple
-        behaviorDict = [:]
+        self.defaultKeyboardState = .apple
+        self.behaviorDict = [:]
         
         loadPrefs()
     }
     
     
-    /// Retrive all registred behavior stored in the user's defaults.
+    /// Retrieve all registred behavior stored in the user's defaults.
     ///
     /// - returns: An array containing all the behavior packed in `RuleItem` objects.
     func retrieveRules() -> [RuleItem] {

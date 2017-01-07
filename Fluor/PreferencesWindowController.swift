@@ -11,6 +11,6 @@ import Cocoa
 class PreferencesWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
-        window?.setFrameAutosaveName("PreferencesWindowAutosaveName")
+        window?.setFrameAutosaveName("Fluor_PreferencesWindowAutosaveName")
     }
 }

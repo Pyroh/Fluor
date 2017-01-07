@@ -92,7 +92,7 @@ class StatusMenuController: NSObject {
     }
     
     
-    /// When a window was closed this methods takes care of the releasing of its controller.
+    /// When a window was closed this methods takes care of releasing its controller.
     ///
     /// - parameter notification: The notification.
     @objc private func someWindowWillClose(notification: Notification) {

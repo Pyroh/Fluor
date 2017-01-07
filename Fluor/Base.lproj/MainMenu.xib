@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
@@ -69,7 +70,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-70" y="-283"/>
+            <point key="canvasLocation" x="-139" y="-336"/>
         </menu>
         <customView id="u6O-d0-7Hq" customClass="StateView" customModule="Fluor" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="219" height="34"/>
@@ -115,7 +116,7 @@
             <connections>
                 <outlet property="stateSelector" destination="kdK-wj-mRZ" id="Egq-Rm-zuG"/>
             </connections>
-            <point key="canvasLocation" x="170" y="-420"/>
+            <point key="canvasLocation" x="170" y="-421"/>
         </customView>
         <customView id="o8r-mD-TI5" customClass="CurrentAppView" customModule="Fluor" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="245" height="80"/>
@@ -188,7 +189,7 @@
                 <outlet property="appNameLabel" destination="gmQ-wu-N8N" id="xKJ-Xc-RRC"/>
                 <outlet property="behaviorSegment" destination="gls-pL-7qN" id="RlX-aP-rPf"/>
             </connections>
-            <point key="canvasLocation" x="183" y="-321"/>
+            <point key="canvasLocation" x="183" y="-275"/>
         </customView>
     </objects>
     <resources>
