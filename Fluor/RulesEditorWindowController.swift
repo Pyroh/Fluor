@@ -18,7 +18,6 @@ class RulesEditorWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         window?.styleMask.formUnion(.nonactivatingPanel)
-        window?.setFrameAutosaveName("Fluor_EditRulesWindowAutosaveName")
         
         NotificationCenter.default.addObserver(self, selector: #selector(ruleDidChangeForApp(notification:)), name: Notification.Name.RuleDidChangeForApp, object: nil)
         
@@ -31,7 +30,6 @@ class RulesEditorWindowController: NSWindowController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
     
     /// Called when a rule change for an application.
     ///
@@ -52,7 +50,6 @@ class RulesEditorWindowController: NSWindowController {
             rulesArray.append(item)
         }
     }
-    
     
     /// Add a rule for a given application.
     ///
@@ -75,7 +72,6 @@ class RulesEditorWindowController: NSWindowController {
             rulesArray.append(item)
         }
     }
-    
     
     /// Remove a rule for a given application.
     ///

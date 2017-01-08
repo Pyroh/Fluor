@@ -15,7 +15,7 @@ class StatusMenuController: NSObject {
     
     private var rulesController: RulesEditorWindowController?
     private var aboutController: AboutWindowController?
-    private var preferencesController: PreferencesWindowController?
+    private var preferencesController: NSWindowController?
     private var runningAppsController: RunningAppsWindowController?
     
     private var currentState: KeyboardState = .error
@@ -38,7 +38,6 @@ class StatusMenuController: NSObject {
     
     // MARK: Operations callbacks
     
-    
     /// React to active application change.
     ///
     /// - parameter notification: The notification.
@@ -50,7 +49,6 @@ class StatusMenuController: NSObject {
         adaptBehaviorForApp(id: id)
     }
     
-    
     /// React to the change of default function keys behavior in the dedicated view.
     ///
     /// - parameter notification: The notification.
@@ -59,7 +57,6 @@ class StatusMenuController: NSObject {
         BehaviorManager.default.defaultKeyboardState = passedState
         adaptBehaviorForApp(id: currentID)
     }
-    
     
     /// React to the change of the function keys behavior for one app.
     ///
@@ -90,7 +87,6 @@ class StatusMenuController: NSObject {
             updateIfCurrent(id: info.id, behavior: info.behavior)
         }
     }
-    
     
     /// When a window was closed this methods takes care of releasing its controller.
     ///
@@ -125,7 +121,6 @@ class StatusMenuController: NSObject {
         }
     }
     
-    
     /// Register self as an observer for some notifications.
     private func applyAsObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(stateViewDidChangeState(notification:)), name: Notification.Name.StateViewDidChangeState, object: stateView)
@@ -133,13 +128,11 @@ class StatusMenuController: NSObject {
         NSWorkspace.shared().notificationCenter.addObserver(self, selector: #selector(activeAppDidChange(notification:)), name: NSNotification.Name.NSWorkspaceDidActivateApplication, object: nil)
     }
     
-    
     /// Unregister self as an observer for some notifications.
     private func resignAsObserver() {
         NotificationCenter.default.removeObserver(self)
         NSWorkspace.shared().notificationCenter.removeObserver(self)
     }
-    
     
     /// Set function key behavior in the current running app view.
     ///
@@ -150,7 +143,6 @@ class StatusMenuController: NSObject {
         currentAppView.setCurrent(app: app, behavior: BehaviorManager.default.behaviorForApp(id: id))
     }
     
-    
     /// Set the behavior for an application.
     ///
     /// - parameter id:       The application's bundle id.
@@ -159,7 +151,6 @@ class StatusMenuController: NSObject {
     private func setBehaviorForApp(id: String, behavior: AppBehavior, url: URL) {
         BehaviorManager.default.setBehaviorForApp(id: id, behavior: behavior, url: url)
     }
-    
     
     /// Set the function keys' behavior for the given app.
     ///
@@ -195,7 +186,6 @@ class StatusMenuController: NSObject {
         return ["id": id, "url": url, "behavior": behavior]
     }
     
-    
     /// Try to unpack Notification's userInfo with app's information.
     ///
     /// - parameter dict: The userInfo dictionnary provided by a Notification object.
@@ -223,7 +213,6 @@ class StatusMenuController: NSObject {
         rulesController?.window?.orderFrontRegardless()
     }
     
-    
     /// Show the *About* window.
     ///
     /// - parameter sender: The object that sent the action.
@@ -245,7 +234,7 @@ class StatusMenuController: NSObject {
             preferencesController?.window?.orderFrontRegardless()
             return
         }
-        preferencesController = PreferencesWindowController(windowNibName: "PreferencesWindowController")
+        preferencesController = NSWindowController(windowNibName: "PreferencesWindowController")
         NotificationCenter.default.addObserver(self, selector: #selector(someWindowWillClose(notification:)), name: Notification.Name.NSWindowWillClose, object: preferencesController?.window)
         preferencesController?.window?.orderFrontRegardless()
     }

@@ -18,7 +18,6 @@ class RunningAppsWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         window?.styleMask.formUnion(.nonactivatingPanel)
-        window?.setFrameAutosaveName("Fluor_RunningAppsWindowAutosaveName")
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
         runningAppsArrayController.sortDescriptors = [sortDescriptor]
         loadData()
@@ -28,7 +27,6 @@ class RunningAppsWindowController: NSWindowController {
     deinit {
         NSWorkspace.shared().notificationCenter.removeObserver(self)
     }
-    
     
     /// Update the behavior of a given application. It changes the segmented control's selected item of the right table view's row.
     ///
@@ -56,7 +54,6 @@ class RunningAppsWindowController: NSWindowController {
         runningAppsArray.append(item)
     }
     
-    
     /// Called whenever an application is terminated by the system or the user.
     ///
     /// - parameter notification: The notification.
@@ -67,13 +64,11 @@ class RunningAppsWindowController: NSWindowController {
         runningAppsArray.remove(at: index)
     }
     
-    
     /// Set `self` as an observer for *launch* and *terminate* notfications.
     private func applyAsObserver() {
         NSWorkspace.shared().notificationCenter.addObserver(self, selector: #selector(appDidLaunch(notification:)), name: NSNotification.Name.NSWorkspaceDidLaunchApplication, object: nil)
         NSWorkspace.shared().notificationCenter.addObserver(self, selector: #selector(appDidTerminate(notification:)), name: NSNotification.Name.NSWorkspaceDidTerminateApplication, object: nil)
     }
-    
     
     /// Load all running applications and populate the table view with corresponding datas.
     private func loadData() {

@@ -17,11 +17,15 @@ class AboutWindowController: NSWindowController {
         window?.styleMask.formUnion(.fullSizeContentView)
         window?.titleVisibility = .hidden
         window?.titlebarAppearsTransparent = true
-        window?.setFrameAutosaveName("Fluor_AboutWindowAutosaveName")
         
-        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
-        let build = Bundle.main.infoDictionary?[kCFBundleVersionKey as String] as! String
-        versionLabel.stringValue = "Version \(version) build \(build)"
+        let bundleVersion = getBundleVersion()
+        versionLabel.stringValue = "Version \(bundleVersion.version) build \(bundleVersion.build)"
     }
     
+    private func getBundleVersion() -> (version: String, build: String) {
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+        let build = Bundle.main.infoDictionary?[kCFBundleVersionKey as String] as! String
+        
+        return (version, build)
+    }
 }

@@ -16,7 +16,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Running Applications" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="F0z-JX-Cv5" customClass="NSPanel">
+        <window title="Running Applications" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="Fluor_RunningAppsWindowAutosaveName" animationBehavior="default" id="F0z-JX-Cv5" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES" texturedBackground="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="1003" y="371" width="350" height="417"/>
@@ -137,7 +137,7 @@
                         </clipView>
                         <constraints>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="8Kq-U3-wXm"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="Ukl-zI-Ve2"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Ukl-zI-Ve2"/>
                         </constraints>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="3R3-KB-bdb">
                             <rect key="frame" x="0.0" y="362" width="319" height="16"/>
