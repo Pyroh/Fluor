@@ -24,7 +24,7 @@ This is what you get when you click on **Fluor** in the status bar:
 
 You can choose the default mode, whenever **Fluor** runs it will activate the default mode for your keyboard's fn keys.
 
-**Fluor** also display the active application and its associated rule that you can change on the go.  
+**Fluor** also displays the active application and its associated rule that you can change on the go.  
 <img src="https://github.com/Pyroh/Fluor/blob/master/Fluor/Assets.xcassets/defaultModeTemplate.imageset/defaultModeTemplate@2x.png?raw=true" width=16pt> is the default rule and means that the application will adopt default Fluor's keyboard behaviour.
 
 ## Rules Editor
