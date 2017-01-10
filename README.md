@@ -43,6 +43,9 @@ You'll argue that such a non-sandboxed app had no chance to hit the AppStore and
 
 This app is also built using open-source code that's why I think it belongs to this world. And if someone learns something looking at the code I'll be happy 😃.
 
+# Contributing
+All contributions are welcome. Fork it, hack it and make a pull request.
+
 # License
 **Fluor** is released under the MIT license. See LICENSE for details.
 
