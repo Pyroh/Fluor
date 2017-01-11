@@ -9,6 +9,15 @@
 # What is Fluor ?
 **Fluor** is a tool that allows you to automatically change the behaviour of the keyboard's fn keys depending on the active application. That's this simple.
 
+# Instaling Fluor
+There's two main ways to install **Fluor**:
+
+1. Download the [latest release](https://github.com/Pyroh/Fluor/releases), open the DMG and drag the application to your `/Applications` folder.
+2. Install via [Homebrew Cask](https://caskroom.github.io):  
+`$ brew cask install fluor`
+
+You can also build it from source but it's not recommended if you just intend to use **Fluor** and not hack it. 
+
 # How does it works ?
 <img src="https://github.com/Pyroh/Fluor/blob/master/ressources/statusbar.png?raw=true" width=327pt>
 
