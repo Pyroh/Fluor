@@ -2,7 +2,9 @@
 
 
 [![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
+![version](https://img.shields.io/badge/macOS-10.10+-green.svg?style=flat)
 [![License](https://img.shields.io/badge/license-MIT-71787A.svg)](https://tldrlegal.com/license/mit-license)
+
 
 ![](https://github.com/Pyroh/Fluor/blob/master/ressources/banner.png?raw=true)
 
@@ -35,6 +37,8 @@ You can choose the default mode, whenever **Fluor** runs it will activate the de
 
 **Fluor** also displays the active application and its associated rule that you can change on the go.  
 <img src="https://github.com/Pyroh/Fluor/blob/master/Fluor/Assets.xcassets/defaultModeTemplate.imageset/defaultModeTemplate@2x.png?raw=true" width=16pt> is the default rule and means that the application will adopt default Fluor's keyboard behaviour.
+
+You can also disable **Fluor** if you need to. It will set the keyboard's behaviour as it was prior to the application's launch. 
 
 ## Rules Editor
 <img src="https://github.com/Pyroh/Fluor/blob/master/ressources/ruleseditor.png?raw=true" width=412pt>
