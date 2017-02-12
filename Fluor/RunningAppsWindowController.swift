@@ -18,6 +18,7 @@ class RunningAppsWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         window?.styleMask.formUnion(.nonactivatingPanel)
+        window?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
         runningAppsArrayController.sortDescriptors = [sortDescriptor]
         loadData()

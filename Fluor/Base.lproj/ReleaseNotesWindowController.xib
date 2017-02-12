@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ReleaseNotesWindowController" customModule="Fluor" customModuleProvider="target">
+            <connections>
+                <outlet property="textView" destination="xP8-jF-UF6" id="N3y-3N-1lA"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Release Notes" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="Fluor_ReleaseNotesWindowAutosaveName" animationBehavior="default" id="F0z-JX-Cv5" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" texturedBackground="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="367" height="520"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="367" height="520"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CkN-Xn-kWb">
+                        <rect key="frame" x="0.0" y="0.0" width="367" height="520"/>
+                        <clipView key="contentView" id="Yvr-rb-N0g">
+                            <rect key="frame" x="0.0" y="0.0" width="367" height="520"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textView editable="NO" selectable="NO" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" allowsNonContiguousLayout="YES" textCompletion="NO" id="xP8-jF-UF6">
+                                    <rect key="frame" x="0.0" y="0.0" width="367" height="520"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <size key="minSize" width="367" height="520"/>
+                                    <size key="maxSize" width="514" height="10000000"/>
+                                    <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <connections>
+                                        <binding destination="-2" name="valueURL" keyPath="self.contentURL" id="1ma-KS-pye"/>
+                                    </connections>
+                                </textView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </clipView>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="CkN-Xn-kWb" secondAttribute="height" multiplier="210:297" id="yHu-BY-52n"/>
+                        </constraints>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="PQw-rI-6cy">
+                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="kst-G4-n2x">
+                            <rect key="frame" x="351" y="0.0" width="16" height="520"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="CkN-Xn-kWb" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="8DD-vf-9GG"/>
+                    <constraint firstAttribute="bottom" secondItem="CkN-Xn-kWb" secondAttribute="bottom" id="WCf-UN-2xg"/>
+                    <constraint firstItem="CkN-Xn-kWb" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="WUL-Ey-7Zx"/>
+                    <constraint firstAttribute="trailing" secondItem="CkN-Xn-kWb" secondAttribute="trailing" id="cER-e4-Hmg"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="163" y="262"/>
+        </window>
+    </objects>
+</document>

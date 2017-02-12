@@ -11,6 +11,9 @@
 		3F2FA4011D79D66D003E2AD8 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA4001D79D66D003E2AD8 /* StateView.swift */; };
 		3F2FA4031D7A059F003E2AD8 /* CurrentAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA4021D7A059F003E2AD8 /* CurrentAppView.swift */; };
 		3F2FA4051D7A1F87003E2AD8 /* BehaviorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA4041D7A1F87003E2AD8 /* BehaviorManager.swift */; };
+		3F3433311E50C2E0009F4D86 /* ReleaseNotesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F34332F1E50C2E0009F4D86 /* ReleaseNotesWindowController.swift */; };
+		3F3433321E50C2E0009F4D86 /* ReleaseNotesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F3433301E50C2E0009F4D86 /* ReleaseNotesWindowController.xib */; };
+		3F3433341E50C53A009F4D86 /* ReleaseNotes.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 3F3433331E50C53A009F4D86 /* ReleaseNotes.rtf */; };
 		3F6FA1A81D7E027F00DB9289 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F6FA1A61D7E027F00DB9289 /* PreferencesWindowController.xib */; };
 		3FC44EFA1D7F169A0065D433 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC44EF91D7F169A0065D433 /* Enums.swift */; };
 		3FC44EFC1D7F16CB0065D433 /* RulesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC44EFB1D7F16CB0065D433 /* RulesItem.swift */; };
@@ -34,6 +37,9 @@
 		3F2FA4001D79D66D003E2AD8 /* StateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
 		3F2FA4021D7A059F003E2AD8 /* CurrentAppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentAppView.swift; sourceTree = "<group>"; };
 		3F2FA4041D7A1F87003E2AD8 /* BehaviorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorManager.swift; sourceTree = "<group>"; };
+		3F34332F1E50C2E0009F4D86 /* ReleaseNotesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReleaseNotesWindowController.swift; sourceTree = "<group>"; };
+		3F3433301E50C2E0009F4D86 /* ReleaseNotesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReleaseNotesWindowController.xib; path = Base.lproj/ReleaseNotesWindowController.xib; sourceTree = "<group>"; };
+		3F3433331E50C53A009F4D86 /* ReleaseNotes.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = ReleaseNotes.rtf; sourceTree = "<group>"; };
 		3F6FA1A61D7E027F00DB9289 /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindowController.xib; path = Base.lproj/PreferencesWindowController.xib; sourceTree = "<group>"; };
 		3FC44EF91D7F169A0065D433 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		3FC44EFB1D7F16CB0065D433 /* RulesItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulesItem.swift; sourceTree = "<group>"; };
@@ -103,6 +109,7 @@
 				3FE7E0E61D7CBEB900DC754D /* Views */,
 				3FE7E0E71D7CBEC700DC754D /* XIBs */,
 				3FCD16A61D79793600C57B22 /* Assets.xcassets */,
+				3F3433331E50C53A009F4D86 /* ReleaseNotes.rtf */,
 				3FCD16AB1D79793600C57B22 /* Info.plist */,
 				3FCD16B21D79797600C57B22 /* utils.h */,
 				3FCD16B31D79797600C57B22 /* utils.m */,
@@ -116,9 +123,10 @@
 				3FE7E0DE1D7CA14600DC754D /* LaunchAtLoginController.h */,
 				3FE7E0DF1D7CA14600DC754D /* LaunchAtLoginController.m */,
 				3F2FA3FE1D79D094003E2AD8 /* StatusMenuController.swift */,
-				3FE7E0E11D7CBE1700DC754D /* AboutWindowController.swift */,
 				3FE7E0E81D7CC01B00DC754D /* RulesEditorWindowController.swift */,
 				3FC44EFD1D7F464C0065D433 /* RunningAppsWindowController.swift */,
+				3FE7E0E11D7CBE1700DC754D /* AboutWindowController.swift */,
+				3F34332F1E50C2E0009F4D86 /* ReleaseNotesWindowController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -136,10 +144,11 @@
 			isa = PBXGroup;
 			children = (
 				3FCD16A81D79793600C57B22 /* MainMenu.xib */,
-				3F6FA1A61D7E027F00DB9289 /* PreferencesWindowController.xib */,
-				3FE7E0E21D7CBE1700DC754D /* AboutWindowController.xib */,
 				3FE7E0E91D7CC01B00DC754D /* RulesEditorWindowController.xib */,
 				3FC44EFE1D7F464C0065D433 /* RunningAppsWindowController.xib */,
+				3F6FA1A61D7E027F00DB9289 /* PreferencesWindowController.xib */,
+				3FE7E0E21D7CBE1700DC754D /* AboutWindowController.xib */,
+				3F3433301E50C2E0009F4D86 /* ReleaseNotesWindowController.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -214,6 +223,8 @@
 				3FCD16A71D79793600C57B22 /* Assets.xcassets in Resources */,
 				3FE7E0EB1D7CC01B00DC754D /* RulesEditorWindowController.xib in Resources */,
 				3FC44F001D7F464C0065D433 /* RunningAppsWindowController.xib in Resources */,
+				3F3433341E50C53A009F4D86 /* ReleaseNotes.rtf in Resources */,
+				3F3433321E50C2E0009F4D86 /* ReleaseNotesWindowController.xib in Resources */,
 				3F6FA1A81D7E027F00DB9289 /* PreferencesWindowController.xib in Resources */,
 				3FCD16AA1D79793600C57B22 /* MainMenu.xib in Resources */,
 			);
@@ -247,6 +258,7 @@
 				3F2FA3FF1D79D094003E2AD8 /* StatusMenuController.swift in Sources */,
 				3FCD16A51D79793600C57B22 /* AppDelegate.swift in Sources */,
 				3F2FA4011D79D66D003E2AD8 /* StateView.swift in Sources */,
+				3F3433311E50C2E0009F4D86 /* ReleaseNotesWindowController.swift in Sources */,
 				3FCD16B41D79797600C57B22 /* utils.m in Sources */,
 				3FC44EFF1D7F464C0065D433 /* RunningAppsWindowController.swift in Sources */,
 				3FE213291D89A6940023FAC2 /* Notification-Extension.swift in Sources */,
@@ -313,7 +325,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -357,7 +369,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

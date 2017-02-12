@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
+        <deployment version="101100" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,7 +31,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="300" height="354"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" rowSizeStyle="automatic" viewBased="YES" id="hPw-GT-0aL">
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" rowSizeStyle="automatic" viewBased="YES" id="hPw-GT-0aL">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="354"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
@@ -68,10 +68,10 @@
                                                             </connections>
                                                         </imageView>
                                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="54l-kd-xli">
-                                                            <rect key="frame" x="76" y="11" width="201" height="43"/>
+                                                            <rect key="frame" x="76" y="9" width="201" height="46"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vGL-jN-8Su">
-                                                                    <rect key="frame" x="-2" y="26" width="205" height="17"/>
+                                                                    <rect key="frame" x="-2" y="29" width="205" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" id="Cza-D1-ACA">
                                                                         <font key="font" metaFont="systemSemibold" size="13"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -82,9 +82,9 @@
                                                                     </connections>
                                                                 </textField>
                                                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="orR-eW-Xvw">
-                                                                    <rect key="frame" x="-1" y="-1" width="203" height="20"/>
-                                                                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="Qxd-AD-Hgm">
-                                                                        <font key="font" metaFont="cellTitle"/>
+                                                                    <rect key="frame" x="-2" y="-2" width="205" height="24"/>
+                                                                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Qxd-AD-Hgm">
+                                                                        <font key="font" metaFont="system"/>
                                                                         <segments>
                                                                             <segment toolTip="Default" image="appleModeTemplate" width="32" selected="YES">
                                                                                 <nil key="label"/>
@@ -138,7 +138,7 @@
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="tit-Za-anh"/>
                         </constraints>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="o5l-46-DPF">
-                            <rect key="frame" x="1" y="119" width="223" height="15"/>
+                            <rect key="frame" x="2" y="336" width="296" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="l4E-HD-ybF">
@@ -152,7 +152,7 @@
                             <constraint firstAttribute="width" constant="25" id="tYK-3U-kmh"/>
                             <constraint firstAttribute="width" secondItem="V0G-K2-HLw" secondAttribute="height" id="vwY-c2-wTQ"/>
                         </constraints>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" id="Gfo-9L-Lmc">
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" state="on" inset="2" id="Gfo-9L-Lmc">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -162,7 +162,7 @@
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uDU-hq-ED5">
                         <rect key="frame" x="23" y="-1" width="25" height="25"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="T4O-6z-S3t">
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="T4O-6z-S3t">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -235,7 +235,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="28" y="235.5"/>
+            <point key="canvasLocation" x="122" y="172"/>
         </window>
         <arrayController objectClassName="RuleItem" id="Cai-D8-Yrn" userLabel="Rules Array Controller">
             <connections>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
+        <deployment version="101100" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
@@ -37,12 +37,22 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="editRules:" target="e3h-DP-voU" id="pRc-Y7-dds"/>
+                        <binding destination="TM7-Ze-uQz" name="enabled" keyPath="values.OnLaunchDisabled" id="rzc-E1-Tew">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
                     </connections>
                 </menuItem>
                 <menuItem title="Running applications..." id="Ark-Du-XrQ">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="showRunningApps:" target="e3h-DP-voU" id="O2m-f1-TT5"/>
+                        <binding destination="TM7-Ze-uQz" name="enabled" keyPath="values.OnLaunchDisabled" id="6fH-SS-kCO">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="AyI-Ds-a1s"/>
@@ -64,6 +74,13 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="dNi-gO-s9S"/>
+                <menuItem title="Disable" id="DqN-qz-yQz">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="toggleApplicationState:" target="e3h-DP-voU" id="R1D-je-71A"/>
+                        <binding destination="TM7-Ze-uQz" name="value" keyPath="values.OnLaunchDisabled" id="ckS-JW-GAn"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="Quit" keyEquivalent="q" id="QjA-WT-wFW">
                     <connections>
                         <action selector="quitApplication:" target="e3h-DP-voU" id="rou-h6-CtR"/>
@@ -83,6 +100,13 @@
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="TM7-Ze-uQz" name="enabled" keyPath="values.OnLaunchDisabled" id="OeR-vu-bOk">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kdK-wj-mRZ">
                     <rect key="frame" x="129" y="7" width="71" height="20"/>
@@ -102,6 +126,11 @@
                     </segmentedCell>
                     <connections>
                         <action selector="changeState:" target="u6O-d0-7Hq" id="27I-hs-rsm"/>
+                        <binding destination="TM7-Ze-uQz" name="enabled" keyPath="values.OnLaunchDisabled" id="2He-mB-s65">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
                     </connections>
                 </segmentedControl>
             </subviews>
@@ -129,6 +158,13 @@
                         <constraint firstAttribute="width" constant="64" id="wYc-Kf-B7b"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSApplicationIcon" id="voG-Is-fch"/>
+                    <connections>
+                        <binding destination="TM7-Ze-uQz" name="enabled" keyPath="values.OnLaunchDisabled" id="7Eg-bs-AEY">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
                 </imageView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="SPz-oQ-oif">
                     <rect key="frame" x="92" y="21" width="133" height="39"/>
@@ -143,6 +179,13 @@
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
+                            <connections>
+                                <binding destination="TM7-Ze-uQz" name="enabled" keyPath="values.OnLaunchDisabled" id="pzE-wS-RRe">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
                         </textField>
                         <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gls-pL-7qN">
                             <rect key="frame" x="-1" y="-1" width="135" height="20"/>
@@ -162,6 +205,11 @@
                             </segmentedCell>
                             <connections>
                                 <action selector="behaviorChanged:" target="o8r-mD-TI5" id="LsG-s4-Ac9"/>
+                                <binding destination="TM7-Ze-uQz" name="enabled" keyPath="values.OnLaunchDisabled" id="omM-fE-Sx8">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </segmentedControl>
                     </subviews>
@@ -189,8 +237,9 @@
                 <outlet property="appNameLabel" destination="gmQ-wu-N8N" id="xKJ-Xc-RRC"/>
                 <outlet property="behaviorSegment" destination="gls-pL-7qN" id="RlX-aP-rPf"/>
             </connections>
-            <point key="canvasLocation" x="183" y="-275"/>
+            <point key="canvasLocation" x="183" y="-325"/>
         </customView>
+        <userDefaultsController representsSharedInstance="YES" id="TM7-Ze-uQz"/>
     </objects>
     <resources>
         <image name="NSApplicationIcon" width="128" height="128"/>

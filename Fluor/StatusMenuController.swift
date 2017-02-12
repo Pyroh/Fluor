@@ -27,6 +27,7 @@ class StatusMenuController: NSObject {
     
     deinit {
         resignAsObserver()
+        NSWorkspace.shared().notificationCenter.removeObserver(self)
     }
     
     override func awakeFromNib() {
@@ -34,6 +35,8 @@ class StatusMenuController: NSObject {
         currentState = onLaunchKeyboardState
         setupStatusItem()
         applyAsObserver()
+        NSWorkspace.shared().notificationCenter.addObserver(self, selector: #selector(sessionDidBecomeInactive(notification:)), name: Notification.Name.NSWorkspaceSessionDidResignActive, object: nil)
+        NSWorkspace.shared().notificationCenter.addObserver(self, selector: #selector(sessionDidBecomeActive(notification:)), name: Notification.Name.NSWorkspaceSessionDidBecomeActive, object: nil)
     }
     
     // MARK: Operations callbacks
@@ -46,7 +49,9 @@ class StatusMenuController: NSObject {
             let id = app.bundleIdentifier else { return }
         currentID = id
         updateAppBehaviorViewFor(app: app, id: id)
-        adaptBehaviorForApp(id: id)
+        if !BehaviorManager.default.isDisabled() {
+            adaptBehaviorForApp(id: id)
+        }
     }
     
     /// React to the change of default function keys behavior in the dedicated view.
@@ -105,16 +110,45 @@ class StatusMenuController: NSObject {
         }
     }
     
+    
+    /// Disable this session's Fluor instance in order to prevent it from messing when potential other sessions' ones.
+    ///
+    /// - Parameter notification: The notification.
+    @objc private func sessionDidBecomeInactive(notification: Notification) {
+        switch onLaunchKeyboardState {
+        case .apple:
+            setFnKeysToAppleMode()
+        default:
+            setFnKeysToOtherMode()
+        }
+        resignAsObserver()
+    }
+    
+    
+    /// Reenable this session's Fluor instance.
+    ///
+    /// - Parameter notification: The notification.
+    @objc private func sessionDidBecomeActive(notification: Notification) {
+        switch currentState {
+        case .apple:
+            setFnKeysToAppleMode()
+        default:
+            setFnKeysToOtherMode()
+        }
+        applyAsObserver()
+    }
+    
     // MARK: Private functions
     
     /// Setup the status bar's item
     private func setupStatusItem() {
         statusItem.menu = statusMenu
-        statusItem.image = #imageLiteral(resourceName: "iconAppleModeTemplate")
+        statusItem.image = BehaviorManager.default.isDisabled() ? #imageLiteral(resourceName: "iconDisabledTemplate") : #imageLiteral(resourceName: "iconAppleModeTemplate")
         let statePlaceHolder = statusMenu.item(withTitle: "State")
         let currentPlaceHolder = statusMenu.item(withTitle: "Current")
         statePlaceHolder?.view = stateView
         currentPlaceHolder?.view = currentAppView
+        guard !BehaviorManager.default.isDisabled() else { return }
         stateView.setState(flag: BehaviorManager.default.defaultKeyboardState)
         if let currentApp = NSWorkspace.shared().frontmostApplication, let id = currentApp.bundleIdentifier {
             updateAppBehaviorViewFor(app: currentApp, id: id)
@@ -125,13 +159,13 @@ class StatusMenuController: NSObject {
     private func applyAsObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(stateViewDidChangeState(notification:)), name: Notification.Name.StateViewDidChangeState, object: stateView)
         NotificationCenter.default.addObserver(self, selector: #selector(behaviorDidChangeForApp(notification:)), name: Notification.Name.BehaviorDidChangeForApp, object: nil)
-        NSWorkspace.shared().notificationCenter.addObserver(self, selector: #selector(activeAppDidChange(notification:)), name: NSNotification.Name.NSWorkspaceDidActivateApplication, object: nil)
+        NSWorkspace.shared().notificationCenter.addObserver(self, selector: #selector(activeAppDidChange(notification:)), name: Notification.Name.NSWorkspaceDidActivateApplication, object: nil)
     }
     
     /// Unregister self as an observer for some notifications.
     private func resignAsObserver() {
         NotificationCenter.default.removeObserver(self)
-        NSWorkspace.shared().notificationCenter.removeObserver(self)
+        NSWorkspace.shared().notificationCenter.removeObserver(self, name: Notification.Name.NSWorkspaceDidActivateApplication, object: nil)
     }
     
     /// Set function key behavior in the current running app view.
@@ -139,7 +173,6 @@ class StatusMenuController: NSObject {
     /// - parameter app: The running app.
     /// - parameter id:  The app's bundle id.
     private func updateAppBehaviorViewFor(app: NSRunningApplication, id: String) {
-        currentAppView.enabled(id != Bundle.main.bundleIdentifier!)
         currentAppView.setCurrent(app: app, behavior: BehaviorManager.default.behaviorForApp(id: id))
     }
     
@@ -250,6 +283,27 @@ class StatusMenuController: NSObject {
         runningAppsController = RunningAppsWindowController(windowNibName: "RunningAppsWindowController")
         NotificationCenter.default.addObserver(self, selector: #selector(someWindowWillClose(notification:)), name: Notification.Name.NSWindowWillClose, object: runningAppsController?.window)
         runningAppsController?.window?.orderFrontRegardless()
+    }
+    
+    
+    /// Enable or disable Fluor fn keys management. 
+    /// If disabled the keyboard behaviour is set as its behaviour before app launch.
+    ///
+    /// - Parameter sender: The object that sent the action.
+    @IBAction func toggleApplicationState(_ sender: NSMenuItem) {
+        let enabled = sender.state == 1
+        if enabled {
+            adaptBehaviorForApp(id: currentID)
+        } else {
+            statusItem.image = #imageLiteral(resourceName: "iconDisabledTemplate")
+            switch onLaunchKeyboardState {
+            case .apple:
+                setFnKeysToAppleMode()
+            default:
+                setFnKeysToOtherMode()
+            }
+            currentState = onLaunchKeyboardState
+        }
     }
     
     /// Terminate the application.

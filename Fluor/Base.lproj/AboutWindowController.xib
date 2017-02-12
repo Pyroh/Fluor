@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
+        <deployment version="101100" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,8 +16,8 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="Fluor_AboutWindowAutosaveName" animationBehavior="default" id="F0z-JX-Cv5" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+        <window title="About Fluor" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="Fluor_AboutWindowAutosaveName" animationBehavior="default" id="F0z-JX-Cv5" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" texturedBackground="YES"/>
             <rect key="contentRect" x="196" y="240" width="513" height="236"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
@@ -76,10 +76,22 @@
                                         <constraint firstItem="4M7-Z7-g7h" firstAttribute="top" secondItem="YMM-N8-YqM" secondAttribute="top" id="ptP-pE-Uah"/>
                                     </constraints>
                                 </customView>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7TC-J7-mkD">
+                                    <rect key="frame" x="256" y="45" width="135" height="19"/>
+                                    <buttonCell key="cell" type="roundRect" title="Show release notes..." bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rTr-Zo-y2d">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="cellTitle"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="showReleaseNotes:" target="-2" id="TQt-Bu-SHq"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="7TC-J7-mkD" firstAttribute="leading" secondItem="YMM-N8-YqM" secondAttribute="leading" id="8Yz-PY-ePQ"/>
                                 <constraint firstItem="XgN-Gd-YMR" firstAttribute="leading" secondItem="Ndo-Rr-Xc1" secondAttribute="leading" constant="20" id="HuY-vi-E5J"/>
                                 <constraint firstItem="YMM-N8-YqM" firstAttribute="centerY" secondItem="XgN-Gd-YMR" secondAttribute="centerY" id="OSu-D4-eNV"/>
+                                <constraint firstItem="7TC-J7-mkD" firstAttribute="top" secondItem="YMM-N8-YqM" secondAttribute="bottom" constant="8" id="Pz2-Kr-MJm"/>
                                 <constraint firstItem="YMM-N8-YqM" firstAttribute="leading" secondItem="XgN-Gd-YMR" secondAttribute="trailing" constant="40" id="dAA-tw-Ybp"/>
                                 <constraint firstItem="XgN-Gd-YMR" firstAttribute="top" secondItem="Ndo-Rr-Xc1" secondAttribute="top" constant="20" id="gVI-y8-hmB"/>
                                 <constraint firstAttribute="bottom" secondItem="XgN-Gd-YMR" secondAttribute="bottom" constant="20" id="yaV-A5-piP"/>

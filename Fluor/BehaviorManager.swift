@@ -18,6 +18,7 @@ class BehaviorManager {
         static let resetStateOnQuit = "ResetModeOnQuit"
         static let sameStateAsBeforeStartup = "SameStateAsBeforeStartup"
         static let onQuitState = "OnQuitState"
+        static let onLaunchDisabled = "OnLaunchDisabled"
     }
     
     
@@ -146,9 +147,16 @@ class BehaviorManager {
     }
     
     
+    /// Read the defaults and tell if the keyboard management is disabled.
+    ///
+    /// - Returns: `true` is the management is disabled `false` otherwise.
+    func isDisabled() -> Bool {
+        return defaults.bool(forKey: DefaultsKeys.onLaunchDisabled)
+    }
+    
     /// Load the defaults.
     private func loadPrefs() {
-        let factoryDefaults: [String: Any] = [DefaultsKeys.defaultState: KeyboardState.apple.rawValue, DefaultsKeys.appRules: [Any](), DefaultsKeys.resetStateOnQuit: false, DefaultsKeys.sameStateAsBeforeStartup: true, DefaultsKeys.onQuitState: KeyboardState.apple.rawValue]
+        let factoryDefaults: [String: Any] = [DefaultsKeys.defaultState: KeyboardState.apple.rawValue, DefaultsKeys.appRules: [Any](), DefaultsKeys.resetStateOnQuit: false, DefaultsKeys.sameStateAsBeforeStartup: true, DefaultsKeys.onQuitState: KeyboardState.apple.rawValue, DefaultsKeys.onLaunchDisabled: false]
         defaults.register(defaults: factoryDefaults)
         
         defaultKeyboardState = KeyboardState(rawValue: defaults.integer(forKey: DefaultsKeys.defaultState))!

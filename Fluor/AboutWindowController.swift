@@ -10,7 +10,9 @@ import Cocoa
 
 class AboutWindowController: NSWindowController {
     @IBOutlet weak var versionLabel: NSTextField!
-
+    
+    private var releaseNotesController: ReleaseNotesWindowController?
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         
@@ -27,5 +29,16 @@ class AboutWindowController: NSWindowController {
         let build = Bundle.main.infoDictionary?[kCFBundleVersionKey as String] as! String
         
         return (version, build)
+    }
+    
+    
+    /// Show the application's release notes.
+    ///
+    /// - Parameter sender: The object that sent the action.
+    @IBAction func showReleaseNotes(_ sender: Any) {
+        if releaseNotesController == nil {
+            releaseNotesController = ReleaseNotesWindowController(windowNibName: "ReleaseNotesWindowController")
+        }
+        releaseNotesController?.showWindow(nil)
     }
 }
