@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "otherModeTemplate.png",
+      "filename" : "fnKeyTemplate.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "otherModeTemplate@2x.png",
+      "filename" : "fnKeyTemplate@2x.png",
       "scale" : "2x"
     },
     {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment version="101100" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
@@ -52,7 +52,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                             <prototypeCellViews>
-                                                <tableCellView id="aUP-h4-AWX">
+                                                <tableCellView id="aUP-h4-AWX" customClass="RuleCellView" customModule="Fluor" customModuleProvider="target">
                                                     <rect key="frame" x="1" y="1" width="297" height="64"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
@@ -70,7 +70,7 @@
                                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="54l-kd-xli">
                                                             <rect key="frame" x="76" y="9" width="201" height="46"/>
                                                             <subviews>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vGL-jN-8Su">
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vGL-jN-8Su">
                                                                     <rect key="frame" x="-2" y="29" width="205" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" id="Cza-D1-ACA">
                                                                         <font key="font" metaFont="systemSemibold" size="13"/>
@@ -95,7 +95,12 @@
                                                                         </segments>
                                                                     </segmentedCell>
                                                                     <connections>
-                                                                        <binding destination="aUP-h4-AWX" name="selectedIndex" keyPath="objectValue.behavior" id="zP7-NE-3Xm"/>
+                                                                        <action selector="changeBehaviorWithSender:" target="aUP-h4-AWX" id="Vfu-dH-kRd"/>
+                                                                        <binding destination="aUP-h4-AWX" name="selectedIndex" keyPath="objectValue.behavior" id="Sea-An-998">
+                                                                            <dictionary key="options">
+                                                                                <string key="NSValueTransformerName">RuleValueTransformer</string>
+                                                                            </dictionary>
+                                                                        </binding>
                                                                     </connections>
                                                                 </segmentedControl>
                                                             </subviews>
@@ -173,7 +178,7 @@
                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="SdN-eh-ayo">
                         <rect key="frame" x="0.0" y="21" width="300" height="5"/>
                     </box>
-                    <searchField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C9t-2H-PLG">
+                    <searchField wantsLayer="YES" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C9t-2H-PLG">
                         <rect key="frame" x="20" y="387" width="260" height="22"/>
                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" id="YKO-Fb-4aN">
                             <font key="font" metaFont="system"/>

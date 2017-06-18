@@ -10,6 +10,13 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    // We have no business here...
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        ValueTransformer.setValueTransformer(RuleValueTransformer(), forName: NSValueTransformerName("RuleValueTransformer"))
+        if !AXIsProcessTrusted() && !BehaviorManager.default.hasAlreadyAnsweredAccessibility() {
+            let options : NSDictionary = [kAXTrustedCheckOptionPrompt.takeRetainedValue(): true]
+            AXIsProcessTrustedWithOptions(options)
+            BehaviorManager.default.answeredAccessibility()
+        }
+    }
 }
 

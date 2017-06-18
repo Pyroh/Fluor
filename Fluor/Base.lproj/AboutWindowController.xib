@@ -39,10 +39,10 @@
                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSApplicationIcon" id="4oW-VD-wt3"/>
                                 </imageView>
                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="YMM-N8-YqM">
-                                    <rect key="frame" x="256" y="72" width="237" height="92"/>
+                                    <rect key="frame" x="256" y="59" width="237" height="118"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4M7-Z7-g7h">
-                                            <rect key="frame" x="-2" y="44" width="87" height="48"/>
+                                            <rect key="frame" x="-2" y="70" width="87" height="48"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Fluor" id="UJe-Rr-uVC">
                                                 <font key="font" metaFont="systemThin" size="40"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -50,7 +50,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hE3-0a-X4T">
-                                            <rect key="frame" x="-2" y="19" width="50" height="17"/>
+                                            <rect key="frame" x="-2" y="45" width="50" height="17"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version" id="aIm-CN-SpM">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -58,40 +58,40 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ph2-GS-RQB">
-                                            <rect key="frame" x="-2" y="0.0" width="153" height="11"/>
+                                            <rect key="frame" x="-2" y="26" width="153" height="11"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Copyright (c) Pyrolyse 2016-2017" id="wgD-d7-yIk">
                                                 <font key="font" metaFont="miniSystem"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7TC-J7-mkD">
+                                            <rect key="frame" x="0.0" y="-1" width="135" height="19"/>
+                                            <buttonCell key="cell" type="roundRect" title="Show release notes..." bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rTr-Zo-y2d">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="cellTitle"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="showReleaseNotes:" target="-2" id="TQt-Bu-SHq"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="7TC-J7-mkD" firstAttribute="leading" secondItem="YMM-N8-YqM" secondAttribute="leading" id="038-FM-2YN"/>
                                         <constraint firstItem="Ph2-GS-RQB" firstAttribute="top" secondItem="hE3-0a-X4T" secondAttribute="bottom" constant="8" id="0Ig-g0-sAi"/>
                                         <constraint firstItem="hE3-0a-X4T" firstAttribute="leading" secondItem="YMM-N8-YqM" secondAttribute="leading" id="766-yh-Jz5"/>
-                                        <constraint firstAttribute="bottom" secondItem="Ph2-GS-RQB" secondAttribute="bottom" id="Pm9-WF-BvT"/>
+                                        <constraint firstAttribute="bottom" secondItem="7TC-J7-mkD" secondAttribute="bottom" id="C1p-4a-7sZ"/>
                                         <constraint firstItem="hE3-0a-X4T" firstAttribute="top" secondItem="4M7-Z7-g7h" secondAttribute="bottom" constant="8" id="aS0-cn-Kn8"/>
                                         <constraint firstItem="4M7-Z7-g7h" firstAttribute="leading" secondItem="YMM-N8-YqM" secondAttribute="leading" id="gA2-W9-jss"/>
                                         <constraint firstItem="Ph2-GS-RQB" firstAttribute="leading" secondItem="YMM-N8-YqM" secondAttribute="leading" id="o9b-mj-CJe"/>
+                                        <constraint firstItem="7TC-J7-mkD" firstAttribute="top" secondItem="Ph2-GS-RQB" secondAttribute="bottom" constant="8" id="orC-F3-fhi"/>
                                         <constraint firstItem="4M7-Z7-g7h" firstAttribute="top" secondItem="YMM-N8-YqM" secondAttribute="top" id="ptP-pE-Uah"/>
                                     </constraints>
                                 </customView>
-                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7TC-J7-mkD">
-                                    <rect key="frame" x="256" y="45" width="135" height="19"/>
-                                    <buttonCell key="cell" type="roundRect" title="Show release notes..." bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rTr-Zo-y2d">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="cellTitle"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="showReleaseNotes:" target="-2" id="TQt-Bu-SHq"/>
-                                    </connections>
-                                </button>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="7TC-J7-mkD" firstAttribute="leading" secondItem="YMM-N8-YqM" secondAttribute="leading" id="8Yz-PY-ePQ"/>
                                 <constraint firstItem="XgN-Gd-YMR" firstAttribute="leading" secondItem="Ndo-Rr-Xc1" secondAttribute="leading" constant="20" id="HuY-vi-E5J"/>
                                 <constraint firstItem="YMM-N8-YqM" firstAttribute="centerY" secondItem="XgN-Gd-YMR" secondAttribute="centerY" id="OSu-D4-eNV"/>
-                                <constraint firstItem="7TC-J7-mkD" firstAttribute="top" secondItem="YMM-N8-YqM" secondAttribute="bottom" constant="8" id="Pz2-Kr-MJm"/>
                                 <constraint firstItem="YMM-N8-YqM" firstAttribute="leading" secondItem="XgN-Gd-YMR" secondAttribute="trailing" constant="40" id="dAA-tw-Ybp"/>
                                 <constraint firstItem="XgN-Gd-YMR" firstAttribute="top" secondItem="Ndo-Rr-Xc1" secondAttribute="top" constant="20" id="gVI-y8-hmB"/>
                                 <constraint firstAttribute="bottom" secondItem="XgN-Gd-YMR" secondAttribute="bottom" constant="20" id="yaV-A5-piP"/>

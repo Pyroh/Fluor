@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "otherModeTemplate.png",
+      "filename" : "appSwitchTemplate.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "otherModeTemplate@2x.png",
+      "filename" : "appSwitchTemplate@2x.png",
       "scale" : "2x"
     },
     {

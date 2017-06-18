@@ -8,16 +8,15 @@
 
 import Cocoa
 
-class RunningAppsWindowController: NSWindowController {
+class RunningAppsWindowController: NSWindowController, BehaviorDidChangeHandler {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet var runningAppsArrayController: NSArrayController!
     
-    dynamic var runningAppsArray = [RunningAppItem]()
+    dynamic var runningAppsArray = [RuleItem]()
     dynamic var runningAppsCount: Int = 0
     
     override func windowDidLoad() {
         super.windowDidLoad()
-        window?.styleMask.formUnion(.nonactivatingPanel)
         window?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
         runningAppsArrayController.sortDescriptors = [sortDescriptor]
@@ -27,16 +26,14 @@ class RunningAppsWindowController: NSWindowController {
     
     deinit {
         NSWorkspace.shared().notificationCenter.removeObserver(self)
+        stopObservingBehaviorDidChange()
     }
     
-    /// Update the behavior of a given application. It changes the segmented control's selected item of the right table view's row.
-    ///
-    /// - parameter id:       The application bundle id.
-    /// - parameter behavior: The new behavior.
-    func updateBehaviorForApp(id: String, behavior: AppBehavior) {
-        guard let index = runningAppsArray.index(where: { $0.id == id }) else { return }
-        // We don't want to fire the `didSet` of the `behavior` cvar.
-        runningAppsArray[index] = RunningAppItem(fromItem: runningAppsArray[index], withBehavior: behavior.rawValue)
+    func behaviorDidChangeForApp(notification: Notification) {
+        if let obj = notification.object as? RuleItem, case .rule = obj.kind { return }
+        guard let userInfo = notification.userInfo as? [String: Any], let appId = userInfo["id"] as? String, let appBehavior = userInfo["behavior"] as? AppBehavior else { return }
+        guard let index = runningAppsArray.index(where: { $0.id == appId }) else { return }
+        runningAppsArray[index].behavior = appBehavior
     }
     
     /// Called whenever an application is launched by the system or the user.
@@ -49,8 +46,8 @@ class RunningAppsWindowController: NSWindowController {
             let appIcon = app.icon else { return }
         let appPath = appURL.path
         let appName = Bundle(path: appPath)?.localizedInfoDictionary?["CFBundleName"] as? String ?? appURL.deletingPathExtension().lastPathComponent
-        let behavior = BehaviorManager.default.behaviorForApp(id: appId).rawValue
-        let item = RunningAppItem(id: appId, url: appURL, icon: appIcon, name: appName, behavior: behavior)
+        let behavior = BehaviorManager.default.behaviorForApp(id: appId)
+        let item = RuleItem(id: appId, url: appURL, icon: appIcon, name: appName, behavior: behavior, kind: .runningApp)
         
         runningAppsArray.append(item)
     }
@@ -69,17 +66,18 @@ class RunningAppsWindowController: NSWindowController {
     private func applyAsObserver() {
         NSWorkspace.shared().notificationCenter.addObserver(self, selector: #selector(appDidLaunch(notification:)), name: NSNotification.Name.NSWorkspaceDidLaunchApplication, object: nil)
         NSWorkspace.shared().notificationCenter.addObserver(self, selector: #selector(appDidTerminate(notification:)), name: NSNotification.Name.NSWorkspaceDidTerminateApplication, object: nil)
+        startObservingBehaviorDidChange()
     }
     
     /// Load all running applications and populate the table view with corresponding datas.
     private func loadData() {
-        runningAppsArray = NSWorkspace.shared().runningApplications.flatMap { (app) -> RunningAppItem? in
+        runningAppsArray = NSWorkspace.shared().runningApplications.flatMap { (app) -> RuleItem? in
             guard let appId = app.bundleIdentifier, let appURL = app.bundleURL, let appIcon = app.icon else { return nil }
             guard app.activationPolicy == .regular else { return nil }
             let appPath = appURL.path
             let appName = Bundle(path: appPath)?.localizedInfoDictionary?["CFBundleName"] as? String ?? appURL.deletingPathExtension().lastPathComponent
-            let behavior = BehaviorManager.default.behaviorForApp(id: appId).rawValue
-            return RunningAppItem(id: appId, url: appURL, icon: appIcon, name: appName, behavior: behavior)
+            let behavior = BehaviorManager.default.behaviorForApp(id: appId)
+            return RuleItem(id: appId, url: appURL, icon: appIcon, name: appName, behavior: behavior, kind: .runningApp)
         }
     }
 }

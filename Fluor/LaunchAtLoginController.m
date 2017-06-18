@@ -61,7 +61,8 @@ void sharedFileListDidChange(LSSharedFileListRef inList, void *context)
 }
 
 #pragma mark Launch List Control
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 LSSharedFileListItemRef copyItemWithURLinFileList(NSURL* wantedURL, LSSharedFileListRef fileList) {
     if (wantedURL == NULL || fileList == NULL)
         return NULL;
@@ -80,6 +81,7 @@ LSSharedFileListItemRef copyItemWithURLinFileList(NSURL* wantedURL, LSSharedFile
     
     return NULL;
 }
+#pragma clang diagnostic pop
 
 - (BOOL) willLaunchAtLogin: (NSURL*) itemURL
 {
