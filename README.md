@@ -9,7 +9,7 @@
 ![](https://github.com/Pyroh/Fluor/blob/master/ressources/banner.png?raw=true)
 
 # What is Fluor ?
-**Fluor** is a tool that allows you to automatically change the behaviour of the keyboard's fn keys depending on the active application. That's this simple.
+**Fluor** is a tool that allows you to automatically change the behavior of the keyboard's fn keys depending on the active application. That's this simple.
 
 # Instaling Fluor
 There's two main ways to install **Fluor**:
