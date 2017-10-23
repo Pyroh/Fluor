@@ -11,7 +11,6 @@
 # What is Fluor ?
 **Fluor** is a tool that allows you to automatically change the behavior of the keyboard's fn keys depending on the active application. It's that simple.
 
-
 # Instaling Fluor
 There's two main ways to install **Fluor**:
 
