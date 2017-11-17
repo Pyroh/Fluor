@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fj3-CW-kly">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fj3-CW-kly">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13770"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -140,6 +141,8 @@
                                                     </segments>
                                                 </segmentedCell>
                                                 <connections>
+                                                    <binding destination="XlE-y8-iHG" name="selectedIndex" keyPath="values.OnQuitState" id="xuJ-SD-g3S"/>
+                                                    <binding destination="XlE-y8-iHG" name="enabled" keyPath="values.ResetModeOnQuit" id="KQb-j5-f8I"/>
                                                     <binding destination="XlE-y8-iHG" name="enabled2" keyPath="values.SameStateAsBeforeStartup" previousBinding="KQb-j5-f8I" id="keD-H1-w9O">
                                                         <dictionary key="options">
                                                             <integer key="NSMultipleValuesPlaceholder" value="-1"/>
@@ -149,8 +152,6 @@
                                                             <string key="NSValueTransformerName">NSNegateBoolean</string>
                                                         </dictionary>
                                                     </binding>
-                                                    <binding destination="XlE-y8-iHG" name="enabled" keyPath="values.ResetModeOnQuit" id="KQb-j5-f8I"/>
-                                                    <binding destination="XlE-y8-iHG" name="selectedIndex" keyPath="values.OnQuitState" id="xuJ-SD-g3S"/>
                                                 </connections>
                                             </segmentedControl>
                                         </subviews>
@@ -250,7 +251,7 @@
                                         </connections>
                                     </button>
                                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="ao9-f1-UaB">
-                                        <rect key="frame" x="0.0" y="20" width="96" height="5"/>
+                                        <rect key="frame" x="0.0" y="20" width="360" height="5"/>
                                     </box>
                                     <button verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="Axn-vv-zki">
                                         <rect key="frame" x="-2" y="-2" width="232" height="18"/>

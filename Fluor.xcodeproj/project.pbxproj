@@ -444,7 +444,7 @@
 				DEVELOPMENT_TEAM = Q2E884V952;
 				INFOPLIST_FILE = Fluor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pyrolyse.Fluor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Fluor/Fluor-Bridging-Header.h";
@@ -465,7 +465,7 @@
 				DEVELOPMENT_TEAM = Q2E884V952;
 				INFOPLIST_FILE = Fluor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pyrolyse.Fluor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Fluor/Fluor-Bridging-Header.h";

@@ -37,4 +37,8 @@ class AboutWindowController: NSWindowController {
         }
         releaseNotesController?.showWindow(nil)
     }
+    
+    @IBAction func closeWindow(_ sender: Any) {
+        window?.close()
+    }
 }
