@@ -12,13 +12,12 @@ class RulesEditorWindowController: NSWindowController, BehaviorDidChangeHandler 
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet var rulesArrayController: NSArrayController!
     
-    dynamic var rulesArray = [RuleItem]()
-    dynamic var rulesCount: Int = 0
+    @objc dynamic var rulesArray = [RuleItem]()
+    @objc dynamic var rulesCount: Int = 0
     
     override func windowDidLoad() {
         super.windowDidLoad()
-        window?.styleMask.formUnion(.nonactivatingPanel)
-        window?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        window?.isMovableByWindowBackground = true
         
         startObservingBehaviorDidChange()
         
@@ -47,7 +46,7 @@ class RulesEditorWindowController: NSWindowController, BehaviorDidChangeHandler 
             }
         } else {
             let appPath = appURL.path
-            let appIcon = NSWorkspace.shared().icon(forFile: appPath)
+            let appIcon = NSWorkspace.shared.icon(forFile: appPath)
             let appName = Bundle(path: appPath)?.localizedInfoDictionary?["CFBundleName"] as? String ?? appURL.deletingPathExtension().lastPathComponent
             let item = RuleItem(id: appId, url: appURL, icon: appIcon, name: appName, behavior: appBehavior, kind: .rule)
             rulesArray.append(item)
@@ -68,7 +67,7 @@ class RulesEditorWindowController: NSWindowController, BehaviorDidChangeHandler 
             let appBundle = Bundle(url: appURL)!
             let appId = appBundle.bundleIdentifier!
             let appPath = appURL.path
-            let appIcon = NSWorkspace.shared().icon(forFile: appPath)
+            let appIcon = NSWorkspace.shared.icon(forFile: appPath)
             let appName = Bundle(path: appPath)?.localizedInfoDictionary?["CFBundleName"] as? String ?? appURL.deletingPathExtension().lastPathComponent
             BehaviorManager.default.setBehaviorForApp(id: appId, behavior: .apple, url: appURL)
             let item = RuleItem(id: appId, url: appURL, icon: appIcon, name: appName, behavior: AppBehavior.apple, kind: .rule)

@@ -8,7 +8,6 @@
 
 import Cocoa
 
-
 enum ItemKind {
     case rule
     case runningApp
@@ -19,18 +18,20 @@ enum ItemKind {
 class RuleItem: NSObject {
     let id: String
     let url: URL
-    let icon: NSImage
-    let name: String
+    @objc let icon: NSImage
+    @objc let name: String
     let kind: ItemKind
-    dynamic var behavior: AppBehavior
+    @objc dynamic var behavior: AppBehavior
+    @objc dynamic let isApp: Bool
     
-    init(id: String, url: URL, icon: NSImage, name: String, behavior: AppBehavior, kind: ItemKind) {
+    init(id: String, url: URL, icon: NSImage, name: String, behavior: AppBehavior, kind: ItemKind, isApp flag: Bool = true) {
         self.id = id
         self.url = url
         self.icon = icon
         self.name = name
         self.kind = kind
         self.behavior = behavior
+        self.isApp = flag
     }
     
     convenience init(fromItem item: RuleItem, withBehavior behavior: AppBehavior, kind: ItemKind) {

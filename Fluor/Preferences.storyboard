@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fj3-CW-kly">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13770"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="KWZ-8w-BdN">
+            <objects>
+                <windowController id="fj3-CW-kly" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="Fluor_NewPreferencesWindowAutosaveName" animationBehavior="default" titleVisibility="hidden" id="N9r-FQ-Oq3">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+                        <toolbar key="toolbar" implicitIdentifier="5526E627-5D87-4E3B-8C80-8A97591F0C13" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="small" id="36O-Cx-98l">
+                            <allowedToolbarItems/>
+                            <defaultToolbarItems/>
+                        </toolbar>
+                        <connections>
+                            <outlet property="delegate" destination="fj3-CW-kly" id="SMW-lp-48A"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="glG-bk-x2Q" kind="relationship" relationship="window.shadowedContentViewController" id="THc-Zs-y24"/>
+                    </connections>
+                </windowController>
+                <customObject id="Lau-Ab-QeI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="71" y="72"/>
+        </scene>
+        <!--Preferences-->
+        <scene sceneID="jca-4Z-HAq">
+            <objects>
+                <tabViewController title="Preferences" tabStyle="toolbar" id="glG-bk-x2Q" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem label="General" identifier="general_tab" image="NSPreferencesGeneral" id="Hob-Dv-Dm7"/>
+                        <tabViewItem label="Advanced" identifier="advanced_tab" image="NSAdvanced" id="18q-Zg-Tl1"/>
+                    </tabViewItems>
+                    <viewControllerTransitionOptions key="transitionOptions" allowUserInteraction="YES"/>
+                    <tabView key="tabView" drawsBackground="NO" type="noTabsNoBorder" id="74u-gV-eCB">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <tabViewItems/>
+                        <connections>
+                            <outlet property="delegate" destination="glG-bk-x2Q" id="a3g-rc-2Za"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="74u-gV-eCB" id="GkP-2N-jjl"/>
+                        <segue destination="bdY-l4-Nw7" kind="relationship" relationship="tabItems" id="vU4-rd-oIX"/>
+                        <segue destination="UoT-kw-xfb" kind="relationship" relationship="tabItems" id="wRt-Fo-0fY"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="N1Y-oQ-rKI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="71" y="483"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="T0C-QJ-uIj">
+            <objects>
+                <viewController id="bdY-l4-Nw7" sceneMemberID="viewController">
+                    <view key="view" id="UiA-dD-6AV">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="139"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rfe-Cs-a5q">
+                                <rect key="frame" x="20" y="20" width="360" height="99"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IwQ-dZ-J8e">
+                                        <rect key="frame" x="-2" y="83" width="135" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Start Fluor at login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kkr-ac-7zW">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <binding destination="eCo-0m-X2M" name="value" keyPath="self.launchAtLogin" id="366-eN-pkB"/>
+                                        </connections>
+                                    </button>
+                                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="cf8-Vp-OpL">
+                                        <rect key="frame" x="0.0" y="74" width="360" height="5"/>
+                                    </box>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="bottom" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0OW-8U-mev">
+                                        <rect key="frame" x="0.0" y="50" width="218" height="18"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="m5w-sC-NFO">
+                                                <rect key="frame" x="-2" y="0.0" width="148" height="18"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Default mode on launch" id="F4H-9X-Gkc">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BPe-ZE-s6t">
+                                                <rect key="frame" x="150" y="-2" width="70" height="21"/>
+                                                <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="aHs-kY-jFz">
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                    <segments>
+                                                        <segment image="AppleMode" width="32" selected="YES"/>
+                                                        <segment image="OtherMode" width="32" tag="1"/>
+                                                    </segments>
+                                                </segmentedCell>
+                                                <connections>
+                                                    <binding destination="XlE-y8-iHG" name="selectedIndex" keyPath="values.DefaultKeyboardState" id="5ak-8o-KE6"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IqQ-4A-Lte">
+                                        <rect key="frame" x="0.0" y="24" width="210" height="18"/>
+                                        <subviews>
+                                            <button verticalHuggingPriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="nnx-lW-SKy">
+                                                <rect key="frame" x="-2" y="-2" width="140" height="22"/>
+                                                <buttonCell key="cell" type="check" title="Reset mode on quit" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="o0g-Zi-PDV">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <binding destination="XlE-y8-iHG" name="value" keyPath="values.ResetModeOnQuit" id="VAu-q5-hnj"/>
+                                                </connections>
+                                            </button>
+                                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x7F-UY-WoD">
+                                                <rect key="frame" x="142" y="-2" width="70" height="21"/>
+                                                <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="J3t-x7-5C6">
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                    <segments>
+                                                        <segment image="AppleMode" width="32" selected="YES"/>
+                                                        <segment image="OtherMode" width="32" tag="1"/>
+                                                    </segments>
+                                                </segmentedCell>
+                                                <connections>
+                                                    <binding destination="XlE-y8-iHG" name="enabled2" keyPath="values.SameStateAsBeforeStartup" previousBinding="KQb-j5-f8I" id="keD-H1-w9O">
+                                                        <dictionary key="options">
+                                                            <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                            <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                            <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                            <integer key="NSNullPlaceholder" value="-1"/>
+                                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                    <binding destination="XlE-y8-iHG" name="enabled" keyPath="values.ResetModeOnQuit" id="KQb-j5-f8I"/>
+                                                    <binding destination="XlE-y8-iHG" name="selectedIndex" keyPath="values.OnQuitState" id="xuJ-SD-g3S"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ND1-kR-NbD">
+                                        <rect key="frame" x="0.0" y="0.0" width="166" height="16"/>
+                                        <subviews>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Sfc-P7-UFg">
+                                                <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="16" id="5Ua-fY-NLb"/>
+                                                    <constraint firstAttribute="width" constant="16" id="K2c-9T-yrF"/>
+                                                </constraints>
+                                            </customView>
+                                            <button verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="rR9-HX-Cah">
+                                                <rect key="frame" x="14" y="-1" width="154" height="18"/>
+                                                <buttonCell key="cell" type="check" title="Restore startup mode" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="cXi-qe-jsD">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <binding destination="XlE-y8-iHG" name="enabled" keyPath="values.ResetModeOnQuit" id="pzQ-qu-duT"/>
+                                                    <binding destination="XlE-y8-iHG" name="value" keyPath="values.SameStateAsBeforeStartup" id="RtJ-JR-w40"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="360" id="i9k-27-o1N"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Rfe-Cs-a5q" secondAttribute="bottom" constant="20" symbolic="YES" id="1Vp-Hn-nqd"/>
+                            <constraint firstItem="Rfe-Cs-a5q" firstAttribute="leading" secondItem="UiA-dD-6AV" secondAttribute="leading" constant="20" symbolic="YES" id="2fk-jB-g6t"/>
+                            <constraint firstItem="Rfe-Cs-a5q" firstAttribute="top" secondItem="UiA-dD-6AV" secondAttribute="top" constant="20" symbolic="YES" id="DSG-a5-SFB"/>
+                            <constraint firstAttribute="trailing" secondItem="Rfe-Cs-a5q" secondAttribute="trailing" constant="20" symbolic="YES" id="fOc-MW-fSV"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="xpC-Av-Pb6" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="eCo-0m-X2M" customClass="LaunchAtLoginController"/>
+                <userDefaultsController representsSharedInstance="YES" id="XlE-y8-iHG"/>
+            </objects>
+            <point key="canvasLocation" x="732" y="393"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wGj-uS-Xsc">
+            <objects>
+                <viewController id="UoT-kw-xfb" sceneMemberID="viewController">
+                    <view key="view" id="7VI-c4-LV7">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="85"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jhp-CV-4VK">
+                                <rect key="frame" x="20" y="20" width="360" height="45"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="tGV-Gc-DcZ">
+                                        <rect key="frame" x="-2" y="29" width="142" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Use light menu icon" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="j3E-2l-1wC">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <binding destination="mCE-4l-9Lh" name="value" keyPath="values.UseLightIcon" id="tzo-qO-2JK"/>
+                                        </connections>
+                                    </button>
+                                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="ao9-f1-UaB">
+                                        <rect key="frame" x="0.0" y="20" width="96" height="5"/>
+                                    </box>
+                                    <button verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="Axn-vv-zki">
+                                        <rect key="frame" x="-2" y="-2" width="232" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Always show all running processes" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="oGT-JF-Yp4">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <binding destination="mCE-4l-9Lh" name="value" keyPath="values.ShowAllProcesses" id="zCd-3G-eVQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="360" id="JRV-bF-NS4"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Jhp-CV-4VK" secondAttribute="bottom" constant="20" symbolic="YES" id="Kqx-wx-Sji"/>
+                            <constraint firstItem="Jhp-CV-4VK" firstAttribute="top" secondItem="7VI-c4-LV7" secondAttribute="top" constant="20" symbolic="YES" id="Nj3-CU-BoE"/>
+                            <constraint firstItem="Jhp-CV-4VK" firstAttribute="leading" secondItem="7VI-c4-LV7" secondAttribute="leading" constant="20" symbolic="YES" id="hLz-jX-Kvj"/>
+                            <constraint firstAttribute="trailing" secondItem="Jhp-CV-4VK" secondAttribute="trailing" constant="20" symbolic="YES" id="qiJ-eV-zl4"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="EY0-VE-ERr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="mCE-4l-9Lh"/>
+            </objects>
+            <point key="canvasLocation" x="732" y="639"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="AppleMode" width="16" height="16"/>
+        <image name="NSAdvanced" width="32" height="32"/>
+        <image name="NSPreferencesGeneral" width="32" height="32"/>
+        <image name="OtherMode" width="16" height="16"/>
+    </resources>
+</document>
