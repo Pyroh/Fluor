@@ -10,13 +10,10 @@ import Cocoa
 
 class ReleaseNotesWindowController: NSWindowController {
     @IBOutlet var textView: NSTextView!
-    dynamic private var contentURL: URL?
+    @objc dynamic private var contentURL: URL?
 
     override func windowDidLoad() {
         super.windowDidLoad()
-        window?.styleMask.formUnion(.resizable)
-        window?.titleVisibility = .hidden
-        window?.titlebarAppearsTransparent = true
         window?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
         contentURL = Bundle.main.url(forResource: "ReleaseNotes", withExtension: "rtf")

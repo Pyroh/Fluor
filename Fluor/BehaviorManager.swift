@@ -22,6 +22,7 @@ class BehaviorManager {
         static let onLaunchDisabled = "OnLaunchDisabled"
         static let defaultSwitchMethod = "DefaultSwitchMethod"
         static let useLightIcon = "UseLightIcon"
+        static let showAllRunningProcesses = "ShowAllProcesses"
     }
     
     
@@ -63,7 +64,7 @@ class BehaviorManager {
         rawRules.forEach({ (dict) in
             guard let appId = dict["id"] as? String, let appBehavior = dict["behavior"] as? Int, let appPath = dict["path"] as? String else { return }
             let appURL = URL(fileURLWithPath: appPath)
-            let appIcon = NSWorkspace.shared().icon(forFile: appPath)
+            let appIcon = NSWorkspace.shared.icon(forFile: appPath)
             let appName = Bundle(path: appPath)?.localizedInfoDictionary?["CFBundleName"] as? String ?? appURL.deletingPathExtension().lastPathComponent
             let item = RuleItem(id: appId, url: appURL, icon: appIcon, name: appName, behavior: AppBehavior(rawValue: appBehavior)!, kind: .rule)
             rules.append(item)
@@ -177,6 +178,10 @@ class BehaviorManager {
         return defaults.bool(forKey: DefaultsKeys.useLightIcon)
     }
     
+    func showAllRunningProcesses() -> Bool {
+        return defaults.bool(forKey: DefaultsKeys.showAllRunningProcesses)
+    }
+    
     /// Read the defaults and tell if the user has already answered the accessibility request.
     ///
     /// - Returns: `true` if it has `false` otherwise.
@@ -191,7 +196,7 @@ class BehaviorManager {
     
     /// Load the defaults.
     private func loadPrefs() {
-        let factoryDefaults: [String: Any] = [DefaultsKeys.defaultMode: KeyboardMode.apple.rawValue, DefaultsKeys.appRules: [Any](), DefaultsKeys.resetStateOnQuit: false, DefaultsKeys.sameStateAsBeforeStartup: true, DefaultsKeys.onQuitState: KeyboardMode.apple.rawValue, DefaultsKeys.onLaunchDisabled: false, DefaultsKeys.hasAlreadyAnsweredAccessibility: false, DefaultsKeys.defaultSwitchMethod: SwitchMethod.windowSwitch.rawValue, DefaultsKeys.useLightIcon: false]
+        let factoryDefaults: [String: Any] = [DefaultsKeys.defaultMode: KeyboardMode.apple.rawValue, DefaultsKeys.appRules: [Any](), DefaultsKeys.resetStateOnQuit: false, DefaultsKeys.sameStateAsBeforeStartup: true, DefaultsKeys.onQuitState: KeyboardMode.apple.rawValue, DefaultsKeys.onLaunchDisabled: false, DefaultsKeys.hasAlreadyAnsweredAccessibility: false, DefaultsKeys.defaultSwitchMethod: SwitchMethod.windowSwitch.rawValue, DefaultsKeys.useLightIcon: false, DefaultsKeys.showAllRunningProcesses: false]
         defaults.register(defaults: factoryDefaults)
         
         guard let arr = defaults.array(forKey: DefaultsKeys.appRules) else { return }

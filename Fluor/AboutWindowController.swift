@@ -15,11 +15,7 @@ class AboutWindowController: NSWindowController {
     
     override func windowDidLoad() {
         super.windowDidLoad()
-        
-        window?.styleMask.formUnion(.fullSizeContentView)
-        window?.titleVisibility = .hidden
-        window?.titlebarAppearsTransparent = true
-        
+    
         let bundleVersion = getBundleVersion()
         versionLabel.stringValue = "Version \(bundleVersion.version) build \(bundleVersion.build)"
     }
@@ -37,7 +33,7 @@ class AboutWindowController: NSWindowController {
     /// - Parameter sender: The object that sent the action.
     @IBAction func showReleaseNotes(_ sender: Any) {
         if releaseNotesController == nil {
-            releaseNotesController = ReleaseNotesWindowController(windowNibName: "ReleaseNotesWindowController")
+            releaseNotesController = ReleaseNotesWindowController(windowNibName: NSNib.Name(rawValue: "ReleaseNotesWindowController"))
         }
         releaseNotesController?.showWindow(nil)
     }

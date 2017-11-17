@@ -22,10 +22,8 @@ class CurrentAppViewController: NSViewController {
     @IBOutlet weak var appIconView: NSImageView!
     @IBOutlet weak var appNameLabel: NSTextField!
     @IBOutlet weak var behaviorSegment: NSSegmentedControl!
-    @IBOutlet weak var containerView: NSView!
-    @IBOutlet weak var segmentedHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var spaceConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageConstraint: NSLayoutConstraint!
+    @IBOutlet weak var vibrancyCancellerView: NSView!
     
     internal var currentSwitchMethod = SwitchMethod.windowSwitch
     
@@ -68,9 +66,7 @@ class CurrentAppViewController: NSViewController {
         var newFrame = self.view.frame
         newFrame.size.height = 32
         imageConstraint.constant = 24
-        segmentedHeightConstraint.constant = 0
-        spaceConstraint.constant = 0
-        behaviorSegment.isHidden = true
+        vibrancyCancellerView.isHidden = true
         self.view.setFrameSize(newFrame.size)
     }
     
@@ -79,9 +75,7 @@ class CurrentAppViewController: NSViewController {
         var newFrame = self.view.frame
         newFrame.size.height = 72
         imageConstraint.constant = 64
-        segmentedHeightConstraint.constant = 24
-        spaceConstraint.constant = 4
-        behaviorSegment.isHidden = false
+        vibrancyCancellerView.isHidden = false
         self.view.setFrameSize(newFrame.size)
     }
     

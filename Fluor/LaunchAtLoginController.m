@@ -24,6 +24,9 @@
 
 #import "LaunchAtLoginController.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 static NSString *const StartAtLoginKey = @"launchAtLogin";
 
 @interface LaunchAtLoginController ()
@@ -122,3 +125,4 @@ LSSharedFileListItemRef copyItemWithURLinFileList(NSURL* wantedURL, LSSharedFile
 }
 
 @end
+#pragma clang diagnostic pop

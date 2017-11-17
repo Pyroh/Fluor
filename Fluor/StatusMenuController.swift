@@ -18,7 +18,7 @@ class StatusMenuController: NSObject {
     private var preferencesController: NSWindowController?
     private var runningAppsController: RunningAppsWindowController?
     
-    let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
     override func awakeFromNib() {
         setupStatusMenu()
@@ -36,7 +36,7 @@ class StatusMenuController: NSObject {
     /// - parameter notification: The notification.
     @objc private func someWindowWillClose(notification: Notification) {
         guard let object = notification.object as? NSWindow else { return }
-        NotificationCenter.default.removeObserver(self, name: Notification.Name.NSWindowWillClose, object: object)
+        NotificationCenter.default.removeObserver(self, name: NSWindow.willCloseNotification, object: object)
         if object.isEqual(rulesController?.window) {
             rulesController = nil
         } else if object.isEqual(aboutController?.window) {
@@ -50,13 +50,8 @@ class StatusMenuController: NSObject {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         switch keyPath {
-        case "DefaultSwitchMethod"?:
-            switch BehaviorManager.default.switchMethod {
-            case .windowSwitch:
-                print("window")
-            case .fnKey:
-                print("key")
-            }
+        case BehaviorManager.DefaultsKeys.useLightIcon?:
+            adaptStatusMenuIcon()
         default:
             return
         }
@@ -67,10 +62,16 @@ class StatusMenuController: NSObject {
     /// Setup the status bar's item
     private func setupStatusMenu() {
         statusItem.menu = statusMenu
+        adaptStatusMenuIcon()
+    }
+    
+    
+    /// Adapt status bar icon from user's settings.
+    private func adaptStatusMenuIcon() {
         if BehaviorManager.default.useLightIcon() {
-            statusItem.image = BehaviorManager.default.isDisabled() ? #imageLiteral(resourceName: "lighIconDisabledTemplate") : #imageLiteral(resourceName: "appleModeTemplate")
+            statusItem.image = BehaviorManager.default.isDisabled() ? #imageLiteral(resourceName: "LighIconDisabled") : #imageLiteral(resourceName: "AppleMode")
         } else {
-            statusItem.image = BehaviorManager.default.isDisabled() ? #imageLiteral(resourceName: "iconDisabledTemplate") : #imageLiteral(resourceName: "iconAppleModeTemplate")
+            statusItem.image = BehaviorManager.default.isDisabled() ? #imageLiteral(resourceName: "IconDisabled") : #imageLiteral(resourceName: "IconAppleMode")
         }
     }
     
@@ -94,8 +95,8 @@ class StatusMenuController: NSObject {
             rulesController?.window?.orderFrontRegardless()
             return
         }
-        rulesController = RulesEditorWindowController(windowNibName: "RulesEditorWindowController")
-        NotificationCenter.default.addObserver(self, selector: #selector(someWindowWillClose(notification:)), name: Notification.Name.NSWindowWillClose, object: rulesController?.window)
+        rulesController = RulesEditorWindowController(windowNibName: NSNib.Name(rawValue: "RulesEditorWindowController"))
+        NotificationCenter.default.addObserver(self, selector: #selector(someWindowWillClose(notification:)), name: NSWindow.willCloseNotification, object: rulesController?.window)
         rulesController?.window?.orderFrontRegardless()
     }
     
@@ -107,8 +108,8 @@ class StatusMenuController: NSObject {
             aboutController?.window?.orderFrontRegardless()
             return
         }
-        aboutController = AboutWindowController(windowNibName: "AboutWindowController")
-        NotificationCenter.default.addObserver(self, selector: #selector(someWindowWillClose(notification:)), name: Notification.Name.NSWindowWillClose, object: aboutController?.window)
+        aboutController = AboutWindowController(windowNibName: NSNib.Name(rawValue: "AboutWindowController"))
+        NotificationCenter.default.addObserver(self, selector: #selector(someWindowWillClose(notification:)), name: NSWindow.willCloseNotification, object: aboutController?.window)
         aboutController?.window?.orderFrontRegardless()
     }
     
@@ -117,12 +118,19 @@ class StatusMenuController: NSObject {
     /// - parameter sender: The object that sent the action.
     @IBAction func showPreferences(_ sender: AnyObject) {
         guard preferencesController == nil else {
-            preferencesController?.window?.orderFrontRegardless()
+            preferencesController?.window?.makeKeyAndOrderFront(self)
+            preferencesController?.window?.makeMain()
+            NSApp.activate(ignoringOtherApps: true)
             return
         }
-        preferencesController = NSWindowController(windowNibName: "PreferencesWindowController")
-        NotificationCenter.default.addObserver(self, selector: #selector(someWindowWillClose(notification:)), name: Notification.Name.NSWindowWillClose, object: preferencesController?.window)
-        preferencesController?.window?.orderFrontRegardless()
+        if let ctrl = NSStoryboard(name: .preferences, bundle: nil).instantiateInitialController() as? NSWindowController {
+            preferencesController = ctrl
+            NotificationCenter.default.addObserver(self, selector: #selector(someWindowWillClose(notification:)), name: NSWindow.willCloseNotification, object: preferencesController?.window)
+            preferencesController?.window?.orderFront(self)
+            preferencesController?.window?.makeKey()
+            preferencesController?.window?.makeMain()
+            NSApp.activate(ignoringOtherApps: true)
+        }
     }
     
     /// Show the *Running Applications* window.
@@ -133,8 +141,8 @@ class StatusMenuController: NSObject {
             runningAppsController?.window?.orderFrontRegardless()
             return
         }
-        runningAppsController = RunningAppsWindowController(windowNibName: "RunningAppsWindowController")
-        NotificationCenter.default.addObserver(self, selector: #selector(someWindowWillClose(notification:)), name: Notification.Name.NSWindowWillClose, object: runningAppsController?.window)
+        runningAppsController = RunningAppsWindowController(windowNibName: NSNib.Name(rawValue: "RunningAppsWindowController"))
+        NotificationCenter.default.addObserver(self, selector: #selector(someWindowWillClose(notification:)), name: NSWindow.willCloseNotification, object: runningAppsController?.window)
         runningAppsController?.window?.orderFrontRegardless()
     }
     
@@ -144,11 +152,11 @@ class StatusMenuController: NSObject {
     ///
     /// - Parameter sender: The object that sent the action.
     @IBAction func toggleApplicationState(_ sender: NSMenuItem) {
-        let enabled = sender.state == 1
+        let enabled = sender.state == .on
         if enabled {
-            statusItem.image = BehaviorManager.default.useLightIcon() ? #imageLiteral(resourceName: "appleModeTemplate") : #imageLiteral(resourceName: "iconAppleModeTemplate")
+            statusItem.image = BehaviorManager.default.useLightIcon() ? #imageLiteral(resourceName: "AppleMode") : #imageLiteral(resourceName: "IconAppleMode")
         } else {
-            statusItem.image = BehaviorManager.default.useLightIcon() ? #imageLiteral(resourceName: "lighIconDisabledTemplate") : #imageLiteral(resourceName: "iconDisabledTemplate")
+            statusItem.image = BehaviorManager.default.useLightIcon() ? #imageLiteral(resourceName: "LighIconDisabled") : #imageLiteral(resourceName: "IconDisabled")
         }
         behaviorController.setApplication(state: enabled)
     }
@@ -158,7 +166,7 @@ class StatusMenuController: NSObject {
     /// - parameter sender: The object that sent the action.
     @IBAction func quitApplication(_ sender: AnyObject) {
         resignAsObserver()
-        NSWorkspace.shared().notificationCenter.removeObserver(self)
+        NSWorkspace.shared.notificationCenter.removeObserver(self)
         behaviorController.performTerminationCleaning()
         NSApp.terminate(self)
     }

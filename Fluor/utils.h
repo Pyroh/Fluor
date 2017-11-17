@@ -42,8 +42,8 @@
 
 typedef enum { UnknownMode, OtherMode, AppleMode } FnMode;
 
-unsigned int setFnKeysToOtherMode();
-unsigned int setFnKeysToAppleMode();
-FnMode getCurrentFnKeyState();
+unsigned int setFnKeysToOtherMode(void);
+unsigned int setFnKeysToAppleMode(void);
+FnMode getCurrentFnKeyState(void);
 
 #endif /* utils_h */
