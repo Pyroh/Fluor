@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13770" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13770"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
@@ -10,6 +10,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="RulesEditorWindowController" customModule="Fluor" customModuleProvider="target">
             <connections>
+                <outlet property="contentActionSegmentedControl" destination="rBD-94-YVc" id="Bwx-h0-ZHB"/>
                 <outlet property="rulesArrayController" destination="Cai-D8-Yrn" id="Bb5-Lo-SKU"/>
                 <outlet property="tableView" destination="hPw-GT-0aL" id="EYh-hM-K7b"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -32,7 +33,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView appearanceType="aqua" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="54" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="hPw-GT-0aL">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="394"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="390"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -141,13 +142,13 @@
                                     </connections>
                                 </tableView>
                             </subviews>
-                            <edgeInsets key="contentInsets" left="0.0" right="0.0" top="55" bottom="21"/>
+                            <edgeInsets key="contentInsets" left="0.0" right="0.0" top="55" bottom="25"/>
                         </clipView>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="BaA-mh-PXc"/>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="tit-Za-anh"/>
                         </constraints>
-                        <edgeInsets key="scrollerInsets" left="0.0" right="0.0" top="0.0" bottom="22"/>
+                        <edgeInsets key="scrollerInsets" left="0.0" right="0.0" top="0.0" bottom="26"/>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="o5l-46-DPF">
                             <rect key="frame" x="0.0" y="425" width="300" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
@@ -158,27 +159,13 @@
                         </scroller>
                     </scrollView>
                     <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="titlebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="TeL-cV-LrA" customClass="MoverEffectView" customModule="Fluor" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="22"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="26"/>
                         <subviews>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="SdN-eh-ayo">
-                                <rect key="frame" x="0.0" y="19" width="320" height="5"/>
+                                <rect key="frame" x="0.0" y="23" width="320" height="5"/>
                             </box>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V0G-K2-HLw">
-                                <rect key="frame" x="0.0" y="0.0" width="21" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="21" id="tYK-3U-kmh"/>
-                                    <constraint firstAttribute="width" secondItem="V0G-K2-HLw" secondAttribute="height" id="vwY-c2-wTQ"/>
-                                </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" state="on" inset="2" id="Gfo-9L-Lmc">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="addRule:" target="-2" id="GZ0-Z8-Rt0"/>
-                                </connections>
-                            </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qn5-zK-TAd">
-                                <rect key="frame" x="138" y="4" width="33" height="13"/>
+                                <rect key="frame" x="144" y="6" width="33" height="14"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="SUM-sR-gjk">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -192,35 +179,29 @@
                                     </binding>
                                 </connections>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uDU-hq-ED5">
-                                <rect key="frame" x="21" y="0.0" width="21" height="21"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="T4O-6z-S3t">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rBD-94-YVc">
+                                <rect key="frame" x="2" y="2" width="50" height="21"/>
+                                <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="rounded" trackingMode="momentary" id="sSY-j9-X3T">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <segments>
+                                        <segment image="NSAddTemplate" width="22"/>
+                                        <segment image="NSRemoveTemplate" width="22" tag="1"/>
+                                    </segments>
+                                </segmentedCell>
                                 <connections>
-                                    <action selector="removeRule:" target="-2" id="3qC-dN-lZM"/>
+                                    <action selector="operateRuleCollection:" target="-2" id="W6G-TI-shw"/>
                                 </connections>
-                            </button>
+                            </segmentedControl>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="uDU-hq-ED5" firstAttribute="height" secondItem="V0G-K2-HLw" secondAttribute="height" id="A1k-T8-Hk7"/>
-                            <constraint firstItem="uDU-hq-ED5" firstAttribute="top" secondItem="SdN-eh-ayo" secondAttribute="bottom" id="A7Q-if-Its"/>
-                            <constraint firstItem="uDU-hq-ED5" firstAttribute="leading" secondItem="V0G-K2-HLw" secondAttribute="trailing" id="CVe-Kn-jzN"/>
-                            <constraint firstAttribute="bottom" secondItem="V0G-K2-HLw" secondAttribute="bottom" id="Fyh-ix-B81"/>
-                            <constraint firstItem="V0G-K2-HLw" firstAttribute="leading" secondItem="TeL-cV-LrA" secondAttribute="leading" id="GLU-RJ-eT3"/>
+                            <constraint firstItem="qn5-zK-TAd" firstAttribute="centerY" secondItem="TeL-cV-LrA" secondAttribute="centerY" id="8ec-9Z-IBs"/>
                             <constraint firstItem="SdN-eh-ayo" firstAttribute="leading" secondItem="TeL-cV-LrA" secondAttribute="leading" id="GkN-ie-7WP"/>
-                            <constraint firstAttribute="bottom" secondItem="uDU-hq-ED5" secondAttribute="bottom" id="MDJ-YL-aHk"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uDU-hq-ED5" secondAttribute="trailing" constant="20" symbolic="YES" id="MpJ-ar-Nh0"/>
+                            <constraint firstItem="rBD-94-YVc" firstAttribute="centerY" secondItem="TeL-cV-LrA" secondAttribute="centerY" id="IkJ-LU-hvl"/>
                             <constraint firstAttribute="trailing" secondItem="SdN-eh-ayo" secondAttribute="trailing" id="Roa-9Z-6Jv"/>
                             <constraint firstItem="SdN-eh-ayo" firstAttribute="top" secondItem="TeL-cV-LrA" secondAttribute="top" id="Z07-7a-K0B"/>
-                            <constraint firstItem="qn5-zK-TAd" firstAttribute="top" secondItem="SdN-eh-ayo" secondAttribute="bottom" constant="4" id="aXS-eK-ksG"/>
-                            <constraint firstAttribute="bottom" secondItem="qn5-zK-TAd" secondAttribute="bottom" constant="4" id="cAk-2p-r5Q"/>
-                            <constraint firstItem="uDU-hq-ED5" firstAttribute="width" secondItem="V0G-K2-HLw" secondAttribute="width" id="jvH-Ds-pjt"/>
-                            <constraint firstItem="V0G-K2-HLw" firstAttribute="leading" secondItem="TeL-cV-LrA" secondAttribute="leading" id="qtM-wr-CfJ"/>
-                            <constraint firstAttribute="bottom" secondItem="V0G-K2-HLw" secondAttribute="bottom" id="vtg-NH-sk8"/>
-                            <constraint firstItem="V0G-K2-HLw" firstAttribute="top" secondItem="SdN-eh-ayo" secondAttribute="bottom" id="wpF-UD-q2O"/>
-                            <constraint firstItem="qn5-zK-TAd" firstAttribute="centerX" secondItem="TeL-cV-LrA" secondAttribute="centerX" constant="-6" id="yKt-t5-rUD"/>
+                            <constraint firstItem="rBD-94-YVc" firstAttribute="leading" secondItem="TeL-cV-LrA" secondAttribute="leading" constant="4" id="dfu-hT-9h8"/>
+                            <constraint firstAttribute="height" constant="26" id="e3K-bM-qbo"/>
+                            <constraint firstItem="qn5-zK-TAd" firstAttribute="centerX" secondItem="TeL-cV-LrA" secondAttribute="centerX" id="yKt-t5-rUD"/>
                         </constraints>
                     </visualEffectView>
                 </subviews>
