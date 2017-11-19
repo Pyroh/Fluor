@@ -105,12 +105,16 @@ class StatusMenuController: NSObject {
     /// - parameter sender: The object that sent the action.
     @IBAction func showAbout(_ sender: AnyObject) {
         guard aboutController == nil else {
-            aboutController?.window?.orderFrontRegardless()
+            preferencesController?.window?.makeKeyAndOrderFront(self)
+            preferencesController?.window?.makeMain()
+            NSApp.activate(ignoringOtherApps: true)
             return
         }
         aboutController = AboutWindowController(windowNibName: NSNib.Name(rawValue: "AboutWindowController"))
         NotificationCenter.default.addObserver(self, selector: #selector(someWindowWillClose(notification:)), name: NSWindow.willCloseNotification, object: aboutController?.window)
-        aboutController?.window?.orderFrontRegardless()
+        preferencesController?.window?.makeKeyAndOrderFront(self)
+        preferencesController?.window?.makeMain()
+        NSApp.activate(ignoringOtherApps: true)
     }
     
     /// Show the *Preferences* window.
@@ -126,8 +130,7 @@ class StatusMenuController: NSObject {
         if let ctrl = NSStoryboard(name: .preferences, bundle: nil).instantiateInitialController() as? NSWindowController {
             preferencesController = ctrl
             NotificationCenter.default.addObserver(self, selector: #selector(someWindowWillClose(notification:)), name: NSWindow.willCloseNotification, object: preferencesController?.window)
-            preferencesController?.window?.orderFront(self)
-            preferencesController?.window?.makeKey()
+            preferencesController?.window?.makeKeyAndOrderFront(self)
             preferencesController?.window?.makeMain()
             NSApp.activate(ignoringOtherApps: true)
         }
