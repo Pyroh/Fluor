@@ -8,13 +8,7 @@
 
 import Cocoa
 
-enum ItemKind {
-    case rule
-    case runningApp
-}
-
-
-/// Models a rule in the *Rules* panel's table view.
+/// Models a rule in the *Rules* & *Running Apps*  panels' table view.
 class RuleItem: NSObject {
     let id: String
     let url: URL
@@ -23,8 +17,13 @@ class RuleItem: NSObject {
     let kind: ItemKind
     @objc dynamic var behavior: AppBehavior
     @objc dynamic let isApp: Bool
+    let pid: pid_t?
     
-    init(id: String, url: URL, icon: NSImage, name: String, behavior: AppBehavior, kind: ItemKind, isApp flag: Bool = true) {
+    override var hashValue: Int {
+        return id.hashValue ^ url.hashValue ^ name.hashValue ^ kind.hashValue + Int(pid ?? 0)
+    }
+    
+    init(id: String, url: URL, icon: NSImage, name: String, behavior: AppBehavior, kind: ItemKind, isApp flag: Bool = true, pid: pid_t? = nil) {
         self.id = id
         self.url = url
         self.icon = icon
@@ -32,6 +31,7 @@ class RuleItem: NSObject {
         self.kind = kind
         self.behavior = behavior
         self.isApp = flag
+        self.pid = pid
     }
     
     convenience init(fromItem item: RuleItem, withBehavior behavior: AppBehavior, kind: ItemKind) {
@@ -43,5 +43,22 @@ class RuleItem: NSObject {
         let not = Notification(name: .BehaviorDidChangeForApp, object: self, userInfo: info)
         NotificationCenter.default.post(not)
     }
+    
+    override func isEqual(_ object: Any?) -> Bool {
+        guard let object = object else { return false }
+        switch object {
+        case let item as RuleItem:
+            return self.id == item.id && item.url == item.url
+        case let pid as pid_t:
+            return self.pid == pid
+        case let id as String:
+            return self.id == id
+        case let url as URL:
+            return self.url == url
+        default:
+            return false
+        }
+    }
 }
+
 

@@ -8,26 +8,31 @@
 
 import Cocoa
 
-class RunningAppsWindowController: NSWindowController, NSTableViewDelegate, BehaviorDidChangeHandler {
+class RunningAppsWindowController: NSWindowController, BehaviorDidChangeHandler {
     @IBOutlet weak var tableView: NSTableView!
-    @IBOutlet var runningAppsArrayController: NSArrayController!
+    @IBOutlet var itemsArrayController: NSArrayController!
     
     @objc dynamic var runningAppsArray = [RuleItem]()
     @objc dynamic var runningAppsCount: Int = 0
     @objc dynamic var showAll: Bool = BehaviorManager.default.showAllRunningProcesses() {
-        didSet {
-            loadData()
-        }
+        didSet { reloadData() }
     }
+    
+    var arrangedObjects: [RuleItem] {
+        return itemsArrayController.arrangedObjects as! [RuleItem]
+    }
+    
+    @objc dynamic var sortDescriptors: [NSSortDescriptor] = [.init(key: "name", ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))]
+    
+    private var orchestrator: TableViewContentOrchestrator<RuleItem>!
     
     override func windowDidLoad() {
         super.windowDidLoad()
-        window?.isMovableByWindowBackground = true
         
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))
-        runningAppsArrayController.sortDescriptors = [sortDescriptor]
-        loadData()
-        applyAsObserver()
+        self.orchestrator = TableViewContentOrchestrator(tableView: tableView, arrayController: itemsArrayController)
+        
+        orchestrator.performUnanimated { self.reloadData() }
+        self.applyAsObserver()
     }
     
     deinit {
@@ -36,8 +41,8 @@ class RunningAppsWindowController: NSWindowController, NSTableViewDelegate, Beha
     }
     
     func behaviorDidChangeForApp(notification: Notification) {
-        if let obj = notification.object as? RuleItem, case .rule = obj.kind { return }
-        guard let userInfo = notification.userInfo as? [String: Any], let appId = userInfo["id"] as? String, let appBehavior = userInfo["behavior"] as? AppBehavior else { return }
+        guard let userInfo = notification.userInfo as? [String: Any], userInfo["source"] as? NotificationSource != .runningAppWindow else { return }
+        guard let appId = userInfo["id"] as? String, let appBehavior = userInfo["behavior"] as? AppBehavior else { return }
         guard let index = runningAppsArray.index(where: { $0.id == appId }) else { return }
         runningAppsArray[index].behavior = appBehavior
     }
@@ -53,7 +58,7 @@ class RunningAppsWindowController: NSWindowController, NSTableViewDelegate, Beha
         let appPath = appURL.path
         let appName = Bundle(path: appPath)?.localizedInfoDictionary?["CFBundleName"] as? String ?? appURL.deletingPathExtension().lastPathComponent
         let behavior = BehaviorManager.default.behaviorForApp(id: appId)
-        let item = RuleItem(id: appId, url: appURL, icon: appIcon, name: appName, behavior: behavior, kind: .runningApp)
+        let item = RuleItem(id: appId, url: appURL, icon: appIcon, name: appName, behavior: behavior, kind: .runningApp, pid: app.processIdentifier)
         
         runningAppsArray.append(item)
     }
@@ -63,8 +68,7 @@ class RunningAppsWindowController: NSWindowController, NSTableViewDelegate, Beha
     /// - parameter notification: The notification.
     @objc private func appDidTerminate(notification: Notification) {
         guard let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication,
-            let appId = app.bundleIdentifier,
-            let index = runningAppsArray.index(where: { $0.id == appId }) else { return }
+            let item = arrangedObjects.first(where: { $0.pid == app.processIdentifier }), let index = runningAppsArray.index(of: item) else { return }
         runningAppsArray.remove(at: index)
     }
     
@@ -75,19 +79,25 @@ class RunningAppsWindowController: NSWindowController, NSTableViewDelegate, Beha
         startObservingBehaviorDidChange()
     }
     
-    /// Load all running applications and populate the table view with corresponding datas.
-    private func loadData() {
-        runningAppsArray = NSWorkspace.shared.runningApplications.flatMap { (app) -> RuleItem? in
+    /// Load all running applications and populate the table view with corresponding data.
+    private func reloadData() {
+        self.runningAppsArray = self.fetchRunningApps()
+    }
+    
+    private func fetchRunningApps() -> [RuleItem] {
+        return NSWorkspace.shared.runningApplications.flatMap { (app) -> RuleItem? in
             guard let appId = app.bundleIdentifier, let appURL = app.bundleURL, let appIcon = app.icon else { return nil }
             let isApp = app.activationPolicy == .regular
             guard showAll || isApp else { return nil }
             let appPath = appURL.path
             let appName = Bundle(path: appPath)?.localizedInfoDictionary?["CFBundleName"] as? String ?? appURL.deletingPathExtension().lastPathComponent
             let behavior = BehaviorManager.default.behaviorForApp(id: appId)
-            return RuleItem(id: appId, url: appURL, icon: appIcon, name: appName, behavior: behavior, kind: .runningApp, isApp: isApp)
+            let pid = app.processIdentifier
+            return RuleItem(id: appId, url: appURL, icon: appIcon, name: appName, behavior: behavior, kind: .runningApp, isApp: isApp, pid: pid)
         }
     }
     
+    // MARK: Table View Delegate
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
         return false
     }

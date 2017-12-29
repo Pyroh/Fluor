@@ -9,27 +9,29 @@
 import Cocoa
 
 class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewControllerDelegate, SwitchMethodDidChangeHandler {
-    @IBOutlet weak var currentAppViewController: CurrentAppViewController!
-    @IBOutlet weak var statusMenuController: StatusMenuController!
-    @IBOutlet weak var defaultModeViewController: DefaultModeViewController!
+    @IBOutlet var currentAppViewController: CurrentAppViewController!
+    @IBOutlet var statusMenuController: StatusMenuController!
+    @IBOutlet var defaultModeViewController: DefaultModeViewController!
+    @IBOutlet var switchMethodViewController: SwitchMethodViewController!
     
-    @objc dynamic private var accessibilityTrusted: Bool = false
-    private var accessibilityCheckingTimer: Timer?
+    @objc dynamic private var isKeySwitchCapable: Bool = false
     private var globalEventManager: Any?
     
     private var currentMode: KeyboardMode = .error
     private var onLaunchKeyboardMode: KeyboardMode = .error
     private var currentID: String = ""
     private var currentBehavior: AppBehavior = .inferred
-    private var switchMethod: SwitchMethod = .windowSwitch
+    private var switchMethod: SwitchMethod = .window
     
     func setup() {
         onLaunchKeyboardMode = BehaviorManager.default.getActualStateAccordingToPreferences()
         currentMode = onLaunchKeyboardMode
         switchMethod = BehaviorManager.default.switchMethod
         
-        applyAsObserver()
-        checkAccessibilityTrusted()
+        self.adaptToAccessibilityTrust()
+        
+        self.applyAsObserver()
+        self.adaptToAccessibilityTrust()
         
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(sessionDidBecomeInactive(notification:)), name: NSWorkspace.sessionDidResignActiveNotification, object: nil)
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(sessionDidBecomeActive(notification:)), name: NSWorkspace.sessionDidBecomeActiveNotification, object: nil)
@@ -43,26 +45,25 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     
     /// Register self as an observer for some notifications.
     private func applyAsObserver() {
-        if case .windowSwitch = switchMethod {
+        if case .window = switchMethod {
             startObservingBehaviorDidChange()
         }
-        
         startObservingSwitchMethodDidChange()
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(activeAppDidChange(notification:)), name: NSWorkspace.didActivateApplicationNotification, object: nil)
-        if accessibilityTrusted {
+        if isKeySwitchCapable {
             globalEventManager = NSEvent.addGlobalMonitorForEvents(matching: NSEvent.EventTypeMask.flagsChanged, handler: manageKeyPress)
         }
     }
     
     /// Unregister self as an observer for some notifications.
     private func resignAsObserver() {
-        if case .windowSwitch = switchMethod {
+        if case .window = switchMethod {
             stopObservingBehaviorDidChange()
         }
         stopObservingSwitchMethodDidChange()
         
         NSWorkspace.shared.notificationCenter.removeObserver(self, name: NSWorkspace.didActivateApplicationNotification, object: nil)
-        if accessibilityTrusted, let globalEventManager = globalEventManager {
+        if isKeySwitchCapable, let globalEventManager = globalEventManager {
             NSEvent.removeMonitor(globalEventManager)
         }
     }
@@ -102,6 +103,7 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     ///
     /// - parameter notification: The notification.
     @objc private func activeAppDidChange(notification: Notification) {
+        self.adaptToAccessibilityTrust()
         guard let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication,
             let id = app.bundleIdentifier else { return }
         currentID = id
@@ -137,10 +139,10 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
         guard let userInfo = notification.userInfo, let method = userInfo["method"] as? SwitchMethod else { return }
         switchMethod = method
         switch method {
-        case .windowSwitch:
+        case .window:
             startObservingBehaviorDidChange()
             adaptModeForApp(withId: currentID)
-        case .fnKey:
+        case .key:
             stopObservingBehaviorDidChange()
             currentMode = BehaviorManager.default.defaultKeyboardMode
             changeKeyboard(mode: currentMode)
@@ -149,9 +151,9 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     
     func defaultModeController(_ controller: DefaultModeViewController, didChangeModeTo mode: KeyboardMode) {
         switch switchMethod {
-        case .windowSwitch:
+        case .window:
             adaptModeForApp(withId: currentID)
-        case .fnKey:
+        case .key:
             changeKeyboard(mode: mode)
             currentMode = mode
         }
@@ -200,7 +202,7 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     ///
     /// - parameter id: The app's bundle id.
     private func adaptModeForApp(withId id: String) {
-        guard case .windowSwitch = switchMethod else { return }
+        guard case .window = switchMethod else { return }
         let behavior = BehaviorManager.default.behaviorForApp(id: id)
         let mode = BehaviorManager.default.keyboardStateFor(behavior: behavior)
         guard mode != currentMode else { return }
@@ -224,34 +226,26 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     }
     
     private func manageKeyPress(event: NSEvent) {
-        guard event.modifierFlags == .init(rawValue: 8388864), case .fnKey = switchMethod else { return }
+        guard event.modifierFlags == .init(rawValue: 8388864), case .key = switchMethod else { return }
         let mode = currentMode.counterPart()
         BehaviorManager.default.defaultKeyboardMode = mode
         changeKeyboard(mode: mode)
         currentMode = mode
     }
     
-    @objc private func checkAccessibilityTrusted() {
+    func adaptToAccessibilityTrust() {
         if AXIsProcessTrusted() {
-            if accessibilityTrusted != AXIsProcessTrusted() {
-                accessibilityTrusted = true
-                globalEventManager = NSEvent.addGlobalMonitorForEvents(matching: .flagsChanged, handler: manageKeyPress)
-                accessibilityCheckingTimer?.invalidate()
-                accessibilityCheckingTimer = nil
+            if self.isKeySwitchCapable != AXIsProcessTrusted() {
+                self.isKeySwitchCapable = true
             }
         } else {
-            if accessibilityTrusted != AXIsProcessTrusted() {
-                accessibilityTrusted = false
-                if let globalEventManager = globalEventManager {
+            if self.isKeySwitchCapable != AXIsProcessTrusted() {
+                self.isKeySwitchCapable = false
+                if self.switchMethod == .key, let globalEventManager = globalEventManager {
                     NSEvent.removeMonitor(globalEventManager)
+                    self.globalEventManager = nil
                 }
-                globalEventManager = nil
-                accessibilityCheckingTimer?.invalidate()
-                accessibilityCheckingTimer = nil
             }
-        }
-        if accessibilityCheckingTimer == nil {
-            accessibilityCheckingTimer = Timer.scheduledTimer(timeInterval: AXIsProcessTrusted() ? 6.0 : 2.0, target: self, selector: #selector(checkAccessibilityTrusted), userInfo: nil, repeats: true)
         }
     }
     
@@ -262,8 +256,8 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     /// - parameter behavior: The app's function keys behavior.
     ///
     /// - returns: A dictionnary usable as Notification's userInfo.
-    static func behaviorDidChangeUserInfoConstructor(id: String, url: URL, behavior: AppBehavior) -> [String: Any] {
-        return ["id": id, "url": url, "behavior": behavior]
+    static func behaviorDidChangeUserInfoConstructor(id: String, url: URL, behavior: AppBehavior, source: NotificationSource? = nil) -> [String: Any] {
+        return ["id": id, "url": url, "behavior": behavior, "source": source ?? .undefined]
     }
     
     /// Try to unpack Notification's userInfo with app's information.
@@ -271,10 +265,11 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     /// - parameter dict: The userInfo dictionnary provided by a Notification object.
     ///
     /// - returns: A tupple containing all app's information if the userInfo dictionnary contained required keys. Nil otherwise.
-    static func behaviorDidChangeUserInfoFor(dict: [AnyHashable: Any]) -> (id: String, url: URL, behavior: AppBehavior)? {
+    static func behaviorDidChangeUserInfoFor(dict: [AnyHashable: Any]) -> (id: String, url: URL, behavior: AppBehavior, source: NotificationSource)? {
         guard let behavior = dict["behavior"] as? AppBehavior,
             let url = dict["url"] as? URL,
-            let id = dict["id"] as? String else { return nil }
-        return (id, url, behavior)
+            let id = dict["id"] as? String,
+            let source = dict["source"] as? NotificationSource else { return nil }
+        return (id, url, behavior, source)
     }
 }

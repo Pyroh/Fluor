@@ -8,9 +8,9 @@
 
 import Cocoa
 
-class StatusMenuController: NSObject {
+class StatusMenuController: NSObject, NSMenuDelegate {
     @IBOutlet weak var statusMenu: NSMenu!
-    @IBOutlet weak var menuController: MenuItemsController!
+    @IBOutlet weak var menuItemsController: MenuItemsController!
     @IBOutlet weak var behaviorController: BehaviorController!
     
     private var rulesController: RulesEditorWindowController?
@@ -22,7 +22,7 @@ class StatusMenuController: NSObject {
 
     override func awakeFromNib() {
         setupStatusMenu()
-        menuController.setup()
+        menuItemsController.setup()
         behaviorController.setup()
         applyAsObserver()
     }
@@ -83,6 +83,10 @@ class StatusMenuController: NSObject {
     /// Unregister self as an observer for some notifications.
     private func resignAsObserver() {
         UserDefaults.standard.removeObserver(self, forKeyPath: BehaviorManager.DefaultsKeys.useLightIcon, context: nil)
+    }
+    
+    func menuWillOpen(_ menu: NSMenu) {
+        behaviorController.adaptToAccessibilityTrust()
     }
     
     // MARK: IBActions

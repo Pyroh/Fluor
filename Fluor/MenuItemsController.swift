@@ -24,13 +24,13 @@ class MenuItemsController: NSObject, SwitchMethodDidChangeHandler {
     }
     
     func setup() {
-        let switchingPlaceHolder = menu.item(withTitle: "Switching")
-        let statePlaceHolder = menu.item(withTitle: "State")
-        let currentPlaceHolder = menu.item(withTitle: "Current")
+        let switchingPlaceHolder = menu.item(withTag: 12)
+        let statePlaceHolder = menu.item(withTag: 11)
+        let currentPlaceHolder = menu.item(withTag: 10)
         switchingPlaceHolder?.view = switchMethodViewController.view
         statePlaceHolder?.view = defaultModeViewController.view
         currentPlaceHolder?.view = currentAppViewController.view
-        if case SwitchMethod.fnKey = BehaviorManager.default.switchMethod {
+        if case SwitchMethod.key = BehaviorManager.default.switchMethod {
             currentAppViewController.shrinkView()
         }
     }
@@ -39,9 +39,9 @@ class MenuItemsController: NSObject, SwitchMethodDidChangeHandler {
         guard let method = notification.userInfo?["method"] as? SwitchMethod,
             method != currentAppViewController.currentSwitchMethod else { return }
         switch method {
-        case .fnKey:
+        case .key:
             currentAppViewController.shrinkView()
-        case .windowSwitch:
+        case .window:
             currentAppViewController.expandView()
         }
     }

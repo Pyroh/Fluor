@@ -9,13 +9,17 @@
 import Cocoa
 
 class CurrentAppViewController: NSViewController {
-    private struct AppData {
+    private class AppData {
         let bundleIdentifier: String?
         let bundleURL: URL?
         
         init(from app: NSRunningApplication) {
             self.bundleIdentifier = app.bundleIdentifier
-            self.bundleURL = app.bundleURL
+            if let path = app.bundleURL?.path {
+                self.bundleURL = URL(fileURLWithPath: path)
+            } else {
+                self.bundleURL = nil
+            }
         }
     }
     
@@ -25,7 +29,7 @@ class CurrentAppViewController: NSViewController {
     @IBOutlet weak var imageConstraint: NSLayoutConstraint!
     @IBOutlet weak var vibrancyCancellerView: NSView!
     
-    internal var currentSwitchMethod = SwitchMethod.windowSwitch
+    internal var currentSwitchMethod = SwitchMethod.window
     
     private var currentApp: AppData?
     
@@ -62,7 +66,7 @@ class CurrentAppViewController: NSViewController {
     }
     
     func shrinkView() {
-        currentSwitchMethod = .fnKey
+        currentSwitchMethod = .key
         var newFrame = self.view.frame
         newFrame.size.height = 32
         imageConstraint.constant = 24
@@ -71,7 +75,7 @@ class CurrentAppViewController: NSViewController {
     }
     
     func expandView() {
-        currentSwitchMethod = .windowSwitch
+        currentSwitchMethod = .window
         var newFrame = self.view.frame
         newFrame.size.height = 72
         imageConstraint.constant = 64

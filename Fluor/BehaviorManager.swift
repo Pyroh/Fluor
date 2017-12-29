@@ -39,7 +39,7 @@ class BehaviorManager {
     }
     var switchMethod: SwitchMethod {
         get {
-            return SwitchMethod(rawValue: defaults.integer(forKey: DefaultsKeys.defaultSwitchMethod)) ?? .windowSwitch
+            return SwitchMethod(rawValue: defaults.integer(forKey: DefaultsKeys.defaultSwitchMethod)) ?? .window
         }
         set {
             defaults.set(newValue.rawValue, forKey: DefaultsKeys.defaultSwitchMethod)
@@ -196,7 +196,7 @@ class BehaviorManager {
     
     /// Load the defaults.
     private func loadPrefs() {
-        let factoryDefaults: [String: Any] = [DefaultsKeys.defaultMode: KeyboardMode.apple.rawValue, DefaultsKeys.appRules: [Any](), DefaultsKeys.resetStateOnQuit: false, DefaultsKeys.sameStateAsBeforeStartup: true, DefaultsKeys.onQuitState: KeyboardMode.apple.rawValue, DefaultsKeys.onLaunchDisabled: false, DefaultsKeys.hasAlreadyAnsweredAccessibility: false, DefaultsKeys.defaultSwitchMethod: SwitchMethod.windowSwitch.rawValue, DefaultsKeys.useLightIcon: false, DefaultsKeys.showAllRunningProcesses: false]
+        let factoryDefaults: [String: Any] = [DefaultsKeys.defaultMode: KeyboardMode.apple.rawValue, DefaultsKeys.appRules: [Any](), DefaultsKeys.resetStateOnQuit: false, DefaultsKeys.sameStateAsBeforeStartup: true, DefaultsKeys.onQuitState: KeyboardMode.apple.rawValue, DefaultsKeys.onLaunchDisabled: false, DefaultsKeys.hasAlreadyAnsweredAccessibility: false, DefaultsKeys.defaultSwitchMethod: SwitchMethod.window.rawValue, DefaultsKeys.useLightIcon: false, DefaultsKeys.showAllRunningProcesses: false]
         defaults.register(defaults: factoryDefaults)
         
         guard let arr = defaults.array(forKey: DefaultsKeys.appRules) else { return }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F2571F41FDBD43500020194 /* TableViewContentOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2571F31FDBD43500020194 /* TableViewContentOrchestrator.swift */; };
 		3F2FA3FF1D79D094003E2AD8 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA3FE1D79D094003E2AD8 /* StatusMenuController.swift */; };
 		3F2FA4011D79D66D003E2AD8 /* DefaultModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA4001D79D66D003E2AD8 /* DefaultModeViewController.swift */; };
 		3F2FA4031D7A059F003E2AD8 /* CurrentAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA4021D7A059F003E2AD8 /* CurrentAppViewController.swift */; };
@@ -16,6 +17,7 @@
 		3F3433341E50C53A009F4D86 /* ReleaseNotes.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 3F3433331E50C53A009F4D86 /* ReleaseNotes.rtf */; };
 		3F3CF3481FBF8B79005E8EB0 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F3CF3471FBF8B79005E8EB0 /* Preferences.storyboard */; };
 		3F697A0C1F88D47C007BA558 /* MoverEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F697A0B1F88D47C007BA558 /* MoverEffectView.swift */; };
+		3F719FDE1FE798600083E7F7 /* SwitchMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F719FDD1FE798600083E7F7 /* SwitchMenuItem.swift */; };
 		3F7C349C1ED5EBAA0020C538 /* BehaviorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7C349B1ED5EBAA0020C538 /* BehaviorController.swift */; };
 		3F8879911FBF41EC005C28E6 /* NSStoryboardNamesExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8879901FBF41EC005C28E6 /* NSStoryboardNamesExtension.swift */; };
 		3F8879931FBF5F2A005C28E6 /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8879921FBF5F2A005C28E6 /* PreferencesTabViewController.swift */; };
@@ -41,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		3F0E64141D8A8A59003243FE /* Fluor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fluor-Bridging-Header.h"; sourceTree = "<group>"; };
+		3F2571F31FDBD43500020194 /* TableViewContentOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewContentOrchestrator.swift; sourceTree = "<group>"; };
 		3F2FA3FE1D79D094003E2AD8 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		3F2FA4001D79D66D003E2AD8 /* DefaultModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultModeViewController.swift; sourceTree = "<group>"; };
 		3F2FA4021D7A059F003E2AD8 /* CurrentAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentAppViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +54,7 @@
 		3F3CF3471FBF8B79005E8EB0 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		3F4BD2ED1EE94E3200DCDC8B /* Fluor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fluor.entitlements; sourceTree = "<group>"; };
 		3F697A0B1F88D47C007BA558 /* MoverEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoverEffectView.swift; sourceTree = "<group>"; };
+		3F719FDD1FE798600083E7F7 /* SwitchMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchMenuItem.swift; sourceTree = "<group>"; };
 		3F7C349B1ED5EBAA0020C538 /* BehaviorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorController.swift; sourceTree = "<group>"; };
 		3F8879901FBF41EC005C28E6 /* NSStoryboardNamesExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStoryboardNamesExtension.swift; sourceTree = "<group>"; };
 		3F8879921FBF5F2A005C28E6 /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 				3FC44EF91D7F169A0065D433 /* Enums.swift */,
 				3FC44EFB1D7F16CB0065D433 /* RulesItem.swift */,
 				3FE213281D89A6940023FAC2 /* NotificationHelpers.swift */,
+				3F2571F31FDBD43500020194 /* TableViewContentOrchestrator.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 				3F8879901FBF41EC005C28E6 /* NSStoryboardNamesExtension.swift */,
 				3F8F93BA1EEAC9B900FCE91F /* RuleCellView.swift */,
 				3F697A0B1F88D47C007BA558 /* MoverEffectView.swift */,
+				3F719FDD1FE798600083E7F7 /* SwitchMenuItem.swift */,
 				3FC44EF81D7F16630065D433 /* Models */,
 				3FE7E0E51D7CBEAE00DC754D /* Controllers */,
 				3FE7E0E71D7CBEC700DC754D /* XIBs */,
@@ -288,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F2571F41FDBD43500020194 /* TableViewContentOrchestrator.swift in Sources */,
 				3F7C349C1ED5EBAA0020C538 /* BehaviorController.swift in Sources */,
 				3F697A0C1F88D47C007BA558 /* MoverEffectView.swift in Sources */,
 				3F2FA4031D7A059F003E2AD8 /* CurrentAppViewController.swift in Sources */,
@@ -300,6 +307,7 @@
 				3F3433311E50C2E0009F4D86 /* ReleaseNotesWindowController.swift in Sources */,
 				3FCD16B41D79797600C57B22 /* utils.m in Sources */,
 				3FC44EFF1D7F464C0065D433 /* RunningAppsWindowController.swift in Sources */,
+				3F719FDE1FE798600083E7F7 /* SwitchMenuItem.swift in Sources */,
 				3F8F93BD1EEAF1EB00FCE91F /* RuleValueTransformer.swift in Sources */,
 				3F8F93BB1EEAC9B900FCE91F /* RuleCellView.swift in Sources */,
 				3FE213291D89A6940023FAC2 /* NotificationHelpers.swift in Sources */,

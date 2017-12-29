@@ -27,6 +27,28 @@
 }
 
 @objc enum SwitchMethod: Int {
-    case windowSwitch = 0
+    case window = 0
+    case key
+}
+
+enum ItemKind {
+    case rule
+    case runningApp
+    
+    var source: NotificationSource {
+        switch self {
+        case .rule:
+            return .rulesWindow
+        case .runningApp:
+            return .runningAppWindow
+        }
+    }
+}
+
+enum NotificationSource {
+    case rulesWindow
+    case runningAppWindow
+    case mainMenu
     case fnKey
+    case undefined
 }

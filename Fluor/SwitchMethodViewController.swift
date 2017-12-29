@@ -9,6 +9,9 @@
 import Cocoa
 
 class SwitchMethodViewController: NSViewController {
+    @IBOutlet weak var methodSegmentedControl: NSSegmentedControl!
+    @objc private dynamic var switchCapable: Bool = true
+    
     @IBAction func changeSwitchMethod(_ sender: NSSegmentedControl) {
         guard let method = SwitchMethod(rawValue: sender.selectedSegment) else { return }
         let userInfo = ["method": method]

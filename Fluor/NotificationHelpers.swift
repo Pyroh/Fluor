@@ -10,7 +10,6 @@ import Foundation
 
 extension Notification.Name {
     public static let BehaviorDidChangeForApp = Notification.Name("kBehaviorDidChangeForApp")
-    public static let RuleDidChangeForApp = Notification.Name("kRuleDidChangeForApp")
     public static let SwitchMethodDidChange = Notification.Name("kSwitchMethodDidChange")
 }
 
@@ -25,23 +24,6 @@ extension BehaviorDidChangeHandler {
     }
     func stopObservingBehaviorDidChange() {
         NotificationCenter.default.removeObserver(self, name: Notification.Name.BehaviorDidChangeForApp, object: nil)
-    }
-}
-
-/// Rule did change for app notification handler
-protocol RuleDidChangeHandler {
-    var ruleSelector: Selector { get }
-    
-    func startObservingRuleDidChange()
-    func stopObservingRuleDidChange()
-}
-
-extension RuleDidChangeHandler {
-    func startObservingRuleDidChange() {
-        NotificationCenter.default.addObserver(self, selector: ruleSelector, name: Notification.Name.RuleDidChangeForApp, object: nil)
-    }
-    func stopObservingRuleDidChange() {
-        NotificationCenter.default.removeObserver(self, name: Notification.Name.RuleDidChangeForApp, object: nil)
     }
 }
 
