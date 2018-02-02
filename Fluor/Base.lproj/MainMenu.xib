@@ -16,11 +16,11 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customView id="Xfn-Mq-ahC" customClass="SwitchView" customModule="Fluor" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="251" height="29"/>
+            <rect key="frame" x="0.0" y="0.0" width="251" height="27"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WoM-Ab-xgn">
-                    <rect key="frame" x="18" y="6" width="69" height="17"/>
+                    <rect key="frame" x="18" y="5" width="69" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Switching" id="AiN-Qo-Ikx">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -35,7 +35,7 @@
                     </connections>
                 </textField>
                 <customView appearanceType="aqua" translatesAutoresizingMaskIntoConstraints="NO" id="ghF-Nf-2dw">
-                    <rect key="frame" x="160" y="4" width="71" height="22"/>
+                    <rect key="frame" x="160" y="2" width="71" height="22"/>
                     <subviews>
                         <segmentedControl focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RSg-2F-b2E">
                             <rect key="frame" x="0.0" y="-1" width="71" height="23"/>
@@ -145,7 +145,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" title="sep1" id="qvx-bn-WPk"/>
-                <menuItem title="Edit rules..." id="MHf-OK-jHk">
+                <menuItem title="Edit rules..." image="Rules" id="MHf-OK-jHk">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="editRules:" target="e3h-DP-voU" id="pRc-Y7-dds"/>
@@ -156,7 +156,7 @@
                         </binding>
                     </connections>
                 </menuItem>
-                <menuItem title="Running applications..." id="Ark-Du-XrQ">
+                <menuItem title="Running applications..." image="RunningApps" id="Ark-Du-XrQ">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="showRunningApps:" target="e3h-DP-voU" id="O2m-f1-TT5"/>
@@ -168,32 +168,32 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="AyI-Ds-a1s"/>
-                <menuItem title="Start Fluor at login" id="eWy-d7-62P">
+                <menuItem title="Preferences..." image="Preferences" keyEquivalent="," id="sjb-Ql-h6c">
+                    <connections>
+                        <action selector="showPreferences:" target="e3h-DP-voU" id="R1g-ZB-Dbo"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Start Fluor at login" id="eWy-d7-62P" customClass="SelectableMenuItem" customModule="Fluor" customModuleProvider="target">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <binding destination="08K-lI-3Rh" name="value" keyPath="self.launchAtLogin" id="heU-8m-SR5"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Preferences..." keyEquivalent="," id="sjb-Ql-h6c">
-                    <connections>
-                        <action selector="showPreferences:" target="e3h-DP-voU" id="R1g-ZB-Dbo"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="About Fluor" id="Ib7-Rw-HnK">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="showAbout:" target="e3h-DP-voU" id="VAz-Kx-NL8"/>
-                    </connections>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="dNi-gO-s9S"/>
-                <menuItem title="Disable" id="DqN-qz-yQz">
+                <menuItem title="Disable" id="DqN-qz-yQz" customClass="SelectableMenuItem" customModule="Fluor" customModuleProvider="target">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="toggleApplicationState:" target="e3h-DP-voU" id="R1D-je-71A"/>
                         <binding destination="TM7-Ze-uQz" name="value" keyPath="values.OnLaunchDisabled" id="ckS-JW-GAn"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Quit" keyEquivalent="q" id="QjA-WT-wFW">
+                <menuItem isSeparatorItem="YES" id="dNi-gO-s9S"/>
+                <menuItem title="About Fluor" image="About" id="Ib7-Rw-HnK">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showAbout:" target="e3h-DP-voU" id="VAz-Kx-NL8"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Quit" image="Quit" keyEquivalent="q" id="QjA-WT-wFW">
                     <connections>
                         <action selector="quitApplication:" target="e3h-DP-voU" id="rou-h6-CtR"/>
                     </connections>
@@ -205,14 +205,14 @@
             <point key="canvasLocation" x="-103" y="-399.5"/>
         </menu>
         <customView id="u6O-d0-7Hq">
-            <rect key="frame" x="0.0" y="0.0" width="251" height="30"/>
+            <rect key="frame" x="0.0" y="0.0" width="251" height="27"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="YVc-AJ-uvN">
-                    <rect key="frame" x="0.0" y="0.0" width="251" height="30"/>
+                    <rect key="frame" x="0.0" y="0.0" width="251" height="27"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DvO-d4-urd">
-                            <rect key="frame" x="18" y="7" width="91" height="17"/>
+                            <rect key="frame" x="18" y="5" width="91" height="17"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Default mode" id="S28-Jt-nN1">
                                 <font key="font" metaFont="systemBold"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -227,7 +227,7 @@
                             </connections>
                         </textField>
                         <customView appearanceType="aqua" translatesAutoresizingMaskIntoConstraints="NO" id="95p-vS-Mgv">
-                            <rect key="frame" x="160" y="4" width="71" height="22"/>
+                            <rect key="frame" x="160" y="3" width="71" height="22"/>
                             <subviews>
                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kdK-wj-mRZ">
                                     <rect key="frame" x="0.0" y="-1" width="71" height="23"/>
@@ -275,11 +275,11 @@
             <point key="canvasLocation" x="172.5" y="-419"/>
         </customView>
         <customView wantsLayer="YES" canDrawConcurrently="YES" id="o8r-mD-TI5">
-            <rect key="frame" x="0.0" y="0.0" width="252" height="72"/>
+            <rect key="frame" x="0.0" y="0.0" width="252" height="67"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView autoresizesSubviews="NO" wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="infinite" translatesAutoresizingMaskIntoConstraints="NO" id="EUW-rh-G7n">
-                    <rect key="frame" x="20" y="4" width="64" height="64"/>
+                    <rect key="frame" x="20" y="1" width="64" height="64"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="8lp-ov-mJS"/>
                         <constraint firstAttribute="width" secondItem="EUW-rh-G7n" secondAttribute="height" multiplier="1:1" id="igc-RD-12P"/>
@@ -294,7 +294,7 @@
                     </connections>
                 </imageView>
                 <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mdq-3d-6c1">
-                    <rect key="frame" x="92" y="15" width="140" height="43"/>
+                    <rect key="frame" x="92" y="12" width="140" height="43"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gmQ-wu-N8N">
                             <rect key="frame" x="-2" y="26" width="39" height="17"/>
@@ -373,11 +373,16 @@
         <userDefaultsController representsSharedInstance="YES" id="TM7-Ze-uQz"/>
     </objects>
     <resources>
+        <image name="About" width="16" height="16"/>
         <image name="AppSwitch" width="16" height="16"/>
         <image name="AppleMode" width="16" height="16"/>
         <image name="DefaultMode" width="16" height="16"/>
         <image name="FnKey" width="16" height="16"/>
         <image name="NSApplicationIcon" width="128" height="128"/>
         <image name="OtherMode" width="16" height="16"/>
+        <image name="Preferences" width="16" height="16"/>
+        <image name="Quit" width="16" height="16"/>
+        <image name="Rules" width="16" height="16"/>
+        <image name="RunningApps" width="16" height="16"/>
     </resources>
 </document>

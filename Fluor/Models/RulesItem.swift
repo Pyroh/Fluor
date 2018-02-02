@@ -20,7 +20,7 @@ class RuleItem: NSObject {
     let pid: pid_t?
     
     override var hashValue: Int {
-        return id.hashValue ^ url.hashValue ^ name.hashValue ^ kind.hashValue + Int(pid ?? 0)
+        return url.hashValue
     }
     
     init(id: String, url: URL, icon: NSImage, name: String, behavior: AppBehavior, kind: ItemKind, isApp flag: Bool = true, pid: pid_t? = nil) {
@@ -48,6 +48,7 @@ class RuleItem: NSObject {
         guard let object = object else { return false }
         switch object {
         case let item as RuleItem:
+            if let pid = self.pid, let opid = item.pid { return pid == opid }
             return self.id == item.id && item.url == item.url
         case let pid as pid_t:
             return self.pid == pid

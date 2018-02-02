@@ -9,14 +9,15 @@
 import Cocoa
 
 class StatusMenuController: NSObject, NSMenuDelegate {
+    //MARK: - Menu Delegate
     @IBOutlet weak var statusMenu: NSMenu!
-    @IBOutlet weak var menuItemsController: MenuItemsController!
+    @IBOutlet var menuItemsController: MenuItemsController!
     @IBOutlet weak var behaviorController: BehaviorController!
     
     private var rulesController: RulesEditorWindowController?
     private var aboutController: AboutWindowController?
     private var preferencesController: NSWindowController?
-    private var runningAppsController: RunningAppsWindowController?
+    private var runningAppsController: RunningAppWindowController?
     
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
@@ -99,7 +100,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             rulesController?.window?.orderFrontRegardless()
             return
         }
-        rulesController = RulesEditorWindowController(windowNibName: NSNib.Name(rawValue: "RulesEditorWindowController"))
+        rulesController = RulesEditorWindowController.instantiate()
         NotificationCenter.default.addObserver(self, selector: #selector(someWindowWillClose(notification:)), name: NSWindow.willCloseNotification, object: rulesController?.window)
         rulesController?.window?.orderFrontRegardless()
     }
@@ -148,7 +149,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             runningAppsController?.window?.orderFrontRegardless()
             return
         }
-        runningAppsController = RunningAppsWindowController(windowNibName: NSNib.Name(rawValue: "RunningAppsWindowController"))
+        runningAppsController = RunningAppWindowController.instantiate()
+//        runningAppsController = LegacyRunningAppsWindowController(windowNibName: NSNib.Name("LegacyRunningAppsWindowController"))
         NotificationCenter.default.addObserver(self, selector: #selector(someWindowWillClose(notification:)), name: NSWindow.willCloseNotification, object: runningAppsController?.window)
         runningAppsController?.window?.orderFrontRegardless()
     }

@@ -1,43 +1,41 @@
 //
-//  RunningAppsWindowController.swift
+//  RunningAppsViewController.swift
 //  Fluor
 //
-//  Created by Pierre TACCHI on 06/09/16.
-//  Copyright © 2016 Pyrolyse. All rights reserved.
+//  Created by Pierre TACCHI on 21/01/2018.
+//  Copyright © 2018 Pyrolyse. All rights reserved.
 //
 
 import Cocoa
 
-class RunningAppsWindowController: NSWindowController, BehaviorDidChangeHandler {
+class RunningAppsViewController: NSViewController, BehaviorDidChangeHandler, NSTableViewDelegate {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet var itemsArrayController: NSArrayController!
     
     @objc dynamic var runningAppsArray = [RuleItem]()
-    @objc dynamic var runningAppsCount: Int = 0
     @objc dynamic var showAll: Bool = BehaviorManager.default.showAllRunningProcesses() {
-        didSet { reloadData() }
+        didSet { self.reloadData() }
     }
-    
-    var arrangedObjects: [RuleItem] {
-        return itemsArrayController.arrangedObjects as! [RuleItem]
-    }
-    
+    @objc dynamic var searchPredicate: NSPredicate?
     @objc dynamic var sortDescriptors: [NSSortDescriptor] = [.init(key: "name", ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))]
     
     private var orchestrator: TableViewContentOrchestrator<RuleItem>!
     
-    override func windowDidLoad() {
-        super.windowDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         self.orchestrator = TableViewContentOrchestrator(tableView: tableView, arrayController: itemsArrayController)
+        orchestrator.performUnanimated {
+            self.reloadData()
+        }
         
-        orchestrator.performUnanimated { self.reloadData() }
         self.applyAsObserver()
     }
     
     deinit {
         NSWorkspace.shared.notificationCenter.removeObserver(self)
-        stopObservingBehaviorDidChange()
+        self.stopObservingBehaviorDidChange()
+        self.unbind(.init("searchPredicate"))
     }
     
     func behaviorDidChangeForApp(notification: Notification) {
@@ -68,7 +66,7 @@ class RunningAppsWindowController: NSWindowController, BehaviorDidChangeHandler 
     /// - parameter notification: The notification.
     @objc private func appDidTerminate(notification: Notification) {
         guard let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication,
-            let item = arrangedObjects.first(where: { $0.pid == app.processIdentifier }), let index = runningAppsArray.index(of: item) else { return }
+            let item = runningAppsArray.first(where: { $0.pid == app.processIdentifier }), let index = runningAppsArray.index(of: item) else { return }
         runningAppsArray.remove(at: index)
     }
     
@@ -83,7 +81,7 @@ class RunningAppsWindowController: NSWindowController, BehaviorDidChangeHandler 
     private func reloadData() {
         self.runningAppsArray = self.fetchRunningApps()
     }
-    
+
     private func fetchRunningApps() -> [RuleItem] {
         return NSWorkspace.shared.runningApplications.flatMap { (app) -> RuleItem? in
             guard let appId = app.bundleIdentifier, let appURL = app.bundleURL, let appIcon = app.icon else { return nil }

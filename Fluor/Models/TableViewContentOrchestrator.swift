@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class TableViewContentOrchestrator<ItemType: Hashable>: NSObject, NSTableViewDataSource {
+final class TableViewContentOrchestrator<ItemType: Equatable>: NSObject, NSTableViewDataSource {
     @objc weak dynamic var tableView: NSTableView! {
         didSet {
             tableView.dataSource = self
@@ -29,7 +29,7 @@ class TableViewContentOrchestrator<ItemType: Hashable>: NSObject, NSTableViewDat
     
     private var arrangedObjects: [ItemType]? { return arrayController.arrangedObjects as? [ItemType] }
     
-    private var hashValues: [Int] = []
+    private var shadowObjects: [ItemType] = []
     private var animated: Bool = true
     
     private var actualInsertAnimation: NSTableView.AnimationOptions { return animated ? tableInsertAnimation : [] }
@@ -45,26 +45,29 @@ class TableViewContentOrchestrator<ItemType: Hashable>: NSObject, NSTableViewDat
         self.configureController()
     }
     
+    deinit {
+        arrayController.removeObserver(self, forKeyPath: "arrangedObjects")
+    }
+    
     private func configureController() {
         arrayController.addObserver(self, forKeyPath: "arrangedObjects", options: [], context: nil)
-        self.hashValues = self.computeHashes(arrayController.arrangedObjects as! [ItemType])
+        self.shadowObjects = arrayController.arrangedObjects as! [ItemType]
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard arrayController.isEqual(object), keyPath == "arrangedObjects", let newShadowObjects = self.arrangedObjects else { return }
-        let newHashValues = self.computeHashes(newShadowObjects)
-        let oldItemSet = Set(hashValues)
-        let newItemSet = Set(newHashValues)
-        let toKeep = newItemSet.intersection(oldItemSet)
-        let toRemove = IndexSet(toKeep.symmetricDifference(oldItemSet).flatMap({ self.hashValues.index(of: $0) }))
-        let toAdd = IndexSet(toKeep.symmetricDifference(newItemSet).flatMap({ newHashValues.index(of: $0) }))
+        let itemsToKeep = self.intersection(between: self.shadowObjects, and: newShadowObjects)
+        let itemsToRemove = self.substract(itemsToKeep, from: self.shadowObjects)
+        let itemsToAdd = self.substract(itemsToKeep, from: newShadowObjects)
+        let removeSet = IndexSet(itemsToRemove.flatMap { self.shadowObjects.index(of: $0) })
+        let addSet = IndexSet(itemsToAdd.flatMap({ newShadowObjects.index(of: $0) }))
+        
+        self.shadowObjects = newShadowObjects
         
         tableView.beginUpdates()
-        self.removeRows(at: toRemove)
-        self.insertRows(at: toAdd)
+        self.removeRows(at: removeSet)
+        self.insertRows(at: addSet)
         tableView.endUpdates()
-        
-        self.hashValues = newHashValues
     }
     
     func performUnanimated(_ block: () -> ()) {
@@ -89,8 +92,17 @@ class TableViewContentOrchestrator<ItemType: Hashable>: NSObject, NSTableViewDat
         tableView.removeRows(at: indexSet, withAnimation: self.actualRemoveAnimation)
     }
     
-    private func computeHashes(_ array: [ItemType]) -> [Int] {
-        return arrangedObjects?.map({$0.hashValue}) ?? []
+    private func intersection(between lhs: [ItemType], and rhs: [ItemType]) -> [ItemType] {
+        return rhs.flatMap { lhs.contains($0) ? $0 : nil }
+    }
+    
+    private func substract(_ sub: [ItemType], from source: [ItemType]) -> [ItemType] {
+        var result = source
+        sub.forEach {
+            guard let index = result.index(of: $0) else { return }
+            result.remove(at: index)
+        }
+        return result
     }
     
     // MARK: NSTableViewDataSource
