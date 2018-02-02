@@ -8,7 +8,7 @@
 
 import Cocoa
 
-final class TableViewContentOrchestrator<ItemType: Equatable>: NSObject, NSTableViewDataSource {
+final class TableViewContentOrchestrator<ItemType: AnyObject>: NSObject, NSTableViewDataSource {
     @objc weak dynamic var tableView: NSTableView! {
         didSet {
             tableView.dataSource = self
@@ -59,8 +59,12 @@ final class TableViewContentOrchestrator<ItemType: Equatable>: NSObject, NSTable
         let itemsToKeep = self.intersection(between: self.shadowObjects, and: newShadowObjects)
         let itemsToRemove = self.substract(itemsToKeep, from: self.shadowObjects)
         let itemsToAdd = self.substract(itemsToKeep, from: newShadowObjects)
-        let removeSet = IndexSet(itemsToRemove.flatMap { self.shadowObjects.index(of: $0) })
-        let addSet = IndexSet(itemsToAdd.flatMap({ newShadowObjects.index(of: $0) }))
+        let removeSet = IndexSet(itemsToRemove.flatMap { item in
+            self.shadowObjects.index(where: { item === $0 })
+        })
+        let addSet = IndexSet(itemsToAdd.flatMap { item in
+            newShadowObjects.index(where: { item === $0 })
+        })
         
         self.shadowObjects = newShadowObjects
         
@@ -93,13 +97,15 @@ final class TableViewContentOrchestrator<ItemType: Equatable>: NSObject, NSTable
     }
     
     private func intersection(between lhs: [ItemType], and rhs: [ItemType]) -> [ItemType] {
-        return rhs.flatMap { lhs.contains($0) ? $0 : nil }
+        return rhs.flatMap { item in
+            lhs.contains(where: { item === $0 }) ? item : nil
+        }
     }
     
     private func substract(_ sub: [ItemType], from source: [ItemType]) -> [ItemType] {
         var result = source
-        sub.forEach {
-            guard let index = result.index(of: $0) else { return }
+        sub.forEach { item in
+            guard let index = result.index(where: { item === $0 }) else { return }
             result.remove(at: index)
         }
         return result
