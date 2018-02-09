@@ -34,8 +34,9 @@ int macosx_ibook_fnswitch(int setting);
 unsigned int setFnKeysToOtherMode()
 {
     unsigned int res = macosx_ibook_fnswitch(kfntheOtherMode);
-    CFPreferencesSetAppValue( CFSTR("fnState"), kCFBooleanTrue, CFSTR("com.apple.keyboard") );
-    CFPreferencesAppSynchronize( CFSTR("com.apple.keyboard") );
+    
+    CFPreferencesSetValue(CFSTR("com.apple.keyboard.fnState"), kCFBooleanTrue, kCFPreferencesAnyApplication, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
+    CFPreferencesSynchronize(kCFPreferencesAnyApplication, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
     
     NSDictionary *dict = @{@"state": @YES};
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"com.apple.keyboard.fnstatedidchange" object:NULL userInfo:dict deliverImmediately:YES];
@@ -52,8 +53,9 @@ unsigned int setFnKeysToOtherMode()
 unsigned int setFnKeysToAppleMode()
 {
     unsigned int res = macosx_ibook_fnswitch(kfnAppleMode);
-    CFPreferencesSetAppValue( CFSTR("fnState"), kCFBooleanFalse, CFSTR("com.apple.keyboard") );
-    CFPreferencesAppSynchronize( CFSTR("com.apple.keyboard") );
+    
+    CFPreferencesSetValue(CFSTR("com.apple.keyboard.fnState"), kCFBooleanFalse, kCFPreferencesAnyApplication, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
+    CFPreferencesSynchronize(kCFPreferencesAnyApplication, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
     
     NSDictionary *dict = @{@"state": @NO};
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"com.apple.keyboard.fnstatedidchange" object:NULL userInfo:dict deliverImmediately:YES];
@@ -63,7 +65,7 @@ unsigned int setFnKeysToAppleMode()
 
 FnMode getCurrentFnKeyState() {
     Boolean validValue;
-    Boolean result = CFPreferencesGetAppBooleanValue(CFSTR("fnState"), CFSTR("com.apple.keyboard"), &validValue);
+    Boolean result = CFPreferencesGetAppBooleanValue(CFSTR("com.apple.keyboard.fnState"), kCFPreferencesAnyApplication, &validValue);
     if (!validValue) return UnknownMode;
     if (result) return OtherMode;
     else return AppleMode;
