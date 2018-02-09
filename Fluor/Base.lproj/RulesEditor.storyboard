@@ -266,8 +266,8 @@
                 <customObject id="4Lw-xe-oeg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <arrayController preservesSelection="NO" selectsInsertedObjects="NO" avoidsEmptySelection="NO" automaticallyRearrangesObjects="YES" id="yyu-qn-zGG">
                     <connections>
-                        <binding destination="UlX-TY-g5g" name="filterPredicate" keyPath="self.searchPredicate" id="WgL-0y-rkt"/>
                         <binding destination="UlX-TY-g5g" name="contentSet" keyPath="self.rulesSet" id="Kf1-it-ivB"/>
+                        <binding destination="UlX-TY-g5g" name="filterPredicate" keyPath="self.searchPredicate" id="WgL-0y-rkt"/>
                         <binding destination="UlX-TY-g5g" name="sortDescriptors" keyPath="self.sortDescriptors" previousBinding="WgL-0y-rkt" id="OtU-7U-URB"/>
                     </connections>
                 </arrayController>

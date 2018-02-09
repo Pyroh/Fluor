@@ -300,8 +300,8 @@
                 <customObject id="4eN-3J-PQi" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <arrayController editable="NO" selectsInsertedObjects="NO" avoidsEmptySelection="NO" automaticallyRearrangesObjects="YES" id="CLA-Ew-1SV">
                     <connections>
-                        <binding destination="d1L-i9-UVk" name="filterPredicate" keyPath="self.searchPredicate" id="dcX-v6-eSI"/>
                         <binding destination="d1L-i9-UVk" name="contentArray" keyPath="self.runningAppsArray" id="TzU-6X-a8R"/>
+                        <binding destination="d1L-i9-UVk" name="filterPredicate" keyPath="self.searchPredicate" id="dcX-v6-eSI"/>
                         <binding destination="d1L-i9-UVk" name="sortDescriptors" keyPath="self.sortDescriptors" previousBinding="dcX-v6-eSI" id="yBT-GJ-zQr"/>
                     </connections>
                 </arrayController>
