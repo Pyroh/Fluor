@@ -19,7 +19,8 @@ public extension NSObject {
         guard let boundObject = nsnullToOptionnal(value: info[.observedObject]) as? NSObject,
             let boundKeyPath = nsnullToOptionnal(value: info[.observedKeyPath]) as? String
             else {
-                fatalError("No binding info found for key \(bindingName)")
+                NSException(name: .undefinedKeyException, reason: "No binding info found for key \(bindingName)", userInfo: nil).raise()
+                return
         }
         
         if let opt = info[.options] as? [NSBindingOption: AnyObject], let transformer = nsnullToOptionnal(value: opt[.valueTransformer]) as? ValueTransformer ??
