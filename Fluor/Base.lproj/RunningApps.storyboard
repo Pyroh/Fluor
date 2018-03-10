@@ -32,12 +32,7 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </searchFieldCell>
                                         <connections>
-                                            <binding destination="GhL-73-3vr" name="predicate" keyPath="self.searchPredicate" id="bNo-hv-ymT">
-                                                <dictionary key="options">
-                                                    <string key="NSDisplayName">predicate</string>
-                                                    <string key="NSPredicateFormat">name contains[cd] $value</string>
-                                                </dictionary>
-                                            </binding>
+                                            <action selector="filterAppList:" target="GhL-73-3vr" id="Px0-IK-mLA"/>
                                         </connections>
                                     </searchField>
                                 </toolbarItem>

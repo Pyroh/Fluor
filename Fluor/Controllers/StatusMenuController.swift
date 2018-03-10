@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class StatusMenuController: NSObject, NSMenuDelegate {
+class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate {
     //MARK: - Menu Delegate
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet var menuItemsController: MenuItemsController!
@@ -32,10 +32,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         resignAsObserver()
     }
     
-    /// When a window was closed this methods takes care of releasing its controller.
-    ///
-    /// - parameter notification: The notification.
-    @objc private func someWindowWillClose(notification: Notification) {
+    func windowWillClose(_ notification: Notification) {
         guard let object = notification.object as? NSWindow else { return }
         NotificationCenter.default.removeObserver(self, name: NSWindow.willCloseNotification, object: object)
         if object.isEqual(rulesController?.window) {
@@ -101,7 +98,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             return
         }
         rulesController = RulesEditorWindowController.instantiate()
-        NotificationCenter.default.addObserver(self, selector: #selector(someWindowWillClose(notification:)), name: NSWindow.willCloseNotification, object: rulesController?.window)
+        rulesController?.window?.delegate = self
         rulesController?.window?.orderFrontRegardless()
     }
     
@@ -116,7 +113,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             return
         }
         aboutController = AboutWindowController(windowNibName: NSNib.Name(rawValue: "AboutWindowController"))
-        NotificationCenter.default.addObserver(self, selector: #selector(someWindowWillClose(notification:)), name: NSWindow.willCloseNotification, object: aboutController?.window)
+        preferencesController?.window?.delegate = self
         preferencesController?.window?.makeKeyAndOrderFront(self)
         preferencesController?.window?.makeMain()
         NSApp.activate(ignoringOtherApps: true)
@@ -134,7 +131,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         if let ctrl = NSStoryboard(name: .preferences, bundle: nil).instantiateInitialController() as? NSWindowController {
             preferencesController = ctrl
-            NotificationCenter.default.addObserver(self, selector: #selector(someWindowWillClose(notification:)), name: NSWindow.willCloseNotification, object: preferencesController?.window)
+            preferencesController?.window?.delegate = self
             preferencesController?.window?.makeKeyAndOrderFront(self)
             preferencesController?.window?.makeMain()
             NSApp.activate(ignoringOtherApps: true)
@@ -150,8 +147,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             return
         }
         runningAppsController = RunningAppWindowController.instantiate()
-//        runningAppsController = LegacyRunningAppsWindowController(windowNibName: NSNib.Name("LegacyRunningAppsWindowController"))
-        NotificationCenter.default.addObserver(self, selector: #selector(someWindowWillClose(notification:)), name: NSWindow.willCloseNotification, object: runningAppsController?.window)
+        runningAppsController?.window?.delegate = self
         runningAppsController?.window?.orderFrontRegardless()
     }
     

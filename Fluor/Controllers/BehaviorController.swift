@@ -28,10 +28,7 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
         currentMode = onLaunchKeyboardMode
         switchMethod = BehaviorManager.default.switchMethod
         
-        self.adaptToAccessibilityTrust()
-        
         self.applyAsObserver()
-        self.adaptToAccessibilityTrust()
         
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(sessionDidBecomeInactive(notification:)), name: NSWorkspace.sessionDidResignActiveNotification, object: nil)
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(sessionDidBecomeActive(notification:)), name: NSWorkspace.sessionDidBecomeActiveNotification, object: nil)
@@ -45,14 +42,10 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     
     /// Register self as an observer for some notifications.
     private func applyAsObserver() {
-        if case .window = switchMethod {
-            startObservingBehaviorDidChange()
-        }
+        if switchMethod == .window { startObservingBehaviorDidChange() }
         startObservingSwitchMethodDidChange()
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(activeAppDidChange(notification:)), name: NSWorkspace.didActivateApplicationNotification, object: nil)
-        if isKeySwitchCapable {
-            globalEventManager = NSEvent.addGlobalMonitorForEvents(matching: NSEvent.EventTypeMask.flagsChanged, handler: manageKeyPress)
-        }
+        self.adaptToAccessibilityTrust()
     }
     
     /// Unregister self as an observer for some notifications.
@@ -226,7 +219,7 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     }
     
     private func manageKeyPress(event: NSEvent) {
-        guard event.modifierFlags == .init(rawValue: 8388864), case .key = switchMethod else { return }
+        guard event.modifierFlags.contains(.function), case .key = switchMethod else { return }
         let mode = currentMode.counterPart()
         BehaviorManager.default.defaultKeyboardMode = mode
         changeKeyboard(mode: mode)
@@ -235,18 +228,23 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     
     func adaptToAccessibilityTrust() {
         if AXIsProcessTrusted() {
-            if self.isKeySwitchCapable != AXIsProcessTrusted() {
-                self.isKeySwitchCapable = true
-            }
+            self.isKeySwitchCapable = true
+            ensureMonitoringFlagKey()
         } else {
-            if self.isKeySwitchCapable != AXIsProcessTrusted() {
-                self.isKeySwitchCapable = false
-                if self.switchMethod == .key, let globalEventManager = globalEventManager {
-                    NSEvent.removeMonitor(globalEventManager)
-                    self.globalEventManager = nil
-                }
-            }
+            self.isKeySwitchCapable = false
+            stopMonitoringFlagKey()
         }
+    }
+    
+    private func ensureMonitoringFlagKey() {
+        guard self.isKeySwitchCapable && self.globalEventManager == nil else { return }
+        self.globalEventManager = NSEvent.addGlobalMonitorForEvents(matching: NSEvent.EventTypeMask.flagsChanged, handler: manageKeyPress)
+    }
+    
+    private func stopMonitoringFlagKey() {
+        guard let gem = self.globalEventManager else { return }
+        NSEvent.removeMonitor(gem)
+        self.globalEventManager = nil
     }
     
     /// Pack app's information in a dictionnary suitable for Notification's use.

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-/// Models a rule in the *Rules* & *Running Apps*  panels' table view.
+/// Models a rule in the *Rules* and *Running Apps* panels' table view.
 class RuleItem: NSObject {
     let id: String
     let url: URL

@@ -35,7 +35,6 @@ class RunningAppsViewController: NSViewController, BehaviorDidChangeHandler, NST
     deinit {
         NSWorkspace.shared.notificationCenter.removeObserver(self)
         self.stopObservingBehaviorDidChange()
-        self.unbind(.init("searchPredicate"))
     }
     
     func behaviorDidChangeForApp(notification: Notification) {

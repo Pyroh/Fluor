@@ -33,12 +33,7 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </searchFieldCell>
                                         <connections>
-                                            <binding destination="W33-Be-Q5Y" name="predicate" keyPath="self.searchPredicate" id="lCb-7e-hfc">
-                                                <dictionary key="options">
-                                                    <string key="NSDisplayName">predicate</string>
-                                                    <string key="NSPredicateFormat">name contains[cd] $value</string>
-                                                </dictionary>
-                                            </binding>
+                                            <action selector="filterRuleList:" target="W33-Be-Q5Y" id="FWS-KX-eFO"/>
                                         </connections>
                                     </searchField>
                                 </toolbarItem>

@@ -50,7 +50,7 @@ final class TableViewContentAnimator<ItemType: AnyObject>: NSObject, NSTableView
     }
     
     private func configureController() {
-        arrayController.addObserver(self, forKeyPath: "arrangedObjects", options: [.new, .old], context: nil)
+        arrayController.addObserver(self, forKeyPath: "arrangedObjects", options: [], context: nil)
         self.shadowObjects = arrayController.arrangedObjects as! [ItemType]
     }
     

@@ -11,9 +11,13 @@ import Cocoa
 final class RulesEditorWindowController: NSWindowController, StoryboardInstantiable {
     static let storyboardName: NSStoryboard.Name = .rulesEditor
     
-    @objc dynamic var searchPredicate: NSPredicate?
-    
-    override func windowDidLoad() {
-        contentViewController?.bind(.init("searchPredicate"), to: self, withKeyPath: "searchPredicate", options: nil)
+    @IBAction func filterRuleList(_ sender: NSSearchField) {
+        let searchString = sender.stringValue
+        if searchString != "" {
+            let predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchString)
+            (self.contentViewController as? RulesEditorViewController)?.searchPredicate = predicate
+        } else {
+            (self.contentViewController as? RulesEditorViewController)?.searchPredicate = nil
+        }
     }
 }
