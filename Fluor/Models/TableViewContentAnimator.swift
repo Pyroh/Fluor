@@ -8,7 +8,7 @@
 
 import Cocoa
 
-final class TableViewContentOrchestrator<ItemType: AnyObject>: NSObject, NSTableViewDataSource {
+final class TableViewContentAnimator<ItemType: AnyObject>: NSObject, NSTableViewDataSource {
     @objc weak dynamic var tableView: NSTableView! {
         didSet {
             tableView.dataSource = self
@@ -50,7 +50,7 @@ final class TableViewContentOrchestrator<ItemType: AnyObject>: NSObject, NSTable
     }
     
     private func configureController() {
-        arrayController.addObserver(self, forKeyPath: "arrangedObjects", options: [], context: nil)
+        arrayController.addObserver(self, forKeyPath: "arrangedObjects", options: [.new, .old], context: nil)
         self.shadowObjects = arrayController.arrangedObjects as! [ItemType]
     }
     

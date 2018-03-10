@@ -19,13 +19,13 @@ class RunningAppsViewController: NSViewController, BehaviorDidChangeHandler, NST
     @objc dynamic var searchPredicate: NSPredicate?
     @objc dynamic var sortDescriptors: [NSSortDescriptor] = [.init(key: "name", ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))]
     
-    private var orchestrator: TableViewContentOrchestrator<RuleItem>!
+    private var tableContentAnimator: TableViewContentAnimator<RuleItem>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.orchestrator = TableViewContentOrchestrator(tableView: tableView, arrayController: itemsArrayController)
-        orchestrator.performUnanimated {
+        self.tableContentAnimator = TableViewContentAnimator(tableView: tableView, arrayController: itemsArrayController)
+        tableContentAnimator.performUnanimated {
             self.reloadData()
         }
         

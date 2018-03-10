@@ -272,7 +272,7 @@
                 <constraint firstAttribute="bottom" secondItem="YVc-AJ-uvN" secondAttribute="bottom" id="rkv-M7-PH2"/>
                 <constraint firstAttribute="trailing" secondItem="YVc-AJ-uvN" secondAttribute="trailing" id="sF6-eF-HLz"/>
             </constraints>
-            <point key="canvasLocation" x="172.5" y="-419"/>
+            <point key="canvasLocation" x="173" y="-416"/>
         </customView>
         <customView wantsLayer="YES" canDrawConcurrently="YES" id="o8r-mD-TI5">
             <rect key="frame" x="0.0" y="0.0" width="252" height="67"/>

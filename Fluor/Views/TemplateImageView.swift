@@ -31,10 +31,6 @@ class TemplateImageView: NSImageView {
         }
     }
     
-    override func acceptsFirstMouse(for event: NSEvent?) -> Bool {
-        return false
-    }
-    
     override var acceptsTouchEvents: Bool {
         get { return false }
         set {} 

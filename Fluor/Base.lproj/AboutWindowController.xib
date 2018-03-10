@@ -18,128 +18,108 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="About Fluor" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="Fluor_AboutWindowAutosaveName" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" texturedBackground="YES" fullSizeContentView="YES"/>
-            <rect key="contentRect" x="196" y="240" width="513" height="236"/>
+            <rect key="contentRect" x="196" y="240" width="256" height="431"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="513" height="236"/>
+                <rect key="frame" x="0.0" y="0.0" width="256" height="385"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <visualEffectView blendingMode="behindWindow" material="titlebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="LGU-6r-gXR">
-                        <rect key="frame" x="0.0" y="0.0" width="513" height="236"/>
-                        <subviews>
-                            <view translatesAutoresizingMaskIntoConstraints="NO" id="qBG-xk-JJ5">
-                                <rect key="frame" x="0.0" y="0.0" width="513" height="236"/>
-                                <subviews>
-                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xbg-hC-lYA">
-                                        <rect key="frame" x="20" y="20" width="196" height="196"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="196" id="Zwl-We-A8j"/>
-                                            <constraint firstAttribute="width" constant="196" id="ylK-7Q-DNa"/>
-                                        </constraints>
-                                        <imageCell key="cell" enabled="NO" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSApplicationIcon" id="kX8-WH-Leu"/>
-                                    </imageView>
-                                    <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gN8-7g-1HQ">
-                                        <rect key="frame" x="256" y="59" width="149" height="118"/>
-                                        <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RzY-by-78w">
-                                                <rect key="frame" x="-2" y="70" width="85" height="48"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Fluor" id="jIL-Yb-iUa">
-                                                    <font key="font" metaFont="systemThin" size="40"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPc-Ph-QEe">
-                                                <rect key="frame" x="-2" y="45" width="50" height="17"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version" id="EpO-Tf-FFt">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wOr-7s-yTr">
-                                                <rect key="frame" x="-2" y="26" width="153" height="11"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Copyright (c) Pyrolyse 2016-2017" id="E7x-MZ-hsf">
-                                                    <font key="font" metaFont="miniSystem"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g8Z-cm-STQ">
-                                                <rect key="frame" x="0.0" y="-1" width="135" height="19"/>
-                                                <buttonCell key="cell" type="roundRect" title="Show release notes..." bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1Gm-xa-Nje">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="cellTitle"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="showReleaseNotes:" target="-2" id="BSi-bm-d2X"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <visibilityPriorities>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                        </visibilityPriorities>
-                                        <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                        </customSpacing>
-                                    </stackView>
-                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="CyH-Lr-UWc">
-                                        <rect key="frame" x="8" y="216" width="14" height="14"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="14" id="Idb-tw-onU"/>
-                                            <constraint firstAttribute="height" constant="14" id="aMm-iZ-NiB"/>
-                                        </constraints>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStopProgressFreestandingTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="E1g-8v-2Gi">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                            <string key="keyEquivalent">w</string>
-                                            <modifierMask key="keyEquivalentModifierMask" command="YES"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="closeWindow:" target="-2" id="aYc-wa-lQG"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="gN8-7g-1HQ" firstAttribute="leading" secondItem="xbg-hC-lYA" secondAttribute="trailing" constant="40" id="1IP-Vz-jeL"/>
-                                    <constraint firstItem="CyH-Lr-UWc" firstAttribute="leading" secondItem="qBG-xk-JJ5" secondAttribute="leading" constant="8" id="1tZ-Up-Qaj"/>
-                                    <constraint firstAttribute="bottom" secondItem="xbg-hC-lYA" secondAttribute="bottom" constant="20" id="6kP-LV-vLF"/>
-                                    <constraint firstItem="xbg-hC-lYA" firstAttribute="leading" secondItem="qBG-xk-JJ5" secondAttribute="leading" constant="20" id="AM5-1L-pgR"/>
-                                    <constraint firstItem="gN8-7g-1HQ" firstAttribute="centerY" secondItem="qBG-xk-JJ5" secondAttribute="centerY" id="Tcz-aM-x6L"/>
-                                    <constraint firstItem="xbg-hC-lYA" firstAttribute="top" secondItem="qBG-xk-JJ5" secondAttribute="top" constant="20" id="YqZ-K1-DlJ"/>
-                                    <constraint firstItem="CyH-Lr-UWc" firstAttribute="top" secondItem="qBG-xk-JJ5" secondAttribute="top" constant="6" id="zZH-rb-xbS"/>
-                                </constraints>
-                            </view>
-                        </subviews>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xbg-hC-lYA">
+                        <rect key="frame" x="45" y="174" width="166" height="166"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="qBG-xk-JJ5" secondAttribute="bottom" id="69X-IF-DpB"/>
-                            <constraint firstItem="qBG-xk-JJ5" firstAttribute="leading" secondItem="LGU-6r-gXR" secondAttribute="leading" id="ETs-xL-usR"/>
-                            <constraint firstItem="qBG-xk-JJ5" firstAttribute="top" secondItem="LGU-6r-gXR" secondAttribute="top" id="YNW-tb-2vS"/>
-                            <constraint firstAttribute="trailing" secondItem="qBG-xk-JJ5" secondAttribute="trailing" id="zjs-Vs-erJ"/>
+                            <constraint firstAttribute="height" constant="166" id="Zwl-We-A8j"/>
+                            <constraint firstAttribute="width" constant="166" id="ylK-7Q-DNa"/>
                         </constraints>
-                    </visualEffectView>
+                        <imageCell key="cell" enabled="NO" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSApplicationIcon" id="kX8-WH-Leu"/>
+                    </imageView>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="CyH-Lr-UWc">
+                        <rect key="frame" x="8" y="363" width="14" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="14" id="Idb-tw-onU"/>
+                            <constraint firstAttribute="height" constant="14" id="aMm-iZ-NiB"/>
+                        </constraints>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStopProgressFreestandingTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="E1g-8v-2Gi">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent">w</string>
+                            <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="closeWindow:" target="-2" id="aYc-wa-lQG"/>
+                        </connections>
+                    </button>
+                    <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gN8-7g-1HQ">
+                        <rect key="frame" x="45" y="40" width="166" height="118"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RzY-by-78w">
+                                <rect key="frame" x="41" y="70" width="85" height="48"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Fluor" id="jIL-Yb-iUa">
+                                    <font key="font" metaFont="systemThin" size="40"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPc-Ph-QEe">
+                                <rect key="frame" x="58" y="45" width="50" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version" id="EpO-Tf-FFt">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wOr-7s-yTr">
+                                <rect key="frame" x="6" y="26" width="154" height="11"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Copyright (c) Pyrolyse 2016-2018" id="E7x-MZ-hsf">
+                                    <font key="font" metaFont="miniSystem"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g8Z-cm-STQ">
+                                <rect key="frame" x="16" y="-1" width="135" height="19"/>
+                                <buttonCell key="cell" type="roundRect" title="Show release notes..." bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1Gm-xa-Nje">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="showReleaseNotes:" target="-2" id="BSi-bm-d2X"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <visibilityPriorities>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                        </visibilityPriorities>
+                        <customSpacing>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                        </customSpacing>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="LGU-6r-gXR" secondAttribute="bottom" id="NgJ-lf-Fdb"/>
-                    <constraint firstItem="LGU-6r-gXR" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="S57-zw-Z8s"/>
-                    <constraint firstAttribute="trailing" secondItem="LGU-6r-gXR" secondAttribute="trailing" id="dTB-G3-Cdj"/>
-                    <constraint firstItem="LGU-6r-gXR" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="gUb-0G-xt0"/>
+                    <constraint firstItem="gN8-7g-1HQ" firstAttribute="top" secondItem="xbg-hC-lYA" secondAttribute="bottom" constant="16" id="1xa-ib-y2g"/>
+                    <constraint firstItem="gN8-7g-1HQ" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="2Aa-cm-nTY"/>
+                    <constraint firstAttribute="trailing" secondItem="xbg-hC-lYA" secondAttribute="trailing" constant="45" id="3G9-NI-fgO"/>
+                    <constraint firstItem="CyH-Lr-UWc" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="8" id="3dd-iu-DcK"/>
+                    <constraint firstAttribute="bottom" secondItem="gN8-7g-1HQ" secondAttribute="bottom" constant="40" id="Hvl-AQ-SGk"/>
+                    <constraint firstItem="xbg-hC-lYA" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="45" id="Kap-yR-eeY"/>
+                    <constraint firstItem="xbg-hC-lYA" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="45" id="KpY-cI-fUA"/>
+                    <constraint firstItem="gN8-7g-1HQ" firstAttribute="width" secondItem="xbg-hC-lYA" secondAttribute="width" id="dvB-9i-Tzv"/>
+                    <constraint firstItem="CyH-Lr-UWc" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="8" id="l6T-RU-Pep"/>
                 </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="96.5" y="63"/>
+            <point key="canvasLocation" x="47" y="209"/>
         </window>
     </objects>
     <resources>
         <image name="NSApplicationIcon" width="128" height="128"/>
-        <image name="NSStopProgressFreestandingTemplate" width="11" height="11"/>
+        <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
     </resources>
 </document>

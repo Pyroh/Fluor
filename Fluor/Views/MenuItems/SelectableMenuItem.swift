@@ -8,11 +8,9 @@
 
 import Cocoa
 
-extension NSView {
-    var nameOfVibrantAncestor: NSAppearance.Name? {
-        get {
-            return self.appearance?.allowsVibrancy == true ? self.appearance?.name : superview?.nameOfVibrantAncestor
-        }
+class FirstEventAccepterView: NSView {
+    override func acceptsFirstMouse(for event: NSEvent?) -> Bool {
+        return true
     }
 }
 
@@ -135,17 +133,18 @@ class SelectableItemViewController: NSViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func awakeFromNib() {
+        self.view.nextResponder = self
+    }
+    
     override func viewDidLayout() {
-        if let ta = trackingArea {
-            view.removeTrackingArea(ta)
-        }
-        self.trackingArea = NSTrackingArea(rect: view.frame, options: [.mouseEnteredAndExited, .enabledDuringMouseDrag, .activeAlways], owner: self, userInfo: nil)
-        view.addTrackingArea(trackingArea!)
+        self.updateTrackingArea()
         self.itemAppearance = Appearance(from: view.nameOfVibrantAncestor)
     }
     
     override func mouseUp(with event: NSEvent) {
         menuItem.clicked()
+        menuItem.menu?.cancelTracking()
     }
     
     override func mouseEntered(with event: NSEvent) {
@@ -154,6 +153,14 @@ class SelectableItemViewController: NSViewController {
     
     override func mouseExited(with event: NSEvent) {
         self.isHighlighted = false
+    }
+    
+    private func updateTrackingArea() {
+        if let ta = trackingArea {
+            view.removeTrackingArea(ta)
+        }
+        self.trackingArea = NSTrackingArea(rect: view.frame, options: [.mouseEnteredAndExited, .enabledDuringMouseDrag, .activeAlways], owner: self, userInfo: nil)
+        view.addTrackingArea(trackingArea!)
     }
 }
 
@@ -213,7 +220,7 @@ class SelectableMenuItem: NSMenuItem {
         }
         
         viewController?.isHighlighted = false
-        menu?.cancelTracking()
+//        menu?.cancelTracking()
     }
     
     private func nextStateValue() -> NSControl.StateValue {

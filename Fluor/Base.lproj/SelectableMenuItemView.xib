@@ -23,7 +23,7 @@
             <subviews>
                 <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="pDK-ZQ-rli">
                     <rect key="frame" x="0.0" y="0.0" width="162" height="21"/>
-                    <view key="contentView" id="W7Y-Ds-qq0">
+                    <view key="contentView" id="W7Y-Ds-qq0" customClass="FirstEventAccepterView" customModule="Fluor" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="162" height="21"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
