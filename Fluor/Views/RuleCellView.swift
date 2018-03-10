@@ -24,8 +24,4 @@ class RuleCellView: NSTableCellView {
         guard let objectValue = self.objectValue as? RuleItem else { return }
         objectValue.postChangeNotification()
     }
-    
-    override var description: String {
-        return "\(super.description)\n\(self.self.textField?.stringValue)"
-    }
 }

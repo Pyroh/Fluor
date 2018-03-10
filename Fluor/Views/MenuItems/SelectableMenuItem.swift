@@ -8,12 +8,6 @@
 
 import Cocoa
 
-class FirstEventAccepterView: NSView {
-    override func acceptsFirstMouse(for event: NSEvent?) -> Bool {
-        return true
-    }
-}
-
 class SelectableItemViewController: NSViewController {
     private enum Appearance {
         case aqua

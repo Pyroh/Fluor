@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,7 +22,7 @@
             <subviews>
                 <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="pDK-ZQ-rli">
                     <rect key="frame" x="0.0" y="0.0" width="162" height="21"/>
-                    <view key="contentView" id="W7Y-Ds-qq0" customClass="FirstEventAccepterView" customModule="Fluor" customModuleProvider="target">
+                    <view key="contentView" id="W7Y-Ds-qq0" customClass="FirstMouseEventAccepterView" customModule="Fluor" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="162" height="21"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>

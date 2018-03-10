@@ -8,6 +8,8 @@
 
 import Cocoa
 
+
+// FIXME: This whole thing is a mess. Must be redone when you got time.
 @IBDesignable
 class TemplateImageView: NSImageView {
     private var bakedImage: NSImage?

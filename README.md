@@ -2,13 +2,13 @@
 
 
 [![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
-![version](https://img.shields.io/badge/macOS-10.10+-green.svg?style=flat)
+![version](https://img.shields.io/badge/macOS-10.11+-green.svg?style=flat)
 [![License](https://img.shields.io/badge/license-MIT-71787A.svg)](https://tldrlegal.com/license/mit-license)
 
 
 ![](https://github.com/Pyroh/Fluor/blob/master/ressources/banner.png?raw=true)
 
-> Want to know **Fluor** development is going ? Follow [**@Pyroh13453**](https://twitter.com/pyroh13453).
+> Want to know how **Fluor** development is going ? Follow [**@Pyroh13453**](https://twitter.com/pyroh13453).
 
 # What is Fluor ?
 **Fluor** is a tool that allows you to automatically change the behavior of the keyboard's fn keys depending on the active application. It's that simple.
