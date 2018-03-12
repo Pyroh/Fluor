@@ -238,7 +238,7 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     
     private func ensureMonitoringFlagKey() {
         guard self.isKeySwitchCapable && self.globalEventManager == nil else { return }
-        self.globalEventManager = NSEvent.addGlobalMonitorForEvents(matching: NSEvent.EventTypeMask.flagsChanged, handler: manageKeyPress)
+        self.globalEventManager = NSEvent.addGlobalMonitorForEvents(matching: .flagsChanged, handler: manageKeyPress)
     }
     
     private func stopMonitoringFlagKey() {

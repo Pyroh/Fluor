@@ -9,20 +9,8 @@
 import Cocoa
 
 final class TableViewContentAnimator<ItemType: AnyObject>: NSObject, NSTableViewDataSource {
-    @objc weak dynamic var tableView: NSTableView! {
-        didSet {
-            tableView.dataSource = self
-        }
-    }
-    @objc weak dynamic var arrayController: NSArrayController! {
-        willSet {
-            guard newValue.arrangedObjects is [ItemType] else { fatalError() }
-            arrayController.removeObserver(self, forKeyPath: "arrangedObjects")
-        }
-        didSet {
-            self.configureController()
-        }
-    }
+    @objc weak dynamic var tableView: NSTableView!
+    @objc weak dynamic var arrayController: NSArrayController!
     
     var tableInsertAnimation: NSTableView.AnimationOptions
     var tableRemoveAnimation: NSTableView.AnimationOptions
