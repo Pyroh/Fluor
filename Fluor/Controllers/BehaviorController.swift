@@ -16,6 +16,9 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     
     @objc dynamic private var isKeySwitchCapable: Bool = false
     private var globalEventManager: Any?
+    private var fnDownTimestamp: TimeInterval? = nil
+    private var shouldTreatFNKey: Bool = false
+    private var fnKeyMaximumDelay: Double = BehaviorManager.default.fnKeyMaximumDelay()
     
     private var currentMode: KeyboardMode = .error
     private var onLaunchKeyboardMode: KeyboardMode = .error
@@ -219,7 +222,33 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     }
     
     private func manageKeyPress(event: NSEvent) {
-        guard event.modifierFlags.contains(.function), case .key = switchMethod else { return }
+        guard case .key = switchMethod else { return }
+        if event.type == .flagsChanged {
+            if event.modifierFlags.contains(.function) {
+                if event.keyCode == 63 {
+                    self.fnDownTimestamp = event.timestamp
+                    self.shouldTreatFNKey = true
+                } else {
+                    self.fnDownTimestamp = nil
+                    self.shouldTreatFNKey = false
+                }
+            } else {
+                if self.shouldTreatFNKey, let timestamp = self.fnDownTimestamp {
+                    let delta = (event.timestamp - timestamp) * 1000
+                    print("\(delta)ms")
+                    self.shouldTreatFNKey = false
+                    if event.keyCode == 63, delta <= self.fnKeyMaximumDelay {
+                        self.fnKeyPressed()
+                    }
+                }
+            }
+        } else if self.shouldTreatFNKey {
+            self.shouldTreatFNKey = false
+            self.fnDownTimestamp = nil
+        }
+    }
+    
+    private func fnKeyPressed() {
         let mode = currentMode.counterPart()
         BehaviorManager.default.defaultKeyboardMode = mode
         changeKeyboard(mode: mode)
@@ -238,7 +267,7 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     
     private func ensureMonitoringFlagKey() {
         guard self.isKeySwitchCapable && self.globalEventManager == nil else { return }
-        self.globalEventManager = NSEvent.addGlobalMonitorForEvents(matching: .flagsChanged, handler: manageKeyPress)
+        self.globalEventManager = NSEvent.addGlobalMonitorForEvents(matching: [.flagsChanged, .keyDown], handler: manageKeyPress)
     }
     
     private func stopMonitoringFlagKey() {

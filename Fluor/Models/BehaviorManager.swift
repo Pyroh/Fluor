@@ -23,6 +23,7 @@ class BehaviorManager {
         static let defaultSwitchMethod = "DefaultSwitchMethod"
         static let useLightIcon = "UseLightIcon"
         static let showAllRunningProcesses = "ShowAllProcesses"
+        static let fnKeyMaximumDelay = "FNKeyReleaseMaximumDelay"
     }
     
     
@@ -194,9 +195,13 @@ class BehaviorManager {
         defaults.set(true, forKey: DefaultsKeys.hasAlreadyAnsweredAccessibility)
     }
     
+    func fnKeyMaximumDelay() -> TimeInterval {
+        return defaults.double(forKey: DefaultsKeys.fnKeyMaximumDelay)
+    }
+    
     /// Load the defaults.
     private func loadPrefs() {
-        let factoryDefaults: [String: Any] = [DefaultsKeys.defaultMode: KeyboardMode.apple.rawValue, DefaultsKeys.appRules: [Any](), DefaultsKeys.resetStateOnQuit: false, DefaultsKeys.sameStateAsBeforeStartup: true, DefaultsKeys.onQuitState: KeyboardMode.apple.rawValue, DefaultsKeys.onLaunchDisabled: false, DefaultsKeys.hasAlreadyAnsweredAccessibility: false, DefaultsKeys.defaultSwitchMethod: SwitchMethod.window.rawValue, DefaultsKeys.useLightIcon: false, DefaultsKeys.showAllRunningProcesses: false]
+        let factoryDefaults: [String: Any] = [DefaultsKeys.defaultMode: KeyboardMode.apple.rawValue, DefaultsKeys.appRules: [Any](), DefaultsKeys.resetStateOnQuit: false, DefaultsKeys.sameStateAsBeforeStartup: true, DefaultsKeys.onQuitState: KeyboardMode.apple.rawValue, DefaultsKeys.onLaunchDisabled: false, DefaultsKeys.hasAlreadyAnsweredAccessibility: false, DefaultsKeys.defaultSwitchMethod: SwitchMethod.window.rawValue, DefaultsKeys.useLightIcon: false, DefaultsKeys.showAllRunningProcesses: false, DefaultsKeys.fnKeyMaximumDelay: 280.0]
         defaults.register(defaults: factoryDefaults)
         
         guard let arr = defaults.array(forKey: DefaultsKeys.appRules) else { return }
