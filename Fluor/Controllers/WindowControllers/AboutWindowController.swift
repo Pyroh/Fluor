@@ -18,6 +18,8 @@ class AboutWindowController: NSWindowController {
     
         let bundleVersion = getBundleVersion()
         versionLabel.stringValue = "Version \(bundleVersion.version) build \(bundleVersion.build)"
+        
+        window?.backgroundColor = .white
     }
     
     private func getBundleVersion() -> (version: String, build: String) {

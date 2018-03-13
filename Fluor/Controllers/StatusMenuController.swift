@@ -107,15 +107,15 @@ class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate {
     /// - parameter sender: The object that sent the action.
     @IBAction func showAbout(_ sender: AnyObject) {
         guard aboutController == nil else {
-            preferencesController?.window?.makeKeyAndOrderFront(self)
-            preferencesController?.window?.makeMain()
+            aboutController?.window?.makeKeyAndOrderFront(self)
+            aboutController?.window?.makeMain()
             NSApp.activate(ignoringOtherApps: true)
             return
         }
         aboutController = AboutWindowController(windowNibName: NSNib.Name(rawValue: "AboutWindowController"))
-        preferencesController?.window?.delegate = self
-        preferencesController?.window?.makeKeyAndOrderFront(self)
-        preferencesController?.window?.makeMain()
+        aboutController?.window?.delegate = self
+        aboutController?.window?.makeKeyAndOrderFront(self)
+        aboutController?.window?.makeMain()
         NSApp.activate(ignoringOtherApps: true)
     }
     

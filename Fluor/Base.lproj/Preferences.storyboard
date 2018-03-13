@@ -35,7 +35,7 @@
         <!--Preferences-->
         <scene sceneID="jca-4Z-HAq">
             <objects>
-                <tabViewController title="Preferences" tabStyle="toolbar" id="glG-bk-x2Q" sceneMemberID="viewController">
+                <tabViewController title="Preferences" tabStyle="toolbar" id="glG-bk-x2Q" customClass="PreferencesTabViewController" customModule="Fluor" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="General" identifier="general_tab" image="NSPreferencesGeneral" id="Hob-Dv-Dm7"/>
                         <tabViewItem label="Advanced" identifier="advanced_tab" image="NSAdvanced" id="18q-Zg-Tl1"/>
