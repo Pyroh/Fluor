@@ -214,7 +214,6 @@ class SelectableMenuItem: NSMenuItem {
         }
         
         viewController?.isHighlighted = false
-//        menu?.cancelTracking()
     }
     
     private func nextStateValue() -> NSControl.StateValue {

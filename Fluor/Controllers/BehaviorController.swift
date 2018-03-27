@@ -17,7 +17,7 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     @objc dynamic private var isKeySwitchCapable: Bool = false
     private var globalEventManager: Any?
     private var fnDownTimestamp: TimeInterval? = nil
-    private var shouldTreatFNKey: Bool = false
+    private var shouldHandleFNKey: Bool = false
     private var fnKeyMaximumDelay: Double = BehaviorManager.default.fnKeyMaximumDelay()
     
     private var currentMode: KeyboardMode = .error
@@ -26,15 +26,17 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     private var currentBehavior: AppBehavior = .inferred
     private var switchMethod: SwitchMethod = .window
     
-    func setup() {
+    func setupController() {
         onLaunchKeyboardMode = BehaviorManager.default.getActualStateAccordingToPreferences()
         currentMode = onLaunchKeyboardMode
         switchMethod = BehaviorManager.default.switchMethod
         
         self.applyAsObserver()
         
-        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(sessionDidBecomeInactive(notification:)), name: NSWorkspace.sessionDidResignActiveNotification, object: nil)
-        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(sessionDidBecomeActive(notification:)), name: NSWorkspace.sessionDidBecomeActiveNotification, object: nil)
+        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(appMustSleep(notification:)), name: NSWorkspace.sessionDidResignActiveNotification, object: nil)
+        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(appMustSleep(notification:)), name: NSWorkspace.willSleepNotification, object: nil)
+        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(appMustWake(notification:)), name: NSWorkspace.sessionDidBecomeActiveNotification, object: nil)
+        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(appMustWake(notification:)), name: NSWorkspace.didWakeNotification, object: nil)
         
         guard !BehaviorManager.default.isDisabled() else { return }
         if let currentApp = NSWorkspace.shared.frontmostApplication, let id = currentApp.bundleIdentifier {
@@ -59,9 +61,7 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
         stopObservingSwitchMethodDidChange()
         
         NSWorkspace.shared.notificationCenter.removeObserver(self, name: NSWorkspace.didActivateApplicationNotification, object: nil)
-        if isKeySwitchCapable, let globalEventManager = globalEventManager {
-            NSEvent.removeMonitor(globalEventManager)
-        }
+        self.stopMonitoringFlagKey()
     }
     
     func setApplication(state enabled: Bool) {
@@ -137,7 +137,7 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
         switch method {
         case .window:
             startObservingBehaviorDidChange()
-            adaptModeForApp(withId: currentID)
+            adaptModeForApp(withId: self.currentID)
         case .key:
             stopObservingBehaviorDidChange()
             currentMode = BehaviorManager.default.defaultKeyboardMode
@@ -146,35 +146,35 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     }
     
     func defaultModeController(_ controller: DefaultModeViewController, didChangeModeTo mode: KeyboardMode) {
-        switch switchMethod {
+        switch self.switchMethod {
         case .window:
-            adaptModeForApp(withId: currentID)
+            self.adaptModeForApp(withId: self.currentID)
         case .key:
-            changeKeyboard(mode: mode)
-            currentMode = mode
+            self.changeKeyboard(mode: mode)
+            self.currentMode = mode
         }
     }
     
     /// Disable this session's Fluor instance in order to prevent it from messing when potential other sessions' ones.
     ///
     /// - Parameter notification: The notification.
-    @objc private func sessionDidBecomeInactive(notification: Notification) {
+    @objc private func appMustSleep(notification: Notification) {
         switch onLaunchKeyboardMode {
         case .apple:
             setFnKeysToAppleMode()
         default:
             setFnKeysToOtherMode()
         }
-        resignAsObserver()
+        self.resignAsObserver()
     }
     
     
     /// Reenable this session's Fluor instance.
     ///
     /// - Parameter notification: The notification.
-    @objc private func sessionDidBecomeActive(notification: Notification) {
-        changeKeyboard(mode: currentMode)
-        applyAsObserver()
+    @objc private func appMustWake(notification: Notification) {
+        self.changeKeyboard(mode: currentMode)
+        self.applyAsObserver()
     }
     
     /// Set function key behavior in the current running app view.
@@ -198,12 +198,12 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     ///
     /// - parameter id: The app's bundle id.
     private func adaptModeForApp(withId id: String) {
-        guard case .window = switchMethod else { return }
+        guard case .window = self.switchMethod else { return }
         let behavior = BehaviorManager.default.behaviorForApp(id: id)
         let mode = BehaviorManager.default.keyboardStateFor(behavior: behavior)
         guard mode != currentMode else { return }
-        currentMode = mode
-        changeKeyboard(mode: mode)
+        self.currentMode = mode
+        self.changeKeyboard(mode: mode)
 }
     
     private func changeKeyboard(mode: KeyboardMode) {
@@ -227,23 +227,23 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
             if event.modifierFlags.contains(.function) {
                 if event.keyCode == 63 {
                     self.fnDownTimestamp = event.timestamp
-                    self.shouldTreatFNKey = true
+                    self.shouldHandleFNKey = true
                 } else {
                     self.fnDownTimestamp = nil
-                    self.shouldTreatFNKey = false
+                    self.shouldHandleFNKey = false
                 }
             } else {
-                if self.shouldTreatFNKey, let timestamp = self.fnDownTimestamp {
+                if self.shouldHandleFNKey, let timestamp = self.fnDownTimestamp {
                     let delta = (event.timestamp - timestamp) * 1000
-                    print("\(delta)ms")
-                    self.shouldTreatFNKey = false
+//                    print("\(delta)ms")
+                    self.shouldHandleFNKey = false
                     if event.keyCode == 63, delta <= self.fnKeyMaximumDelay {
                         self.fnKeyPressed()
                     }
                 }
             }
-        } else if self.shouldTreatFNKey {
-            self.shouldTreatFNKey = false
+        } else if self.shouldHandleFNKey {
+            self.shouldHandleFNKey = false
             self.fnDownTimestamp = nil
         }
     }
@@ -273,7 +273,9 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     private func stopMonitoringFlagKey() {
         guard let gem = self.globalEventManager else { return }
         NSEvent.removeMonitor(gem)
-        self.globalEventManager = nil
+        if self.globalEventManager != nil {
+            self.globalEventManager = nil
+        }
     }
     
     /// Pack app's information in a dictionnary suitable for Notification's use.

@@ -17,9 +17,17 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0beta</string>
+	<string>2.0</string>
 	<key>CFBundleVersion</key>
-	<string>1167</string>
+	<string>1210</string>
+	<key>FLGithubURL</key>
+	<string>https://github.com/Pyroh/Fluor</string>
+	<key>FLPyrolyseURL</key>
+	<string>https://pyrolyse.it</string>
+	<key>FLSupportURL</key>
+	<string>https://pyrolyse.it</string>
+	<key>FLTwitterURL</key>
+	<string>https://twitter.com/pyroh13453</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.productivity</string>
 	<key>LSMinimumSystemVersion</key>
@@ -32,5 +40,7 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSSupportsAutomaticGraphicsSwitching</key>
+	<false/>
 </dict>
 </plist>

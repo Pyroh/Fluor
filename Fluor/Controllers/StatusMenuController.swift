@@ -16,20 +16,20 @@ class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate {
     
     private var rulesController: RulesEditorWindowController?
     private var aboutController: AboutWindowController?
-    private var preferencesController: NSWindowController?
+    private var preferencesController: PreferencesWindowController?
     private var runningAppsController: RunningAppWindowController?
     
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
     override func awakeFromNib() {
         setupStatusMenu()
-        menuItemsController.setup()
-        behaviorController.setup()
-        applyAsObserver()
+        menuItemsController.setupController()
+        behaviorController.setupController()
+        startObservingUsesLightIcon()
     }
     
     deinit {
-        resignAsObserver()
+        stopObservingUsesLightIcon()
     }
     
     func windowWillClose(_ notification: Notification) {
@@ -66,20 +66,23 @@ class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate {
     
     /// Adapt status bar icon from user's settings.
     private func adaptStatusMenuIcon() {
-        if BehaviorManager.default.useLightIcon() {
-            statusItem.image = BehaviorManager.default.isDisabled() ? #imageLiteral(resourceName: "LighIconDisabled") : #imageLiteral(resourceName: "AppleMode")
-        } else {
-            statusItem.image = BehaviorManager.default.isDisabled() ? #imageLiteral(resourceName: "IconDisabled") : #imageLiteral(resourceName: "IconAppleMode")
+        let disabledApp = BehaviorManager.default.isDisabled()
+        let usesLightIcon = BehaviorManager.default.useLightIcon()
+        switch (disabledApp, usesLightIcon) {
+        case (false, false): statusItem.image = #imageLiteral(resourceName: "IconAppleMode")
+        case (false, true): statusItem.image = #imageLiteral(resourceName: "AppleMode")
+        case (true, false): statusItem.image = #imageLiteral(resourceName: "IconDisabled")
+        case (true, true): statusItem.image = #imageLiteral(resourceName: "LighIconDisabled.pdf")
         }
     }
     
     /// Register self as an observer for some notifications.
-    private func applyAsObserver() {
+    private func startObservingUsesLightIcon() {
         UserDefaults.standard.addObserver(self, forKeyPath: BehaviorManager.DefaultsKeys.useLightIcon, options: [], context: nil)
     }
     
     /// Unregister self as an observer for some notifications.
-    private func resignAsObserver() {
+    private func stopObservingUsesLightIcon() {
         UserDefaults.standard.removeObserver(self, forKeyPath: BehaviorManager.DefaultsKeys.useLightIcon, context: nil)
     }
     
@@ -112,7 +115,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate {
             NSApp.activate(ignoringOtherApps: true)
             return
         }
-        aboutController = AboutWindowController(windowNibName: NSNib.Name(rawValue: "AboutWindowController"))
+        aboutController = AboutWindowController.instantiate()
         aboutController?.window?.delegate = self
         aboutController?.window?.makeKeyAndOrderFront(self)
         aboutController?.window?.makeMain()
@@ -129,13 +132,11 @@ class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate {
             NSApp.activate(ignoringOtherApps: true)
             return
         }
-        if let ctrl = NSStoryboard(name: .preferences, bundle: nil).instantiateInitialController() as? NSWindowController {
-            preferencesController = ctrl
-            preferencesController?.window?.delegate = self
-            preferencesController?.window?.makeKeyAndOrderFront(self)
-            preferencesController?.window?.makeMain()
-            NSApp.activate(ignoringOtherApps: true)
-        }
+        self.preferencesController = PreferencesWindowController.instantiate()
+        preferencesController?.window?.delegate = self
+        preferencesController?.window?.makeKeyAndOrderFront(self)
+        preferencesController?.window?.makeMain()
+        NSApp.activate(ignoringOtherApps: true)
     }
     
     /// Show the *Running Applications* window.
@@ -157,7 +158,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate {
     ///
     /// - Parameter sender: The object that sent the action.
     @IBAction func toggleApplicationState(_ sender: NSMenuItem) {
-        let enabled = sender.state == .on
+        let enabled = sender.state == .off
         if enabled {
             statusItem.image = BehaviorManager.default.useLightIcon() ? #imageLiteral(resourceName: "AppleMode") : #imageLiteral(resourceName: "IconAppleMode")
         } else {
@@ -170,7 +171,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate {
     ///
     /// - parameter sender: The object that sent the action.
     @IBAction func quitApplication(_ sender: AnyObject) {
-        resignAsObserver()
+        stopObservingUsesLightIcon()
         NSWorkspace.shared.notificationCenter.removeObserver(self)
         behaviorController.performTerminationCleaning()
         NSApp.terminate(self)

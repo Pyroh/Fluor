@@ -8,7 +8,9 @@
 
 import Cocoa
 
-class PreferencesWindowController: NSWindowController {
+final class PreferencesWindowController: NSWindowController, StoryboardInstantiable {
+    static var storyboardName: NSStoryboard.Name = .preferences
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         

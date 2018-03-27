@@ -23,7 +23,7 @@ class MenuItemsController: NSObject, SwitchMethodDidChangeHandler {
         stopObservingSwitchMethodDidChange()
     }
     
-    func setup() {
+    func setupController() {
         let switchingPlaceHolder = menu.item(withTag: 12)
         let statePlaceHolder = menu.item(withTag: 11)
         let currentPlaceHolder = menu.item(withTag: 10)
