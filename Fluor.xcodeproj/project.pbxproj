@@ -22,6 +22,13 @@
 		3F4ABD1020193B8D0075B178 /* RulesEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4ABD0F20193B8D0075B178 /* RulesEditorViewController.swift */; };
 		3F5F57582016249E002AF4C1 /* RunningAppWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5F57572016249E002AF4C1 /* RunningAppWindowController.swift */; };
 		3F697A0C1F88D47C007BA558 /* MoverEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F697A0B1F88D47C007BA558 /* MoverEffectView.swift */; };
+		3F6D52C32058737F00517E57 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6D52C22058737F00517E57 /* HockeySDK.framework */; };
+		3F6D52C4205875BB00517E57 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6D52C22058737F00517E57 /* HockeySDK.framework */; };
+		3F6D52C5205875BB00517E57 /* HockeySDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6D52C22058737F00517E57 /* HockeySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3F6D52C7205BC82B00517E57 /* KeepSafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D52C6205BC82B00517E57 /* KeepSafe.swift */; };
+		3F6D52CA2069659800517E57 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F6D52C82069659800517E57 /* About.storyboard */; };
+		3F6D52CC2069667300517E57 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D52CB2069667300517E57 /* AboutViewController.swift */; };
+		3F6D52CE20696E2100517E57 /* LinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D52CD20696E2100517E57 /* LinkButton.swift */; };
 		3F719FDE1FE798600083E7F7 /* SwitchMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F719FDD1FE798600083E7F7 /* SwitchMenuItem.swift */; };
 		3F7291EF2025BD22005C9B70 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7291ED2025BD1E005C9B70 /* Sparkle.framework */; };
 		3F7291F02025BD22005C9B70 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7291ED2025BD1E005C9B70 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -49,7 +56,6 @@
 		3FE784E12053D455007F6200 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3FE784E02053D455007F6200 /* README.md */; };
 		3FE7E0E01D7CA14600DC754D /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE7E0DF1D7CA14600DC754D /* LaunchAtLoginController.m */; };
 		3FE7E0E31D7CBE1700DC754D /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE7E0E11D7CBE1700DC754D /* AboutWindowController.swift */; };
-		3FE7E0E41D7CBE1700DC754D /* AboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FE7E0E21D7CBE1700DC754D /* AboutWindowController.xib */; };
 		3FE7E0EA1D7CC01B00DC754D /* RulesEditorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE7E0E81D7CC01B00DC754D /* RulesEditorWindowController.swift */; };
 		3FF2410B1EDB4E0000E524CD /* SwitchMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF2410A1EDB4E0000E524CD /* SwitchMethodViewController.swift */; };
 /* End PBXBuildFile section */
@@ -61,6 +67,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				3F6D52C5205875BB00517E57 /* HockeySDK.framework in Embed Frameworks */,
 				3F7291F02025BD22005C9B70 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -85,6 +92,11 @@
 		3F4ABD0F20193B8D0075B178 /* RulesEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesEditorViewController.swift; sourceTree = "<group>"; };
 		3F5F57572016249E002AF4C1 /* RunningAppWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningAppWindowController.swift; sourceTree = "<group>"; };
 		3F697A0B1F88D47C007BA558 /* MoverEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoverEffectView.swift; sourceTree = "<group>"; };
+		3F6D52C22058737F00517E57 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "HockeySDK-Mac/HockeySDK.framework"; sourceTree = "<group>"; };
+		3F6D52C6205BC82B00517E57 /* KeepSafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepSafe.swift; sourceTree = "<group>"; };
+		3F6D52C92069659800517E57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/About.storyboard; sourceTree = "<group>"; };
+		3F6D52CB2069667300517E57 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		3F6D52CD20696E2100517E57 /* LinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkButton.swift; sourceTree = "<group>"; };
 		3F719FDD1FE798600083E7F7 /* SwitchMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchMenuItem.swift; sourceTree = "<group>"; };
 		3F7291ED2025BD1E005C9B70 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Fluor/Sparkle.framework; sourceTree = "<group>"; };
 		3F7291F12028BC6B005C9B70 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
@@ -115,7 +127,6 @@
 		3FE7E0DE1D7CA14600DC754D /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
 		3FE7E0DF1D7CA14600DC754D /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
 		3FE7E0E11D7CBE1700DC754D /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
-		3FE7E0E21D7CBE1700DC754D /* AboutWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutWindowController.xib; path = Base.lproj/AboutWindowController.xib; sourceTree = "<group>"; };
 		3FE7E0E81D7CC01B00DC754D /* RulesEditorWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulesEditorWindowController.swift; sourceTree = "<group>"; };
 		3FF2410A1EDB4E0000E524CD /* SwitchMethodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchMethodViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,7 +136,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F6D52C32058737F00517E57 /* HockeySDK.framework in Frameworks */,
 				3F7291EF2025BD22005C9B70 /* Sparkle.framework in Frameworks */,
+				3F6D52C4205875BB00517E57 /* HockeySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,11 +183,11 @@
 		3F4C5CAC20194334006CC84A /* WindowControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3FE7E0E11D7CBE1700DC754D /* AboutWindowController.swift */,
 				3F34332F1E50C2E0009F4D86 /* ReleaseNotesWindowController.swift */,
 				3F5F57572016249E002AF4C1 /* RunningAppWindowController.swift */,
 				3FE7E0E81D7CC01B00DC754D /* RulesEditorWindowController.swift */,
 				3F7291F12028BC6B005C9B70 /* PreferencesWindowController.swift */,
+				3FE7E0E11D7CBE1700DC754D /* AboutWindowController.swift */,
 			);
 			path = WindowControllers;
 			sourceTree = "<group>";
@@ -188,6 +201,7 @@
 				3F8879921FBF5F2A005C28E6 /* PreferencesTabViewController.swift */,
 				3F0A2A2F2014BA11009F9610 /* RunningAppsViewController.swift */,
 				3F4ABD0F20193B8D0075B178 /* RulesEditorViewController.swift */,
+				3F6D52CB2069667300517E57 /* AboutViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -200,6 +214,7 @@
 				3F8F93BA1EEAC9B900FCE91F /* RuleCellView.swift */,
 				3F697A0B1F88D47C007BA558 /* MoverEffectView.swift */,
 				3FE784DE2053D208007F6200 /* FirstMouseEventAccepterView.swift */,
+				3F6D52CD20696E2100517E57 /* LinkButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -208,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				3FCD16A41D79793600C57B22 /* AppDelegate.swift */,
+				3F6D52C6205BC82B00517E57 /* KeepSafe.swift */,
 				3FCD16B21D79797600C57B22 /* utils.h */,
 				3FCD16B31D79797600C57B22 /* utils.m */,
 			);
@@ -236,6 +252,7 @@
 		3F7291EC2025BD1E005C9B70 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3F6D52C22058737F00517E57 /* HockeySDK.framework */,
 				3F7291ED2025BD1E005C9B70 /* Sparkle.framework */,
 			);
 			name = Frameworks;
@@ -282,11 +299,11 @@
 			children = (
 				3FCD16A81D79793600C57B22 /* MainMenu.xib */,
 				3FA012B61FFBE9AB0095D4D4 /* SelectableMenuItemView.xib */,
-				3FE7E0E21D7CBE1700DC754D /* AboutWindowController.xib */,
 				3F3433301E50C2E0009F4D86 /* ReleaseNotesWindowController.xib */,
 				3F0A2A312014BA2D009F9610 /* RunningApps.storyboard */,
 				3F4ABD0C201937B30075B178 /* RulesEditor.storyboard */,
 				3F3CF3471FBF8B79005E8EB0 /* Preferences.storyboard */,
+				3F6D52C82069659800517E57 /* About.storyboard */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -359,13 +376,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FE7E0E41D7CBE1700DC754D /* AboutWindowController.xib in Resources */,
 				3FCD16A71D79793600C57B22 /* Assets.xcassets in Resources */,
 				3FE784E12053D455007F6200 /* README.md in Resources */,
 				3F0A2A332014BA2D009F9610 /* RunningApps.storyboard in Resources */,
 				3FA012B71FFBE9AB0095D4D4 /* SelectableMenuItemView.xib in Resources */,
 				3F3CF3481FBF8B79005E8EB0 /* Preferences.storyboard in Resources */,
 				3F3433341E50C53A009F4D86 /* ReleaseNotes.rtf in Resources */,
+				3F6D52CA2069659800517E57 /* About.storyboard in Resources */,
 				3F3433321E50C2E0009F4D86 /* ReleaseNotesWindowController.xib in Resources */,
 				3F4ABD0E201937B30075B178 /* RulesEditor.storyboard in Resources */,
 				3FCD16AA1D79793600C57B22 /* MainMenu.xib in Resources */,
@@ -386,7 +403,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n\nFILE=\"${SRCROOT}/HockeySDK-Mac/BuildAgent\"\nif [ -f \"$FILE\" ]; then\n\"$FILE\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -398,6 +415,7 @@
 				3F2571F41FDBD43500020194 /* TableViewContentAnimator.swift in Sources */,
 				3F7C349C1ED5EBAA0020C538 /* BehaviorController.swift in Sources */,
 				3F697A0C1F88D47C007BA558 /* MoverEffectView.swift in Sources */,
+				3F6D52CC2069667300517E57 /* AboutViewController.swift in Sources */,
 				3FA012B51FFBCCE50095D4D4 /* SelectableMenuItem.swift in Sources */,
 				3F0A2A302014BA11009F9610 /* RunningAppsViewController.swift in Sources */,
 				3F2FA4031D7A059F003E2AD8 /* CurrentAppViewController.swift in Sources */,
@@ -427,7 +445,9 @@
 				3FE7E0E01D7CA14600DC754D /* LaunchAtLoginController.m in Sources */,
 				3F8879931FBF5F2A005C28E6 /* PreferencesTabViewController.swift in Sources */,
 				3F2FA4051D7A1F87003E2AD8 /* BehaviorManager.swift in Sources */,
+				3F6D52CE20696E2100517E57 /* LinkButton.swift in Sources */,
 				3FC44EFA1D7F169A0065D433 /* Enums.swift in Sources */,
+				3F6D52C7205BC82B00517E57 /* KeepSafe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +468,14 @@
 				3F4ABD0D201937B30075B178 /* Base */,
 			);
 			name = RulesEditor.storyboard;
+			sourceTree = "<group>";
+		};
+		3F6D52C82069659800517E57 /* About.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F6D52C92069659800517E57 /* Base */,
+			);
+			name = About.storyboard;
 			sourceTree = "<group>";
 		};
 		3FCD16A81D79793600C57B22 /* MainMenu.xib */ = {
@@ -578,6 +606,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Fluor",
+					"$(PROJECT_DIR)/HockeySDK-Mac",
 				);
 				INFOPLIST_FILE = Fluor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -602,6 +631,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Fluor",
+					"$(PROJECT_DIR)/HockeySDK-Mac",
 				);
 				INFOPLIST_FILE = Fluor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
