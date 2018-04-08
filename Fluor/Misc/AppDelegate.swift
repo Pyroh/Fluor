@@ -11,6 +11,9 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
+        #if RELEASE
+            PFMoveToApplicationsFolderIfNecessary()
+        #endif
         HAHelper.default.initManager()
         HAHelper.default.eventFluorStarted()
         

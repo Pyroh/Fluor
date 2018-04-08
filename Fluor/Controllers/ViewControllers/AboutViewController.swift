@@ -46,7 +46,9 @@ class AboutViewController: NSViewController {
     }
     
     @IBAction func goToSupport(_ sender: Any) {
-        self.openUrlForInfo(key: "FLSupportURL")
+        if let mailURL = URL(string: "mailto:fluor.support@pyrolyse.it?subject=Fluor%20Issue") {
+            NSWorkspace.shared.open(mailURL)
+        }
     }
     
     private func openUrlForInfo(key: String) {

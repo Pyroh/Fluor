@@ -10,10 +10,10 @@ import Cocoa
 
 class PreferencesTabViewController: NSTabViewController {
     override func tabView(_ tabView: NSTabView, shouldSelect tabViewItem: NSTabViewItem?) -> Bool {
-        if let id = tabViewItem?.identifier as? String, "updates_tab" == id {
-            self.showBetaAlert()
-            return false
-        }
+//        if let id = tabViewItem?.identifier as? String, "updates_tab" == id {
+//            self.showBetaAlert()
+//            return false
+//        }
         return true
     }
     

@@ -47,10 +47,10 @@ final class TableViewContentAnimator<ItemType: AnyObject>: NSObject, NSTableView
         let itemsToKeep = self.intersection(between: self.shadowObjects, and: newShadowObjects)
         let itemsToRemove = self.substract(itemsToKeep, from: self.shadowObjects)
         let itemsToAdd = self.substract(itemsToKeep, from: newShadowObjects)
-        let removeSet = IndexSet(itemsToRemove.flatMap { item in
+        let removeSet = IndexSet(itemsToRemove.compactMap { item in
             self.shadowObjects.index(where: { item === $0 })
         })
-        let addSet = IndexSet(itemsToAdd.flatMap { item in
+        let addSet = IndexSet(itemsToAdd.compactMap { item in
             newShadowObjects.index(where: { item === $0 })
         })
         
@@ -85,7 +85,7 @@ final class TableViewContentAnimator<ItemType: AnyObject>: NSObject, NSTableView
     }
     
     private func intersection(between lhs: [ItemType], and rhs: [ItemType]) -> [ItemType] {
-        return rhs.flatMap { item in
+        return rhs.compactMap { item in
             lhs.contains(where: { item === $0 }) ? item : nil
         }
     }

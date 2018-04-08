@@ -167,11 +167,11 @@
                                 </customSpacing>
                             </stackView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i2i-Ca-L3z" customClass="LinkButton" customModule="Fluor" customModuleProvider="target">
-                                <rect key="frame" x="85" y="30" width="86" height="17"/>
+                                <rect key="frame" x="72" y="30" width="113" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="kbO-VN-pYj"/>
                                 </constraints>
-                                <buttonCell key="cell" type="bevel" title="Fluor support" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="k51-I5-gTD">
+                                <buttonCell key="cell" type="bevel" title="Technical support" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="k51-I5-gTD">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>

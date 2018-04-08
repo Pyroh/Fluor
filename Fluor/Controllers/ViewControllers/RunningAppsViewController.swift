@@ -82,7 +82,7 @@ class RunningAppsViewController: NSViewController, BehaviorDidChangeHandler, NST
     }
 
     private func fetchRunningApps() -> [RuleItem] {
-        return NSWorkspace.shared.runningApplications.flatMap { (app) -> RuleItem? in
+        return NSWorkspace.shared.runningApplications.compactMap { (app) -> RuleItem? in
             guard let appId = app.bundleIdentifier, let appURL = app.bundleURL, let appIcon = app.icon else { return nil }
             let isApp = app.activationPolicy == .regular
             guard showAll || isApp else { return nil }

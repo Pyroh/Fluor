@@ -23,7 +23,6 @@
 		3F5F57582016249E002AF4C1 /* RunningAppWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5F57572016249E002AF4C1 /* RunningAppWindowController.swift */; };
 		3F697A0C1F88D47C007BA558 /* MoverEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F697A0B1F88D47C007BA558 /* MoverEffectView.swift */; };
 		3F6D52C32058737F00517E57 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6D52C22058737F00517E57 /* HockeySDK.framework */; };
-		3F6D52C4205875BB00517E57 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6D52C22058737F00517E57 /* HockeySDK.framework */; };
 		3F6D52C5205875BB00517E57 /* HockeySDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6D52C22058737F00517E57 /* HockeySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3F6D52C7205BC82B00517E57 /* KeepSafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D52C6205BC82B00517E57 /* KeepSafe.swift */; };
 		3F6D52CA2069659800517E57 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F6D52C82069659800517E57 /* About.storyboard */; };
@@ -58,6 +57,8 @@
 		3FE7E0E31D7CBE1700DC754D /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE7E0E11D7CBE1700DC754D /* AboutWindowController.swift */; };
 		3FE7E0EA1D7CC01B00DC754D /* RulesEditorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE7E0E81D7CC01B00DC754D /* RulesEditorWindowController.swift */; };
 		3FF2410B1EDB4E0000E524CD /* SwitchMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF2410A1EDB4E0000E524CD /* SwitchMethodViewController.swift */; };
+		3FF655C7207501AF00C8D2FC /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 3FF655C6207501AF00C8D2FC /* dsa_pub.pem */; };
+		3FF655CA20751D1600C8D2FC /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF655C820751D1600C8D2FC /* PFMoveApplication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -98,7 +99,7 @@
 		3F6D52CB2069667300517E57 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		3F6D52CD20696E2100517E57 /* LinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkButton.swift; sourceTree = "<group>"; };
 		3F719FDD1FE798600083E7F7 /* SwitchMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchMenuItem.swift; sourceTree = "<group>"; };
-		3F7291ED2025BD1E005C9B70 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Fluor/Sparkle.framework; sourceTree = "<group>"; };
+		3F7291ED2025BD1E005C9B70 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = ../../Utils/Sparkle/Sparkle.framework; sourceTree = "<group>"; };
 		3F7291F12028BC6B005C9B70 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		3F7C349B1ED5EBAA0020C538 /* BehaviorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorController.swift; sourceTree = "<group>"; };
 		3F84FE80200E655E00871275 /* StoryboardInstantiableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiableProtocol.swift; sourceTree = "<group>"; };
@@ -129,6 +130,9 @@
 		3FE7E0E11D7CBE1700DC754D /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
 		3FE7E0E81D7CC01B00DC754D /* RulesEditorWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulesEditorWindowController.swift; sourceTree = "<group>"; };
 		3FF2410A1EDB4E0000E524CD /* SwitchMethodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchMethodViewController.swift; sourceTree = "<group>"; };
+		3FF655C6207501AF00C8D2FC /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		3FF655C820751D1600C8D2FC /* PFMoveApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFMoveApplication.m; sourceTree = "<group>"; };
+		3FF655C920751D1600C8D2FC /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMoveApplication.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +142,6 @@
 			files = (
 				3F6D52C32058737F00517E57 /* HockeySDK.framework in Frameworks */,
 				3F7291EF2025BD22005C9B70 /* Sparkle.framework in Frameworks */,
-				3F6D52C4205875BB00517E57 /* HockeySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +229,8 @@
 				3F6D52C6205BC82B00517E57 /* KeepSafe.swift */,
 				3FCD16B21D79797600C57B22 /* utils.h */,
 				3FCD16B31D79797600C57B22 /* utils.m */,
+				3FF655C920751D1600C8D2FC /* PFMoveApplication.h */,
+				3FF655C820751D1600C8D2FC /* PFMoveApplication.m */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 				3FCD16AB1D79793600C57B22 /* Info.plist */,
 				3F0E64141D8A8A59003243FE /* Fluor-Bridging-Header.h */,
 				3FE784E02053D455007F6200 /* README.md */,
+				3FF655C6207501AF00C8D2FC /* dsa_pub.pem */,
 			);
 			path = Fluor;
 			sourceTree = "<group>";
@@ -337,7 +343,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Pyrolyse;
 				TargetAttributes = {
 					3FCD16A01D79793600C57B22 = {
@@ -384,6 +390,7 @@
 				3F3433341E50C53A009F4D86 /* ReleaseNotes.rtf in Resources */,
 				3F6D52CA2069659800517E57 /* About.storyboard in Resources */,
 				3F3433321E50C2E0009F4D86 /* ReleaseNotesWindowController.xib in Resources */,
+				3FF655C7207501AF00C8D2FC /* dsa_pub.pem in Resources */,
 				3F4ABD0E201937B30075B178 /* RulesEditor.storyboard in Resources */,
 				3FCD16AA1D79793600C57B22 /* MainMenu.xib in Resources */,
 			);
@@ -443,6 +450,7 @@
 				3F7291F22028BC6B005C9B70 /* PreferencesWindowController.swift in Sources */,
 				3FE7E0E31D7CBE1700DC754D /* AboutWindowController.swift in Sources */,
 				3FE7E0E01D7CA14600DC754D /* LaunchAtLoginController.m in Sources */,
+				3FF655CA20751D1600C8D2FC /* PFMoveApplication.m in Sources */,
 				3F8879931FBF5F2A005C28E6 /* PreferencesTabViewController.swift in Sources */,
 				3F2FA4051D7A1F87003E2AD8 /* BehaviorManager.swift in Sources */,
 				3F6D52CE20696E2100517E57 /* LinkButton.swift in Sources */,
@@ -502,6 +510,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -509,6 +518,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -536,7 +546,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -559,6 +569,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -566,6 +577,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -587,7 +599,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -636,8 +648,10 @@
 				INFOPLIST_FILE = Fluor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_SWIFT_FLAGS = "-DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pyrolyse.Fluor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Fluor/Fluor-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;

@@ -13,4 +13,4 @@
 #import <HockeySDK/HockeySDK.h>
 #include "utils.h"
 #include "LaunchAtLoginController.h"
-
+#include "PFMoveApplication.h"
