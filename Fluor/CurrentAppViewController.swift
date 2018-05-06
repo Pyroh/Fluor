@@ -14,8 +14,8 @@ class CurrentAppViewController: NSViewController {
         let bundleURL: URL?
         
         init(from app: NSRunningApplication) {
-            self.bundleIdentifier = app.bundleIdentifier
-            self.bundleURL = app.bundleURL
+            self.bundleIdentifier = app.bundleIdentifier ?? app.executableURL?.lastPathComponent
+            self.bundleURL = app.bundleURL ?? app.executableURL
         }
     }
     
