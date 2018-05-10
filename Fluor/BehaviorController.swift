@@ -35,7 +35,7 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(sessionDidBecomeActive(notification:)), name: NSWorkspace.sessionDidBecomeActiveNotification, object: nil)
         
         guard !BehaviorManager.default.isDisabled() else { return }
-        if let currentApp = NSWorkspace.shared.frontmostApplication, let id = currentApp.bundleIdentifier {
+        if let currentApp = NSWorkspace.shared.frontmostApplication, let id = currentApp.bundleIdentifier ?? currentApp.executableURL?.lastPathComponent {
             adaptModeForApp(withId: id)
             updateAppBehaviorViewFor(app: currentApp, id: id)
         }
@@ -103,7 +103,7 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     /// - parameter notification: The notification.
     @objc private func activeAppDidChange(notification: Notification) {
         guard let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication,
-            let id = app.bundleIdentifier else { return }
+            let id = app.bundleIdentifier ?? app.executableURL?.lastPathComponent else { return }
         currentID = id
         updateAppBehaviorViewFor(app: app, id: id)
         if !BehaviorManager.default.isDisabled() {

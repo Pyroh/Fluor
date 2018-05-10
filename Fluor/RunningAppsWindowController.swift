@@ -47,8 +47,8 @@ class RunningAppsWindowController: NSWindowController, NSTableViewDelegate, Beha
     /// - parameter notification: The notification.
     @objc private func appDidLaunch(notification: Notification) {
         guard let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication,
-            let appId = app.bundleIdentifier,
-            let appURL = app.bundleURL,
+            let appId = app.bundleIdentifier ?? app.executableURL?.lastPathComponent,
+            let appURL = app.bundleURL ?? app.executableURL,
             let appIcon = app.icon else { return }
         let appPath = appURL.path
         let appName = Bundle(path: appPath)?.localizedInfoDictionary?["CFBundleName"] as? String ?? appURL.deletingPathExtension().lastPathComponent
@@ -63,7 +63,7 @@ class RunningAppsWindowController: NSWindowController, NSTableViewDelegate, Beha
     /// - parameter notification: The notification.
     @objc private func appDidTerminate(notification: Notification) {
         guard let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication,
-            let appId = app.bundleIdentifier,
+            let appId = app.bundleIdentifier ?? app.executableURL?.lastPathComponent,
             let index = runningAppsArray.index(where: { $0.id == appId }) else { return }
         runningAppsArray.remove(at: index)
     }
@@ -78,7 +78,7 @@ class RunningAppsWindowController: NSWindowController, NSTableViewDelegate, Beha
     /// Load all running applications and populate the table view with corresponding datas.
     private func loadData() {
         runningAppsArray = NSWorkspace.shared.runningApplications.flatMap { (app) -> RuleItem? in
-            guard let appId = app.bundleIdentifier, let appURL = app.bundleURL, let appIcon = app.icon else { return nil }
+            guard let appId = app.bundleIdentifier ?? app.executableURL?.lastPathComponent, let appURL = app.bundleURL ?? app.executableURL, let appIcon = app.icon else { return nil }
             let isApp = app.activationPolicy == .regular
             guard showAll || isApp else { return nil }
             let appPath = appURL.path
