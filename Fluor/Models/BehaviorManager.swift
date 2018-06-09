@@ -24,6 +24,7 @@ class BehaviorManager {
         static let useLightIcon = "UseLightIcon"
         static let showAllRunningProcesses = "ShowAllProcesses"
         static let fnKeyMaximumDelay = "FNKeyReleaseMaximumDelay"
+        static let lastRunVersion = "LastRunVersion"
     }
     
     
@@ -44,6 +45,15 @@ class BehaviorManager {
         }
         set {
             defaults.set(newValue.rawValue, forKey: DefaultsKeys.defaultSwitchMethod)
+        }
+    }
+    
+    var lastRunVersion: String {
+        get {
+            return self.defaults.string(forKey: DefaultsKeys.lastRunVersion)!
+        }
+        set {
+            self.defaults.set(newValue, forKey: DefaultsKeys.lastRunVersion)
         }
     }
     
@@ -201,7 +211,7 @@ class BehaviorManager {
     
     /// Load the defaults.
     private func loadPrefs() {
-        let factoryDefaults: [String: Any] = [DefaultsKeys.defaultMode: KeyboardMode.apple.rawValue, DefaultsKeys.appRules: [Any](), DefaultsKeys.resetStateOnQuit: false, DefaultsKeys.sameStateAsBeforeStartup: true, DefaultsKeys.onQuitState: KeyboardMode.apple.rawValue, DefaultsKeys.onLaunchDisabled: false, DefaultsKeys.hasAlreadyAnsweredAccessibility: false, DefaultsKeys.defaultSwitchMethod: SwitchMethod.window.rawValue, DefaultsKeys.useLightIcon: false, DefaultsKeys.showAllRunningProcesses: false, DefaultsKeys.fnKeyMaximumDelay: 280.0]
+        let factoryDefaults: [String: Any] = [DefaultsKeys.defaultMode: KeyboardMode.apple.rawValue, DefaultsKeys.appRules: [Any](), DefaultsKeys.resetStateOnQuit: false, DefaultsKeys.sameStateAsBeforeStartup: true, DefaultsKeys.onQuitState: KeyboardMode.apple.rawValue, DefaultsKeys.onLaunchDisabled: false, DefaultsKeys.hasAlreadyAnsweredAccessibility: false, DefaultsKeys.defaultSwitchMethod: SwitchMethod.window.rawValue, DefaultsKeys.useLightIcon: false, DefaultsKeys.showAllRunningProcesses: false, DefaultsKeys.fnKeyMaximumDelay: 280.0, DefaultsKeys.lastRunVersion: "-1"]
         defaults.register(defaults: factoryDefaults)
         
         guard let arr = defaults.array(forKey: DefaultsKeys.appRules) else { return }

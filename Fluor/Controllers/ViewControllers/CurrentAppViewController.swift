@@ -14,11 +14,9 @@ class CurrentAppViewController: NSViewController {
         let bundleURL: URL?
         
         init(from app: NSRunningApplication) {
-            self.bundleIdentifier = app.bundleIdentifier
-            if let path = app.bundleURL?.path {
-                self.bundleURL = URL(fileURLWithPath: path)
-            } else {
-                self.bundleURL = nil
+            self.bundleIdentifier = app.bundleIdentifier ?? app.executableURL?.lastPathComponent
+            self.bundleURL = (app.bundleURL?.path ?? app.executableURL?.path).map {
+                URL(fileURLWithPath: $0)
             }
         }
     }

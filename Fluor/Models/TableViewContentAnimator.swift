@@ -29,7 +29,7 @@ final class TableViewContentAnimator<ItemType: AnyObject>: NSObject, NSTableView
         self.tableInsertAnimation = [.effectFade]
         self.tableRemoveAnimation = [.effectFade]
         super.init()
-        tableView.dataSource = self
+        self.tableView.dataSource = self
         self.configureController()
     }
     

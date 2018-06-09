@@ -29,6 +29,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         } else {
             HAHelper.default.eventDoesntUseAccessibility()
         }
+        
+        // Check Metal is available
+        if self.isMetalAvailable() {
+            HAHelper.default.eventMetalIsAvailable()
+        }
+        
+        if BehaviorManager.default.lastRunVersion != self.getBundleVersion() {
+            // Do something on new version.
+        }
+    }
+    
+    private func getBundleVersion() -> String {
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+        let build = Bundle.main.infoDictionary?[kCFBundleVersionKey as String] as! String
+        
+        return "\(version)+\(build)"
+    }
+    
+    private func isMetalAvailable() -> Bool {
+        return MTLCopyAllDevices().count > 0
     }
 }
 

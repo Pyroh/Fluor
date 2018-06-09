@@ -48,6 +48,7 @@
 		3FCD16A71D79793600C57B22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FCD16A61D79793600C57B22 /* Assets.xcassets */; };
 		3FCD16AA1D79793600C57B22 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FCD16A81D79793600C57B22 /* MainMenu.xib */; };
 		3FCD16B41D79797600C57B22 /* utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD16B31D79797600C57B22 /* utils.m */; };
+		3FD11B31207BAFC400742415 /* NSAnimationContextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD11B30207BAFC400742415 /* NSAnimationContextExtension.swift */; };
 		3FE213291D89A6940023FAC2 /* NotificationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE213281D89A6940023FAC2 /* NotificationHelpers.swift */; };
 		3FE2A5F51E5650ED0011E544 /* MenuItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE2A5F41E5650ED0011E544 /* MenuItemsController.swift */; };
 		3FE784DD2052F591007F6200 /* NSViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE784DC2052F591007F6200 /* NSViewExtension.swift */; };
@@ -120,6 +121,7 @@
 		3FCD16AB1D79793600C57B22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FCD16B21D79797600C57B22 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
 		3FCD16B31D79797600C57B22 /* utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = utils.m; sourceTree = "<group>"; };
+		3FD11B30207BAFC400742415 /* NSAnimationContextExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAnimationContextExtension.swift; sourceTree = "<group>"; };
 		3FE213281D89A6940023FAC2 /* NotificationHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelpers.swift; sourceTree = "<group>"; };
 		3FE2A5F41E5650ED0011E544 /* MenuItemsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemsController.swift; sourceTree = "<group>"; };
 		3FE784DC2052F591007F6200 /* NSViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewExtension.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 		3F4C5CB22019449B006CC84A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3FD11B30207BAFC400742415 /* NSAnimationContextExtension.swift */,
 				3F8879901FBF41EC005C28E6 /* NSStoryboardNamesExtension.swift */,
 				3F866A23200240D200B06CD0 /* NSObjectExtension.swift */,
 				3FE784DC2052F591007F6200 /* NSViewExtension.swift */,
@@ -324,8 +327,8 @@
 				3FCD169D1D79793600C57B22 /* Sources */,
 				3FCD169E1D79793600C57B22 /* Frameworks */,
 				3FCD169F1D79793600C57B22 /* Resources */,
-				3F5A67D61D81601200F8D87F /* ShellScript */,
 				3F7291E82025BCFF005C9B70 /* Embed Frameworks */,
+				3FD11B2F207A320800742415 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -348,7 +351,6 @@
 				TargetAttributes = {
 					3FCD16A01D79793600C57B22 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = Q2E884V952;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -399,7 +401,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3F5A67D61D81601200F8D87F /* ShellScript */ = {
+		3FD11B2F207A320800742415 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -410,7 +412,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n\nFILE=\"${SRCROOT}/HockeySDK-Mac/BuildAgent\"\nif [ -f \"$FILE\" ]; then\n\"$FILE\"\nfi";
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -422,6 +424,7 @@
 				3F2571F41FDBD43500020194 /* TableViewContentAnimator.swift in Sources */,
 				3F7C349C1ED5EBAA0020C538 /* BehaviorController.swift in Sources */,
 				3F697A0C1F88D47C007BA558 /* MoverEffectView.swift in Sources */,
+				3FD11B31207BAFC400742415 /* NSAnimationContextExtension.swift in Sources */,
 				3F6D52CC2069667300517E57 /* AboutViewController.swift in Sources */,
 				3FA012B51FFBCCE50095D4D4 /* SelectableMenuItem.swift in Sources */,
 				3F0A2A302014BA11009F9610 /* RunningAppsViewController.swift in Sources */,
@@ -613,7 +616,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = Q2E884V952;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -625,10 +630,12 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pyrolyse.Fluor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Fluor/Fluor-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -638,7 +645,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = Q2E884V952;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -651,10 +660,12 @@
 				OTHER_SWIFT_FLAGS = "-DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pyrolyse.Fluor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Fluor/Fluor-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};

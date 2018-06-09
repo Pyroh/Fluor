@@ -15,5 +15,5 @@ final class AboutWindowController: NSWindowController, StoryboardInstantiable {
         super.windowDidLoad()
         
         window?.backgroundColor = .white
-    }    
+    }
 }

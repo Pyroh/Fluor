@@ -49,13 +49,15 @@ class RunningAppsViewController: NSViewController, BehaviorDidChangeHandler, NST
     /// - parameter notification: The notification.
     @objc private func appDidLaunch(notification: Notification) {
         guard let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication,
-            let appId = app.bundleIdentifier,
-            let appURL = app.bundleURL,
+            let appId = app.bundleIdentifier ?? app.executableURL?.lastPathComponent,
+            let appURL = app.bundleURL ?? app.executableURL,
             let appIcon = app.icon else { return }
+        let isApp = app.activationPolicy == .regular
+        guard self.showAll || isApp else { return }
         let appPath = appURL.path
         let appName = Bundle(path: appPath)?.localizedInfoDictionary?["CFBundleName"] as? String ?? appURL.deletingPathExtension().lastPathComponent
         let behavior = BehaviorManager.default.behaviorForApp(id: appId)
-        let item = RuleItem(id: appId, url: appURL, icon: appIcon, name: appName, behavior: behavior, kind: .runningApp, pid: app.processIdentifier)
+        let item = RuleItem(id: appId, url: appURL, icon: appIcon, name: appName, behavior: behavior, kind: .runningApp, isApp: isApp, pid: app.processIdentifier)
         
         runningAppsArray.append(item)
     }
@@ -83,7 +85,7 @@ class RunningAppsViewController: NSViewController, BehaviorDidChangeHandler, NST
 
     private func fetchRunningApps() -> [RuleItem] {
         return NSWorkspace.shared.runningApplications.compactMap { (app) -> RuleItem? in
-            guard let appId = app.bundleIdentifier, let appURL = app.bundleURL, let appIcon = app.icon else { return nil }
+            guard let appId = app.bundleIdentifier ?? app.executableURL?.lastPathComponent, let appURL = app.bundleURL ?? app.executableURL, let appIcon = app.icon else { return nil }
             let isApp = app.activationPolicy == .regular
             guard showAll || isApp else { return nil }
             let appPath = appURL.path

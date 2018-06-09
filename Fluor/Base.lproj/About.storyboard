@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="WsI-4J-azc">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="WsI-4J-azc">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
@@ -34,11 +34,11 @@
             <objects>
                 <viewController id="Syy-eU-950" customClass="AboutViewController" customModule="Fluor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="1TK-gE-h5t">
-                        <rect key="frame" x="0.0" y="0.0" width="256" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="256" height="429"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ahe-gv-gf5">
-                                <rect key="frame" x="45" y="259" width="166" height="166"/>
+                            <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ahe-gv-gf5">
+                                <rect key="frame" x="45" y="233" width="166" height="166"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="166" id="9bQ-dx-AuY"/>
                                     <constraint firstAttribute="height" constant="166" id="ThN-JF-5U9"/>
@@ -46,7 +46,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSApplicationIcon" id="FdP-h6-dcd"/>
                             </imageView>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="f0o-nD-tlj">
-                                <rect key="frame" x="8" y="433" width="14" height="14"/>
+                                <rect key="frame" x="8" y="407" width="14" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="4wh-Wg-2GW"/>
                                     <constraint firstAttribute="width" constant="14" id="XRM-jP-NMb"/>
@@ -61,11 +61,11 @@
                                     <action selector="closeWindow:" target="Syy-eU-950" id="vAD-V2-7Pe"/>
                                 </connections>
                             </button>
-                            <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ja-Pb-hTb">
-                                <rect key="frame" x="53" y="125" width="150" height="118"/>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ja-Pb-hTb">
+                                <rect key="frame" x="53" y="133" width="150" height="84"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G6c-OX-Vh9">
-                                        <rect key="frame" x="33" y="70" width="85" height="48"/>
+                                        <rect key="frame" x="33" y="36" width="85" height="48"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Fluor" id="Rb1-qw-yPI">
                                             <font key="font" metaFont="systemThin" size="40"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -73,7 +73,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pf0-i7-EJX">
-                                        <rect key="frame" x="50" y="45" width="50" height="17"/>
+                                        <rect key="frame" x="50" y="15" width="50" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version" id="nBp-xh-w5r">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -81,23 +81,15 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5UU-cQ-CW9">
-                                        <rect key="frame" x="-2" y="26" width="154" height="11"/>
+                                        <rect key="frame" x="-2" y="0.0" width="154" height="11"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Copyright (c) Pyrolyse 2016-2018" id="D9M-Xx-uVv">
                                             <font key="font" metaFont="miniSystem"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a9G-lD-XbM">
-                                        <rect key="frame" x="8" y="-1" width="135" height="19"/>
-                                        <buttonCell key="cell" type="roundRect" title="Show release notes..." bezelStyle="roundedRect" alignment="center" enabled="NO" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="z4p-7m-GMv">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="cellTitle"/>
-                                        </buttonCell>
-                                    </button>
                                 </subviews>
                                 <visibilityPriorities>
-                                    <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
@@ -106,11 +98,10 @@
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="750" verticalStackHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DaJ-Kd-pAj">
-                                <rect key="frame" x="45" y="55" width="166" height="50"/>
+                                <rect key="frame" x="45" y="63" width="166" height="50"/>
                                 <subviews>
                                     <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LAF-Vr-LJH" customClass="LinkButton" customModule="Fluor" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -167,13 +158,13 @@
                                 </customSpacing>
                             </stackView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i2i-Ca-L3z" customClass="LinkButton" customModule="Fluor" customModuleProvider="target">
-                                <rect key="frame" x="72" y="30" width="113" height="17"/>
+                                <rect key="frame" x="70" y="30" width="118" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="kbO-VN-pYj"/>
                                 </constraints>
                                 <buttonCell key="cell" type="bevel" title="Technical support" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="k51-I5-gTD">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="systemSemibold" size="13"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="goToSupport:" target="Syy-eU-950" id="0zW-dT-oR8"/>
@@ -191,12 +182,16 @@
                             <constraint firstAttribute="bottom" secondItem="i2i-Ca-L3z" secondAttribute="bottom" constant="30" id="Upg-dq-wrt"/>
                             <constraint firstItem="f0o-nD-tlj" firstAttribute="leading" secondItem="1TK-gE-h5t" secondAttribute="leading" constant="8" id="ji8-Vf-Fca"/>
                             <constraint firstItem="i2i-Ca-L3z" firstAttribute="centerX" secondItem="1TK-gE-h5t" secondAttribute="centerX" id="qTO-FF-W9X"/>
-                            <constraint firstItem="i2i-Ca-L3z" firstAttribute="top" secondItem="DaJ-Kd-pAj" secondAttribute="bottom" constant="8" id="zEQ-xs-i0d"/>
+                            <constraint firstItem="i2i-Ca-L3z" firstAttribute="top" secondItem="DaJ-Kd-pAj" secondAttribute="bottom" constant="16" id="zEQ-xs-i0d"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="githubButton" destination="z33-BR-yuW" id="w2C-QC-6uA"/>
+                        <outlet property="iconView" destination="ahe-gv-gf5" id="Uba-Ak-WWD"/>
                         <outlet property="supportButton" destination="i2i-Ca-L3z" id="b3g-SR-75s"/>
+                        <outlet property="twitterButton" destination="tcP-8l-Eun" id="qPP-va-IZe"/>
                         <outlet property="versionLabel" destination="pf0-i7-EJX" id="6td-E9-PFz"/>
+                        <outlet property="webpageButton" destination="LAF-Vr-LJH" id="ZQK-be-6cQ"/>
                     </connections>
                 </viewController>
                 <customObject id="DNo-BE-5RX" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -209,6 +204,6 @@
         <image name="ButtonTwitter" width="50" height="50"/>
         <image name="ButtonWeb" width="50" height="50"/>
         <image name="NSApplicationIcon" width="128" height="128"/>
-        <image name="NSStopProgressFreestandingTemplate" width="11" height="11"/>
+        <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
     </resources>
 </document>

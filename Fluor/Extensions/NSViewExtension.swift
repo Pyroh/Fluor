@@ -14,4 +14,13 @@ extension NSView {
             return self.appearance?.allowsVibrancy == true ? self.appearance?.name : superview?.nameOfVibrantAncestor
         }
     }
+    
+    func centerLayerAnchor() {
+        let x = self.frame.midX
+        let y = self.frame.midY
+        
+        self.layer?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        self.layer?.position = CGPoint(x: x, y: y)
+        self.layer?.contentsGravity = kCAGravityCenter
+    }
 }
