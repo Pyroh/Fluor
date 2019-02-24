@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class CurrentAppViewController: NSViewController {
+class CurrentAppViewController: NSViewController, BehaviorDidChangePoster {
     private class AppData {
         let bundleIdentifier: String?
         let bundleURL: URL?
@@ -25,7 +25,6 @@ class CurrentAppViewController: NSViewController {
     @IBOutlet weak var appNameLabel: NSTextField!
     @IBOutlet weak var behaviorSegment: NSSegmentedControl!
     @IBOutlet weak var imageConstraint: NSLayoutConstraint!
-    @IBOutlet weak var vibrancyCancellerView: NSView!
     
     internal var currentSwitchMethod = SwitchMethod.window
     
@@ -68,7 +67,7 @@ class CurrentAppViewController: NSViewController {
         var newFrame = self.view.frame
         newFrame.size.height = 32
         imageConstraint.constant = 24
-        vibrancyCancellerView.isHidden = true
+        self.behaviorSegment.isHidden = true
         self.view.setFrameSize(newFrame.size)
     }
     
@@ -77,7 +76,7 @@ class CurrentAppViewController: NSViewController {
         var newFrame = self.view.frame
         newFrame.size.height = 72
         imageConstraint.constant = 64
-        vibrancyCancellerView.isHidden = false
+        self.behaviorSegment.isHidden = false
         self.view.setFrameSize(newFrame.size)
     }
     
@@ -89,8 +88,6 @@ class CurrentAppViewController: NSViewController {
         guard let behavior = AppBehavior(rawValue: sender.selectedSegment),
             let id = currentApp?.bundleIdentifier,
             let url = currentApp?.bundleURL else { return }
-        let userInfo = BehaviorController.behaviorDidChangeUserInfoConstructor(id: id, url: url, behavior: behavior)
-        let not = Notification(name: .BehaviorDidChangeForApp, object: self, userInfo: userInfo)
-        NotificationCenter.default.post(not)
+        self.postBehaviorDidChangeNotification(id: id, url: url, behavior: behavior)
     }
 }

@@ -1,0 +1,36 @@
+
+/* Class = "CocoaBindingsConnection"; ibShadowedDisplayPattern = "%{value1}@ running"; ObjectID = "8nZ-Ag-ymF"; */
+"8nZ-Ag-ymF.ibShadowedDisplayPattern" = "%{value1}@ en cours d'exécution";
+
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "Twm-uj-Z9c"; */
+"Twm-uj-Z9c.title" = "Label";
+
+/* Class = "NSWindow"; title = "Running Applications"; ObjectID = "Vdh-R9-Luc"; */
+"Vdh-R9-Luc.title" = "Applications en cours";
+
+/* Class = "NSButtonCell"; alternateTitle = "Hide services"; ObjectID = "Yb5-hU-zbp"; */
+"Yb5-hU-zbp.alternateTitle" = "Cacher les services";
+
+/* Class = "NSButtonCell"; title = "Show all"; ObjectID = "Yb5-hU-zbp"; */
+"Yb5-hU-zbp.title" = "Montrer tout";
+
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "b56-33-3LM"; */
+"b56-33-3LM.title" = "Label";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "bZs-z5-c1g"; */
+"bZs-z5-c1g.title" = "Text Cell";
+
+/* Class = "NSSegmentedCell"; q73-3D-poM.ibShadowedToolTips[0] = "Default"; ObjectID = "q73-3D-poM"; */
+"q73-3D-poM.ibShadowedToolTips[0]" = "Par défaut";
+
+/* Class = "NSSegmentedCell"; q73-3D-poM.ibShadowedToolTips[1] = "Apple keys"; ObjectID = "q73-3D-poM"; */
+"q73-3D-poM.ibShadowedToolTips[1]" = "Touches Apple";
+
+/* Class = "NSSegmentedCell"; q73-3D-poM.ibShadowedToolTips[2] = "Function keys"; ObjectID = "q73-3D-poM"; */
+"q73-3D-poM.ibShadowedToolTips[2]" = "Touches de fonction";
+
+/* Class = "NSToolbarItem"; label = "Search"; ObjectID = "u25-IX-3ln"; */
+"u25-IX-3ln.label" = "Rechercher";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Search"; ObjectID = "u25-IX-3ln"; */
+"u25-IX-3ln.paletteLabel" = "Rechercher";

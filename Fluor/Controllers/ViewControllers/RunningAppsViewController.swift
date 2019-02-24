@@ -8,12 +8,12 @@
 
 import Cocoa
 
-class RunningAppsViewController: NSViewController, BehaviorDidChangeHandler, NSTableViewDelegate {
+class RunningAppsViewController: NSViewController, BehaviorDidChangeObserver, NSTableViewDelegate {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet var itemsArrayController: NSArrayController!
     
     @objc dynamic var runningAppsArray = [RuleItem]()
-    @objc dynamic var showAll: Bool = BehaviorManager.default.showAllRunningProcesses() {
+    @objc dynamic var showAll: Bool = BehaviorManager.default.showAllRunningProcesses {
         didSet { self.reloadData() }
     }
     @objc dynamic var searchPredicate: NSPredicate?

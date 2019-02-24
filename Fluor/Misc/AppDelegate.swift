@@ -14,29 +14,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         #if RELEASE
             PFMoveToApplicationsFolderIfNecessary()
         #endif
-        HAHelper.default.initManager()
-        HAHelper.default.eventFluorStarted()
         
         ValueTransformer.setValueTransformer(RuleValueTransformer(), forName: NSValueTransformerName("RuleValueTransformer"))
         
         // Check accessibility
-        if !AXIsProcessTrusted() && !BehaviorManager.default.hasAlreadyAnsweredAccessibility() {
+        if !AXIsProcessTrusted() && !BehaviorManager.default.hasAlreadyAnsweredAccessibility {
             let options : NSDictionary = [kAXTrustedCheckOptionPrompt.takeRetainedValue(): true]
             AXIsProcessTrustedWithOptions(options)
-            BehaviorManager.default.answeredAccessibility()
-        } else if AXIsProcessTrusted() {
-            HAHelper.default.eventUsesAccessibility()
-        } else {
-            HAHelper.default.eventDoesntUseAccessibility()
-        }
-        
-        // Check Metal is available
-        if self.isMetalAvailable() {
-            HAHelper.default.eventMetalIsAvailable()
+            BehaviorManager.default.hasAlreadyAnsweredAccessibility = true
         }
         
         if BehaviorManager.default.lastRunVersion != self.getBundleVersion() {
-            // Do something on new version.
+            // Do something on new version. If needed... It's not needed.
         }
     }
     
@@ -45,10 +34,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let build = Bundle.main.infoDictionary?[kCFBundleVersionKey as String] as! String
         
         return "\(version)+\(build)"
-    }
-    
-    private func isMetalAvailable() -> Bool {
-        return MTLCopyAllDevices().count > 0
     }
 }
 

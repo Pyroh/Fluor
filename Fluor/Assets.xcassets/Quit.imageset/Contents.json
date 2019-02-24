@@ -1,8 +1,14 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
-      "filename" : "Quit.pdf"
+      "idiom" : "mac",
+      "filename" : "Quit.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "Quit@2x.png",
+      "scale" : "2x"
     }
   ],
   "info" : {
@@ -10,7 +16,6 @@
     "author" : "xcode"
   },
   "properties" : {
-    "template-rendering-intent" : "template",
-    "preserves-vector-representation" : true
+    "template-rendering-intent" : "template"
   }
 }

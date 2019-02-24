@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="W33-Be-Q5Y">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="W33-Be-Q5Y">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14269.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,10 +11,10 @@
             <objects>
                 <windowController showSeguePresentationStyle="single" id="W33-Be-Q5Y" customClass="RulesEditorWindowController" customModule="Fluor" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Rules" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="Fluor_EditRulesWindowAutosaveName" animationBehavior="default" id="eXk-yp-Np1" customClass="NSPanel">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="320" height="480"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
                         <toolbar key="toolbar" implicitIdentifier="1EEC2327-407B-4B2B-A439-BD7C40F619F6" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="zFq-f3-1of">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="8mb-UB-zuJ"/>
@@ -64,11 +64,11 @@
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="56" horizontalPageScroll="10" verticalLineScroll="56" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuc-ja-QaT">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                <clipView key="contentView" drawsBackground="NO" id="t0p-Ha-0Qj">
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="t0p-Ha-0Qj">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView appearanceType="aqua" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="54" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="anD-et-bWl">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="54" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="anD-et-bWl">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="399"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -108,10 +108,10 @@
                                                                             </connections>
                                                                         </imageView>
                                                                         <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="agd-lq-cct">
-                                                                            <rect key="frame" x="56" y="3" width="245" height="43"/>
+                                                                            <rect key="frame" x="56" y="3" width="245" height="42"/>
                                                                             <subviews>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mpq-BA-DRn">
-                                                                                    <rect key="frame" x="-2" y="26" width="39" height="17"/>
+                                                                                    <rect key="frame" x="-2" y="25" width="39" height="17"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" id="Bp2-iW-iXC">
                                                                                         <font key="font" metaFont="systemSemibold" size="13"/>
                                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -122,12 +122,12 @@
                                                                                     </connections>
                                                                                 </textField>
                                                                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Yv-Hg-qNW">
-                                                                                    <rect key="frame" x="0.0" y="-1" width="73" height="23"/>
-                                                                                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="selectOne" id="Xfv-1b-Hu4">
+                                                                                    <rect key="frame" x="-2" y="-2" width="73" height="24"/>
+                                                                                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Xfv-1b-Hu4">
                                                                                         <font key="font" metaFont="system"/>
                                                                                         <segments>
-                                                                                            <segment toolTip="Default" image="AppleMode" selected="YES"/>
-                                                                                            <segment toolTip="Apple keys" image="OtherMode" width="34" tag="1"/>
+                                                                                            <segment toolTip="Apple keys" image="AppleMode" selected="YES"/>
+                                                                                            <segment toolTip="Function keys" image="OtherMode" width="34" tag="1"/>
                                                                                         </segments>
                                                                                     </segmentedCell>
                                                                                     <connections>
@@ -178,17 +178,18 @@
                                             </connections>
                                         </tableView>
                                     </subviews>
+                                    <nil key="backgroundColor"/>
                                 </clipView>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="JDx-A6-99q"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Po9-SE-zDd"/>
                                 </constraints>
                                 <edgeInsets key="contentInsets" left="0.0" right="0.0" top="55" bottom="26"/>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="kNh-EX-LvN">
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="kNh-EX-LvN">
                                     <rect key="frame" x="0.0" y="379" width="320" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="HAT-7Y-la0">
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="HAT-7Y-la0">
                                     <rect key="frame" x="-100" y="-100" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -219,8 +220,8 @@
                                         <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="rounded" trackingMode="momentary" id="qsY-JB-wQQ">
                                             <font key="font" metaFont="smallSystem"/>
                                             <segments>
-                                                <segment image="NSAddTemplate" width="22"/>
-                                                <segment image="NSRemoveTemplate" width="22" tag="1"/>
+                                                <segment toolTip="Add rule" image="NSAddTemplate" width="22"/>
+                                                <segment toolTip="Delete selected rule" image="NSRemoveTemplate" width="22" tag="1"/>
                                             </segments>
                                         </segmentedCell>
                                         <connections>
@@ -265,13 +266,13 @@
                     </connections>
                 </arrayController>
             </objects>
-            <point key="canvasLocation" x="598.5" y="162.5"/>
+            <point key="canvasLocation" x="501" y="192"/>
         </scene>
     </scenes>
     <resources>
         <image name="AppleMode" width="16" height="16"/>
         <image name="NSAddTemplate" width="11" height="11"/>
-        <image name="NSApplicationIcon" width="128" height="128"/>
+        <image name="NSApplicationIcon" width="32" height="32"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="OtherMode" width="16" height="16"/>
     </resources>

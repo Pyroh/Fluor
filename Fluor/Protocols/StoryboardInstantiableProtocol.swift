@@ -8,7 +8,7 @@
 
 import Cocoa
 
-protocol StoryboardInstantiable: class {
+protocol StoryboardInstantiable: NSObjectProtocol {
     static var storyboardName: NSStoryboard.Name { get }
     static var sceneIdentifier: NSStoryboard.SceneIdentifier? { get }
     static var bundle: Bundle? { get }

@@ -8,14 +8,18 @@
 
 import Cocoa
 
-class SwitchMethodViewController: NSViewController {
+class SwitchMethodViewController: NSViewController, MenuControlPoster, SwitchMethodDidChangePoster {
     @IBOutlet weak var methodSegmentedControl: NSSegmentedControl!
     @objc private dynamic var switchCapable: Bool = true
     
     @IBAction func changeSwitchMethod(_ sender: NSSegmentedControl) {
         guard let method = SwitchMethod(rawValue: sender.selectedSegment) else { return }
-        let userInfo = ["method": method]
-        let notification = Notification(name: .SwitchMethodDidChange, object: self, userInfo: userInfo)
-        NotificationCenter.default.post(notification)
+        self.postSwitchMethodDidChangeNotification(method: method)
+    }
+    
+    @IBAction func askAccessibilityPersmission(_ sender: Any) {
+        self.postMenuNeedsToCloseNotification()
+        let options : NSDictionary = [kAXTrustedCheckOptionPrompt.takeRetainedValue(): true]
+        AXIsProcessTrustedWithOptions(options)
     }
 }

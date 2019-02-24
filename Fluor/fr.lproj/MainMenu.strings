@@ -1,0 +1,69 @@
+
+/* Class = "NSSegmentedCell"; 1I5-bW-HGh.ibShadowedToolTips[0] = "Same as default mode"; ObjectID = "1I5-bW-HGh"; */
+"1I5-bW-HGh.ibShadowedToolTips[0]" = "Identique au mode par défaut";
+
+/* Class = "NSSegmentedCell"; 1I5-bW-HGh.ibShadowedToolTips[1] = "Switch to Apple mode"; ObjectID = "1I5-bW-HGh"; */
+"1I5-bW-HGh.ibShadowedToolTips[1]" = "Choisir sur les touches Apple";
+
+/* Class = "NSSegmentedCell"; 1I5-bW-HGh.ibShadowedToolTips[2] = "Switch to Function mode"; ObjectID = "1I5-bW-HGh"; */
+"1I5-bW-HGh.ibShadowedToolTips[2]" = "Choisir sur les touches de function";
+
+/* Class = "NSTextFieldCell"; title = "Trigger"; ObjectID = "AiN-Qo-Ikx"; */
+"AiN-Qo-Ikx.title" = "Déclencheur";
+
+/* Class = "NSMenuItem"; title = "Running applications..."; ObjectID = "Ark-Du-XrQ"; */
+"Ark-Du-XrQ.title" = "Applications en cours...";
+
+/* Class = "NSMenuItem"; title = "Disabled"; ObjectID = "DqN-qz-yQz"; */
+"DqN-qz-yQz.title" = "Désactivé";
+
+/* Class = "NSMenuItem"; title = "About Fluor"; ObjectID = "Ib7-Rw-HnK"; */
+"Ib7-Rw-HnK.title" = "À propos de Fluor";
+
+/* Class = "NSMenuItem"; title = "Edit rules..."; ObjectID = "MHf-OK-jHk"; */
+"MHf-OK-jHk.title" = "Gérer les règles...";
+
+/* Class = "NSMenuItem"; title = "Default mode"; ObjectID = "PtY-YF-jEr"; */
+"PtY-YF-jEr.title" = "Mode par défaut";
+
+/* Class = "NSMenuItem"; title = "sep2"; ObjectID = "QCJ-IJ-MMQ"; */
+"QCJ-IJ-MMQ.title" = "sep2";
+
+/* Class = "NSMenuItem"; title = "Quit"; ObjectID = "QjA-WT-wFW"; */
+"QjA-WT-wFW.title" = "Quitter";
+
+/* Class = "NSTextFieldCell"; title = "Default mode"; ObjectID = "S28-Jt-nN1"; */
+"S28-Jt-nN1.title" = "Mode par défaut";
+
+/* Class = "NSSegmentedCell"; Vfh-zJ-Axi.ibShadowedToolTips[0] = "Switch to Apple mode"; ObjectID = "Vfh-zJ-Axi"; */
+"Vfh-zJ-Axi.ibShadowedToolTips[0]" = "Switch to Apple mode";
+
+/* Class = "NSSegmentedCell"; Vfh-zJ-Axi.ibShadowedToolTips[1] = "Switch to function key mode"; ObjectID = "Vfh-zJ-Axi"; */
+"Vfh-zJ-Axi.ibShadowedToolTips[1]" = "Switch to function key mode";
+
+/* Class = "NSMenuItem"; title = "Start Fluor at login"; ObjectID = "eWy-d7-62P"; */
+"eWy-d7-62P.title" = "Lancer Fluor au démarrage";
+
+/* Class = "NSButtonCell"; title = "Ask permission"; ObjectID = "gP8-wU-Xyk"; */
+"gP8-wU-Xyk.title" = "Gérer permission";
+
+/* Class = "NSMenuItem"; title = "Switch method"; ObjectID = "hM4-Z2-ndk"; */
+"hM4-Z2-ndk.title" = "Switch method";
+
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "nND-dO-QEg"; */
+"nND-dO-QEg.title" = "Label";
+
+/* Class = "NSSegmentedCell"; qZf-Wa-JJt.ibShadowedToolTips[0] = "Change mode dependgin on active application"; ObjectID = "qZf-Wa-JJt"; */
+"qZf-Wa-JJt.ibShadowedToolTips[0]" = "Bascule le mode en fonction de l'application active";
+
+/* Class = "NSSegmentedCell"; qZf-Wa-JJt.ibShadowedToolTips[1] = "Change mode when the Fn key is pressed"; ObjectID = "qZf-Wa-JJt"; */
+"qZf-Wa-JJt.ibShadowedToolTips[1]" = "Bascule le mode quand la touche Fn est pressée";
+
+/* Class = "NSMenuItem"; title = "sep1"; ObjectID = "qvx-bn-WPk"; */
+"qvx-bn-WPk.title" = "sep1";
+
+/* Class = "NSMenuItem"; title = "Preferences..."; ObjectID = "sjb-Ql-h6c"; */
+"sjb-Ql-h6c.title" = "Préférences...";
+
+/* Class = "NSMenuItem"; title = "Current application"; ObjectID = "ulH-vE-QEF"; */
+"ulH-vE-QEF.title" = "Application active";

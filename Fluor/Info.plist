@@ -17,17 +17,21 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.2</string>
+	<string>2.1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1292</string>
+	<string>1670</string>
 	<key>FLGithubURL</key>
 	<string>https://github.com/Pyroh/Fluor</string>
 	<key>FLPyrolyseURL</key>
 	<string>https://pyrolyse.it</string>
+	<key>FLRNListURL</key>
+	<string>https://resources.pyrolyse.it/releasenotes/Fluor/versions.json</string>
+	<key>FLSupportEmail</key>
+	<string>mailto:fluor.support@pyrolyse.it?subject=Fluor%20Issue</string>
 	<key>FLSupportURL</key>
 	<string>https://pyrolyse.it</string>
 	<key>FLTwitterURL</key>
-	<string>https://twitter.com/pyroh13453</string>
+	<string>https://twitter.com/__pyroh</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.productivity</string>
 	<key>LSMinimumSystemVersion</key>
@@ -35,11 +39,18 @@
 	<key>LSUIElement</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2016 - 2018 Pierre TACCHI. All rights reserved.</string>
+	<string>Copyright © 2016 - 2019 Pierre TACCHI. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSServices</key>
+	<array>
+		<dict>
+			<key>NSMenuItem</key>
+			<dict/>
+		</dict>
+	</array>
 	<key>NSSupportsAutomaticGraphicsSwitching</key>
 	<false/>
 	<key>SUFeedURL</key>

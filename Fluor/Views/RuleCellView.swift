@@ -11,11 +11,11 @@ import Cocoa
 class RuleCellView: NSTableCellView {
     override var backgroundStyle: NSView.BackgroundStyle {
         didSet {
-            switch backgroundStyle {
+            switch self.backgroundStyle {
             case .light:
-                textField?.textColor = NSColor.textColor
+                self.textField?.textColor = .textColor
             default:
-                textField?.textColor = NSColor.selectedMenuItemTextColor
+                self.textField?.textColor = .selectedMenuItemTextColor
             }
         }
     }

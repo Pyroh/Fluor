@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate {
+class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate, MenuControlObserver {
     //MARK: - Menu Delegate
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet var menuItemsController: MenuItemsController!
@@ -26,10 +26,12 @@ class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate {
         menuItemsController.setupController()
         behaviorController.setupController()
         startObservingUsesLightIcon()
+        startObservingMenuControlNotification()
     }
     
     deinit {
         stopObservingUsesLightIcon()
+        stopObservingSwitchMenuControlNotification()
     }
     
     func windowWillClose(_ notification: Notification) {
@@ -48,7 +50,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         switch keyPath {
-        case BehaviorManager.DefaultsKeys.useLightIcon?:
+        case BehaviorManager.DefaultsKeys.useLightIcon.rawValue?:
             adaptStatusMenuIcon()
         default:
             return
@@ -66,28 +68,40 @@ class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate {
     
     /// Adapt status bar icon from user's settings.
     private func adaptStatusMenuIcon() {
-        let disabledApp = BehaviorManager.default.isDisabled()
-        let usesLightIcon = BehaviorManager.default.useLightIcon()
+        let disabledApp = BehaviorManager.default.isDisabled
+        let usesLightIcon = BehaviorManager.default.useLightIcon
         switch (disabledApp, usesLightIcon) {
         case (false, false): statusItem.image = #imageLiteral(resourceName: "IconAppleMode")
         case (false, true): statusItem.image = #imageLiteral(resourceName: "AppleMode")
         case (true, false): statusItem.image = #imageLiteral(resourceName: "IconDisabled")
-        case (true, true): statusItem.image = #imageLiteral(resourceName: "LighIconDisabled.pdf")
+        case (true, true): statusItem.image = #imageLiteral(resourceName: "LighIconDisabled")
         }
     }
     
     /// Register self as an observer for some notifications.
     private func startObservingUsesLightIcon() {
-        UserDefaults.standard.addObserver(self, forKeyPath: BehaviorManager.DefaultsKeys.useLightIcon, options: [], context: nil)
+        UserDefaults.standard.addObserver(self, forKeyPath: BehaviorManager.DefaultsKeys.useLightIcon.rawValue, options: [], context: nil)
     }
     
     /// Unregister self as an observer for some notifications.
     private func stopObservingUsesLightIcon() {
-        UserDefaults.standard.removeObserver(self, forKeyPath: BehaviorManager.DefaultsKeys.useLightIcon, context: nil)
+        UserDefaults.standard.removeObserver(self, forKeyPath: BehaviorManager.DefaultsKeys.useLightIcon.rawValue, context: nil)
     }
     
     func menuWillOpen(_ menu: NSMenu) {
         behaviorController.adaptToAccessibilityTrust()
+    }
+    
+    @objc func menuNeedsToOpen(notification: Notification) {
+        
+    }
+    
+    @objc func menuNeedsToClose(notification: Notification) {
+        if let userInfo = notification.userInfo, let animated = userInfo["animated"] as? Bool, !animated {
+            self.statusMenu.cancelTrackingWithoutAnimation()
+        } else {
+            self.statusMenu.cancelTracking()
+        }
     }
     
     // MARK: IBActions
@@ -158,13 +172,13 @@ class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate {
     ///
     /// - Parameter sender: The object that sent the action.
     @IBAction func toggleApplicationState(_ sender: NSMenuItem) {
-        let enabled = sender.state == .off
-        if enabled {
-            statusItem.image = BehaviorManager.default.useLightIcon() ? #imageLiteral(resourceName: "AppleMode") : #imageLiteral(resourceName: "IconAppleMode")
+        let disabled = sender.state == .off
+        if disabled {
+            statusItem.image = BehaviorManager.default.useLightIcon ? #imageLiteral(resourceName: "LighIconDisabled") : #imageLiteral(resourceName: "IconDisabled")
         } else {
-            statusItem.image = BehaviorManager.default.useLightIcon() ? #imageLiteral(resourceName: "LighIconDisabled") : #imageLiteral(resourceName: "IconDisabled")
+            statusItem.image = BehaviorManager.default.useLightIcon ? #imageLiteral(resourceName: "AppleMode") : #imageLiteral(resourceName: "IconAppleMode")
         }
-        behaviorController.setApplication(state: enabled)
+        behaviorController.setApplication(state: disabled)
     }
     
     /// Terminate the application.

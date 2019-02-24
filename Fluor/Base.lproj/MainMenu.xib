@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
-        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -15,70 +12,67 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customView id="Xfn-Mq-ahC" customClass="SwitchView" customModule="Fluor" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="251" height="27"/>
+        <customView id="Xfn-Mq-ahC">
+            <rect key="frame" x="0.0" y="0.0" width="252" height="27"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WoM-Ab-xgn">
-                    <rect key="frame" x="18" y="5" width="69" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Switching" id="AiN-Qo-Ikx">
+                    <rect key="frame" x="18" y="5" width="51" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Trigger" id="AiN-Qo-Ikx">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                </textField>
+                <segmentedControl focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RSg-2F-b2E">
+                    <rect key="frame" x="164" y="4" width="69" height="20"/>
+                    <segmentedCell key="cell" borderStyle="border" focusRingType="none" alignment="left" style="roundRect" trackingMode="selectOne" id="qZf-Wa-JJt">
+                        <font key="font" metaFont="cellTitle"/>
+                        <segments>
+                            <segment toolTip="Changes mode depending on the active application" image="AppSwitch" imageScaling="proportionallyUpOrDown" selected="YES">
+                                <nil key="label"/>
+                            </segment>
+                            <segment toolTip="Changes mode when the Fn key is pressed" image="FnKey" imageScaling="proportionallyUpOrDown" tag="1">
+                                <nil key="label"/>
+                            </segment>
+                        </segments>
+                    </segmentedCell>
                     <connections>
-                        <binding destination="TM7-Ze-uQz" name="enabled" keyPath="values.OnLaunchDisabled" id="B4s-l5-fij">
+                        <action selector="changeSwitchMethod:" target="AMq-Mo-r6v" id="7hV-ov-QD0"/>
+                        <binding destination="PAA-w4-EHb" name="hidden" keyPath="self.isKeySwitchCapable" id="me0-sr-ncW">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>
                         </binding>
+                        <binding destination="TM7-Ze-uQz" name="selectedIndex" keyPath="values.DefaultSwitchMethod" id="o0v-u6-NeM">
+                            <dictionary key="options">
+                                <bool key="NSValidatesImmediately" value="YES"/>
+                            </dictionary>
+                        </binding>
                     </connections>
-                </textField>
-                <customView appearanceType="aqua" translatesAutoresizingMaskIntoConstraints="NO" id="ghF-Nf-2dw">
-                    <rect key="frame" x="160" y="2" width="71" height="22"/>
-                    <subviews>
-                        <segmentedControl focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RSg-2F-b2E">
-                            <rect key="frame" x="0.0" y="-1" width="71" height="23"/>
-                            <segmentedCell key="cell" borderStyle="border" focusRingType="none" alignment="left" style="texturedSquare" trackingMode="selectOne" id="qZf-Wa-JJt">
-                                <font key="font" metaFont="system"/>
-                                <segments>
-                                    <segment image="AppSwitch" imageScaling="proportionallyUpOrDown" selected="YES">
-                                        <nil key="label"/>
-                                    </segment>
-                                    <segment image="FnKey" imageScaling="proportionallyUpOrDown" tag="1">
-                                        <nil key="label"/>
-                                    </segment>
-                                </segments>
-                            </segmentedCell>
-                            <connections>
-                                <action selector="changeSwitchMethod:" target="AMq-Mo-r6v" id="7hV-ov-QD0"/>
-                                <binding destination="TM7-Ze-uQz" name="selectedIndex" keyPath="values.DefaultSwitchMethod" id="o0v-u6-NeM">
-                                    <dictionary key="options">
-                                        <bool key="NSValidatesImmediately" value="YES"/>
-                                    </dictionary>
-                                </binding>
-                            </connections>
-                        </segmentedControl>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="bottom" secondItem="RSg-2F-b2E" secondAttribute="bottom" id="3iP-he-FSH"/>
-                        <constraint firstItem="RSg-2F-b2E" firstAttribute="top" secondItem="ghF-Nf-2dw" secondAttribute="top" id="Fgt-8e-gPX"/>
-                        <constraint firstAttribute="trailing" secondItem="RSg-2F-b2E" secondAttribute="trailing" id="meX-Sg-O3L"/>
-                        <constraint firstItem="RSg-2F-b2E" firstAttribute="leading" secondItem="ghF-Nf-2dw" secondAttribute="leading" id="t7J-Vb-UMl"/>
-                    </constraints>
-                </customView>
+                </segmentedControl>
+                <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="668-KZ-2vj">
+                    <rect key="frame" x="132" y="4" width="100" height="19"/>
+                    <buttonCell key="cell" type="roundRect" title="Ask permission" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gP8-wU-Xyk">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="askAccessibilityPersmission:" target="AMq-Mo-r6v" id="jdM-NX-Bvk"/>
+                        <binding destination="PAA-w4-EHb" name="hidden" keyPath="self.isKeySwitchCapable" id="iLA-Ll-lvc"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
-                <constraint firstItem="ghF-Nf-2dw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WoM-Ab-xgn" secondAttribute="trailing" constant="8" id="GQo-ui-DCd"/>
-                <constraint firstItem="ghF-Nf-2dw" firstAttribute="centerY" secondItem="Xfn-Mq-ahC" secondAttribute="centerY" id="LEH-Rg-C7S"/>
+                <constraint firstItem="668-KZ-2vj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WoM-Ab-xgn" secondAttribute="trailing" constant="8" symbolic="YES" id="4mc-Wt-kl9"/>
+                <constraint firstAttribute="trailing" secondItem="RSg-2F-b2E" secondAttribute="trailing" constant="20" id="Dug-Hx-kdT"/>
+                <constraint firstAttribute="trailing" secondItem="668-KZ-2vj" secondAttribute="trailing" constant="20" id="LEr-Nv-lxk"/>
                 <constraint firstItem="WoM-Ab-xgn" firstAttribute="centerY" secondItem="Xfn-Mq-ahC" secondAttribute="centerY" id="SuW-g7-ly7"/>
-                <constraint firstAttribute="trailing" secondItem="ghF-Nf-2dw" secondAttribute="trailing" constant="20" id="ZT0-F1-U7e"/>
-                <constraint firstItem="WoM-Ab-xgn" firstAttribute="leading" secondItem="Xfn-Mq-ahC" secondAttribute="leading" constant="20" id="mkG-gY-0vc"/>
+                <constraint firstItem="RSg-2F-b2E" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WoM-Ab-xgn" secondAttribute="trailing" constant="8" symbolic="YES" id="XNK-DP-IrO"/>
+                <constraint firstItem="WoM-Ab-xgn" firstAttribute="leading" secondItem="Xfn-Mq-ahC" secondAttribute="leading" constant="20" symbolic="YES" id="mkG-gY-0vc"/>
+                <constraint firstItem="RSg-2F-b2E" firstAttribute="centerY" secondItem="Xfn-Mq-ahC" secondAttribute="centerY" id="q8G-vu-zni"/>
+                <constraint firstItem="668-KZ-2vj" firstAttribute="centerY" secondItem="Xfn-Mq-ahC" secondAttribute="centerY" id="sfE-Re-qxs"/>
             </constraints>
-            <connections>
-                <outlet property="label" destination="WoM-Ab-xgn" id="Nt3-tM-erj"/>
-                <outlet property="segmentedControl" destination="RSg-2F-b2E" id="vqO-jz-WxA"/>
-            </connections>
             <point key="canvasLocation" x="172.5" y="-512.5"/>
         </customView>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
@@ -113,7 +107,6 @@
                 <outlet property="appNameLabel" destination="gmQ-wu-N8N" id="DlR-hM-OIL"/>
                 <outlet property="behaviorSegment" destination="gls-pL-7qN" id="Wbk-3z-2rm"/>
                 <outlet property="imageConstraint" destination="8lp-ov-mJS" id="XeR-2o-NEL"/>
-                <outlet property="vibrancyCancellerView" destination="Kga-gN-osw" id="JEP-1u-QtV"/>
                 <outlet property="view" destination="o8r-mD-TI5" id="8Xd-4V-iZF"/>
             </connections>
         </viewController>
@@ -130,22 +123,19 @@
         </viewController>
         <menu id="guO-bQ-N19">
             <items>
-                <menuItem title="Switch method" tag="12" enabled="NO" id="hM4-Z2-ndk" customClass="SwitchMenuItem" customModule="Fluor" customModuleProvider="target">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <binding destination="PAA-w4-EHb" name="enabled" keyPath="self.isKeySwitchCapable" id="w2k-3O-iVg"/>
-                    </connections>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" title="sep2" id="QCJ-IJ-MMQ"/>
-                <menuItem title="Default mode" tag="11" enabled="NO" id="PtY-YF-jEr">
+                <menuItem title="Switch method" tag="1" enabled="NO" id="hM4-Z2-ndk">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="Xdx-op-wZZ"/>
-                <menuItem title="Current application" tag="10" enabled="NO" id="ulH-vE-QEF">
+                <menuItem isSeparatorItem="YES" title="sep2" tag="2" id="QCJ-IJ-MMQ"/>
+                <menuItem title="Default mode" tag="3" enabled="NO" id="PtY-YF-jEr">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" title="sep1" id="qvx-bn-WPk"/>
-                <menuItem title="Edit rules..." image="Rules" id="MHf-OK-jHk">
+                <menuItem isSeparatorItem="YES" tag="4" id="Xdx-op-wZZ"/>
+                <menuItem title="Current application" tag="5" enabled="NO" id="ulH-vE-QEF">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" title="sep1" tag="6" id="qvx-bn-WPk"/>
+                <menuItem title="Manage rules..." image="Rules" id="MHf-OK-jHk">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="editRules:" target="e3h-DP-voU" id="pRc-Y7-dds"/>
@@ -173,13 +163,13 @@
                         <action selector="showPreferences:" target="e3h-DP-voU" id="R1g-ZB-Dbo"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Start Fluor at login" id="eWy-d7-62P" customClass="SelectableMenuItem" customModule="Fluor" customModuleProvider="target">
+                <menuItem title="Start Fluor at login" onStateImage="CheckEnabled" offStateImage="CheckDisabled" mixedStateImage="CheckMixed" id="eWy-d7-62P" customClass="CheckableMenuItem" customModule="Fluor" customModuleProvider="target">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <binding destination="08K-lI-3Rh" name="value" keyPath="self.launchAtLogin" id="heU-8m-SR5"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Disable" id="DqN-qz-yQz" customClass="SelectableMenuItem" customModule="Fluor" customModuleProvider="target">
+                <menuItem title="Disabled" onStateImage="CheckEnabled" offStateImage="CheckDisabled" mixedStateImage="CheckMixed" id="DqN-qz-yQz" customClass="CheckableMenuItem" customModule="Fluor" customModuleProvider="target">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="toggleApplicationState:" target="e3h-DP-voU" id="R1D-je-71A"/>
@@ -216,7 +206,7 @@
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Default mode" id="S28-Jt-nN1">
                                 <font key="font" metaFont="systemBold"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                             <connections>
                                 <binding destination="TM7-Ze-uQz" name="enabled" keyPath="values.OnLaunchDisabled" id="OeR-vu-bOk">
@@ -226,42 +216,31 @@
                                 </binding>
                             </connections>
                         </textField>
-                        <customView appearanceType="aqua" translatesAutoresizingMaskIntoConstraints="NO" id="95p-vS-Mgv">
-                            <rect key="frame" x="160" y="3" width="71" height="22"/>
-                            <subviews>
-                                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kdK-wj-mRZ">
-                                    <rect key="frame" x="0.0" y="-1" width="71" height="23"/>
-                                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="capsule" trackingMode="selectOne" id="Vfh-zJ-Axi">
-                                        <font key="font" metaFont="system"/>
-                                        <segments>
-                                            <segment toolTip="Switch to Apple mode" image="AppleMode" imageScaling="proportionallyUpOrDown" selected="YES"/>
-                                            <segment toolTip="Switch to Function mode" image="OtherMode" imageScaling="proportionallyUpOrDown" tag="1"/>
-                                        </segments>
-                                    </segmentedCell>
-                                    <connections>
-                                        <action selector="changeMode:" target="Cd8-a1-iy7" id="6lA-BY-gR3"/>
-                                        <binding destination="TM7-Ze-uQz" name="selectedIndex" keyPath="values.DefaultKeyboardMode" id="eDR-H9-LDR"/>
-                                        <binding destination="TM7-Ze-uQz" name="enabled" keyPath="values.OnLaunchDisabled" id="2He-mB-s65">
-                                            <dictionary key="options">
-                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                            </dictionary>
-                                        </binding>
-                                    </connections>
-                                </segmentedControl>
-                            </subviews>
-                            <constraints>
-                                <constraint firstAttribute="bottom" secondItem="kdK-wj-mRZ" secondAttribute="bottom" id="8eb-oK-dnU"/>
-                                <constraint firstItem="kdK-wj-mRZ" firstAttribute="leading" secondItem="95p-vS-Mgv" secondAttribute="leading" id="9Gk-Mg-5sv"/>
-                                <constraint firstAttribute="trailing" secondItem="kdK-wj-mRZ" secondAttribute="trailing" id="Z5m-S7-ob4"/>
-                                <constraint firstItem="kdK-wj-mRZ" firstAttribute="top" secondItem="95p-vS-Mgv" secondAttribute="top" id="vdm-nY-d8V"/>
-                            </constraints>
-                        </customView>
+                        <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kdK-wj-mRZ">
+                            <rect key="frame" x="163" y="4" width="69" height="20"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="Vfh-zJ-Axi">
+                                <font key="font" metaFont="cellTitle"/>
+                                <segments>
+                                    <segment toolTip="Switch to Apple mode" image="AppleMode" imageScaling="proportionallyUpOrDown" selected="YES"/>
+                                    <segment toolTip="Switch to function key mode" image="OtherMode" imageScaling="proportionallyUpOrDown" tag="1"/>
+                                </segments>
+                            </segmentedCell>
+                            <connections>
+                                <action selector="changeMode:" target="Cd8-a1-iy7" id="6lA-BY-gR3"/>
+                                <binding destination="TM7-Ze-uQz" name="selectedIndex" keyPath="values.DefaultKeyboardMode" id="eDR-H9-LDR"/>
+                                <binding destination="TM7-Ze-uQz" name="enabled" keyPath="values.OnLaunchDisabled" id="2He-mB-s65">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </segmentedControl>
                     </subviews>
                     <constraints>
                         <constraint firstItem="DvO-d4-urd" firstAttribute="centerY" secondItem="YVc-AJ-uvN" secondAttribute="centerY" id="A9g-ur-hSf"/>
-                        <constraint firstItem="95p-vS-Mgv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DvO-d4-urd" secondAttribute="trailing" constant="8" id="hEm-6c-u0Y"/>
-                        <constraint firstItem="95p-vS-Mgv" firstAttribute="centerY" secondItem="YVc-AJ-uvN" secondAttribute="centerY" id="leG-vk-ASZ"/>
-                        <constraint firstAttribute="trailing" secondItem="95p-vS-Mgv" secondAttribute="trailing" constant="20" id="nv6-7M-0mY"/>
+                        <constraint firstItem="kdK-wj-mRZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DvO-d4-urd" secondAttribute="trailing" constant="8" symbolic="YES" id="KLg-GK-irw"/>
+                        <constraint firstAttribute="trailing" secondItem="kdK-wj-mRZ" secondAttribute="trailing" constant="20" id="Kqf-cu-fO1"/>
+                        <constraint firstItem="kdK-wj-mRZ" firstAttribute="centerY" secondItem="YVc-AJ-uvN" secondAttribute="centerY" id="lQM-a0-QJQ"/>
                         <constraint firstItem="DvO-d4-urd" firstAttribute="leading" secondItem="YVc-AJ-uvN" secondAttribute="leading" constant="20" id="uI3-7L-LiZ"/>
                     </constraints>
                 </customView>
@@ -272,14 +251,14 @@
                 <constraint firstAttribute="bottom" secondItem="YVc-AJ-uvN" secondAttribute="bottom" id="rkv-M7-PH2"/>
                 <constraint firstAttribute="trailing" secondItem="YVc-AJ-uvN" secondAttribute="trailing" id="sF6-eF-HLz"/>
             </constraints>
-            <point key="canvasLocation" x="173" y="-416"/>
+            <point key="canvasLocation" x="172.5" y="-441.5"/>
         </customView>
         <customView wantsLayer="YES" canDrawConcurrently="YES" id="o8r-mD-TI5">
             <rect key="frame" x="0.0" y="0.0" width="252" height="67"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView autoresizesSubviews="NO" wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="infinite" translatesAutoresizingMaskIntoConstraints="NO" id="EUW-rh-G7n">
-                    <rect key="frame" x="20" y="1" width="64" height="64"/>
+                    <rect key="frame" x="20" y="2" width="64" height="64"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="8lp-ov-mJS"/>
                         <constraint firstAttribute="width" secondItem="EUW-rh-G7n" secondAttribute="height" multiplier="1:1" id="igc-RD-12P"/>
@@ -294,14 +273,14 @@
                     </connections>
                 </imageView>
                 <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mdq-3d-6c1">
-                    <rect key="frame" x="92" y="12" width="140" height="43"/>
+                    <rect key="frame" x="92" y="14" width="140" height="39"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gmQ-wu-N8N">
-                            <rect key="frame" x="-2" y="26" width="39" height="17"/>
+                            <rect key="frame" x="-2" y="22" width="39" height="17"/>
                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" id="nND-dO-QEg">
                                 <font key="font" metaFont="systemSemibold" size="13"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                             <connections>
                                 <binding destination="TM7-Ze-uQz" name="enabled" keyPath="values.OnLaunchDisabled" id="pzE-wS-RRe">
@@ -311,42 +290,31 @@
                                 </binding>
                             </connections>
                         </textField>
-                        <customView appearanceType="aqua" translatesAutoresizingMaskIntoConstraints="NO" id="Kga-gN-osw">
-                            <rect key="frame" x="0.0" y="0.0" width="104" height="22"/>
-                            <subviews>
-                                <segmentedControl canDrawConcurrently="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gls-pL-7qN">
-                                    <rect key="frame" x="0.0" y="-1" width="104" height="23"/>
-                                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="capsule" trackingMode="selectOne" id="1I5-bW-HGh">
-                                        <font key="font" metaFont="system"/>
-                                        <segments>
-                                            <segment toolTip="Same as default mode" image="DefaultMode" selected="YES">
-                                                <nil key="label"/>
-                                            </segment>
-                                            <segment toolTip="Switch to Apple mode" image="AppleMode" tag="1">
-                                                <nil key="label"/>
-                                            </segment>
-                                            <segment toolTip="Switch to Function mode" image="OtherMode">
-                                                <nil key="label"/>
-                                            </segment>
-                                        </segments>
-                                    </segmentedCell>
-                                    <connections>
-                                        <action selector="behaviorChanged:" target="zaP-Cz-6tR" id="sWf-ju-s4m"/>
-                                        <binding destination="TM7-Ze-uQz" name="enabled" keyPath="values.OnLaunchDisabled" id="omM-fE-Sx8">
-                                            <dictionary key="options">
-                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                            </dictionary>
-                                        </binding>
-                                    </connections>
-                                </segmentedControl>
-                            </subviews>
-                            <constraints>
-                                <constraint firstItem="gls-pL-7qN" firstAttribute="leading" secondItem="Kga-gN-osw" secondAttribute="leading" id="IIk-lY-q7D"/>
-                                <constraint firstAttribute="trailing" secondItem="gls-pL-7qN" secondAttribute="trailing" id="Tcx-bz-ub8"/>
-                                <constraint firstItem="gls-pL-7qN" firstAttribute="top" secondItem="Kga-gN-osw" secondAttribute="top" id="bld-97-XlY"/>
-                                <constraint firstAttribute="bottom" secondItem="gls-pL-7qN" secondAttribute="bottom" id="inY-M6-JKO"/>
-                            </constraints>
-                        </customView>
+                        <segmentedControl canDrawConcurrently="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gls-pL-7qN">
+                            <rect key="frame" x="-1" y="-1" width="102" height="20"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="1I5-bW-HGh">
+                                <font key="font" metaFont="cellTitle"/>
+                                <segments>
+                                    <segment toolTip="Same as default mode" image="DefaultMode" selected="YES">
+                                        <nil key="label"/>
+                                    </segment>
+                                    <segment toolTip="Switch to Apple mode" image="AppleMode" tag="1">
+                                        <nil key="label"/>
+                                    </segment>
+                                    <segment toolTip="Switch to Function mode" image="OtherMode">
+                                        <nil key="label"/>
+                                    </segment>
+                                </segments>
+                            </segmentedCell>
+                            <connections>
+                                <action selector="behaviorChanged:" target="zaP-Cz-6tR" id="sWf-ju-s4m"/>
+                                <binding destination="TM7-Ze-uQz" name="enabled" keyPath="values.OnLaunchDisabled" id="omM-fE-Sx8">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </segmentedControl>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="i0x-bv-w7q"/>
@@ -368,7 +336,7 @@
                 <constraint firstItem="Mdq-3d-6c1" firstAttribute="leading" secondItem="EUW-rh-G7n" secondAttribute="trailing" constant="8" id="p4v-GU-Q2F"/>
                 <constraint firstItem="EUW-rh-G7n" firstAttribute="centerY" secondItem="o8r-mD-TI5" secondAttribute="centerY" id="wVW-9k-HFL"/>
             </constraints>
-            <point key="canvasLocation" x="172" y="-309"/>
+            <point key="canvasLocation" x="172" y="-350"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="TM7-Ze-uQz"/>
     </objects>
@@ -376,9 +344,12 @@
         <image name="About" width="16" height="16"/>
         <image name="AppSwitch" width="16" height="16"/>
         <image name="AppleMode" width="16" height="16"/>
+        <image name="CheckDisabled" width="16" height="16"/>
+        <image name="CheckEnabled" width="16" height="16"/>
+        <image name="CheckMixed" width="16" height="16"/>
         <image name="DefaultMode" width="16" height="16"/>
         <image name="FnKey" width="16" height="16"/>
-        <image name="NSApplicationIcon" width="128" height="128"/>
+        <image name="NSApplicationIcon" width="32" height="32"/>
         <image name="OtherMode" width="16" height="16"/>
         <image name="Preferences" width="16" height="16"/>
         <image name="Quit" width="16" height="16"/>

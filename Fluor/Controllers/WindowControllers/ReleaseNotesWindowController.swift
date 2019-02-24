@@ -2,22 +2,60 @@
 //  ReleaseNotesWindowController.swift
 //  Fluor
 //
-//  Created by Pierre TACCHI on 12/02/2017.
-//  Copyright © 2017 Pyrolyse. All rights reserved.
-//
 
 import Cocoa
 
-class ReleaseNotesWindowController: NSWindowController {
-    @IBOutlet var textView: NSTextView!
-    @objc dynamic private var contentURL: URL?
-
+class ReleaseNotesWindowController: NSWindowController, NSWindowDelegate {
+    @objc dynamic var releases: [Release] = []
+    private var session: URLSession?
+    
     override func windowDidLoad() {
         super.windowDidLoad()
-        window?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.populateList()
+    }
+    
+    func windowWillClose(_ notification: Notification) {
+        self.session?.invalidateAndCancel()
+    }
+    
+    @IBAction func changeVersion(_ sender: NSPopUpButton) {
+        guard let release = sender.selectedItem?.representedObject as? Release else { fatalError() }
+        self.show(url: release.url)
+    }
+    
+    private func populateList() {
+        guard let str = Bundle.main.infoDictionary?["FLRNListURL"] as? String,
+            let url = URL(string: str) else {
+                fatalError("No RN String !")
+        }
         
-        contentURL = Bundle.main.url(forResource: "ReleaseNotes", withExtension: "rtf")
+        self.session = URLSession(configuration: .ephemeral)
         
-        textView.isEditable = false
+        self.session?.dataTask(with: url, completionHandler: { (data, response, error) in
+            if let error = error {
+                DispatchQueue.main.async { [unowned self] in
+                    self.presentError(error, modalFor: self.window!, delegate: nil, didPresent: nil, contextInfo: nil)
+                }
+            } else if let data = data {
+                do {
+                    let entries = try JSONDecoder().decode([Release].self, from: data)
+                    DispatchQueue.main.async {
+                        [unowned self] in self.releases = entries
+                        if let last = entries.first {
+                            self.show(url: last.url)
+                        }
+                    }
+                } catch {
+                    DispatchQueue.main.async { [unowned self] in
+                        self.presentError(error, modalFor: self.window!, delegate: nil, didPresent: nil, contextInfo: nil)
+                    }
+                }
+            }
+        }).resume()
+    }
+    
+    private func show(url: URL) {
+        guard let ctrl = self.contentViewController as? ReleaseNotesViewController else { fatalError() }
+        ctrl.show(url: url)
     }
 }

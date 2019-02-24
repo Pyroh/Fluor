@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewControllerDelegate, SwitchMethodDidChangeHandler {
+class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewControllerDelegate, SwitchMethodDidChangeObserver {
     @IBOutlet var currentAppViewController: CurrentAppViewController!
     @IBOutlet var statusMenuController: StatusMenuController!
     @IBOutlet var defaultModeViewController: DefaultModeViewController!
@@ -18,7 +18,7 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     private var globalEventManager: Any?
     private var fnDownTimestamp: TimeInterval? = nil
     private var shouldHandleFNKey: Bool = false
-    private var fnKeyMaximumDelay: Double = BehaviorManager.default.fnKeyMaximumDelay()
+    private var fnKeyMaximumDelay: Double = BehaviorManager.default.fnKeyMaximumDelay
     
     private var currentMode: KeyboardMode = .error
     private var onLaunchKeyboardMode: KeyboardMode = .error
@@ -38,7 +38,7 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(appMustWake(notification:)), name: NSWorkspace.sessionDidBecomeActiveNotification, object: nil)
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(appMustWake(notification:)), name: NSWorkspace.didWakeNotification, object: nil)
         
-        guard !BehaviorManager.default.isDisabled() else { return }
+        guard !BehaviorManager.default.isDisabled else { return }
         if let currentApp = NSWorkspace.shared.frontmostApplication, let id = currentApp.bundleIdentifier ?? currentApp.executableURL?.lastPathComponent {
             adaptModeForApp(withId: id)
             updateAppBehaviorViewFor(app: currentApp, id: id)
@@ -48,7 +48,7 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     /// Register self as an observer for some notifications.
     private func applyAsObserver() {
         if switchMethod == .window { startObservingBehaviorDidChange() }
-        startObservingSwitchMethodDidChange()
+        self.startObservingSwitchMethodDidChange()
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(activeAppDidChange(notification:)), name: NSWorkspace.didActivateApplicationNotification, object: nil)
         self.adaptToAccessibilityTrust()
     }
@@ -79,12 +79,12 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
     }
     
     func performTerminationCleaning() {
-        if BehaviorManager.default.shouldRestoreStateOnQuit() {
+        if BehaviorManager.default.shouldRestoreStateOnQuit {
             let state: KeyboardMode
-            if BehaviorManager.default.shouldRestorePreviousState() {
+            if BehaviorManager.default.shouldRestorePreviousState {
                 state = onLaunchKeyboardMode
             } else {
-                state = BehaviorManager.default.onQuitState()
+                state = BehaviorManager.default.onQuitState
             }
             switch state {
             case .apple:
@@ -104,7 +104,7 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
             let id = app.bundleIdentifier ?? app.executableURL?.lastPathComponent else { return }
         currentID = id
         updateAppBehaviorViewFor(app: app, id: id)
-        if !BehaviorManager.default.isDisabled() {
+        if !BehaviorManager.default.isDisabled {
             adaptModeForApp(withId: id)
         }
     }
@@ -210,11 +210,11 @@ class BehaviorController: NSObject, BehaviorDidChangeHandler, DefaultModeViewCon
         switch mode {
         case .apple:
             NSLog("Switch to Apple Mode for %@", currentID)
-            statusMenuController.statusItem.image = BehaviorManager.default.useLightIcon() ? #imageLiteral(resourceName: "AppleMode") : #imageLiteral(resourceName: "IconAppleMode")
+            statusMenuController.statusItem.image = BehaviorManager.default.useLightIcon ? #imageLiteral(resourceName: "AppleMode") : #imageLiteral(resourceName: "IconAppleMode")
             setFnKeysToAppleMode()
         case .other:
             NSLog("Switch to Other Mode for %@", currentID)
-            statusMenuController.statusItem.image = BehaviorManager.default.useLightIcon() ? #imageLiteral(resourceName: "OtherMode") : #imageLiteral(resourceName: "IconOtherMode")
+            statusMenuController.statusItem.image = BehaviorManager.default.useLightIcon ? #imageLiteral(resourceName: "OtherMode") : #imageLiteral(resourceName: "IconOtherMode")
             setFnKeysToOtherMode()
         default:
             return

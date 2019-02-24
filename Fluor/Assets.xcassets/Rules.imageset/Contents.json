@@ -1,8 +1,36 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
-      "filename" : "Rules.pdf"
+      "idiom" : "mac",
+      "filename" : "RulesLight.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "RulesDark.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "RulesLight@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "RulesDark@2x.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "2x"
     }
   ],
   "info" : {
@@ -10,7 +38,6 @@
     "author" : "xcode"
   },
   "properties" : {
-    "template-rendering-intent" : "template",
-    "preserves-vector-representation" : true
+    "template-rendering-intent" : "template"
   }
 }

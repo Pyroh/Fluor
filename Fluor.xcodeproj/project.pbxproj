@@ -14,45 +14,37 @@
 		3F2FA4011D79D66D003E2AD8 /* DefaultModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA4001D79D66D003E2AD8 /* DefaultModeViewController.swift */; };
 		3F2FA4031D7A059F003E2AD8 /* CurrentAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA4021D7A059F003E2AD8 /* CurrentAppViewController.swift */; };
 		3F2FA4051D7A1F87003E2AD8 /* BehaviorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA4041D7A1F87003E2AD8 /* BehaviorManager.swift */; };
-		3F3433311E50C2E0009F4D86 /* ReleaseNotesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F34332F1E50C2E0009F4D86 /* ReleaseNotesWindowController.swift */; };
-		3F3433321E50C2E0009F4D86 /* ReleaseNotesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F3433301E50C2E0009F4D86 /* ReleaseNotesWindowController.xib */; };
 		3F3433341E50C53A009F4D86 /* ReleaseNotes.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 3F3433331E50C53A009F4D86 /* ReleaseNotes.rtf */; };
-		3F3CF3481FBF8B79005E8EB0 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F3CF3471FBF8B79005E8EB0 /* Preferences.storyboard */; };
 		3F4ABD0E201937B30075B178 /* RulesEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4ABD0C201937B30075B178 /* RulesEditor.storyboard */; };
 		3F4ABD1020193B8D0075B178 /* RulesEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4ABD0F20193B8D0075B178 /* RulesEditorViewController.swift */; };
+		3F4E36C32111EF7A00CDCAA0 /* CheckableMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E36C22111EF7A00CDCAA0 /* CheckableMenuItem.swift */; };
 		3F5F57582016249E002AF4C1 /* RunningAppWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5F57572016249E002AF4C1 /* RunningAppWindowController.swift */; };
 		3F697A0C1F88D47C007BA558 /* MoverEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F697A0B1F88D47C007BA558 /* MoverEffectView.swift */; };
-		3F6D52C32058737F00517E57 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6D52C22058737F00517E57 /* HockeySDK.framework */; };
-		3F6D52C5205875BB00517E57 /* HockeySDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6D52C22058737F00517E57 /* HockeySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3F6D52C7205BC82B00517E57 /* KeepSafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D52C6205BC82B00517E57 /* KeepSafe.swift */; };
 		3F6D52CA2069659800517E57 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F6D52C82069659800517E57 /* About.storyboard */; };
 		3F6D52CC2069667300517E57 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D52CB2069667300517E57 /* AboutViewController.swift */; };
 		3F6D52CE20696E2100517E57 /* LinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D52CD20696E2100517E57 /* LinkButton.swift */; };
-		3F719FDE1FE798600083E7F7 /* SwitchMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F719FDD1FE798600083E7F7 /* SwitchMenuItem.swift */; };
 		3F7291EF2025BD22005C9B70 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7291ED2025BD1E005C9B70 /* Sparkle.framework */; };
 		3F7291F02025BD22005C9B70 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7291ED2025BD1E005C9B70 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3F7291F22028BC6B005C9B70 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7291F12028BC6B005C9B70 /* PreferencesWindowController.swift */; };
 		3F7C349C1ED5EBAA0020C538 /* BehaviorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7C349B1ED5EBAA0020C538 /* BehaviorController.swift */; };
+		3F820C412219B63F00004813 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F820C432219B63F00004813 /* Preferences.storyboard */; };
 		3F84FE81200E655E00871275 /* StoryboardInstantiableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F84FE80200E655E00871275 /* StoryboardInstantiableProtocol.swift */; };
-		3F866A222002203900B06CD0 /* TemplateImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F866A212002203900B06CD0 /* TemplateImageView.swift */; };
-		3F866A24200240D200B06CD0 /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F866A23200240D200B06CD0 /* NSObjectExtension.swift */; };
 		3F8879911FBF41EC005C28E6 /* NSStoryboardNamesExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8879901FBF41EC005C28E6 /* NSStoryboardNamesExtension.swift */; };
 		3F8879931FBF5F2A005C28E6 /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8879921FBF5F2A005C28E6 /* PreferencesTabViewController.swift */; };
 		3F8F93BB1EEAC9B900FCE91F /* RuleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F93BA1EEAC9B900FCE91F /* RuleCellView.swift */; };
 		3F8F93BD1EEAF1EB00FCE91F /* RuleValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F93BC1EEAF1EB00FCE91F /* RuleValueTransformer.swift */; };
-		3FA012B51FFBCCE50095D4D4 /* SelectableMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA012B41FFBCCE50095D4D4 /* SelectableMenuItem.swift */; };
-		3FA012B71FFBE9AB0095D4D4 /* SelectableMenuItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA012B61FFBE9AB0095D4D4 /* SelectableMenuItemView.xib */; };
 		3FC44EFA1D7F169A0065D433 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC44EF91D7F169A0065D433 /* Enums.swift */; };
 		3FC44EFC1D7F16CB0065D433 /* RulesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC44EFB1D7F16CB0065D433 /* RulesItem.swift */; };
 		3FCD16A51D79793600C57B22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD16A41D79793600C57B22 /* AppDelegate.swift */; };
 		3FCD16A71D79793600C57B22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FCD16A61D79793600C57B22 /* Assets.xcassets */; };
 		3FCD16AA1D79793600C57B22 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FCD16A81D79793600C57B22 /* MainMenu.xib */; };
 		3FCD16B41D79797600C57B22 /* utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD16B31D79797600C57B22 /* utils.m */; };
-		3FD11B31207BAFC400742415 /* NSAnimationContextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD11B30207BAFC400742415 /* NSAnimationContextExtension.swift */; };
 		3FE213291D89A6940023FAC2 /* NotificationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE213281D89A6940023FAC2 /* NotificationHelpers.swift */; };
 		3FE2A5F51E5650ED0011E544 /* MenuItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE2A5F41E5650ED0011E544 /* MenuItemsController.swift */; };
+		3FE38EA8221D90930019B889 /* ReleaseNotesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE38EA7221D90930019B889 /* ReleaseNotesWindowController.swift */; };
+		3FE38EAA221D91640019B889 /* Release.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE38EA9221D91640019B889 /* Release.swift */; };
+		3FE38EAC221DBE880019B889 /* ReleaseNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE38EAB221DBE880019B889 /* ReleaseNotesViewController.swift */; };
 		3FE784DD2052F591007F6200 /* NSViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE784DC2052F591007F6200 /* NSViewExtension.swift */; };
-		3FE784DF2053D208007F6200 /* FirstMouseEventAccepterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE784DE2053D208007F6200 /* FirstMouseEventAccepterView.swift */; };
 		3FE784E12053D455007F6200 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3FE784E02053D455007F6200 /* README.md */; };
 		3FE7E0E01D7CA14600DC754D /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE7E0DF1D7CA14600DC754D /* LaunchAtLoginController.m */; };
 		3FE7E0E31D7CBE1700DC754D /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE7E0E11D7CBE1700DC754D /* AboutWindowController.swift */; };
@@ -69,7 +61,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3F6D52C5205875BB00517E57 /* HockeySDK.framework in Embed Frameworks */,
 				3F7291F02025BD22005C9B70 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -86,32 +77,28 @@
 		3F2FA4001D79D66D003E2AD8 /* DefaultModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultModeViewController.swift; sourceTree = "<group>"; };
 		3F2FA4021D7A059F003E2AD8 /* CurrentAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentAppViewController.swift; sourceTree = "<group>"; };
 		3F2FA4041D7A1F87003E2AD8 /* BehaviorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorManager.swift; sourceTree = "<group>"; };
-		3F34332F1E50C2E0009F4D86 /* ReleaseNotesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReleaseNotesWindowController.swift; sourceTree = "<group>"; };
-		3F3433301E50C2E0009F4D86 /* ReleaseNotesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReleaseNotesWindowController.xib; path = Base.lproj/ReleaseNotesWindowController.xib; sourceTree = "<group>"; };
 		3F3433331E50C53A009F4D86 /* ReleaseNotes.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = ReleaseNotes.rtf; sourceTree = "<group>"; };
-		3F3CF3471FBF8B79005E8EB0 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Preferences.storyboard; path = Base.lproj/Preferences.storyboard; sourceTree = "<group>"; };
+		3F3CFB4322131B5E00002089 /* Fluor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fluor.entitlements; sourceTree = "<group>"; };
 		3F4ABD0D201937B30075B178 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/RulesEditor.storyboard; sourceTree = "<group>"; };
 		3F4ABD0F20193B8D0075B178 /* RulesEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesEditorViewController.swift; sourceTree = "<group>"; };
+		3F4E36C22111EF7A00CDCAA0 /* CheckableMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckableMenuItem.swift; sourceTree = "<group>"; };
 		3F5F57572016249E002AF4C1 /* RunningAppWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningAppWindowController.swift; sourceTree = "<group>"; };
 		3F697A0B1F88D47C007BA558 /* MoverEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoverEffectView.swift; sourceTree = "<group>"; };
 		3F6D52C22058737F00517E57 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "HockeySDK-Mac/HockeySDK.framework"; sourceTree = "<group>"; };
-		3F6D52C6205BC82B00517E57 /* KeepSafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepSafe.swift; sourceTree = "<group>"; };
 		3F6D52C92069659800517E57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/About.storyboard; sourceTree = "<group>"; };
 		3F6D52CB2069667300517E57 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		3F6D52CD20696E2100517E57 /* LinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkButton.swift; sourceTree = "<group>"; };
-		3F719FDD1FE798600083E7F7 /* SwitchMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchMenuItem.swift; sourceTree = "<group>"; };
 		3F7291ED2025BD1E005C9B70 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = ../../Utils/Sparkle/Sparkle.framework; sourceTree = "<group>"; };
 		3F7291F12028BC6B005C9B70 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		3F7C349B1ED5EBAA0020C538 /* BehaviorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorController.swift; sourceTree = "<group>"; };
+		3F820C422219B63F00004813 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Preferences.storyboard; sourceTree = "<group>"; };
+		3F820C472219B6D300004813 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/RunningApps.strings; sourceTree = "<group>"; };
+		3F820C4A2219B6D400004813 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/About.strings; sourceTree = "<group>"; };
 		3F84FE80200E655E00871275 /* StoryboardInstantiableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiableProtocol.swift; sourceTree = "<group>"; };
-		3F866A212002203900B06CD0 /* TemplateImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateImageView.swift; sourceTree = "<group>"; };
-		3F866A23200240D200B06CD0 /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		3F8879901FBF41EC005C28E6 /* NSStoryboardNamesExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStoryboardNamesExtension.swift; sourceTree = "<group>"; };
 		3F8879921FBF5F2A005C28E6 /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
 		3F8F93BA1EEAC9B900FCE91F /* RuleCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleCellView.swift; sourceTree = "<group>"; };
 		3F8F93BC1EEAF1EB00FCE91F /* RuleValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleValueTransformer.swift; sourceTree = "<group>"; };
-		3FA012B41FFBCCE50095D4D4 /* SelectableMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableMenuItem.swift; sourceTree = "<group>"; };
-		3FA012B61FFBE9AB0095D4D4 /* SelectableMenuItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SelectableMenuItemView.xib; path = Base.lproj/SelectableMenuItemView.xib; sourceTree = "<group>"; };
 		3FC44EF91D7F169A0065D433 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		3FC44EFB1D7F16CB0065D433 /* RulesItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulesItem.swift; sourceTree = "<group>"; };
 		3FCD16A11D79793600C57B22 /* Fluor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fluor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,11 +108,15 @@
 		3FCD16AB1D79793600C57B22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FCD16B21D79797600C57B22 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
 		3FCD16B31D79797600C57B22 /* utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = utils.m; sourceTree = "<group>"; };
-		3FD11B30207BAFC400742415 /* NSAnimationContextExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAnimationContextExtension.swift; sourceTree = "<group>"; };
 		3FE213281D89A6940023FAC2 /* NotificationHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelpers.swift; sourceTree = "<group>"; };
 		3FE2A5F41E5650ED0011E544 /* MenuItemsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemsController.swift; sourceTree = "<group>"; };
+		3FE38EA02219E9B60019B889 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		3FE38EA22219EBBC0019B889 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Preferences.strings; sourceTree = "<group>"; };
+		3FE38EA42219EF410019B889 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/RulesEditor.strings; sourceTree = "<group>"; };
+		3FE38EA7221D90930019B889 /* ReleaseNotesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotesWindowController.swift; sourceTree = "<group>"; };
+		3FE38EA9221D91640019B889 /* Release.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Release.swift; sourceTree = "<group>"; };
+		3FE38EAB221DBE880019B889 /* ReleaseNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotesViewController.swift; sourceTree = "<group>"; };
 		3FE784DC2052F591007F6200 /* NSViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewExtension.swift; sourceTree = "<group>"; };
-		3FE784DE2053D208007F6200 /* FirstMouseEventAccepterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstMouseEventAccepterView.swift; sourceTree = "<group>"; };
 		3FE784E02053D455007F6200 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		3FE7E0DE1D7CA14600DC754D /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
 		3FE7E0DF1D7CA14600DC754D /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
@@ -142,7 +133,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F6D52C32058737F00517E57 /* HockeySDK.framework in Frameworks */,
 				3F7291EF2025BD22005C9B70 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,15 +140,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3F0D11F22025156B00F4585D /* MenuItems */ = {
-			isa = PBXGroup;
-			children = (
-				3F719FDD1FE798600083E7F7 /* SwitchMenuItem.swift */,
-				3FA012B41FFBCCE50095D4D4 /* SelectableMenuItem.swift */,
-			);
-			path = MenuItems;
-			sourceTree = "<group>";
-		};
 		3F4ABD13201941820075B178 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,7 +147,7 @@
 				3F8F93BC1EEAF1EB00FCE91F /* RuleValueTransformer.swift */,
 				3FC44EF91D7F169A0065D433 /* Enums.swift */,
 				3FC44EFB1D7F16CB0065D433 /* RulesItem.swift */,
-				3F2571F31FDBD43500020194 /* TableViewContentAnimator.swift */,
+				3FE38EA9221D91640019B889 /* Release.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -188,11 +169,11 @@
 		3F4C5CAC20194334006CC84A /* WindowControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3F34332F1E50C2E0009F4D86 /* ReleaseNotesWindowController.swift */,
 				3F5F57572016249E002AF4C1 /* RunningAppWindowController.swift */,
 				3FE7E0E81D7CC01B00DC754D /* RulesEditorWindowController.swift */,
 				3F7291F12028BC6B005C9B70 /* PreferencesWindowController.swift */,
 				3FE7E0E11D7CBE1700DC754D /* AboutWindowController.swift */,
+				3FE38EA7221D90930019B889 /* ReleaseNotesWindowController.swift */,
 			);
 			path = WindowControllers;
 			sourceTree = "<group>";
@@ -207,6 +188,7 @@
 				3F0A2A2F2014BA11009F9610 /* RunningAppsViewController.swift */,
 				3F4ABD0F20193B8D0075B178 /* RulesEditorViewController.swift */,
 				3F6D52CB2069667300517E57 /* AboutViewController.swift */,
+				3FE38EAB221DBE880019B889 /* ReleaseNotesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -214,11 +196,9 @@
 		3F4C5CAF201943F4006CC84A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3F0D11F22025156B00F4585D /* MenuItems */,
-				3F866A212002203900B06CD0 /* TemplateImageView.swift */,
+				3F4E36C22111EF7A00CDCAA0 /* CheckableMenuItem.swift */,
 				3F8F93BA1EEAC9B900FCE91F /* RuleCellView.swift */,
 				3F697A0B1F88D47C007BA558 /* MoverEffectView.swift */,
-				3FE784DE2053D208007F6200 /* FirstMouseEventAccepterView.swift */,
 				3F6D52CD20696E2100517E57 /* LinkButton.swift */,
 			);
 			path = Views;
@@ -227,8 +207,8 @@
 		3F4C5CB02019441D006CC84A /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				3F2571F31FDBD43500020194 /* TableViewContentAnimator.swift */,
 				3FCD16A41D79793600C57B22 /* AppDelegate.swift */,
-				3F6D52C6205BC82B00517E57 /* KeepSafe.swift */,
 				3FCD16B21D79797600C57B22 /* utils.h */,
 				3FCD16B31D79797600C57B22 /* utils.m */,
 				3FF655C920751D1600C8D2FC /* PFMoveApplication.h */,
@@ -249,9 +229,7 @@
 		3F4C5CB22019449B006CC84A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3FD11B30207BAFC400742415 /* NSAnimationContextExtension.swift */,
 				3F8879901FBF41EC005C28E6 /* NSStoryboardNamesExtension.swift */,
-				3F866A23200240D200B06CD0 /* NSObjectExtension.swift */,
 				3FE784DC2052F591007F6200 /* NSViewExtension.swift */,
 			);
 			path = Extensions;
@@ -286,6 +264,7 @@
 		3FCD16A31D79793600C57B22 /* Fluor */ = {
 			isa = PBXGroup;
 			children = (
+				3F3CFB4322131B5E00002089 /* Fluor.entitlements */,
 				3F4C5CB22019449B006CC84A /* Extensions */,
 				3F4C5CB12019444B006CC84A /* Protocols */,
 				3F4ABD13201941820075B178 /* Models */,
@@ -307,11 +286,9 @@
 			isa = PBXGroup;
 			children = (
 				3FCD16A81D79793600C57B22 /* MainMenu.xib */,
-				3FA012B61FFBE9AB0095D4D4 /* SelectableMenuItemView.xib */,
-				3F3433301E50C2E0009F4D86 /* ReleaseNotesWindowController.xib */,
 				3F0A2A312014BA2D009F9610 /* RunningApps.storyboard */,
 				3F4ABD0C201937B30075B178 /* RulesEditor.storyboard */,
-				3F3CF3471FBF8B79005E8EB0 /* Preferences.storyboard */,
+				3F820C432219B63F00004813 /* Preferences.storyboard */,
 				3F6D52C82069659800517E57 /* About.storyboard */,
 			);
 			name = XIBs;
@@ -354,6 +331,9 @@
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.HardenedRuntime = {
+								enabled = 1;
+							};
 							com.apple.Sandbox = {
 								enabled = 0;
 							};
@@ -368,6 +348,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 3FCD16981D79793600C57B22;
 			productRefGroup = 3FCD16A21D79793600C57B22 /* Products */;
@@ -387,11 +368,9 @@
 				3FCD16A71D79793600C57B22 /* Assets.xcassets in Resources */,
 				3FE784E12053D455007F6200 /* README.md in Resources */,
 				3F0A2A332014BA2D009F9610 /* RunningApps.storyboard in Resources */,
-				3FA012B71FFBE9AB0095D4D4 /* SelectableMenuItemView.xib in Resources */,
-				3F3CF3481FBF8B79005E8EB0 /* Preferences.storyboard in Resources */,
+				3F820C412219B63F00004813 /* Preferences.storyboard in Resources */,
 				3F3433341E50C53A009F4D86 /* ReleaseNotes.rtf in Resources */,
 				3F6D52CA2069659800517E57 /* About.storyboard in Resources */,
-				3F3433321E50C2E0009F4D86 /* ReleaseNotesWindowController.xib in Resources */,
 				3FF655C7207501AF00C8D2FC /* dsa_pub.pem in Resources */,
 				3F4ABD0E201937B30075B178 /* RulesEditor.storyboard in Resources */,
 				3FCD16AA1D79793600C57B22 /* MainMenu.xib in Resources */,
@@ -421,35 +400,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F4E36C32111EF7A00CDCAA0 /* CheckableMenuItem.swift in Sources */,
 				3F2571F41FDBD43500020194 /* TableViewContentAnimator.swift in Sources */,
 				3F7C349C1ED5EBAA0020C538 /* BehaviorController.swift in Sources */,
 				3F697A0C1F88D47C007BA558 /* MoverEffectView.swift in Sources */,
-				3FD11B31207BAFC400742415 /* NSAnimationContextExtension.swift in Sources */,
 				3F6D52CC2069667300517E57 /* AboutViewController.swift in Sources */,
-				3FA012B51FFBCCE50095D4D4 /* SelectableMenuItem.swift in Sources */,
 				3F0A2A302014BA11009F9610 /* RunningAppsViewController.swift in Sources */,
+				3FE38EAA221D91640019B889 /* Release.swift in Sources */,
 				3F2FA4031D7A059F003E2AD8 /* CurrentAppViewController.swift in Sources */,
 				3F8879911FBF41EC005C28E6 /* NSStoryboardNamesExtension.swift in Sources */,
 				3FC44EFC1D7F16CB0065D433 /* RulesItem.swift in Sources */,
 				3F2FA3FF1D79D094003E2AD8 /* StatusMenuController.swift in Sources */,
 				3FE784DD2052F591007F6200 /* NSViewExtension.swift in Sources */,
+				3FE38EAC221DBE880019B889 /* ReleaseNotesViewController.swift in Sources */,
 				3F84FE81200E655E00871275 /* StoryboardInstantiableProtocol.swift in Sources */,
 				3FE2A5F51E5650ED0011E544 /* MenuItemsController.swift in Sources */,
 				3F4ABD1020193B8D0075B178 /* RulesEditorViewController.swift in Sources */,
 				3FCD16A51D79793600C57B22 /* AppDelegate.swift in Sources */,
-				3FE784DF2053D208007F6200 /* FirstMouseEventAccepterView.swift in Sources */,
 				3F2FA4011D79D66D003E2AD8 /* DefaultModeViewController.swift in Sources */,
-				3F3433311E50C2E0009F4D86 /* ReleaseNotesWindowController.swift in Sources */,
 				3FCD16B41D79797600C57B22 /* utils.m in Sources */,
-				3F719FDE1FE798600083E7F7 /* SwitchMenuItem.swift in Sources */,
 				3F8F93BD1EEAF1EB00FCE91F /* RuleValueTransformer.swift in Sources */,
 				3F5F57582016249E002AF4C1 /* RunningAppWindowController.swift in Sources */,
-				3F866A24200240D200B06CD0 /* NSObjectExtension.swift in Sources */,
+				3FE38EA8221D90930019B889 /* ReleaseNotesWindowController.swift in Sources */,
 				3F8F93BB1EEAC9B900FCE91F /* RuleCellView.swift in Sources */,
 				3FE213291D89A6940023FAC2 /* NotificationHelpers.swift in Sources */,
 				3FF2410B1EDB4E0000E524CD /* SwitchMethodViewController.swift in Sources */,
 				3FE7E0EA1D7CC01B00DC754D /* RulesEditorWindowController.swift in Sources */,
-				3F866A222002203900B06CD0 /* TemplateImageView.swift in Sources */,
 				3F7291F22028BC6B005C9B70 /* PreferencesWindowController.swift in Sources */,
 				3FE7E0E31D7CBE1700DC754D /* AboutWindowController.swift in Sources */,
 				3FE7E0E01D7CA14600DC754D /* LaunchAtLoginController.m in Sources */,
@@ -458,7 +434,6 @@
 				3F2FA4051D7A1F87003E2AD8 /* BehaviorManager.swift in Sources */,
 				3F6D52CE20696E2100517E57 /* LinkButton.swift in Sources */,
 				3FC44EFA1D7F169A0065D433 /* Enums.swift in Sources */,
-				3F6D52C7205BC82B00517E57 /* KeepSafe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +444,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				3F0A2A322014BA2D009F9610 /* Base */,
+				3F820C472219B6D300004813 /* fr */,
 			);
 			name = RunningApps.storyboard;
 			sourceTree = "<group>";
@@ -477,6 +453,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				3F4ABD0D201937B30075B178 /* Base */,
+				3FE38EA42219EF410019B889 /* fr */,
 			);
 			name = RulesEditor.storyboard;
 			sourceTree = "<group>";
@@ -485,14 +462,25 @@
 			isa = PBXVariantGroup;
 			children = (
 				3F6D52C92069659800517E57 /* Base */,
+				3F820C4A2219B6D400004813 /* fr */,
 			);
 			name = About.storyboard;
+			sourceTree = "<group>";
+		};
+		3F820C432219B63F00004813 /* Preferences.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F820C422219B63F00004813 /* Base */,
+				3FE38EA22219EBBC0019B889 /* fr */,
+			);
+			name = Preferences.storyboard;
 			sourceTree = "<group>";
 		};
 		3FCD16A81D79793600C57B22 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				3FCD16A91D79793600C57B22 /* Base */,
+				3FE38EA02219E9B60019B889 /* fr */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -504,6 +492,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -549,7 +538,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -563,6 +552,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -602,7 +592,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -615,11 +605,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Fluor/Fluor.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = Q2E884V952;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Fluor",
@@ -627,7 +619,7 @@
 				);
 				INFOPLIST_FILE = Fluor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pyrolyse.Fluor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -644,11 +636,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Fluor/Fluor.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = Q2E884V952;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Fluor",
@@ -656,7 +650,7 @@
 				);
 				INFOPLIST_FILE = Fluor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_SWIFT_FLAGS = "-DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pyrolyse.Fluor;
 				PRODUCT_NAME = "$(TARGET_NAME)";

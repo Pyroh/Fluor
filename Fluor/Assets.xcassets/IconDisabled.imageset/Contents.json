@@ -1,8 +1,14 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
-      "filename" : "IconDisabled.pdf"
+      "idiom" : "mac",
+      "filename" : "IconDisabled.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "IconDisabled@2x.png",
+      "scale" : "2x"
     }
   ],
   "info" : {
@@ -10,7 +16,6 @@
     "author" : "xcode"
   },
   "properties" : {
-    "template-rendering-intent" : "template",
-    "preserves-vector-representation" : true
+    "template-rendering-intent" : "template"
   }
 }

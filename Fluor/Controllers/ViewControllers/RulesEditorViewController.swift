@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class RulesEditorViewController: NSViewController, BehaviorDidChangeHandler {
+class RulesEditorViewController: NSViewController, BehaviorDidChangeObserver {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet var itemsArrayController: NSArrayController!
     @IBOutlet weak var contentActionSegmentedControl: NSSegmentedControl!

@@ -19,7 +19,7 @@ class RuleItem: NSObject {
     @objc dynamic let isApp: Bool
     let pid: pid_t?
     
-    override var hashValue: Int {
+    override var hash: Int {
         return url.hashValue
     }
     

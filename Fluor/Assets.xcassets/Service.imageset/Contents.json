@@ -1,8 +1,36 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
-      "filename" : "Service.pdf"
+      "idiom" : "mac",
+      "filename" : "ServiceLight.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "ServiceDark.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "ServiceLight@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "ServiceDark@2x.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "2x"
     }
   ],
   "info" : {
@@ -10,7 +38,6 @@
     "author" : "xcode"
   },
   "properties" : {
-    "template-rendering-intent" : "template",
-    "preserves-vector-representation" : true
+    "template-rendering-intent" : "template"
   }
 }

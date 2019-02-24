@@ -1,8 +1,36 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
-      "filename" : "RunningApps.pdf"
+      "idiom" : "mac",
+      "filename" : "RunningAppsLight.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "RunningAppsDark.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "RunningAppsLight@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "RunningAppsDark@2x.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "scale" : "2x"
     }
   ],
   "info" : {
@@ -10,7 +38,6 @@
     "author" : "xcode"
   },
   "properties" : {
-    "template-rendering-intent" : "template",
-    "preserves-vector-representation" : true
+    "template-rendering-intent" : "template"
   }
 }
