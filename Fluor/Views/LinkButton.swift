@@ -12,7 +12,6 @@ import Cocoa
 class LinkButton: NSButton {
     @IBInspectable var growsOnHover: Bool = true
     @IBInspectable var growFactor: CGFloat = 1.15
-    private var trackingArea: NSTrackingArea?
     
     override func layout() {
         super.layout()
@@ -20,11 +19,11 @@ class LinkButton: NSButton {
     }
     
     override func updateTrackingAreas() {
-        guard self.growsOnHover else { return }
-        if let ta = self.trackingArea { self.removeTrackingArea(ta) }
+        super.updateTrackingAreas()
         
-        self.trackingArea = NSTrackingArea(rect: self.bounds, options: [.activeAlways, .mouseEnteredAndExited, .cursorUpdate], owner: self, userInfo: nil)
-        self.addTrackingArea(self.trackingArea!)
+        self.trackingAreas.forEach(self.removeTrackingArea(_:))
+        let trackingArea = NSTrackingArea(rect: self.bounds, options: [.activeAlways, .mouseEnteredAndExited], owner: self, userInfo: nil)
+        self.addTrackingArea(trackingArea)
     }
     
     override func resetCursorRects() {
@@ -34,10 +33,10 @@ class LinkButton: NSButton {
     
     // Thanks to Kite Compositor (kiteapp.co)
     override func mouseEntered(with event: NSEvent) {
-        guard let layer = self.layer else { return }
+        guard self.growsOnHover, let layer = self.layer else { return }
         
         let transformScaleAnimation = CASpringAnimation()
-        transformScaleAnimation.beginTime = layer.convertTime(CACurrentMediaTime(), from: nil) + 0.000001
+        
         transformScaleAnimation.fillMode = kCAFillModeForwards
         transformScaleAnimation.duration = 0.99321
         transformScaleAnimation.isRemovedOnCompletion = false
@@ -53,10 +52,10 @@ class LinkButton: NSButton {
     
     // Thanks to Kite Compositor (kiteapp.co)
     override func mouseExited(with event: NSEvent) {
-        guard let layer = self.layer else { return }
+        guard self.growsOnHover, let layer = self.layer else { return }
         
         let transformScaleAnimation1 = CASpringAnimation()
-        transformScaleAnimation1.beginTime = layer.convertTime(CACurrentMediaTime(), from: nil) + 0.000001
+        
         transformScaleAnimation1.duration = 0.99321
         transformScaleAnimation1.fillMode = kCAFillModeForwards
         transformScaleAnimation1.isRemovedOnCompletion = false
