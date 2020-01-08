@@ -157,6 +157,12 @@ class BehaviorManager {
             return .other
         default:
             return .error
+    func getActualStateAccordingToPreferences() -> FKeyMode {
+        switch FKeyManager.getCurrentFKeyMode() {
+        case .success(let mode):
+            return mode
+        case .failure(_):
+            fatalError()
         }
     }
     
@@ -167,9 +173,11 @@ class BehaviorManager {
     ///
     /// - returns: The keyboard state.
     func keyboardStateFor(behavior: AppBehavior) -> KeyboardMode {
+    func keyboardStateFor(behavior: AppBehavior) -> FKeyMode {
         switch behavior {
         case .inferred:
             return defaultKeyboardMode
+            return defaultFKeyMode
         case .apple:
             return .apple
         case .other:

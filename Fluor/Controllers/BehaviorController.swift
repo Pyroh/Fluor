@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import os.log
 
 class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewControllerDelegate, SwitchMethodDidChangeObserver {
     @IBOutlet var currentAppViewController: CurrentAppViewController!
@@ -20,8 +21,8 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
     private var shouldHandleFNKey: Bool = false
     private var fnKeyMaximumDelay: Double = BehaviorManager.default.fnKeyMaximumDelay
     
-    private var currentMode: KeyboardMode = .error
-    private var onLaunchKeyboardMode: KeyboardMode = .error
+    private var currentMode: FKeyMode = .apple
+    private var onLaunchKeyboardMode: FKeyMode = .apple
     private var currentID: String = ""
     private var currentBehavior: AppBehavior = .inferred
     private var switchMethod: SwitchMethod = .window
@@ -68,30 +69,21 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
         if enabled {
             adaptModeForApp(withId: currentID)
         } else {
-            switch onLaunchKeyboardMode {
-            case .apple:
-                setFnKeysToAppleMode()
-            default:
-                setFnKeysToOtherMode()
-            }
+            guard FKeyManager.setCurrentFKeyMode(onLaunchKeyboardMode) == .success(onLaunchKeyboardMode) else { fatalError() }
             currentMode = onLaunchKeyboardMode
         }
     }
     
     func performTerminationCleaning() {
         if BehaviorManager.default.shouldRestoreStateOnQuit {
-            let state: KeyboardMode
+            let state: FKeyMode
             if BehaviorManager.default.shouldRestorePreviousState {
                 state = onLaunchKeyboardMode
             } else {
                 state = BehaviorManager.default.onQuitState
             }
-            switch state {
-            case .apple:
-                setFnKeysToAppleMode()
-            default:
-                setFnKeysToOtherMode()
-            }
+            
+            guard FKeyManager.setCurrentFKeyMode(state) == .success(state) else { fatalError() }
         }
     }
     
@@ -140,12 +132,12 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
             adaptModeForApp(withId: self.currentID)
         case .key:
             stopObservingBehaviorDidChange()
-            currentMode = BehaviorManager.default.defaultKeyboardMode
+            currentMode = BehaviorManager.default.defaultFKeyMode
             changeKeyboard(mode: currentMode)
         }
     }
     
-    func defaultModeController(_ controller: DefaultModeViewController, didChangeModeTo mode: KeyboardMode) {
+    func defaultModeController(_ controller: DefaultModeViewController, didChangeModeTo mode: FKeyMode) {
         switch self.switchMethod {
         case .window:
             self.adaptModeForApp(withId: self.currentID)
@@ -159,11 +151,8 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
     ///
     /// - Parameter notification: The notification.
     @objc private func appMustSleep(notification: Notification) {
-        switch onLaunchKeyboardMode {
-        case .apple:
-            setFnKeysToAppleMode()
-        default:
-            setFnKeysToOtherMode()
+        if FKeyManager.setCurrentFKeyMode(self.onLaunchKeyboardMode) != .success(self.onLaunchKeyboardMode) {
+            os_log("Unable to reset FKey mode to pre-launch mode", type: .error)
         }
         self.resignAsObserver()
     }
@@ -206,18 +195,18 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
         self.changeKeyboard(mode: mode)
 }
     
-    private func changeKeyboard(mode: KeyboardMode) {
+    private func changeKeyboard(mode: FKeyMode) {
+        guard FKeyManager.setCurrentFKeyMode(mode) == .success(mode) else {
+            fatalError()
+        }
+        
         switch mode {
         case .apple:
-            NSLog("Switch to Apple Mode for %@", currentID)
-            statusMenuController.statusItem.image = BehaviorManager.default.useLightIcon ? #imageLiteral(resourceName: "AppleMode") : #imageLiteral(resourceName: "IconAppleMode")
-            setFnKeysToAppleMode()
+            os_log("Switch to Apple Mode for %@", self.currentID)
+            self.statusMenuController.statusItem.image = BehaviorManager.default.useLightIcon ? #imageLiteral(resourceName: "AppleMode") : #imageLiteral(resourceName: "IconAppleMode")
         case .other:
-            NSLog("Switch to Other Mode for %@", currentID)
-            statusMenuController.statusItem.image = BehaviorManager.default.useLightIcon ? #imageLiteral(resourceName: "OtherMode") : #imageLiteral(resourceName: "IconOtherMode")
-            setFnKeysToOtherMode()
-        default:
-            return
+            NSLog("Switch to Other Mode for %@", self.currentID)
+            self.statusMenuController.statusItem.image = BehaviorManager.default.useLightIcon ? #imageLiteral(resourceName: "OtherMode") : #imageLiteral(resourceName: "IconOtherMode")
         }
     }
     
@@ -235,7 +224,6 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
             } else {
                 if self.shouldHandleFNKey, let timestamp = self.fnDownTimestamp {
                     let delta = (event.timestamp - timestamp) * 1000
-//                    print("\(delta)ms")
                     self.shouldHandleFNKey = false
                     if event.keyCode == 63, delta <= self.fnKeyMaximumDelay {
                         self.fnKeyPressed()
@@ -250,7 +238,7 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
     
     private func fnKeyPressed() {
         let mode = currentMode.counterPart()
-        BehaviorManager.default.defaultKeyboardMode = mode
+        BehaviorManager.default.defaultFKeyMode = mode
         changeKeyboard(mode: mode)
         currentMode = mode
     }

@@ -6,16 +6,14 @@
 //  Copyright © 2016 Pyrolyse. All rights reserved.
 //
 
-@objc enum KeyboardMode: Int {
+@objc enum FKeyMode: Int {
     case apple = 0
     case other
-    case error
     
-    func counterPart() -> KeyboardMode {
+    func counterPart() -> FKeyMode {
         switch self {
         case .apple: return .other
         case .other: return .apple
-        case .error: return .error
         }
     }
 }

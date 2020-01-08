@@ -9,8 +9,8 @@
 import Cocoa
 
 @objc protocol DefaultModeViewControllerDelegate: class {
-    @objc optional func defaultModeController(_ controller: DefaultModeViewController, willChangeModeTo mode: KeyboardMode)
-    func defaultModeController(_ controller: DefaultModeViewController, didChangeModeTo mode: KeyboardMode)
+    @objc optional func defaultModeController(_ controller: DefaultModeViewController, willChangeModeTo mode: FKeyMode)
+    func defaultModeController(_ controller: DefaultModeViewController, didChangeModeTo mode: FKeyMode)
 }
 
 class DefaultModeViewController: NSViewController {
@@ -20,7 +20,7 @@ class DefaultModeViewController: NSViewController {
     ///
     /// - parameter sender: The object that sent the action.
     @IBAction func changeMode(_ sender: NSSegmentedControl) {
-        guard let state = KeyboardMode(rawValue: sender.selectedSegment) else { return }
+        guard let state = FKeyMode(rawValue: sender.selectedSegment) else { return }
         delegate?.defaultModeController?(self, willChangeModeTo: state)
         delegate?.defaultModeController(self, didChangeModeTo: state)
     }
