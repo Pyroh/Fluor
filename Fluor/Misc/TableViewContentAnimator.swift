@@ -43,7 +43,6 @@ final class TableViewContentAnimator<ItemType: AnyObject>: NSObject, NSTableView
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        // FIXME: Use SE-0240 when implemented. It's still acceptable since there's not a lot of entries.
         guard arrayController.isEqual(object), keyPath == "arrangedObjects", let newShadowObjects = self.arrangedObjects else { return }
         let itemsToKeep = self.intersection(between: self.shadowObjects, and: newShadowObjects)
         let itemsToRemove = self.substract(itemsToKeep, from: self.shadowObjects)
