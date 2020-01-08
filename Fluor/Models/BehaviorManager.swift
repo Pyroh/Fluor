@@ -8,89 +8,70 @@
 
 import Cocoa
 
-infix operator <?>
-private func <?><T>(lhs: Any?, rhs: T) -> T { return lhs as? T ?? rhs }
-
-
 /// This class holds all per-application keyboard behaviors.
 /// It also takes care of NSUserDefaults reading and synchronizing.
 class BehaviorManager {
-    struct DefaultsKeys: RawRepresentable {
+    struct DefaultKey: RawRepresentable {
         let rawValue: String
         
-        static let hasAlreadyAnsweredAccessibility = BehaviorManager.DefaultsKeys(rawValue: "HasAlreadyRefusedAccessibility")
-        static let defaultMode = BehaviorManager.DefaultsKeys(rawValue: "DefaultKeyboardMode")
-        static let appRules = BehaviorManager.DefaultsKeys(rawValue: "AppRules")
-        static let resetStateOnQuit = BehaviorManager.DefaultsKeys(rawValue: "ResetModeOnQuit")
-        static let sameStateAsBeforeStartup = BehaviorManager.DefaultsKeys(rawValue: "SameStateAsBeforeStartup")
-        static let onQuitState = BehaviorManager.DefaultsKeys(rawValue: "OnQuitState")
-        static let onLaunchDisabled = BehaviorManager.DefaultsKeys(rawValue: "OnLaunchDisabled")
-        static let defaultSwitchMethod = BehaviorManager.DefaultsKeys(rawValue: "DefaultSwitchMethod")
-        static let useLightIcon = BehaviorManager.DefaultsKeys(rawValue: "UseLightIcon")
-        static let showAllRunningProcesses = BehaviorManager.DefaultsKeys(rawValue: "ShowAllProcesses")
-        static let fnKeyMaximumDelay = BehaviorManager.DefaultsKeys(rawValue: "FNKeyReleaseMaximumDelay")
-        static let lastRunVersion = BehaviorManager.DefaultsKeys(rawValue: "LastRunVersion")
-        static let hideSwitchMethod = BehaviorManager.DefaultsKeys(rawValue: "HideSwitchMethod")
+        static let userHasAlreadyAnsweredAccessibility = BehaviorManager.DefaultKey(rawValue: "HasAlreadyRefusedAccessibility")
+        static let keyboardMode = BehaviorManager.DefaultKey(rawValue: "DefaultKeyboardMode")
+        static let appRules = BehaviorManager.DefaultKey(rawValue: "AppRules")
+        static let restoreStateOnQuit = BehaviorManager.DefaultKey(rawValue: "ResetModeOnQuit")
+        static let restoreStateAsBeforeStartup = BehaviorManager.DefaultKey(rawValue: "SameStateAsBeforeStartup")
+        static let onQuitState = BehaviorManager.DefaultKey(rawValue: "OnQuitState")
+        static let disabledOnLunch = BehaviorManager.DefaultKey(rawValue: "OnLaunchDisabled")
+        static let switchMethod = BehaviorManager.DefaultKey(rawValue: "DefaultSwitchMethod")
+        static let useLightIcon = BehaviorManager.DefaultKey(rawValue: "UseLightIcon")
+        static let showAllRunningProcesses = BehaviorManager.DefaultKey(rawValue: "ShowAllProcesses")
+        static let fnKeyMaximumDelay = BehaviorManager.DefaultKey(rawValue: "FNKeyReleaseMaximumDelay")
+        static let lastRunVersion = BehaviorManager.DefaultKey(rawValue: "LastRunVersion")
+        static let hideSwitchMethod = BehaviorManager.DefaultKey(rawValue: "HideSwitchMethod")
     }
-    
     
     /// The defaut behavior manager. It's a singleton.
     static let `default`: BehaviorManager = BehaviorManager()
     
-    var defaultKeyboardMode: KeyboardMode {
-        get { return KeyboardMode(rawValue: self[.defaultMode] <?> Int.max) ?? .apple }
-        set { self[.defaultMode] = newValue.rawValue }
-    }
-    var switchMethod: SwitchMethod {
-        get { return SwitchMethod(rawValue: self[.defaultSwitchMethod] <?> Int.max) ?? .window }
-        set { self[.defaultSwitchMethod] = newValue.rawValue }
-    }
-    var hideSwitchMethod: Bool {
-        get { return self[.hideSwitchMethod] <?> false }
-        set { self.defaults.set(newValue, forKey: DefaultsKeys.hideSwitchMethod.rawValue) }
-    }
-    var lastRunVersion: String {
-        get { return self[.lastRunVersion] <?> "unkown" }
-        set { self[.lastRunVersion] = newValue }
-    }
-    var shouldRestoreStateOnQuit: Bool {
-        return self[.resetStateOnQuit] <?> false
-    }
+    @DefaultValue(key: DefaultKey.keyboardMode, defaultValue: .apple)
+    var defaultFKeyMode: FKeyMode
     
-    var shouldRestorePreviousState: Bool {
-        return self[.sameStateAsBeforeStartup] <?> false
-    }
+    @DefaultValue(key: DefaultKey.switchMethod, defaultValue: .window)
+    var switchMethod: SwitchMethod
     
-    var onQuitState: KeyboardMode {
-        return KeyboardMode(rawValue: self[.onQuitState] <?> Int.max) ?? .apple
-    }
+    @DefaultValue(key: DefaultKey.hideSwitchMethod, defaultValue: false)
+    var hideSwitchMethod: Bool
     
-    var isDisabled: Bool {
-        return self[.onLaunchDisabled] <?> false
-    }
+    @DefaultValue(key: DefaultKey.lastRunVersion, defaultValue: "unknown")
+    var lastRunVersion: String
     
-    var useLightIcon: Bool {
-        return self[.useLightIcon] <?> false
-    }
+    @DefaultValue(key: DefaultKey.restoreStateOnQuit, defaultValue: false)
+    var shouldRestoreStateOnQuit: Bool
     
-    var showAllRunningProcesses: Bool {
-        return self[.showAllRunningProcesses] <?> false
-    }
+    @DefaultValue(key: DefaultKey.restoreStateAsBeforeStartup, defaultValue: false)
+    var shouldRestorePreviousState: Bool 
     
-    var hasAlreadyAnsweredAccessibility: Bool {
-        get { return self[.hasAlreadyAnsweredAccessibility] <?> false }
-        set { self[.hasAlreadyAnsweredAccessibility] = newValue }
-    }
+    @DefaultValue(key: DefaultKey.onQuitState, defaultValue: .apple)
+    var onQuitState: FKeyMode
     
-    var fnKeyMaximumDelay: TimeInterval {
-        return self[.fnKeyMaximumDelay] <?> 0
-    }
+    @DefaultValue(key: DefaultKey.disabledOnLunch, defaultValue: false)
+    var isDisabled: Bool
     
-    private var behaviorDict: [String: (behavior: AppBehavior, url: URL)]
+    @DefaultValue(key: DefaultKey.useLightIcon, defaultValue: false)
+    var useLightIcon: Bool
+    
+    @DefaultValue(key: DefaultKey.showAllRunningProcesses, defaultValue: false)
+    var showAllRunningProcesses: Bool
+    
+    @DefaultValue(key: DefaultKey.userHasAlreadyAnsweredAccessibility, defaultValue: false)
+    var hasAlreadyAnsweredAccessibility: Bool 
+    
+    @DefaultValue(key: DefaultKey.fnKeyMaximumDelay, defaultValue: 280)
+    var fnKeyMaximumDelay: TimeInterval
+    
+    private var behaviorDict: [String: (behavior: AppBehavior, url: URL)] = [:]
     private let defaults = UserDefaults.standard
     
     private init() {
-        self.behaviorDict = [:]
         loadPrefs()
     }
     
@@ -99,7 +80,7 @@ class BehaviorManager {
     ///
     /// - returns: An array containing all the behavior packed in `RuleItem` objects.
     func retrieveRules() -> [RuleItem] {
-        guard let rawRules = defaults.array(forKey: DefaultsKeys.appRules.rawValue) as? [[String: Any]] else { return [] }
+        guard let rawRules = defaults.array(forKey: DefaultKey.appRules.rawValue) as? [[String: Any]] else { return [] }
         var rules = [RuleItem]()
         rawRules.forEach({ (dict) in
             guard let appId = dict["id"] as? String, let appBehavior = dict["behavior"] as? Int, let appPath = dict["path"] as? String else { return }
@@ -149,14 +130,6 @@ class BehaviorManager {
     /// Get the function key state according to globals preferences.
     ///
     /// - returns: The current keyboard state.
-    func getActualStateAccordingToPreferences() -> KeyboardMode {
-        switch getCurrentFnKeyState() {
-        case AppleMode:
-            return .apple
-        case OtherMode:
-            return .other
-        default:
-            return .error
     func getActualStateAccordingToPreferences() -> FKeyMode {
         switch FKeyManager.getCurrentFKeyMode() {
         case .success(let mode):
@@ -172,11 +145,9 @@ class BehaviorManager {
     /// - parameter behavior: The behavior.
     ///
     /// - returns: The keyboard state.
-    func keyboardStateFor(behavior: AppBehavior) -> KeyboardMode {
     func keyboardStateFor(behavior: AppBehavior) -> FKeyMode {
         switch behavior {
         case .inferred:
-            return defaultKeyboardMode
             return defaultFKeyMode
         case .apple:
             return .apple
@@ -185,74 +156,9 @@ class BehaviorManager {
         }
     }
     
-    
-    /// Read the defaults and tell whether or not Fluor should change the state of the keyboard when quitting.
-    ///
-    /// - returns: `true` if Fluor should change the state. `false` otherwise.
-//    func shouldRestoreStateOnQuit() -> Bool {
-//        return defaults.bool(forKey: DefaultsKeys.resetStateOnQuit.rawValue)
-//    }
-    
-    
-    /// Read the defaults and tell whether or not Fluor should restore the pre-launch state of the keyboard before quitting.
-    ///
-    /// - returns: `true` if Fluor should restore the original state. `false` otherwise.
-//    func shouldRestorePreviousState() -> Bool {
-//        return defaults.bool(forKey: DefaultsKeys.sameStateAsBeforeStartup.rawValue)
-//    }
-    
-    
-    /// Read the defaults and tell which keyboard state Fluor must set on quit. If it's not asked to restore the original state.
-    ///
-    /// - returns: The state Fluor should set on quit.
-//    func onQuitState() -> KeyboardMode {
-//        return KeyboardMode(rawValue: defaults.integer(forKey: DefaultsKeys.onQuitState.rawValue)) ?? .apple
-//    }
-    
-    
-    /// Read the defaults and tell if the keyboard management is disabled.
-    ///
-    /// - Returns: `true` is the management is disabled `false` otherwise.
-//    func isDisabled() -> Bool {
-//        return defaults.bool(forKey: DefaultsKeys.onLaunchDisabled.rawValue)
-//    }
-    
-    
-    /// Read the defaults and tell if the app must use light icon.
-    ///
-    /// - Returns: `true` if the app must use the light icon `false` otherwise.
-//    func useLightIcon() -> Bool {
-//        return defaults.bool(forKey: DefaultsKeys.useLightIcon.rawValue)
-//    }
-    
-//    func showAllRunningProcesses() -> Bool {
-//        return defaults.bool(forKey: DefaultsKeys.showAllRunningProcesses.rawValue)
-//    }
-    
-    /// Read the defaults and tell if the user has already answered the accessibility request.
-    ///
-    /// - Returns: `true` if it has `false` otherwise.
-//    func hasAlreadyAnsweredAccessibility() -> Bool {
-//        return defaults.bool(forKey: DefaultsKeys.hasAlreadyAnsweredAccessibility.rawValue)
-//    }
-    
-    /// Inform the defaults that the user answered to accessibility request.
-//    func answeredAccessibility() {
-//        defaults.set(true, forKey: DefaultsKeys.hasAlreadyAnsweredAccessibility.rawValue)
-//    }
-    
-    
-    private subscript(key: DefaultsKeys) -> Any? {
-        get { return self.defaults.object(forKey: key.rawValue) }
-        set { self.defaults.set(newValue, forKey: key.rawValue) }
-    }
-    
     /// Load the defaults.
     private func loadPrefs() {
-        let factoryDefaults: [String: Any] = [DefaultsKeys.defaultMode.rawValue: KeyboardMode.apple.rawValue, DefaultsKeys.appRules.rawValue: [Any](), DefaultsKeys.resetStateOnQuit.rawValue: false, DefaultsKeys.sameStateAsBeforeStartup.rawValue: true, DefaultsKeys.onQuitState.rawValue: KeyboardMode.apple.rawValue, DefaultsKeys.onLaunchDisabled.rawValue: false, DefaultsKeys.hasAlreadyAnsweredAccessibility.rawValue: false, DefaultsKeys.defaultSwitchMethod.rawValue: SwitchMethod.window.rawValue, DefaultsKeys.useLightIcon.rawValue: false, DefaultsKeys.showAllRunningProcesses.rawValue: false, DefaultsKeys.fnKeyMaximumDelay.rawValue: 280.0, DefaultsKeys.lastRunVersion.rawValue: "-1", DefaultsKeys.hideSwitchMethod.rawValue: false]
-        defaults.register(defaults: factoryDefaults)
-        
-        guard let arr = defaults.array(forKey: DefaultsKeys.appRules.rawValue) else { return }
+        guard let arr = defaults.array(forKey: DefaultKey.appRules.rawValue) else { return }
         for item in arr {
             guard let dict = item as? [String: Any], let key = dict["id"] as? String, let behaviorRawValue = dict["behavior"] as? Int, let behavior = AppBehavior(rawValue: behaviorRawValue), let path = dict["path"] as? String else { return }
             let url = URL(fileURLWithPath: path)
@@ -267,6 +173,6 @@ class BehaviorManager {
             let dict: [String: Any] = ["id": key, "behavior": value.behavior.rawValue, "path": value.url.path]
             arr.append(dict)
         }
-        defaults.set(arr, forKey: DefaultsKeys.appRules.rawValue)
+        defaults.set(arr, forKey: DefaultKey.appRules.rawValue)
     }
 }

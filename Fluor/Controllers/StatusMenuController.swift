@@ -50,7 +50,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate, MenuCont
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         switch keyPath {
-        case BehaviorManager.DefaultsKeys.useLightIcon.rawValue?:
+        case BehaviorManager.DefaultKey.useLightIcon.rawValue?:
             adaptStatusMenuIcon()
         default:
             return
@@ -80,12 +80,12 @@ class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate, MenuCont
     
     /// Register self as an observer for some notifications.
     private func startObservingUsesLightIcon() {
-        UserDefaults.standard.addObserver(self, forKeyPath: BehaviorManager.DefaultsKeys.useLightIcon.rawValue, options: [], context: nil)
+        UserDefaults.standard.addObserver(self, forKeyPath: BehaviorManager.DefaultKey.useLightIcon.rawValue, options: [], context: nil)
     }
     
     /// Unregister self as an observer for some notifications.
     private func stopObservingUsesLightIcon() {
-        UserDefaults.standard.removeObserver(self, forKeyPath: BehaviorManager.DefaultsKeys.useLightIcon.rawValue, context: nil)
+        UserDefaults.standard.removeObserver(self, forKeyPath: BehaviorManager.DefaultKey.useLightIcon.rawValue, context: nil)
     }
     
     func menuWillOpen(_ menu: NSMenu) {
