@@ -40,7 +40,7 @@ class RunningAppsViewController: NSViewController, BehaviorDidChangeObserver, NS
     func behaviorDidChangeForApp(notification: Notification) {
         guard let userInfo = notification.userInfo as? [String: Any], userInfo["source"] as? NotificationSource != .runningAppWindow else { return }
         guard let appId = userInfo["id"] as? String, let appBehavior = userInfo["behavior"] as? AppBehavior else { return }
-        guard let index = runningAppsArray.index(where: { $0.id == appId }) else { return }
+        guard let index = runningAppsArray.firstIndex(where: { $0.id == appId }) else { return }
         runningAppsArray[index].behavior = appBehavior
     }
     
@@ -67,7 +67,7 @@ class RunningAppsViewController: NSViewController, BehaviorDidChangeObserver, NS
     /// - parameter notification: The notification.
     @objc private func appDidTerminate(notification: Notification) {
         guard let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication,
-            let item = runningAppsArray.first(where: { $0.pid == app.processIdentifier }), let index = runningAppsArray.index(of: item) else { return }
+            let item = runningAppsArray.first(where: { $0.pid == app.processIdentifier }), let index = runningAppsArray.firstIndex(of: item) else { return }
         runningAppsArray.remove(at: index)
     }
     

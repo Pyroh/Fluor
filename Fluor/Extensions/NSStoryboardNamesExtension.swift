@@ -6,8 +6,8 @@
 import Cocoa
 
 extension NSStoryboard.Name {
-    static let preferences = NSStoryboard.Name("Preferences")
-    static let runningApps = NSStoryboard.Name("RunningApps")
-    static let rulesEditor = NSStoryboard.Name("RulesEditor")
-    static let about = NSStoryboard.Name("About")
+    static let preferences = "Preferences"
+    static let runningApps = "RunningApps"
+    static let rulesEditor = "RulesEditor"
+    static let about = "About"
 }

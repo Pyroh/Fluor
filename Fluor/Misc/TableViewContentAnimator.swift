@@ -48,10 +48,10 @@ final class TableViewContentAnimator<ItemType: AnyObject>: NSObject, NSTableView
         let itemsToRemove = self.substract(itemsToKeep, from: self.shadowObjects)
         let itemsToAdd = self.substract(itemsToKeep, from: newShadowObjects)
         let removeSet = IndexSet(itemsToRemove.compactMap { item in
-            self.shadowObjects.index(where: { item === $0 })
+            self.shadowObjects.firstIndex(where: { item === $0 })
         })
         let addSet = IndexSet(itemsToAdd.compactMap { item in
-            newShadowObjects.index(where: { item === $0 })
+            newShadowObjects.firstIndex(where: { item === $0 })
         })
         
         self.shadowObjects = newShadowObjects
@@ -93,7 +93,7 @@ final class TableViewContentAnimator<ItemType: AnyObject>: NSObject, NSTableView
     private func substract(_ sub: [ItemType], from source: [ItemType]) -> [ItemType] {
         var result = source
         sub.forEach { item in
-            guard let index = result.index(where: { item === $0 }) else { return }
+            guard let index = result.firstIndex(where: { item === $0 }) else { return }
             result.remove(at: index)
         }
         return result

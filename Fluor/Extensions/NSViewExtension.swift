@@ -15,6 +15,6 @@ extension NSView {
         
         self.layer?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.layer?.position = CGPoint(x: x, y: y)
-        self.layer?.contentsGravity = kCAGravityCenter
+        self.layer?.contentsGravity = CALayerContentsGravity.center
     }
 }

@@ -7,7 +7,7 @@ import Cocoa
 
 class ReleaseNotesWindowController: NSWindowController, NSWindowDelegate, StoryboardInstantiable {
     static var storyboardName: NSStoryboard.Name { .about }
-    static var sceneIdentifier: NSStoryboard.SceneIdentifier? { .init("RNWC") }
+    static var sceneIdentifier: NSStoryboard.SceneIdentifier? { "RNWC" }
     
     @objc dynamic var releases: [Release] = []
     private var session: URLSession?

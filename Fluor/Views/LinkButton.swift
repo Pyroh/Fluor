@@ -37,7 +37,7 @@ class LinkButton: NSButton {
         
         let transformScaleAnimation = CASpringAnimation()
         
-        transformScaleAnimation.fillMode = kCAFillModeForwards
+        transformScaleAnimation.fillMode = CAMediaTimingFillMode.forwards
         transformScaleAnimation.duration = 0.99321
         transformScaleAnimation.isRemovedOnCompletion = false
         transformScaleAnimation.keyPath = "transform.scale"
@@ -57,7 +57,7 @@ class LinkButton: NSButton {
         let transformScaleAnimation1 = CASpringAnimation()
         
         transformScaleAnimation1.duration = 0.99321
-        transformScaleAnimation1.fillMode = kCAFillModeForwards
+        transformScaleAnimation1.fillMode = CAMediaTimingFillMode.forwards
         transformScaleAnimation1.isRemovedOnCompletion = false
         transformScaleAnimation1.keyPath = "transform.scale"
         transformScaleAnimation1.toValue = 1

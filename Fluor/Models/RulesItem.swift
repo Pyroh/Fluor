@@ -20,7 +20,7 @@ class RuleItem: NSObject {
     let pid: pid_t?
     
     override var hash: Int {
-        return url.hashValue
+        self.url.hashValue
     }
     
     init(id: String, url: URL, icon: NSImage, name: String, behavior: AppBehavior, kind: ItemKind, isApp flag: Bool = true, pid: pid_t? = nil) {
@@ -61,5 +61,4 @@ class RuleItem: NSObject {
         }
     }
 }
-
 
