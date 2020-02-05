@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WoM-Ab-xgn">
-                    <rect key="frame" x="18" y="5" width="51" height="17"/>
+                    <rect key="frame" x="18" y="6" width="51" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Trigger" id="AiN-Qo-Ikx">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -25,14 +25,17 @@
                     </textFieldCell>
                 </textField>
                 <segmentedControl focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RSg-2F-b2E">
-                    <rect key="frame" x="164" y="4" width="69" height="20"/>
+                    <rect key="frame" x="131" y="4" width="102" height="20"/>
                     <segmentedCell key="cell" borderStyle="border" focusRingType="none" alignment="left" style="roundRect" trackingMode="selectOne" id="qZf-Wa-JJt">
-                        <font key="font" metaFont="cellTitle"/>
+                        <font key="font" metaFont="label" size="12"/>
                         <segments>
                             <segment toolTip="Changes mode depending on the active application" image="AppSwitch" imageScaling="proportionallyUpOrDown" selected="YES">
                                 <nil key="label"/>
                             </segment>
-                            <segment toolTip="Changes mode when the Fn key is pressed" image="FnKey" imageScaling="proportionallyUpOrDown" tag="1">
+                            <segment toolTip="Changes mode when the Fn key is pressed" image="MixedSwitch" imageScaling="proportionallyUpOrDown" tag="1">
+                                <nil key="label"/>
+                            </segment>
+                            <segment image="FnKey">
                                 <nil key="label"/>
                             </segment>
                         </segments>
@@ -55,7 +58,7 @@
                     <rect key="frame" x="132" y="4" width="100" height="19"/>
                     <buttonCell key="cell" type="roundRect" title="Ask permission" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gP8-wU-Xyk">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="cellTitle"/>
+                        <font key="font" metaFont="label" size="12"/>
                     </buttonCell>
                     <connections>
                         <action selector="askAccessibilityPersmission:" target="AMq-Mo-r6v" id="jdM-NX-Bvk"/>
@@ -73,7 +76,7 @@
                 <constraint firstItem="RSg-2F-b2E" firstAttribute="centerY" secondItem="Xfn-Mq-ahC" secondAttribute="centerY" id="q8G-vu-zni"/>
                 <constraint firstItem="668-KZ-2vj" firstAttribute="centerY" secondItem="Xfn-Mq-ahC" secondAttribute="centerY" id="sfE-Re-qxs"/>
             </constraints>
-            <point key="canvasLocation" x="172.5" y="-512.5"/>
+            <point key="canvasLocation" x="171" y="-514"/>
         </customView>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Fluor" customModuleProvider="target"/>
@@ -202,7 +205,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="251" height="27"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DvO-d4-urd">
-                            <rect key="frame" x="18" y="5" width="91" height="17"/>
+                            <rect key="frame" x="18" y="6" width="91" height="16"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Default mode" id="S28-Jt-nN1">
                                 <font key="font" metaFont="systemBold"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -219,7 +222,7 @@
                         <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kdK-wj-mRZ">
                             <rect key="frame" x="163" y="4" width="69" height="20"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="Vfh-zJ-Axi">
-                                <font key="font" metaFont="cellTitle"/>
+                                <font key="font" metaFont="label" size="12"/>
                                 <segments>
                                     <segment toolTip="Switch to Apple mode" image="AppleMode" imageScaling="proportionallyUpOrDown" selected="YES"/>
                                     <segment toolTip="Switch to function key mode" image="OtherMode" imageScaling="proportionallyUpOrDown" tag="1"/>
@@ -251,7 +254,7 @@
                 <constraint firstAttribute="bottom" secondItem="YVc-AJ-uvN" secondAttribute="bottom" id="rkv-M7-PH2"/>
                 <constraint firstAttribute="trailing" secondItem="YVc-AJ-uvN" secondAttribute="trailing" id="sF6-eF-HLz"/>
             </constraints>
-            <point key="canvasLocation" x="172.5" y="-441.5"/>
+            <point key="canvasLocation" x="172" y="-443"/>
         </customView>
         <customView wantsLayer="YES" canDrawConcurrently="YES" id="o8r-mD-TI5">
             <rect key="frame" x="0.0" y="0.0" width="252" height="67"/>
@@ -273,10 +276,10 @@
                     </connections>
                 </imageView>
                 <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mdq-3d-6c1">
-                    <rect key="frame" x="92" y="14" width="140" height="39"/>
+                    <rect key="frame" x="92" y="15" width="140" height="38"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gmQ-wu-N8N">
-                            <rect key="frame" x="-2" y="22" width="39" height="17"/>
+                            <rect key="frame" x="-2" y="22" width="39" height="16"/>
                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" id="nND-dO-QEg">
                                 <font key="font" metaFont="systemSemibold" size="13"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -293,7 +296,7 @@
                         <segmentedControl canDrawConcurrently="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gls-pL-7qN">
                             <rect key="frame" x="-1" y="-1" width="102" height="20"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="1I5-bW-HGh">
-                                <font key="font" metaFont="cellTitle"/>
+                                <font key="font" metaFont="label" size="12"/>
                                 <segments>
                                     <segment toolTip="Same as default mode" image="DefaultMode" selected="YES">
                                         <nil key="label"/>
@@ -336,7 +339,7 @@
                 <constraint firstItem="Mdq-3d-6c1" firstAttribute="leading" secondItem="EUW-rh-G7n" secondAttribute="trailing" constant="8" id="p4v-GU-Q2F"/>
                 <constraint firstItem="EUW-rh-G7n" firstAttribute="centerY" secondItem="o8r-mD-TI5" secondAttribute="centerY" id="wVW-9k-HFL"/>
             </constraints>
-            <point key="canvasLocation" x="172" y="-350"/>
+            <point key="canvasLocation" x="171" y="-352"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="TM7-Ze-uQz"/>
     </objects>
@@ -349,6 +352,7 @@
         <image name="CheckMixed" width="16" height="16"/>
         <image name="DefaultMode" width="16" height="16"/>
         <image name="FnKey" width="16" height="16"/>
+        <image name="MixedSwitch" width="16" height="16"/>
         <image name="NSApplicationIcon" width="32" height="32"/>
         <image name="OtherMode" width="16" height="16"/>
         <image name="Preferences" width="16" height="16"/>
