@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "DefaultsWrapper",
+        "repositoryURL": "https://github.com/Pyroh/DefaultsWrapper.git",
+        "state": {
+          "branch": null,
+          "revision": "b0b6c713222ce3b2af901791e14f6e005d0f2a75",
+          "version": "1.1.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

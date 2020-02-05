@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3F0A2A302014BA11009F9610 /* RunningAppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0A2A2F2014BA11009F9610 /* RunningAppsViewController.swift */; };
 		3F0A2A332014BA2D009F9610 /* RunningApps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0A2A312014BA2D009F9610 /* RunningApps.storyboard */; };
+		3F16ECDD23E9D1AC008BC89A /* DefaultsWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 3F16ECDC23E9D1AC008BC89A /* DefaultsWrapper */; };
 		3F2571F41FDBD43500020194 /* TableViewContentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2571F31FDBD43500020194 /* TableViewContentAnimator.swift */; };
 		3F2FA3FF1D79D094003E2AD8 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA3FE1D79D094003E2AD8 /* StatusMenuController.swift */; };
 		3F2FA4011D79D66D003E2AD8 /* DefaultModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA4001D79D66D003E2AD8 /* DefaultModeViewController.swift */; };
@@ -39,8 +40,8 @@
 		3FCD16A51D79793600C57B22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD16A41D79793600C57B22 /* AppDelegate.swift */; };
 		3FCD16A71D79793600C57B22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FCD16A61D79793600C57B22 /* Assets.xcassets */; };
 		3FCD16AA1D79793600C57B22 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FCD16A81D79793600C57B22 /* MainMenu.xib */; };
-		3FD0AFA423C3778000DC9533 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0AFA323C3778000DC9533 /* UserDefaultsExtension.swift */; };
 		3FD0AFA623C62CD400DC9533 /* FKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0AFA523C62CD400DC9533 /* FKeyManager.swift */; };
+		3FD0AFA823C8759A00DC9533 /* AppErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0AFA723C8759A00DC9533 /* AppErrorManager.swift */; };
 		3FE213291D89A6940023FAC2 /* NotificationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE213281D89A6940023FAC2 /* NotificationHelpers.swift */; };
 		3FE2A5F51E5650ED0011E544 /* MenuItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE2A5F41E5650ED0011E544 /* MenuItemsController.swift */; };
 		3FE38EA8221D90930019B889 /* ReleaseNotesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE38EA7221D90930019B889 /* ReleaseNotesWindowController.swift */; };
@@ -107,8 +108,8 @@
 		3FCD16A61D79793600C57B22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3FCD16A91D79793600C57B22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		3FCD16AB1D79793600C57B22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3FD0AFA323C3778000DC9533 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		3FD0AFA523C62CD400DC9533 /* FKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FKeyManager.swift; sourceTree = "<group>"; };
+		3FD0AFA723C8759A00DC9533 /* AppErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrorManager.swift; sourceTree = "<group>"; };
 		3FE213281D89A6940023FAC2 /* NotificationHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelpers.swift; sourceTree = "<group>"; };
 		3FE2A5F41E5650ED0011E544 /* MenuItemsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemsController.swift; sourceTree = "<group>"; };
 		3FE38EA02219E9B60019B889 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainMenu.strings; sourceTree = "<group>"; };
@@ -133,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F16ECDD23E9D1AC008BC89A /* DefaultsWrapper in Frameworks */,
 				3FBE4C262222A3C600782647 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,6 +214,7 @@
 				3FCD16A41D79793600C57B22 /* AppDelegate.swift */,
 				3FF655C920751D1600C8D2FC /* PFMoveApplication.h */,
 				3FF655C820751D1600C8D2FC /* PFMoveApplication.m */,
+				3FD0AFA723C8759A00DC9533 /* AppErrorManager.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -230,7 +233,6 @@
 			children = (
 				3F8879901FBF41EC005C28E6 /* NSStoryboardNamesExtension.swift */,
 				3FE784DC2052F591007F6200 /* NSViewExtension.swift */,
-				3FD0AFA323C3778000DC9533 /* UserDefaultsExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -311,6 +313,9 @@
 			dependencies = (
 			);
 			name = Fluor;
+			packageProductDependencies = (
+				3F16ECDC23E9D1AC008BC89A /* DefaultsWrapper */,
+			);
 			productName = Fluor;
 			productReference = 3FCD16A11D79793600C57B22 /* Fluor.app */;
 			productType = "com.apple.product-type.application";
@@ -327,7 +332,7 @@
 				TargetAttributes = {
 					3FCD16A01D79793600C57B22 = {
 						CreatedOnToolsVersion = 8.0;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.HardenedRuntime = {
@@ -351,6 +356,9 @@
 				fr,
 			);
 			mainGroup = 3FCD16981D79793600C57B22;
+			packageReferences = (
+				3F16ECDB23E9D1AC008BC89A /* XCRemoteSwiftPackageReference "DefaultsWrapper" */,
+			);
 			productRefGroup = 3FCD16A21D79793600C57B22 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -406,8 +414,8 @@
 				3F7C349C1ED5EBAA0020C538 /* BehaviorController.swift in Sources */,
 				3F697A0C1F88D47C007BA558 /* MoverEffectView.swift in Sources */,
 				3F6D52CC2069667300517E57 /* AboutViewController.swift in Sources */,
-				3FD0AFA423C3778000DC9533 /* UserDefaultsExtension.swift in Sources */,
 				3F0A2A302014BA11009F9610 /* RunningAppsViewController.swift in Sources */,
+				3FD0AFA823C8759A00DC9533 /* AppErrorManager.swift in Sources */,
 				3FE38EAA221D91640019B889 /* Release.swift in Sources */,
 				3F2FA4031D7A059F003E2AD8 /* CurrentAppViewController.swift in Sources */,
 				3F8879911FBF41EC005C28E6 /* NSStoryboardNamesExtension.swift in Sources */,
@@ -597,7 +605,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 			};
 			name = Release;
@@ -619,7 +628,10 @@
 					"$(PROJECT_DIR)/Fluor",
 				);
 				INFOPLIST_FILE = Fluor/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pyrolyse.Fluor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -627,7 +639,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Fluor/Fluor-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -649,7 +661,10 @@
 					"$(PROJECT_DIR)/Fluor",
 				);
 				INFOPLIST_FILE = Fluor/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_SWIFT_FLAGS = "-DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pyrolyse.Fluor;
@@ -658,7 +673,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Fluor/Fluor-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -685,6 +700,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3F16ECDB23E9D1AC008BC89A /* XCRemoteSwiftPackageReference "DefaultsWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Pyroh/DefaultsWrapper.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3F16ECDC23E9D1AC008BC89A /* DefaultsWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F16ECDB23E9D1AC008BC89A /* XCRemoteSwiftPackageReference "DefaultsWrapper" */;
+			productName = DefaultsWrapper;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3FCD16991D79793600C57B22 /* Project object */;
 }
