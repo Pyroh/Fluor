@@ -27,7 +27,7 @@ extension UserDefaultsKeyName {
 
 /// This class holds all per-application keyboard behaviors.
 /// It also takes care of NSUserDefaults reading and synchronizing.
-class BehaviorManager {
+class BehaviorManager: BehaviorDidChangePoster {
     
     /// The defaut behavior manager.
     static let `default`: BehaviorManager = BehaviorManager()
@@ -68,30 +68,21 @@ class BehaviorManager {
     @Defaults(key: .fnKeyMaximumDelay, defaultValue: 280)
     var fnKeyMaximumDelay: TimeInterval
     
-    private var behaviorDict: [String: (behavior: AppBehavior, url: URL)] = [:]
+    private(set) var rules: Set<Rule> = []
+    private var behaviorDict: [String: AppBehavior] = [:]
     private let defaults = UserDefaults.standard
     
     private init() {
-        loadPrefs()
+        self.loadRules()
     }
     
-    /// Retrieve all registred behavior stored in the user's defaults.
-    ///
-    /// - returns: An array containing all the behavior packed in `RuleItem` objects.
-    func retrieveRules() -> [RuleItem] {
-        guard let rawRules = defaults.array(forKey: UserDefaultsKeyName.appRules.rawValue) as? [[String: Any]] else { return [] }
-        var rules = [RuleItem]()
-        rawRules.forEach({ (dict) in
-            guard let appId = dict["id"] as? String, let appBehavior = dict["behavior"] as? Int, let appPath = dict["path"] as? String else { return }
-            let appURL = URL(fileURLWithPath: appPath)
-            let appIcon = NSWorkspace.shared.icon(forFile: appPath)
-            let appName = Bundle(path: appPath)?.localizedInfoDictionary?["CFBundleName"] as? String ?? appURL.deletingPathExtension().lastPathComponent
-            let item = RuleItem(id: appId, url: appURL, icon: appIcon, name: appName, behavior: AppBehavior(rawValue: appBehavior)!, kind: .rule)
-            rules.append(item)
-        })
-        return rules
+    func propagate(behavior: AppBehavior, forApp id: String, at url: URL, from source: NotificationSource) {
+        guard self.behaviorDict[id] != behavior else { return }
+        self.rules.insert(.init(id: id, url: url, behavior: behavior))
+        self.behaviorDict[id] = behavior
+        
+        self.postBehaviorDidChangeNotification(id: id, url: url, behavior: behavior, source: source)
     }
-    
     
     /// Return the behavior for the given application.
     ///
@@ -99,7 +90,7 @@ class BehaviorManager {
     ///
     /// - returns: The behavior for the application.
     func behaviorForApp(id: String) -> AppBehavior {
-        return behaviorDict[id]?.behavior ?? .inferred
+        return behaviorDict[id] ?? .inferred
     }
     
     
@@ -109,17 +100,23 @@ class BehaviorManager {
     /// - parameter behavior: The new application's behavior.
     /// - parameter url:      The application's bundle url.
     func setBehaviorForApp(id: String, behavior: AppBehavior, url: URL) {
+        guard self.behaviorDict[id] != behavior else { return }
         var change = false
         if behavior == .inferred {
-            behaviorDict.removeValue(forKey: id)
+            self.behaviorDict.removeValue(forKey: id)
+            guard let index = self.rules.firstIndex(where: { $0.url == url }) else { fatalError() }
+            self.rules.remove(at: index)
             change = true
-        } else if let previousBehavior = behaviorDict[id]?.behavior {
+        } else if let previousBehavior = self.behaviorDict[id] {
             if previousBehavior != behavior {
-                behaviorDict[id]?.behavior = behavior
+                self.behaviorDict[id] = behavior
+                guard let rule = self.rules.first(where: { $0.url == url }) else { fatalError() }
+                rule.behavior = behavior
                 change = true
             }
         } else {
-            behaviorDict[id] = (behavior, url)
+            behaviorDict[id] = behavior
+            self.rules.insert(.init(id: id, url: url, behavior: behavior))
             change = true
         }
         if change { synchronizeRules() }
@@ -130,10 +127,7 @@ class BehaviorManager {
     ///
     /// - returns: The current keyboard state.
     func getCurrentFKeyMode() -> FKeyMode {
-        switch FKeyManager.getCurrentFKeyMode() {
-        case .success(let mode):
-            return mode
-        case .failure(let error):
+        FKeyManager.getCurrentFKeyMode().getOrFailWith { (error) -> Never in
             AppErrorManager.terminateApp(withReason: error.localizedDescription)
         }
     }
@@ -147,7 +141,7 @@ class BehaviorManager {
     func keyboardStateFor(behavior: AppBehavior) -> FKeyMode {
         switch behavior {
         case .inferred:
-            return defaultFKeyMode
+            return self.defaultFKeyMode
         case .apple:
             return .apple
         case .other:
@@ -156,22 +150,15 @@ class BehaviorManager {
     }
     
     /// Load the defaults.
-    private func loadPrefs() {
-        guard let arr = defaults.array(forKey: UserDefaultsKeyName.appRules.rawValue) else { return }
-        for item in arr {
-            guard let dict = item as? [String: Any], let key = dict["id"] as? String, let behaviorRawValue = dict["behavior"] as? Int, let behavior = AppBehavior(rawValue: behaviorRawValue), let path = dict["path"] as? String else { return }
-            let url = URL(fileURLWithPath: path)
-            behaviorDict[key] = (behavior, url)
+    private func loadRules() {
+        if let rules: Set<Rule> = self.defaults.convertible(forKey: UserDefaultsKeyName.appRules.rawValue) {
+            self.rules = rules
+            self.behaviorDict = .init(uniqueKeysWithValues: rules.map { ($0.id, $0.behavior) })
         }
     }
     
     /// Synchronize and write the defaults from altered data held by this `BehaviorManager` instance.
     private func synchronizeRules() {
-        var arr = [Any]()
-        behaviorDict.forEach { (key: String, value: (behavior: AppBehavior, url: URL)) in
-            let dict: [String: Any] = ["id": key, "behavior": value.behavior.rawValue, "path": value.url.path]
-            arr.append(dict)
-        }
-        defaults.set(arr, forKey: UserDefaultsKeyName.appRules.rawValue)
+        self.defaults.set(self.rules, forKey: UserDefaultsKeyName.appRules.rawValue)
     }
 }

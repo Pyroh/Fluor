@@ -9,11 +9,19 @@
 import Cocoa
 
 class CheckableMenuItem: NSMenuItem {
-    private let eraser = NSImage(size: NSSize(width: 16.0, height: 16.0))
+    private static let eraserImage = NSImage(size: NSSize(width: 16.0, height: 16.0))
     
     private var onStateImageShadow: NSImage?
     private var offStateImageShadow: NSImage?
     private var mixedStateImageShadow: NSImage?
+    
+    override var onStateImage: NSImage! {
+        didSet {
+            guard self.onStateImage != Self.eraserImage else { return }
+            self.onStateImageShadow = self.onStateImage
+            self.onStateImage = Self.eraserImage
+        }
+    }
     
     override var state: NSControl.StateValue {
         didSet {
@@ -34,13 +42,12 @@ class CheckableMenuItem: NSMenuItem {
     }
     
     private func setup() {
-        let eraser = NSImage(size: NSSize(width: 16.0, height: 16.0))
         self.onStateImageShadow = self.onStateImage
         self.offStateImageShadow = self.offStateImage
         self.mixedStateImageShadow = self.mixedStateImage
-        self.onStateImage = eraser
-        self.offStateImage = eraser
-        self.mixedStateImage = eraser
+        self.onStateImage = Self.eraserImage
+        self.offStateImage = Self.eraserImage
+        self.mixedStateImage = Self.eraserImage
     }
     
     private func adaptImageToState() {

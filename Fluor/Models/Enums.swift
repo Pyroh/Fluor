@@ -10,7 +10,16 @@
     case apple = 0
     case other
     
-    func counterPart() -> FKeyMode {
+    var behavior: AppBehavior {
+        switch self {
+        case .apple:
+            return .apple
+        case .other:
+            return .other
+        }
+    }
+    
+    var counterPart: FKeyMode {
         switch self {
         case .apple: return .other
         case .other: return .apple
@@ -22,10 +31,22 @@
     case inferred = 0
     case apple
     case other
+    
+    var counterPart: AppBehavior {
+        switch self {
+        case .apple:
+            return .other
+        case .other:
+            return .apple
+        default:
+            return .inferred
+        }
+    }
 }
 
 @objc enum SwitchMethod: Int {
     case window = 0
+    case hybrid
     case key
 }
 
@@ -36,17 +57,18 @@ enum ItemKind {
     var source: NotificationSource {
         switch self {
         case .rule:
-            return .rulesWindow
+            return .rule
         case .runningApp:
-            return .runningAppWindow
+            return .runningApp
         }
     }
 }
 
 enum NotificationSource {
-    case rulesWindow
-    case runningAppWindow
+    case rule
+    case runningApp
     case mainMenu
     case fnKey
+    case behaviorManager
     case undefined
 }

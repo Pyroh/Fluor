@@ -14,7 +14,7 @@
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="Fluor_AboutWindowAutosaveName" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="Iyh-kg-rFF">
                         <windowStyleMask key="styleMask" titled="YES" texturedBackground="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="309" height="476"/>
+                        <rect key="contentRect" x="196" y="243" width="309" height="473"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
                         <connections>
                             <outlet property="delegate" destination="WsI-4J-azc" id="hnm-ID-18x"/>
@@ -26,7 +26,7 @@
                 </windowController>
                 <customObject id="Ayg-ZP-4k4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-222" y="195"/>
+            <point key="canvasLocation" x="-222.5" y="196.5"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="vCj-3P-i9k">
@@ -109,6 +109,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="640" height="480"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="640" id="0oc-8b-odi"/>
+                                    <constraint firstAttribute="width" secondItem="tUu-YG-CSK" secondAttribute="height" multiplier="4:3" id="4d0-jt-h7I"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="480" id="dgd-Ye-Vad"/>
                                 </constraints>
                                 <wkWebViewConfiguration key="configuration">

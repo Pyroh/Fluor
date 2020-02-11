@@ -6,7 +6,7 @@
 //  Copyright © 2016 Pyrolyse. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 extension Notification.Name {
     public static let BehaviorDidChangeForApp = Notification.Name("BehaviorDidChangeForApp")
@@ -16,18 +16,32 @@ extension Notification.Name {
     public static let MenuNeedsToClose = Notification.Name("MenuNeedsToClose")
 }
 
+@objc protocol ActiveApplicationDidChangeObserver {
+    func activeApplicationDidChangw(notification: Notification)
+}
+
+extension ActiveApplicationDidChangeObserver {
+    func startObservingActiveApplicationDidChange() {
+        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(activeApplicationDidChangw(notification:)), name: NSWorkspace.didActivateApplicationNotification, object: nil)
+    }
+    
+    func stopObservingActiveApplicationDidChange() {
+        NSWorkspace.shared.notificationCenter.removeObserver(self, name: NSWorkspace.didActivateApplicationNotification, object: nil)
+    }
+}
+
 // MARK: -
 // MARK: BehaviorDidChange notfication
 @objc protocol BehaviorDidChangeObserver {
-    @objc func behaviorDidChangeForApp(notification: Notification)
+    func behaviorDidChangeForApp(notification: Notification)
 }
 
 extension BehaviorDidChangeObserver {
     func startObservingBehaviorDidChange() {
-        NotificationCenter.default.addObserver(self, selector: #selector(behaviorDidChangeForApp(notification:)), name: Notification.Name.BehaviorDidChangeForApp, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(behaviorDidChangeForApp(notification:)), name: .BehaviorDidChangeForApp, object: nil)
     }
     func stopObservingBehaviorDidChange() {
-        NotificationCenter.default.removeObserver(self, name: Notification.Name.BehaviorDidChangeForApp, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .BehaviorDidChangeForApp, object: nil)
     }
 }
 
@@ -45,15 +59,15 @@ extension BehaviorDidChangePoster {
 // MARK: -
 // MARK: SwitchMethodDidChange notification
 @objc protocol SwitchMethodDidChangeObserver {
-    @objc func switchMethodDidChange(notification: Notification)
+    func switchMethodDidChange(notification: Notification)
 }
 
 extension SwitchMethodDidChangeObserver {
     func startObservingSwitchMethodDidChange() {
-        NotificationCenter.default.addObserver(self, selector: #selector(switchMethodDidChange(notification:)), name: Notification.Name.SwitchMethodDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(switchMethodDidChange(notification:)), name: .SwitchMethodDidChange, object: nil)
     }
     func stopObservingSwitchMethodDidChange() {
-        NotificationCenter.default.removeObserver(self, name: Notification.Name.SwitchMethodDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .SwitchMethodDidChange, object: nil)
     }
 }
 
@@ -71,7 +85,7 @@ extension SwitchMethodDidChangePoster {
 // MARK: -
 // MARK: TriggerSectionVisibilityDidChange notification
 @objc protocol TriggerSectionVisibilityDidChangeObserver {
-    @objc func triggerSectionVisibilityDidChange(notification: Notification)
+    func triggerSectionVisibilityDidChange(notification: Notification)
 }
 
 extension TriggerSectionVisibilityDidChangeObserver {
@@ -97,19 +111,19 @@ extension TriggerSectionVisibilityDidChangePoster {
 // MARK: -
 // MARK: Menu control notifications
 @objc protocol MenuControlObserver {
-    @objc func menuNeedsToOpen(notification: Notification)
-    @objc func menuNeedsToClose(notification: Notification)
+    func menuNeedsToOpen(notification: Notification)
+    func menuNeedsToClose(notification: Notification)
 }
 
 extension MenuControlObserver {
     func startObservingMenuControlNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(menuNeedsToOpen), name: Notification.Name.MenuNeedsToOpen, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(menuNeedsToClose(notification:)), name: Notification.Name.MenuNeedsToClose, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(menuNeedsToOpen(notification:)), name: .MenuNeedsToOpen, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(menuNeedsToClose(notification:)), name: .MenuNeedsToClose, object: nil)
 
     }
     func stopObservingSwitchMenuControlNotification() {
-        NotificationCenter.default.removeObserver(self, name: Notification.Name.MenuNeedsToOpen, object: nil)
-        NotificationCenter.default.removeObserver(self, name: Notification.Name.MenuNeedsToClose, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .MenuNeedsToOpen, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .MenuNeedsToClose, object: nil)
     }
 }
 

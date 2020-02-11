@@ -19,9 +19,4 @@ class RuleCellView: NSTableCellView {
             }
         }
     }
-    
-    @IBAction func changeBehavior(sender: NSSegmentedControl) {
-        guard let objectValue = self.objectValue as? RuleItem else { return }
-        objectValue.postChangeNotification()
-    }
 }

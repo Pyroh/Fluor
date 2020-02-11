@@ -5,7 +5,7 @@
 //
 
 enum FKeyManager {
-    typealias FKeyManagerResult = Result<FKeyMode, FKeyManagerError>
+    typealias FKeyManagerResult = Result<FKeyMode, Error>
     
     enum FKeyManagerError: Error {
         case cannotCreateMasterPort
@@ -14,6 +14,21 @@ enum FKeyManager {
         case cannotGetParameter
         
         case otherError
+        
+        var localizedDescription: String {
+            switch self {
+            case .cannotCreateMasterPort:
+                return "Master port creation failed (E1)"
+            case .cannotOpenService:
+                return "Service opening failed (E2)"
+            case .cannotSetParameter:
+                return "Parameter set not possible (E3)"
+            case .cannotGetParameter:
+                return "Parameter read not possible (E4)"
+            default:
+                return "Unknown error (E99)"
+            }
+        }
     }
     
     private static func getIORegistry() throws -> io_registry_entry_t {
@@ -39,37 +54,31 @@ enum FKeyManager {
         return service
     }
     
-    static func setCurrentFKeyMode(_ mode: FKeyMode) -> FKeyManagerResult {
-        do {
-            let connect = try FKeyManager.getServiceConnect()
-            let value = mode.rawValue as CFNumber
-            
-            guard IOHIDSetCFTypeParameter(connect, kIOHIDFKeyModeKey as CFString, value) == KERN_SUCCESS else {
-                throw FKeyManagerError.cannotSetParameter
-            }
-            
-            IOServiceClose(connect)
-            return .success(mode)
-        } catch let error as FKeyManagerError {
-            return .failure(error)
-        } catch {
-            return .failure(.otherError)
+    static func setCurrentFKeyMode(_ mode: FKeyMode) throws {
+        let connect = try FKeyManager.getServiceConnect()
+        let value = mode.rawValue as CFNumber
+        
+        guard IOHIDSetCFTypeParameter(connect, kIOHIDFKeyModeKey as CFString, value) == KERN_SUCCESS else {
+            throw FKeyManagerError.cannotSetParameter
         }
+        
+        IOServiceClose(connect)
     }
     
     static func getCurrentFKeyMode() -> FKeyManagerResult {
-        do {
+        FKeyManagerResult {
             let ri = try self.getIORegistry()
             defer { IOObjectRelease(ri) }
             
-            guard let entry = IORegistryEntryCreateCFProperty(ri, "HIDParameters" as CFString, kCFAllocatorDefault, 0), let dict = entry.takeUnretainedValue() as? NSDictionary, let mode = dict.value(forKey: "HIDFKeyMode") as? Int, let currentMode = FKeyMode(rawValue: mode) else {
+            let entry = IORegistryEntryCreateCFProperty(ri, "HIDParameters" as CFString, kCFAllocatorDefault, 0).autorelease()
+            
+            guard let dict = entry.takeUnretainedValue() as? NSDictionary,
+                let mode = dict.value(forKey: "HIDFKeyMode") as? Int,
+                let currentMode = FKeyMode(rawValue: mode) else {
                 throw FKeyManagerError.cannotGetParameter
             }
-            return .success(currentMode)
-        } catch let error as FKeyManagerError {
-            return .failure(error)
-        } catch {
-            return .failure(.otherError)
+            
+            return currentMode
         }
     }
 }

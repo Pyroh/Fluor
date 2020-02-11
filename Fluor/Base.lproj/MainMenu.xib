@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16085" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16085"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,7 +13,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customView id="Xfn-Mq-ahC">
-            <rect key="frame" x="0.0" y="0.0" width="252" height="27"/>
+            <rect key="frame" x="0.0" y="0.0" width="269" height="27"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WoM-Ab-xgn">
@@ -25,7 +25,7 @@
                     </textFieldCell>
                 </textField>
                 <segmentedControl focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RSg-2F-b2E">
-                    <rect key="frame" x="131" y="4" width="102" height="20"/>
+                    <rect key="frame" x="148" y="4" width="102" height="20"/>
                     <segmentedCell key="cell" borderStyle="border" focusRingType="none" alignment="left" style="roundRect" trackingMode="selectOne" id="qZf-Wa-JJt">
                         <font key="font" metaFont="label" size="12"/>
                         <segments>
@@ -55,7 +55,7 @@
                     </connections>
                 </segmentedControl>
                 <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="668-KZ-2vj">
-                    <rect key="frame" x="132" y="4" width="100" height="19"/>
+                    <rect key="frame" x="149" y="4" width="100" height="19"/>
                     <buttonCell key="cell" type="roundRect" title="Ask permission" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gP8-wU-Xyk">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="label" size="12"/>
@@ -76,7 +76,7 @@
                 <constraint firstItem="RSg-2F-b2E" firstAttribute="centerY" secondItem="Xfn-Mq-ahC" secondAttribute="centerY" id="q8G-vu-zni"/>
                 <constraint firstItem="668-KZ-2vj" firstAttribute="centerY" secondItem="Xfn-Mq-ahC" secondAttribute="centerY" id="sfE-Re-qxs"/>
             </constraints>
-            <point key="canvasLocation" x="171" y="-514"/>
+            <point key="canvasLocation" x="176.5" y="-514.5"/>
         </customView>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Fluor" customModuleProvider="target"/>
@@ -98,10 +98,8 @@
         </customObject>
         <customObject id="PAA-w4-EHb" customClass="BehaviorController" customModule="Fluor" customModuleProvider="target">
             <connections>
-                <outlet property="currentAppViewController" destination="zaP-Cz-6tR" id="ViB-kn-TmX"/>
                 <outlet property="defaultModeViewController" destination="Cd8-a1-iy7" id="dZN-f5-A8M"/>
                 <outlet property="statusMenuController" destination="e3h-DP-voU" id="te2-01-fBk"/>
-                <outlet property="switchMethodViewController" destination="AMq-Mo-r6v" id="vJR-1X-16N"/>
             </connections>
         </customObject>
         <viewController id="zaP-Cz-6tR" customClass="CurrentAppViewController" customModule="Fluor" customModuleProvider="target">
@@ -126,7 +124,7 @@
         </viewController>
         <menu id="guO-bQ-N19">
             <items>
-                <menuItem title="Switch method" tag="1" enabled="NO" id="hM4-Z2-ndk">
+                <menuItem title="Switch method" tag="1" enabled="NO" identifier="switch_method" id="hM4-Z2-ndk">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" title="sep2" tag="2" id="QCJ-IJ-MMQ"/>
@@ -198,11 +196,11 @@
             <point key="canvasLocation" x="-103" y="-399.5"/>
         </menu>
         <customView id="u6O-d0-7Hq">
-            <rect key="frame" x="0.0" y="0.0" width="251" height="27"/>
+            <rect key="frame" x="0.0" y="0.0" width="269" height="27"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="YVc-AJ-uvN">
-                    <rect key="frame" x="0.0" y="0.0" width="251" height="27"/>
+                    <rect key="frame" x="0.0" y="0.0" width="269" height="27"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DvO-d4-urd">
                             <rect key="frame" x="18" y="6" width="91" height="16"/>
@@ -220,7 +218,7 @@
                             </connections>
                         </textField>
                         <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kdK-wj-mRZ">
-                            <rect key="frame" x="163" y="4" width="69" height="20"/>
+                            <rect key="frame" x="181" y="4" width="69" height="20"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="Vfh-zJ-Axi">
                                 <font key="font" metaFont="label" size="12"/>
                                 <segments>
@@ -254,14 +252,14 @@
                 <constraint firstAttribute="bottom" secondItem="YVc-AJ-uvN" secondAttribute="bottom" id="rkv-M7-PH2"/>
                 <constraint firstAttribute="trailing" secondItem="YVc-AJ-uvN" secondAttribute="trailing" id="sF6-eF-HLz"/>
             </constraints>
-            <point key="canvasLocation" x="172" y="-443"/>
+            <point key="canvasLocation" x="176.5" y="-445.5"/>
         </customView>
         <customView wantsLayer="YES" canDrawConcurrently="YES" id="o8r-mD-TI5">
-            <rect key="frame" x="0.0" y="0.0" width="252" height="67"/>
+            <rect key="frame" x="0.0" y="0.0" width="269" height="72"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView autoresizesSubviews="NO" wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="infinite" translatesAutoresizingMaskIntoConstraints="NO" id="EUW-rh-G7n">
-                    <rect key="frame" x="20" y="2" width="64" height="64"/>
+                    <rect key="frame" x="20" y="4" width="64" height="64"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="8lp-ov-mJS"/>
                         <constraint firstAttribute="width" secondItem="EUW-rh-G7n" secondAttribute="height" multiplier="1:1" id="igc-RD-12P"/>
@@ -276,9 +274,9 @@
                     </connections>
                 </imageView>
                 <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mdq-3d-6c1">
-                    <rect key="frame" x="92" y="15" width="140" height="38"/>
+                    <rect key="frame" x="92" y="17" width="157" height="38"/>
                     <subviews>
-                        <textField horizontalHuggingPriority="251" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gmQ-wu-N8N">
+                        <textField horizontalHuggingPriority="251" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gmQ-wu-N8N">
                             <rect key="frame" x="-2" y="22" width="39" height="16"/>
                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" id="nND-dO-QEg">
                                 <font key="font" metaFont="systemSemibold" size="13"/>
@@ -339,7 +337,7 @@
                 <constraint firstItem="Mdq-3d-6c1" firstAttribute="leading" secondItem="EUW-rh-G7n" secondAttribute="trailing" constant="8" id="p4v-GU-Q2F"/>
                 <constraint firstItem="EUW-rh-G7n" firstAttribute="centerY" secondItem="o8r-mD-TI5" secondAttribute="centerY" id="wVW-9k-HFL"/>
             </constraints>
-            <point key="canvasLocation" x="171" y="-352"/>
+            <point key="canvasLocation" x="176.5" y="-352"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="TM7-Ze-uQz"/>
     </objects>

@@ -25,15 +25,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         if BehaviorManager.default.lastRunVersion != self.getBundleVersion() {
-            // Do something on new version. If needed... It's not needed.
+            BehaviorManager.default.lastRunVersion = self.getBundleVersion()
+            let rnctrl = ReleaseNotesWindowController.instantiate()
+            rnctrl.window?.orderFrontRegardless()
         }
+        
+        NSApp.hide(self)
     }
     
     private func getBundleVersion() -> String {
-        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
-        let build = Bundle.main.infoDictionary?[kCFBundleVersionKey as String] as! String
-        
-        return "\(version)+\(build)"
+        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
     }
 }
 

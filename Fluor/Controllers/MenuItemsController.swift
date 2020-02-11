@@ -43,25 +43,23 @@ class MenuItemsController: NSObject, SwitchMethodDidChangeObserver, TriggerSecti
         switch method {
         case .key:
             currentAppViewController.shrinkView()
-        case .window:
+        case .window, .hybrid:
             currentAppViewController.expandView()
         }
     }
     
     private func showTriggerSection() {
-        let switchingPlaceHolder = NSMenuItem(title: "Switching method", action: nil, keyEquivalent: "")
-        switchingPlaceHolder.tag = 1
-        let sep = NSMenuItem.separator()
-        sep.tag = 2
-        self.menu.insertItem(switchingPlaceHolder, at: 0)
-        self.menu.insertItem(sep, at: 1)
-        switchingPlaceHolder.view = self.switchMethodViewController.view
+        guard let switchMethodItem = self.menu.item(at: 0), let separatorItem = self.menu.item(at: 1) else { return }
+        switchMethodItem.view = self.switchMethodViewController.view
+        switchMethodItem.isHidden = false
+        separatorItem.isHidden = false
     }
     
     private func hideTriggerSection() {
-        guard let switchingPlaceHolder = self.menu.item(withTag: 1), let sep = self.menu.item(withTag: 2) else { return }
-        self.menu.removeItem(switchingPlaceHolder)
-        self.menu.removeItem(sep)
+        guard let switchMethodItem = self.menu.item(at: 0), let separatorItem = self.menu.item(at: 1) else { return }
+        switchMethodItem.view = nil
+        switchMethodItem.isHidden = true
+        separatorItem.isHidden = true
     }
     
     @objc func triggerSectionVisibilityDidChange(notification: Notification) {

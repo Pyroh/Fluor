@@ -10,6 +10,8 @@
 		3F0A2A302014BA11009F9610 /* RunningAppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0A2A2F2014BA11009F9610 /* RunningAppsViewController.swift */; };
 		3F0A2A332014BA2D009F9610 /* RunningApps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0A2A312014BA2D009F9610 /* RunningApps.storyboard */; };
 		3F16ECDD23E9D1AC008BC89A /* DefaultsWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 3F16ECDC23E9D1AC008BC89A /* DefaultsWrapper */; };
+		3F16ECDF23EC459F008BC89A /* ResultExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F16ECDE23EC459F008BC89A /* ResultExtension.swift */; };
+		3F16ECE123EDDF66008BC89A /* SetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F16ECE023EDDF66008BC89A /* SetExtension.swift */; };
 		3F2571F41FDBD43500020194 /* TableViewContentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2571F31FDBD43500020194 /* TableViewContentAnimator.swift */; };
 		3F2FA3FF1D79D094003E2AD8 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA3FE1D79D094003E2AD8 /* StatusMenuController.swift */; };
 		3F2FA4011D79D66D003E2AD8 /* DefaultModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA4001D79D66D003E2AD8 /* DefaultModeViewController.swift */; };
@@ -36,7 +38,7 @@
 		3FBE4C272222A3C600782647 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3FBE4C202222A22200782647 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3FBE4C292222AB0200782647 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 3FBE4C282222AB0200782647 /* dsa_pub.pem */; };
 		3FC44EFA1D7F169A0065D433 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC44EF91D7F169A0065D433 /* Enums.swift */; };
-		3FC44EFC1D7F16CB0065D433 /* RulesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC44EFB1D7F16CB0065D433 /* RulesItem.swift */; };
+		3FC44EFC1D7F16CB0065D433 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC44EFB1D7F16CB0065D433 /* Items.swift */; };
 		3FCD16A51D79793600C57B22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD16A41D79793600C57B22 /* AppDelegate.swift */; };
 		3FCD16A71D79793600C57B22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FCD16A61D79793600C57B22 /* Assets.xcassets */; };
 		3FCD16AA1D79793600C57B22 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FCD16A81D79793600C57B22 /* MainMenu.xib */; };
@@ -74,6 +76,8 @@
 		3F0A2A2F2014BA11009F9610 /* RunningAppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningAppsViewController.swift; sourceTree = "<group>"; };
 		3F0A2A322014BA2D009F9610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/RunningApps.storyboard; sourceTree = "<group>"; };
 		3F0E64141D8A8A59003243FE /* Fluor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fluor-Bridging-Header.h"; sourceTree = "<group>"; };
+		3F16ECDE23EC459F008BC89A /* ResultExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultExtension.swift; sourceTree = "<group>"; };
+		3F16ECE023EDDF66008BC89A /* SetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetExtension.swift; sourceTree = "<group>"; };
 		3F2571F31FDBD43500020194 /* TableViewContentAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewContentAnimator.swift; sourceTree = "<group>"; };
 		3F2FA3FE1D79D094003E2AD8 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		3F2FA4001D79D66D003E2AD8 /* DefaultModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultModeViewController.swift; sourceTree = "<group>"; };
@@ -102,7 +106,7 @@
 		3FBE4C202222A22200782647 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = ../../../../pyroh/Dev/Projects/Fluor/Fluor/Sparkle.framework; sourceTree = "<group>"; };
 		3FBE4C282222AB0200782647 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		3FC44EF91D7F169A0065D433 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		3FC44EFB1D7F16CB0065D433 /* RulesItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulesItem.swift; sourceTree = "<group>"; };
+		3FC44EFB1D7F16CB0065D433 /* Items.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 		3FCD16A11D79793600C57B22 /* Fluor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fluor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FCD16A41D79793600C57B22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FCD16A61D79793600C57B22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -148,7 +152,7 @@
 				3F2FA4041D7A1F87003E2AD8 /* BehaviorManager.swift */,
 				3F8F93BC1EEAF1EB00FCE91F /* RuleValueTransformer.swift */,
 				3FC44EF91D7F169A0065D433 /* Enums.swift */,
-				3FC44EFB1D7F16CB0065D433 /* RulesItem.swift */,
+				3FC44EFB1D7F16CB0065D433 /* Items.swift */,
 				3FE38EA9221D91640019B889 /* Release.swift */,
 			);
 			path = Models;
@@ -233,6 +237,8 @@
 			children = (
 				3F8879901FBF41EC005C28E6 /* NSStoryboardNamesExtension.swift */,
 				3FE784DC2052F591007F6200 /* NSViewExtension.swift */,
+				3F16ECDE23EC459F008BC89A /* ResultExtension.swift */,
+				3F16ECE023EDDF66008BC89A /* SetExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -419,11 +425,12 @@
 				3FE38EAA221D91640019B889 /* Release.swift in Sources */,
 				3F2FA4031D7A059F003E2AD8 /* CurrentAppViewController.swift in Sources */,
 				3F8879911FBF41EC005C28E6 /* NSStoryboardNamesExtension.swift in Sources */,
-				3FC44EFC1D7F16CB0065D433 /* RulesItem.swift in Sources */,
+				3FC44EFC1D7F16CB0065D433 /* Items.swift in Sources */,
 				3F2FA3FF1D79D094003E2AD8 /* StatusMenuController.swift in Sources */,
 				3FE784DD2052F591007F6200 /* NSViewExtension.swift in Sources */,
 				3FE38EAC221DBE880019B889 /* ReleaseNotesViewController.swift in Sources */,
 				3F84FE81200E655E00871275 /* StoryboardInstantiableProtocol.swift in Sources */,
+				3F16ECE123EDDF66008BC89A /* SetExtension.swift in Sources */,
 				3FE2A5F51E5650ED0011E544 /* MenuItemsController.swift in Sources */,
 				3F4ABD1020193B8D0075B178 /* RulesEditorViewController.swift in Sources */,
 				3FCD16A51D79793600C57B22 /* AppDelegate.swift in Sources */,
@@ -433,6 +440,7 @@
 				3FD0AFA623C62CD400DC9533 /* FKeyManager.swift in Sources */,
 				3FE38EA8221D90930019B889 /* ReleaseNotesWindowController.swift in Sources */,
 				3F8F93BB1EEAC9B900FCE91F /* RuleCellView.swift in Sources */,
+				3F16ECDF23EC459F008BC89A /* ResultExtension.swift in Sources */,
 				3FE213291D89A6940023FAC2 /* NotificationHelpers.swift in Sources */,
 				3FF2410B1EDB4E0000E524CD /* SwitchMethodViewController.swift in Sources */,
 				3FE7E0EA1D7CC01B00DC754D /* RulesEditorWindowController.swift in Sources */,
@@ -633,6 +641,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pyrolyse.Fluor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -666,6 +675,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 2.5.0;
 				OTHER_SWIFT_FLAGS = "-DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pyrolyse.Fluor;
 				PRODUCT_NAME = "$(TARGET_NAME)";

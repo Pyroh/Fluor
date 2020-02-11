@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="GhL-73-3vr">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16085" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="GhL-73-3vr">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16085"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,7 +13,7 @@
                     <window key="window" title="Running Applications" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="Fluor_RunningAppsWindowAutosaveName" animationBehavior="default" id="Vdh-R9-Luc" customClass="NSPanel">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="312" y="152" width="320" height="480"/>
+                        <rect key="contentRect" x="312" y="145" width="320" height="480"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
                         <toolbar key="toolbar" implicitIdentifier="0087966B-D008-4DF2-BCEE-4380C9011E3A" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="aB4-bd-tDO">
                             <allowedToolbarItems>
@@ -52,24 +52,24 @@
                 </windowController>
                 <customObject id="ndL-l5-qSu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="240" y="177"/>
+            <point key="canvasLocation" x="240" y="167"/>
         </scene>
         <!--Running Apps View Controller-->
         <scene sceneID="dce-GI-Bp6">
             <objects>
                 <viewController id="d1L-i9-UVk" customClass="RunningAppsViewController" customModule="Fluor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="E1j-TI-QmQ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="156"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="490"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="56" horizontalPageScroll="10" verticalLineScroll="56" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V71-J7-Lni">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="156"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="490"/>
                                 <clipView key="contentView" drawsBackground="NO" id="Ssz-zh-YzJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="156"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="490"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="54" viewBased="YES" floatsGroupRows="NO" id="wz8-k6-QIg">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="409"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -78,7 +78,6 @@
                                             <tableColumns>
                                                 <tableColumn editable="NO" width="317" minWidth="40" maxWidth="1000" id="MKn-As-G2g">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -141,7 +140,6 @@
                                                                                                 </segments>
                                                                                             </segmentedCell>
                                                                                             <connections>
-                                                                                                <action selector="changeBehaviorWithSender:" target="fBD-cm-jK2" id="fR2-D7-c7L"/>
                                                                                                 <binding destination="fBD-cm-jK2" name="selectedIndex" keyPath="objectValue.behavior" id="5J6-Rl-NAR"/>
                                                                                             </connections>
                                                                                         </segmentedControl>
@@ -219,6 +217,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="6wR-Hk-d79"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Wte-qd-uKo"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="480" id="XJw-e0-OMd"/>
                                 </constraints>
                                 <edgeInsets key="contentInsets" left="0.0" right="0.0" top="55" bottom="26"/>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="IDN-7E-eFS">
@@ -239,7 +238,7 @@
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kDJ-2C-TWd" userLabel="StatusBarLabel">
                                         <rect key="frame" x="144" y="6" width="33" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Twm-uj-Z9c">
-                                            <font key="font" metaFont="menu" size="11"/>
+                                            <font key="font" metaFont="label" size="11"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -255,7 +254,7 @@
                                         <rect key="frame" x="8" y="3" width="83" height="19"/>
                                         <buttonCell key="cell" type="roundTextured" title="Show all" alternateTitle="Hide services" bezelStyle="texturedRounded" alignment="center" controlSize="small" borderStyle="border" inset="2" id="Yb5-hU-zbp">
                                             <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="menu" size="11"/>
+                                            <font key="font" metaFont="label" size="11"/>
                                         </buttonCell>
                                         <connections>
                                             <binding destination="d1L-i9-UVk" name="value" keyPath="self.showAll" id="t2D-qG-4Jy"/>
@@ -299,7 +298,7 @@
                     </connections>
                 </arrayController>
             </objects>
-            <point key="canvasLocation" x="717" y="166"/>
+            <point key="canvasLocation" x="681" y="172"/>
         </scene>
     </scenes>
     <resources>

@@ -13,12 +13,12 @@ class RulesEditorViewController: NSViewController, BehaviorDidChangeObserver {
     @IBOutlet var itemsArrayController: NSArrayController!
     @IBOutlet weak var contentActionSegmentedControl: NSSegmentedControl!
     
-    @objc dynamic var rulesSet = Set<RuleItem>()
+    @objc dynamic var rulesSet = Set<Rule>()
     
     @objc dynamic var searchPredicate: NSPredicate?
     @objc dynamic var sortDescriptors: [NSSortDescriptor] = [.init(key: "name", ascending: true, selector: #selector(NSString.caseInsensitiveCompare(_:)))]
     
-    private var tableContentAnimator: TableViewContentAnimator<RuleItem>!
+    private var tableContentAnimator: TableViewContentAnimator<Rule>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class RulesEditorViewController: NSViewController, BehaviorDidChangeObserver {
         itemsArrayController.addObserver(self, forKeyPath: "canRemove", options: [], context: nil)
         itemsArrayController.addObserver(self, forKeyPath: "canAdd", options: [], context: nil)
         
-        self.rulesSet = Set<RuleItem>(BehaviorManager.default.retrieveRules())
+        self.rulesSet = BehaviorManager.default.rules
         
         self.tableContentAnimator = TableViewContentAnimator(tableView: tableView, arrayController: itemsArrayController)
     }
@@ -42,19 +42,16 @@ class RulesEditorViewController: NSViewController, BehaviorDidChangeObserver {
     ///
     /// - parameter notification: The notification.
     func behaviorDidChangeForApp(notification: Notification) {
-        guard let userInfo = notification.userInfo as? [String: Any], userInfo["source"] as? NotificationSource != .rulesWindow else { return }
-        guard let appId = userInfo["id"] as? String, let appBehavior = userInfo["behavior"] as? AppBehavior, let appURL = userInfo["url"] as? URL else { return }
-        if let item = rulesSet.first(where: { $0.id == appId }) {
-            if case .inferred = appBehavior {
+        guard let userInfo = notification.userInfo as? [String: Any], userInfo["source"] as? NotificationSource != .rule else { return }
+        guard let id = userInfo["id"] as? String, let behavior = userInfo["behavior"] as? AppBehavior, let url = userInfo["url"] as? URL else { return }
+        if let item = rulesSet.first(where: { $0.id == id }) {
+            if case .inferred = behavior {
                 itemsArrayController.removeObject(item)
             } else {
-                item.behavior = appBehavior
+                item.behavior = behavior
             }
-        } else if appBehavior != .inferred {
-            let appPath = appURL.path
-            let appIcon = NSWorkspace.shared.icon(forFile: appPath)
-            let appName = Bundle(path: appPath)?.localizedInfoDictionary?["CFBundleName"] as? String ?? appURL.deletingPathExtension().lastPathComponent
-            let item = RuleItem(id: appId, url: appURL, icon: appIcon, name: appName, behavior: appBehavior, kind: .rule)
+        } else if behavior != .inferred {
+            let item = Rule(id: id, url: url, behavior: behavior)
             rulesSet.insert(item)
         }
     }
@@ -67,28 +64,21 @@ class RulesEditorViewController: NSViewController, BehaviorDidChangeObserver {
         openPanel.canChooseDirectories = false
         openPanel.directoryURL = URL(fileURLWithPath: "/Applications")
         openPanel.runModal()
-        let items = openPanel.urls.map { (appURL) -> RuleItem in
-            let appBundle = Bundle(url: appURL)!
-            let appId = appBundle.bundleIdentifier!
-            let appPath = appURL.path
-            let appIcon = NSWorkspace.shared.icon(forFile: appPath)
-            let appName = Bundle(path: appPath)?.localizedInfoDictionary?["CFBundleName"] as? String ?? appURL.deletingPathExtension().lastPathComponent
-            BehaviorManager.default.setBehaviorForApp(id: appId, behavior: .apple, url: appURL)
-            return RuleItem(id: appId, url: appURL, icon: appIcon, name: appName, behavior: AppBehavior.apple, kind: .rule)
+        let items = openPanel.urls.map { (url) -> Rule in
+            let bundle = Bundle(url: url)!
+            let id = bundle.bundleIdentifier!
+            
+            BehaviorManager.default.propagate(behavior: .apple, forApp: id, at: url, from: .rule)
+            return Rule(id: id, url: url, behavior: .apple)
         }
         rulesSet.formUnion(items)
     }
     
     /// Remove a rule for a given application.
-    ///
-    /// - parameter sender: The object that sent the action.
     func removeRule() {
-        guard let items = itemsArrayController.selectedObjects as? [RuleItem] else { return }
+        guard let items = itemsArrayController.selectedObjects as? [Rule] else { return }
         items.forEach { (item) in
-            BehaviorManager.default.setBehaviorForApp(id: item.id, behavior: .inferred, url: item.url)
-            let info = BehaviorController.behaviorDidChangeUserInfoConstructor(id: item.id, url: item.url, behavior: .inferred)
-            let not = Notification(name: .BehaviorDidChangeForApp, object: self, userInfo: info)
-            NotificationCenter.default.post(not)
+            BehaviorManager.default.propagate(behavior: .inferred, forApp: item.id, at: item.url, from: .rule)
         }
         itemsArrayController.remove(self)
     }

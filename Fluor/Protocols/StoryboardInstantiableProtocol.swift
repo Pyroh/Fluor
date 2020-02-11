@@ -17,8 +17,8 @@ protocol StoryboardInstantiable: NSObjectProtocol {
 }
 
 extension StoryboardInstantiable {
-    static var sceneIdentifier: NSStoryboard.SceneIdentifier? { return nil }
-    static var bundle: Bundle? { return nil }
+    static var sceneIdentifier: NSStoryboard.SceneIdentifier? { nil }
+    static var bundle: Bundle? { nil }
     
     static func instantiate() -> Self {
         if let id = sceneIdentifier {

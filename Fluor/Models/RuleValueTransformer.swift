@@ -10,20 +10,18 @@ import Cocoa
 
 class RuleValueTransformer: ValueTransformer {
     override class func allowsReverseTransformation() -> Bool {
-        return true
+        true
     }
     
     override class func transformedValueClass() -> AnyClass {
-        return NSNumber.self
+        NSNumber.self
     }
     
     override func transformedValue(_ value: Any?) -> Any? {
-        guard let inputValue = value as? NSNumber else { return nil }
-        return NSNumber(value: inputValue.intValue - 1)
+        (value as? Int).map { NSNumber(value: $0 - 1) }
     }
     
     override func reverseTransformedValue(_ value: Any?) -> Any? {
-        guard let inputValue = value as? NSNumber else { return nil }
-        return NSNumber(value: inputValue.intValue + 1)
+        (value as? Int).map { NSNumber(value: $0 + 1) }
     }
 }

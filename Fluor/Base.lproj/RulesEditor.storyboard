@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="W33-Be-Q5Y">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16085" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="W33-Be-Q5Y">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16085"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -59,17 +59,17 @@
             <objects>
                 <viewController id="UlX-TY-g5g" customClass="RulesEditorViewController" customModule="Fluor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="3sp-g2-HUP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="156"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="56" horizontalPageScroll="10" verticalLineScroll="56" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuc-ja-QaT">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="156"/>
-                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="t0p-Ha-0Qj">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="156"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="t0p-Ha-0Qj">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="54" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="anD-et-bWl">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+                                        <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="54" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="anD-et-bWl">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="399"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -78,7 +78,6 @@
                                             <tableColumns>
                                                 <tableColumn width="317" minWidth="40" maxWidth="1000" id="Dby-eA-9YS">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -105,12 +104,13 @@
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSApplicationIcon" id="2Fc-hq-NCR"/>
                                                                             <connections>
                                                                                 <binding destination="Kqn-bd-jZp" name="value" keyPath="objectValue.icon" id="WuV-6R-C9q"/>
+                                                                                <binding destination="Kqn-bd-jZp" name="toolTip" keyPath="objectValue.url.path" id="anr-Hc-yQM"/>
                                                                             </connections>
                                                                         </imageView>
                                                                         <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="agd-lq-cct">
                                                                             <rect key="frame" x="56" y="4" width="245" height="41"/>
                                                                             <subviews>
-                                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mpq-BA-DRn">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mpq-BA-DRn">
                                                                                     <rect key="frame" x="-2" y="25" width="39" height="16"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" id="Bp2-iW-iXC">
                                                                                         <font key="font" metaFont="systemSemibold" size="13"/>
@@ -131,7 +131,6 @@
                                                                                         </segments>
                                                                                     </segmentedCell>
                                                                                     <connections>
-                                                                                        <action selector="changeBehaviorWithSender:" target="Kqn-bd-jZp" id="b7c-b2-FF7"/>
                                                                                         <binding destination="Kqn-bd-jZp" name="selectedIndex" keyPath="objectValue.behavior" id="Dl0-4Q-glf">
                                                                                             <dictionary key="options">
                                                                                                 <string key="NSValueTransformerName">RuleValueTransformer</string>
@@ -183,6 +182,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="JDx-A6-99q"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Po9-SE-zDd"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="480" id="uBg-hM-fxE"/>
                                 </constraints>
                                 <edgeInsets key="contentInsets" left="0.0" right="0.0" top="55" bottom="26"/>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="kNh-EX-LvN">
@@ -203,7 +203,7 @@
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FQS-Uv-JNd">
                                         <rect key="frame" x="144" y="6" width="33" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Y1u-Fa-sgm">
-                                            <font key="font" metaFont="menu" size="11"/>
+                                            <font key="font" metaFont="label" size="11"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -218,7 +218,7 @@
                                     <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ttC-Xk-L6o">
                                         <rect key="frame" x="2" y="2" width="51" height="21"/>
                                         <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="rounded" trackingMode="momentary" id="qsY-JB-wQQ">
-                                            <font key="font" metaFont="menu" size="11"/>
+                                            <font key="font" metaFont="label" size="11"/>
                                             <segments>
                                                 <segment toolTip="Add rule" image="NSAddTemplate" width="22"/>
                                                 <segment toolTip="Delete selected rule" image="NSRemoveTemplate" width="22" tag="1"/>
