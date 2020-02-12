@@ -84,8 +84,7 @@ class RunningAppsViewController: NSViewController, NSTableViewDelegate {
         }
     }
     
-    // MARK: Table View Delegate
-    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-        return false
-    }
+    // MARK: - Table View Delegate
+    
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool { false }
 }

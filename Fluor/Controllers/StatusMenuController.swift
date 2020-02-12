@@ -58,7 +58,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate, MenuCont
         }
     }
     
-    // MARK: Private functions
+    // MARK: - Private functions
     
     /// Setup the status bar's item
     private func setupStatusMenu() {
@@ -89,13 +89,17 @@ class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate, MenuCont
         UserDefaults.standard.removeObserver(self, forKeyPath: UserDefaultsKeyName.useLightIcon.rawValue, context: nil)
     }
     
+    // MARK: - NSWindowDelegate
+    
     func menuWillOpen(_ menu: NSMenu) {
         self.behaviorController.adaptToAccessibilityTrust()
     }
     
-    @objc func menuNeedsToOpen(notification: Notification) { }
+    // MARK: - MenuControlObserver
     
-    @objc func menuNeedsToClose(notification: Notification) {
+    func menuNeedsToOpen(notification: Notification) { }
+    
+    func menuNeedsToClose(notification: Notification) {
         if let userInfo = notification.userInfo, let animated = userInfo["animated"] as? Bool, !animated {
             self.statusMenu.cancelTrackingWithoutAnimation()
         } else {

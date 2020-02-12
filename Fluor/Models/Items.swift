@@ -9,7 +9,6 @@
 import Cocoa
 import DefaultsWrapper
 
-/// Models a rule in the *Rules* and *Running Apps* panels' table view.
 class Item: NSObject, Identifiable {
     class var notificationSource: NotificationSource { .undefined }
     
@@ -58,6 +57,7 @@ final class RunningApp: Item, BehaviorDidChangeObserver {
         self.stopObservingBehaviorDidChange()
     }
     
+    // MARK: BehaviorDidChangeObserver
     func behaviorDidChangeForApp(notification: Notification) {
         guard let id = notification.userInfo?["id"] as? String, self.id == id,
             let appBehavior = notification.userInfo?["behavior"] as? AppBehavior else { return }
@@ -72,6 +72,8 @@ final class Rule: Item, UserDefaultsConvertible {
     override var hash: Int {
         self.url.hashValue
     }
+    
+    // MARK: UserDefaultsConvertible
     
     func convertedObject() -> [String: Any] {
         ["id": self.id, "path": self.url.path, "behavior": self.behavior.rawValue]

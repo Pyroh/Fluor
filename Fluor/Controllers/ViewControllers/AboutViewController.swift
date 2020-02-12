@@ -30,6 +30,18 @@ class AboutViewController: NSViewController {
         return (version, build)
     }
     
+    private func openUrlForInfo(key: String) {
+        guard let url = self.urlForInfo(key: key) else { return }
+        NSWorkspace.shared.open(url)
+    }
+    
+    private func urlForInfo(key: String) -> URL? {
+        guard let str = Bundle.main.infoDictionary?[key] as? String,
+            let url = URL(string: str) else { return nil }
+        
+        return url
+    }
+    
     @IBAction func closeWindow(_ sender: Any) {
         view.window?.close()
     }
@@ -48,19 +60,5 @@ class AboutViewController: NSViewController {
     
     @IBAction func goToSupport(_ sender: Any) {
         self.openUrlForInfo(key: "FLSupportEmail")
-    }
-    
-    private func openUrlForInfo(key: String) {
-        guard let url = self.urlForInfo(key: key) else { return }
-        NSWorkspace.shared.open(url)
-    }
-    
-    private func urlForInfo(key: String) -> URL? {
-        guard let str = Bundle.main.infoDictionary?[key] as? String,
-            let url = URL(string: str) else {
-                return nil
-        }
-        
-        return url
     }
 }

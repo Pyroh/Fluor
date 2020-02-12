@@ -45,23 +45,7 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
         }
     }
     
-    /// Register self as an observer for some notifications.
-    private func applyAsObserver() {
-        if self.switchMethod != .key { self.startObservingBehaviorDidChange() }
-        self.startObservingSwitchMethodDidChange()
-        self.startObservingActiveApplicationDidChange()
-        
-        self.adaptToAccessibilityTrust()
-    }
     
-    /// Unregister self as an observer for some notifications.
-    private func resignAsObserver() {
-        if self.switchMethod != .key { self.stopObservingBehaviorDidChange() }
-        self.stopObservingSwitchMethodDidChange()
-        self.stopObservingActiveApplicationDidChange()
-        
-        self.stopMonitoringFlagKey()
-    }
     
     func setApplicationIsEnabled(_ enabled: Bool) {
         if enabled {
@@ -86,6 +70,18 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
         }
     }
     
+    func adaptToAccessibilityTrust() {
+        if AXIsProcessTrusted() {
+            self.isKeySwitchCapable = true
+            self.ensureMonitoringFlagKey()
+        } else {
+            self.isKeySwitchCapable = false
+            self.stopMonitoringFlagKey()
+        }
+    }
+    
+    // MARK: - ActiveApplicationDidChangeObserver
+    
     func activeApplicationDidChangw(notification: Notification) {
         self.adaptToAccessibilityTrust()
         guard let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication,
@@ -97,6 +93,8 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
         }
     }
     
+    // MARK: - BehaviorDidChangeObserver
+    
     /// React to the change of the function keys behavior for one app.
     ///
     /// - parameter notification: The notification.
@@ -107,6 +105,8 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
             self.adaptModeForApp(withId: id)
         }
     }
+    
+    // MARK: - SwitchMethodDidChangeObserver
     
     func switchMethodDidChange(notification: Notification) {
         guard let userInfo = notification.userInfo, let method = userInfo["method"] as? SwitchMethod else { return }
@@ -122,6 +122,8 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
         }
     }
     
+    // MARK: - DefaultModeViewControllerDelegate
+    
     func defaultModeController(_ controller: DefaultModeViewController, didChangeModeTo mode: FKeyMode) {
         switch self.switchMethod {
         case .window, .hybrid:
@@ -131,6 +133,8 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
             self.currentMode = mode
         }
     }
+    
+    // MARK: - Private functions
     
     /// Disable this session's Fluor instance in order to prevent it from messing when potential other sessions' ones.
     ///
@@ -148,6 +152,24 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
     @objc private func appMustWake(notification: Notification) {
         self.changeKeyboard(mode: currentMode)
         self.applyAsObserver()
+    }
+    
+    /// Register self as an observer for some notifications.
+    private func applyAsObserver() {
+        if self.switchMethod != .key { self.startObservingBehaviorDidChange() }
+        self.startObservingSwitchMethodDidChange()
+        self.startObservingActiveApplicationDidChange()
+        
+        self.adaptToAccessibilityTrust()
+    }
+    
+    /// Unregister self as an observer for some notifications.
+    private func resignAsObserver() {
+        if self.switchMethod != .key { self.stopObservingBehaviorDidChange() }
+        self.stopObservingSwitchMethodDidChange()
+        self.stopObservingActiveApplicationDidChange()
+        
+        self.stopMonitoringFlagKey()
     }
     
     /// Set the function keys' behavior for the given app.
@@ -235,16 +257,6 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
         }
         
         BehaviorManager.default.propagate(behavior: newAppBehavior, forApp: self.currentAppID , at: url, from: .fnKey)
-    }
-    
-    func adaptToAccessibilityTrust() {
-        if AXIsProcessTrusted() {
-            self.isKeySwitchCapable = true
-            self.ensureMonitoringFlagKey()
-        } else {
-            self.isKeySwitchCapable = false
-            self.stopMonitoringFlagKey()
-        }
     }
     
     private func ensureMonitoringFlagKey() {

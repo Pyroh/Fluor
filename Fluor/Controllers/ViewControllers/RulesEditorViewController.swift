@@ -38,6 +38,20 @@ class RulesEditorViewController: NSViewController, BehaviorDidChangeObserver {
         itemsArrayController.removeObserver(self, forKeyPath: "canAdd")
     }
     
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        guard (object as? NSArrayController) ==  itemsArrayController, let keyPath = keyPath else { return }
+        switch keyPath {
+        case "canAdd":
+            contentActionSegmentedControl.setEnabled(itemsArrayController.canAdd, forSegment: 0)
+        case "canRemove":
+            contentActionSegmentedControl.setEnabled(itemsArrayController.canRemove, forSegment: 1)
+        default:
+            return
+        }
+    }
+    
+    // MARK: - BehaviorDidChangeObserver
+    
     /// Called when a rule change for an application.
     ///
     /// - parameter notification: The notification.
@@ -56,8 +70,10 @@ class RulesEditorViewController: NSViewController, BehaviorDidChangeObserver {
         }
     }
     
+    // MARK: - Private functions
+    
     /// Add a rule for an application.
-    func addRule() {
+    private func addRule() {
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = true
         openPanel.allowedFileTypes = ["com.apple.bundle"]
@@ -75,13 +91,15 @@ class RulesEditorViewController: NSViewController, BehaviorDidChangeObserver {
     }
     
     /// Remove a rule for a given application.
-    func removeRule() {
+    private func removeRule() {
         guard let items = itemsArrayController.selectedObjects as? [Rule] else { return }
         items.forEach { (item) in
             BehaviorManager.default.propagate(behavior: .inferred, forApp: item.id, at: item.url, from: .rule)
         }
         itemsArrayController.remove(self)
     }
+    
+    // MARK: - Actions
     
     @IBAction func operateRuleCollection(_ sender: NSSegmentedControl) {
         switch sender.selectedSegment {
@@ -92,15 +110,5 @@ class RulesEditorViewController: NSViewController, BehaviorDidChangeObserver {
         }
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        guard (object as? NSArrayController) ==  itemsArrayController, let keyPath = keyPath else { return }
-        switch keyPath {
-        case "canAdd":
-            contentActionSegmentedControl.setEnabled(itemsArrayController.canAdd, forSegment: 0)
-        case "canRemove":
-            contentActionSegmentedControl.setEnabled(itemsArrayController.canRemove, forSegment: 1)
-        default:
-            return
-        }
-    }
+    
 }

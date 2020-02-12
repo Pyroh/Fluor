@@ -76,6 +76,8 @@ final class TableViewContentAnimator<ItemType: AnyObject>: NSObject, NSTableView
         self.animated = true
     }
     
+    // MARK: - Private functions
+    
     private func insertRows(at indexSet: IndexSet) {
         tableView.insertRows(at: indexSet, withAnimation: self.actualInsertAnimation)
     }
@@ -99,7 +101,8 @@ final class TableViewContentAnimator<ItemType: AnyObject>: NSObject, NSTableView
         return result
     }
     
-    // MARK: NSTableViewDataSource
+    // MARK: - NSTableViewDataSource
+    
     func numberOfRows(in tableView: NSTableView) -> Int {
         return arrangedObjects?.count ?? 0
     }

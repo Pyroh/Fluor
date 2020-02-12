@@ -17,14 +17,20 @@ class ReleaseNotesWindowController: NSWindowController, NSWindowDelegate, Storyb
         self.populateList()
     }
     
+    // MARK: - NSWindowDelegate
+    
     func windowWillClose(_ notification: Notification) {
         self.session?.invalidateAndCancel()
     }
+    
+    // MARK: - Actions
     
     @IBAction func changeVersion(_ sender: NSPopUpButton) {
         guard let release = sender.selectedItem?.representedObject as? Release else { fatalError() }
         self.show(url: release.url)
     }
+    
+    // MARK: - Private functions
     
     private func populateList() {
         guard let str = Bundle.main.infoDictionary?["FLRNListURL"] as? String,
