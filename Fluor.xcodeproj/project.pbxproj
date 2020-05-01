@@ -37,6 +37,7 @@
 		3F8879931FBF5F2A005C28E6 /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8879921FBF5F2A005C28E6 /* PreferencesTabViewController.swift */; };
 		3F8F93BB1EEAC9B900FCE91F /* RuleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F93BA1EEAC9B900FCE91F /* RuleCellView.swift */; };
 		3F8F93BD1EEAF1EB00FCE91F /* RuleValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F93BC1EEAF1EB00FCE91F /* RuleValueTransformer.swift */; };
+		3F9EDD2A245C7BAF0047D1AC /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9EDD29245C7BAF0047D1AC /* MenuItemView.swift */; };
 		3FBE4C262222A3C600782647 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FBE4C202222A22200782647 /* Sparkle.framework */; };
 		3FBE4C272222A3C600782647 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3FBE4C202222A22200782647 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3FBE4C292222AB0200782647 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 3FBE4C282222AB0200782647 /* dsa_pub.pem */; };
@@ -108,6 +109,7 @@
 		3F8879921FBF5F2A005C28E6 /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
 		3F8F93BA1EEAC9B900FCE91F /* RuleCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleCellView.swift; sourceTree = "<group>"; };
 		3F8F93BC1EEAF1EB00FCE91F /* RuleValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleValueTransformer.swift; sourceTree = "<group>"; };
+		3F9EDD29245C7BAF0047D1AC /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
 		3FBE4C202222A22200782647 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = ../../../../pyroh/Dev/Projects/Fluor/Fluor/Sparkle.framework; sourceTree = "<group>"; };
 		3FBE4C282222AB0200782647 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		3FC44EF91D7F169A0065D433 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				3F697A0B1F88D47C007BA558 /* MoverEffectView.swift */,
 				3F6D52CD20696E2100517E57 /* LinkButton.swift */,
 				3F15629B23FE892A00CD0773 /* MoverImageView.swift */,
+				3F9EDD29245C7BAF0047D1AC /* MenuItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -362,10 +365,9 @@
 			};
 			buildConfigurationList = 3FCD169C1D79793600C57B22 /* Build configuration list for PBXProject "Fluor" */;
 			compatibilityVersion = "Xcode 8.0";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 				fr,
@@ -455,6 +457,7 @@
 				3FE213291D89A6940023FAC2 /* NotificationHelpers.swift in Sources */,
 				3FF2410B1EDB4E0000E524CD /* SwitchMethodViewController.swift in Sources */,
 				3FE7E0EA1D7CC01B00DC754D /* RulesEditorWindowController.swift in Sources */,
+				3F9EDD2A245C7BAF0047D1AC /* MenuItemView.swift in Sources */,
 				3F7291F22028BC6B005C9B70 /* PreferencesWindowController.swift in Sources */,
 				3FE7E0E31D7CBE1700DC754D /* AboutWindowController.swift in Sources */,
 				3F15629C23FE892A00CD0773 /* MoverImageView.swift in Sources */,

@@ -9,6 +9,28 @@
 import Cocoa
 
 extension NSView {
+    var isDark: Bool {
+        if #available(OSX 10.14, *) {
+            return effectiveAppearance.bestMatch(from: [.darkAqua,
+                                                        .accessibilityHighContrastDarkAqua,
+                                                        .vibrantDark,
+                                                        .accessibilityHighContrastVibrantDark]) != nil
+        } else {
+            return false
+        }
+    }
+    
+    var isAccessible: Bool {
+        if #available(OSX 10.14, *) {
+            return effectiveAppearance.bestMatch(from: [.accessibilityHighContrastAqua,
+                                                        .accessibilityHighContrastVibrantLight,
+                                                        .accessibilityHighContrastDarkAqua,
+                                                        .accessibilityHighContrastVibrantDark]) != nil
+        } else {
+            return false
+        }
+    }
+    
     func centerLayerAnchor() {
         let x = self.frame.midX
         let y = self.frame.midY
@@ -18,3 +40,4 @@ extension NSView {
         self.layer?.contentsGravity = CALayerContentsGravity.center
     }
 }
+
