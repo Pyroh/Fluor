@@ -9,7 +9,9 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
+    let statusMenuController: StatusMenuController = .init()
+    
     func applicationDidFinishLaunching(_ notification: Notification) {
         #if RELEASE
             PFMoveToApplicationsFolderIfNecessary()
@@ -30,11 +32,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             rnctrl.window?.orderFrontRegardless()
         }
         
+        self.loadMainMenu()
+    }
+    
+    private func loadMainMenu() {
+        let nib = NSNib(nibNamed: "MainMenu", bundle: nil)
+        nib?.instantiate(withOwner: self.statusMenuController, topLevelObjects: nil)
+        
         NSApp.hide(self)
     }
     
     private func getBundleVersion() -> String {
         Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+    }
+    
+    func windowWillClose(_ notification: Notification) {
+        self.loadMainMenu()
     }
 }
 

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3F0A2A302014BA11009F9610 /* RunningAppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0A2A2F2014BA11009F9610 /* RunningAppsViewController.swift */; };
 		3F0A2A332014BA2D009F9610 /* RunningApps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0A2A312014BA2D009F9610 /* RunningApps.storyboard */; };
+		3F15629C23FE892A00CD0773 /* MoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F15629B23FE892A00CD0773 /* MoverImageView.swift */; };
+		3F15629F23FEDD0000CD0773 /* CoreGeometry in Frameworks */ = {isa = PBXBuildFile; productRef = 3F15629E23FEDD0000CD0773 /* CoreGeometry */; };
 		3F16ECDD23E9D1AC008BC89A /* DefaultsWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 3F16ECDC23E9D1AC008BC89A /* DefaultsWrapper */; };
 		3F16ECDF23EC459F008BC89A /* ResultExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F16ECDE23EC459F008BC89A /* ResultExtension.swift */; };
 		3F16ECE123EDDF66008BC89A /* SetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F16ECE023EDDF66008BC89A /* SetExtension.swift */; };
@@ -30,6 +32,7 @@
 		3F7C349C1ED5EBAA0020C538 /* BehaviorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7C349B1ED5EBAA0020C538 /* BehaviorController.swift */; };
 		3F820C412219B63F00004813 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F820C432219B63F00004813 /* Preferences.storyboard */; };
 		3F84FE81200E655E00871275 /* StoryboardInstantiableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F84FE80200E655E00871275 /* StoryboardInstantiableProtocol.swift */; };
+		3F883E76240050A600E2A7D7 /* Main.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F883E74240050A600E2A7D7 /* Main.xib */; };
 		3F8879911FBF41EC005C28E6 /* NSStoryboardNamesExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8879901FBF41EC005C28E6 /* NSStoryboardNamesExtension.swift */; };
 		3F8879931FBF5F2A005C28E6 /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8879921FBF5F2A005C28E6 /* PreferencesTabViewController.swift */; };
 		3F8F93BB1EEAC9B900FCE91F /* RuleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F93BA1EEAC9B900FCE91F /* RuleCellView.swift */; };
@@ -76,6 +79,7 @@
 		3F0A2A2F2014BA11009F9610 /* RunningAppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningAppsViewController.swift; sourceTree = "<group>"; };
 		3F0A2A322014BA2D009F9610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/RunningApps.storyboard; sourceTree = "<group>"; };
 		3F0E64141D8A8A59003243FE /* Fluor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fluor-Bridging-Header.h"; sourceTree = "<group>"; };
+		3F15629B23FE892A00CD0773 /* MoverImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoverImageView.swift; sourceTree = "<group>"; };
 		3F16ECDE23EC459F008BC89A /* ResultExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultExtension.swift; sourceTree = "<group>"; };
 		3F16ECE023EDDF66008BC89A /* SetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetExtension.swift; sourceTree = "<group>"; };
 		3F2571F31FDBD43500020194 /* TableViewContentAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewContentAnimator.swift; sourceTree = "<group>"; };
@@ -99,6 +103,7 @@
 		3F820C472219B6D300004813 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/RunningApps.strings; sourceTree = "<group>"; };
 		3F820C4A2219B6D400004813 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/About.strings; sourceTree = "<group>"; };
 		3F84FE80200E655E00871275 /* StoryboardInstantiableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiableProtocol.swift; sourceTree = "<group>"; };
+		3F883E75240050A600E2A7D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Main.xib; sourceTree = "<group>"; };
 		3F8879901FBF41EC005C28E6 /* NSStoryboardNamesExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStoryboardNamesExtension.swift; sourceTree = "<group>"; };
 		3F8879921FBF5F2A005C28E6 /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
 		3F8F93BA1EEAC9B900FCE91F /* RuleCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleCellView.swift; sourceTree = "<group>"; };
@@ -140,6 +145,7 @@
 			files = (
 				3F16ECDD23E9D1AC008BC89A /* DefaultsWrapper in Frameworks */,
 				3FBE4C262222A3C600782647 /* Sparkle.framework in Frameworks */,
+				3F15629F23FEDD0000CD0773 /* CoreGeometry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +212,7 @@
 				3F8F93BA1EEAC9B900FCE91F /* RuleCellView.swift */,
 				3F697A0B1F88D47C007BA558 /* MoverEffectView.swift */,
 				3F6D52CD20696E2100517E57 /* LinkButton.swift */,
+				3F15629B23FE892A00CD0773 /* MoverImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -292,6 +299,7 @@
 		3FE7E0E71D7CBEC700DC754D /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
+				3F883E74240050A600E2A7D7 /* Main.xib */,
 				3FCD16A81D79793600C57B22 /* MainMenu.xib */,
 				3F0A2A312014BA2D009F9610 /* RunningApps.storyboard */,
 				3F4ABD0C201937B30075B178 /* RulesEditor.storyboard */,
@@ -321,6 +329,7 @@
 			name = Fluor;
 			packageProductDependencies = (
 				3F16ECDC23E9D1AC008BC89A /* DefaultsWrapper */,
+				3F15629E23FEDD0000CD0773 /* CoreGeometry */,
 			);
 			productName = Fluor;
 			productReference = 3FCD16A11D79793600C57B22 /* Fluor.app */;
@@ -364,6 +373,7 @@
 			mainGroup = 3FCD16981D79793600C57B22;
 			packageReferences = (
 				3F16ECDB23E9D1AC008BC89A /* XCRemoteSwiftPackageReference "DefaultsWrapper" */,
+				3F15629D23FEDD0000CD0773 /* XCRemoteSwiftPackageReference "CoreGeometry" */,
 			);
 			productRefGroup = 3FCD16A21D79793600C57B22 /* Products */;
 			projectDirPath = "";
@@ -383,6 +393,7 @@
 				3FE784E12053D455007F6200 /* README.md in Resources */,
 				3F0A2A332014BA2D009F9610 /* RunningApps.storyboard in Resources */,
 				3F820C412219B63F00004813 /* Preferences.storyboard in Resources */,
+				3F883E76240050A600E2A7D7 /* Main.xib in Resources */,
 				3FBE4C292222AB0200782647 /* dsa_pub.pem in Resources */,
 				3F3433341E50C53A009F4D86 /* ReleaseNotes.rtf in Resources */,
 				3F6D52CA2069659800517E57 /* About.storyboard in Resources */,
@@ -446,6 +457,7 @@
 				3FE7E0EA1D7CC01B00DC754D /* RulesEditorWindowController.swift in Sources */,
 				3F7291F22028BC6B005C9B70 /* PreferencesWindowController.swift in Sources */,
 				3FE7E0E31D7CBE1700DC754D /* AboutWindowController.swift in Sources */,
+				3F15629C23FE892A00CD0773 /* MoverImageView.swift in Sources */,
 				3FE7E0E01D7CA14600DC754D /* LaunchAtLoginController.m in Sources */,
 				3FF655CA20751D1600C8D2FC /* PFMoveApplication.m in Sources */,
 				3F8879931FBF5F2A005C28E6 /* PreferencesTabViewController.swift in Sources */,
@@ -492,6 +504,14 @@
 				3FE38EA22219EBBC0019B889 /* fr */,
 			);
 			name = Preferences.storyboard;
+			sourceTree = "<group>";
+		};
+		3F883E74240050A600E2A7D7 /* Main.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F883E75240050A600E2A7D7 /* Base */,
+			);
+			name = Main.xib;
 			sourceTree = "<group>";
 		};
 		3FCD16A81D79793600C57B22 /* MainMenu.xib */ = {
@@ -712,6 +732,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3F15629D23FEDD0000CD0773 /* XCRemoteSwiftPackageReference "CoreGeometry" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://gitlab.com/Pyroh/CoreGeometry.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		3F16ECDB23E9D1AC008BC89A /* XCRemoteSwiftPackageReference "DefaultsWrapper" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Pyroh/DefaultsWrapper.git";
@@ -723,6 +751,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3F15629E23FEDD0000CD0773 /* CoreGeometry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F15629D23FEDD0000CD0773 /* XCRemoteSwiftPackageReference "CoreGeometry" */;
+			productName = CoreGeometry;
+		};
 		3F16ECDC23E9D1AC008BC89A /* DefaultsWrapper */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3F16ECDB23E9D1AC008BC89A /* XCRemoteSwiftPackageReference "DefaultsWrapper" */;

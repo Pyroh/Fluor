@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16085" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+        <customObject id="-2" userLabel="File's Owner" customClass="StatusMenuController" customModule="Fluor" customModuleProvider="target">
             <connections>
-                <outlet property="delegate" destination="Voe-Tx-rLC" id="GzC-gU-4Uq"/>
+                <outlet property="behaviorController" destination="PAA-w4-EHb" id="ZgG-gz-HwL"/>
+                <outlet property="menuItemsController" destination="fv7-LX-Zyw" id="ACy-fN-KHw"/>
+                <outlet property="statusMenu" destination="guO-bQ-N19" id="TYk-NZ-vdm"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -79,15 +81,7 @@
             <point key="canvasLocation" x="176.5" y="-514.5"/>
         </customView>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Fluor" customModuleProvider="target"/>
         <customObject id="08K-lI-3Rh" customClass="LaunchAtLoginController"/>
-        <customObject id="e3h-DP-voU" customClass="StatusMenuController" customModule="Fluor" customModuleProvider="target">
-            <connections>
-                <outlet property="behaviorController" destination="PAA-w4-EHb" id="VCD-2v-cBr"/>
-                <outlet property="menuItemsController" destination="fv7-LX-Zyw" id="OiD-7T-shT"/>
-                <outlet property="statusMenu" destination="guO-bQ-N19" id="c0n-uY-MPd"/>
-            </connections>
-        </customObject>
         <customObject id="fv7-LX-Zyw" customClass="MenuItemsController" customModule="Fluor" customModuleProvider="target">
             <connections>
                 <outlet property="currentAppViewController" destination="zaP-Cz-6tR" id="9Vm-uy-K6G"/>
@@ -99,7 +93,7 @@
         <customObject id="PAA-w4-EHb" customClass="BehaviorController" customModule="Fluor" customModuleProvider="target">
             <connections>
                 <outlet property="defaultModeViewController" destination="Cd8-a1-iy7" id="dZN-f5-A8M"/>
-                <outlet property="statusMenuController" destination="e3h-DP-voU" id="te2-01-fBk"/>
+                <outlet property="statusMenuController" destination="-2" id="2Dp-5g-TwM"/>
             </connections>
         </customObject>
         <viewController id="zaP-Cz-6tR" customClass="CurrentAppViewController" customModule="Fluor" customModuleProvider="target">
@@ -139,7 +133,7 @@
                 <menuItem title="Manage rules..." image="Rules" id="MHf-OK-jHk">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="editRules:" target="e3h-DP-voU" id="pRc-Y7-dds"/>
+                        <action selector="editRules:" target="-2" id="iNV-Lh-37Y"/>
                         <binding destination="TM7-Ze-uQz" name="enabled" keyPath="values.OnLaunchDisabled" id="rzc-E1-Tew">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
@@ -150,7 +144,7 @@
                 <menuItem title="Running applications..." image="RunningApps" id="Ark-Du-XrQ">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="showRunningApps:" target="e3h-DP-voU" id="O2m-f1-TT5"/>
+                        <action selector="showRunningApps:" target="-2" id="HbJ-Ou-eAA"/>
                         <binding destination="TM7-Ze-uQz" name="enabled" keyPath="values.OnLaunchDisabled" id="6fH-SS-kCO">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
@@ -161,7 +155,7 @@
                 <menuItem isSeparatorItem="YES" id="AyI-Ds-a1s"/>
                 <menuItem title="Preferences..." image="Preferences" keyEquivalent="," id="sjb-Ql-h6c">
                     <connections>
-                        <action selector="showPreferences:" target="e3h-DP-voU" id="R1g-ZB-Dbo"/>
+                        <action selector="showPreferences:" target="-2" id="3w8-7W-jxA"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Start Fluor at login" onStateImage="CheckEnabled" offStateImage="CheckDisabled" mixedStateImage="CheckMixed" id="eWy-d7-62P" customClass="CheckableMenuItem" customModule="Fluor" customModuleProvider="target">
@@ -173,7 +167,7 @@
                 <menuItem title="Disabled" onStateImage="CheckEnabled" offStateImage="CheckDisabled" mixedStateImage="CheckMixed" id="DqN-qz-yQz" customClass="CheckableMenuItem" customModule="Fluor" customModuleProvider="target">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="toggleApplicationState:" target="e3h-DP-voU" id="R1D-je-71A"/>
+                        <action selector="toggleApplicationState:" target="-2" id="m0A-bt-3Ee"/>
                         <binding destination="TM7-Ze-uQz" name="value" keyPath="values.OnLaunchDisabled" id="ckS-JW-GAn"/>
                     </connections>
                 </menuItem>
@@ -181,17 +175,17 @@
                 <menuItem title="About Fluor" image="About" id="Ib7-Rw-HnK">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="showAbout:" target="e3h-DP-voU" id="VAz-Kx-NL8"/>
+                        <action selector="showAbout:" target="-2" id="IUy-x1-acN"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Quit" image="Quit" keyEquivalent="q" id="QjA-WT-wFW">
                     <connections>
-                        <action selector="quitApplication:" target="e3h-DP-voU" id="rou-h6-CtR"/>
+                        <action selector="quitApplication:" target="-2" id="9LX-lU-bpq"/>
                     </connections>
                 </menuItem>
             </items>
             <connections>
-                <outlet property="delegate" destination="e3h-DP-voU" id="RMW-xK-aOT"/>
+                <outlet property="delegate" destination="-2" id="bwQ-y7-Pew"/>
             </connections>
             <point key="canvasLocation" x="-103" y="-399.5"/>
         </menu>

@@ -78,9 +78,7 @@ class BehaviorManager: BehaviorDidChangePoster {
     
     func propagate(behavior: AppBehavior, forApp id: String, at url: URL, from source: NotificationSource) {
         guard self.behaviorDict[id] != behavior else { return }
-        self.rules.insert(.init(id: id, url: url, behavior: behavior))
-        self.behaviorDict[id] = behavior
-        
+        self.setBehaviorForApp(id: id, behavior: behavior, url: url)
         self.postBehaviorDidChangeNotification(id: id, url: url, behavior: behavior, source: source)
     }
     
@@ -100,7 +98,6 @@ class BehaviorManager: BehaviorDidChangePoster {
     /// - parameter behavior: The new application's behavior.
     /// - parameter url:      The application's bundle url.
     func setBehaviorForApp(id: String, behavior: AppBehavior, url: URL) {
-        guard self.behaviorDict[id] != behavior else { return }
         var change = false
         if behavior == .inferred {
             self.behaviorDict.removeValue(forKey: id)

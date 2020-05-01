@@ -10,15 +10,11 @@ import Cocoa
 import DefaultsWrapper
 
 class Item: NSObject, Identifiable {
-    class var notificationSource: NotificationSource { .undefined }
+    var notificationSource: NotificationSource { .undefined }
     
     let id: String
     @objc let url: URL
-    @objc dynamic var behavior: AppBehavior {
-        didSet {
-            BehaviorManager.default.propagate(behavior: self.behavior, forApp: self.id, at: self.url, from: Self.notificationSource)
-        }
-    }
+    @objc dynamic var behavior: AppBehavior 
     
     @objc var icon: NSImage { NSWorkspace.shared.icon(forFile: self.url.path) }
     @objc var name: String { Bundle(path: self.url.path)?.localizedInfoDictionary?["CFBundleName"] as? String ?? self.url.deletingPathExtension().lastPathComponent }
@@ -35,7 +31,7 @@ class Item: NSObject, Identifiable {
 }
 
 final class RunningApp: Item, BehaviorDidChangeObserver {
-    override class var notificationSource: NotificationSource { .runningApp }
+    override var notificationSource: NotificationSource { .runningApp }
     
     let pid: pid_t
     @objc let isApp: Bool
@@ -67,7 +63,7 @@ final class RunningApp: Item, BehaviorDidChangeObserver {
 
 
 final class Rule: Item, UserDefaultsConvertible {
-    override class var notificationSource: NotificationSource { .rule }
+    override var notificationSource: NotificationSource { .rule }
     
     override var hash: Int {
         self.url.hashValue

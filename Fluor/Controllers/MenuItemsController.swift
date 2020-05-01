@@ -10,9 +10,9 @@ import Cocoa
 
 class MenuItemsController: NSObject, SwitchMethodDidChangeObserver, TriggerSectionVisibilityDidChangeObserver {
     @IBOutlet weak var menu: NSMenu!
-    @IBOutlet weak var switchMethodViewController: SwitchMethodViewController!
+    @IBOutlet var switchMethodViewController: SwitchMethodViewController!
+    @IBOutlet var currentAppViewController: CurrentAppViewController!
     @IBOutlet weak var defaultModeViewController: DefaultModeViewController!
-    @IBOutlet weak var currentAppViewController: CurrentAppViewController!
     
     override init() {
         super.init()

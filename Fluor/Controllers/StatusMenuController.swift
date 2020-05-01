@@ -13,19 +13,19 @@ class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate, MenuCont
     //MARK: - Menu Delegate
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet var menuItemsController: MenuItemsController!
-    @IBOutlet weak var behaviorController: BehaviorController!
+    @IBOutlet var behaviorController: BehaviorController!
     
     private var rulesController: RulesEditorWindowController?
     private var aboutController: AboutWindowController?
     private var preferencesController: PreferencesWindowController?
     private var runningAppsController: RunningAppWindowController?
     
-    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    var statusItem: NSStatusItem!
 
     override func awakeFromNib() {
         setupStatusMenu()
-        menuItemsController.setupController()
-        behaviorController.setupController()
+        self.menuItemsController.setupController()
+        self.behaviorController.setupController()
         startObservingUsesLightIcon()
         startObservingMenuControlNotification()
     }
@@ -62,7 +62,9 @@ class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate, MenuCont
     
     /// Setup the status bar's item
     private func setupStatusMenu() {
-        statusItem.menu = statusMenu
+        self.statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        
+        self.statusItem.menu = statusMenu
         adaptStatusMenuIcon()
     }
     

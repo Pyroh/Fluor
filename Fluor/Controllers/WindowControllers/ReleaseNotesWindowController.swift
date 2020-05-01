@@ -17,6 +17,10 @@ class ReleaseNotesWindowController: NSWindowController, NSWindowDelegate, Storyb
         self.populateList()
     }
     
+    override func cancelOperation(_ sender: Any?) {
+        window?.close()
+    }
+    
     // MARK: - NSWindowDelegate
     
     func windowWillClose(_ notification: Notification) {

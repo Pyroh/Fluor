@@ -10,9 +10,4 @@ import Cocoa
 
 final class AboutWindowController: NSWindowController, StoryboardInstantiable {
     static var storyboardName: NSStoryboard.Name = .about
-    
-    override func windowDidLoad() {
-        super.windowDidLoad()
-        
-    }
 }

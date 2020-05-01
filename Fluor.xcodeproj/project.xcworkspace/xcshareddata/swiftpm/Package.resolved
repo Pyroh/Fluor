@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "CoreGeometry",
+        "repositoryURL": "https://gitlab.com/Pyroh/CoreGeometry.git",
+        "state": {
+          "branch": null,
+          "revision": "a59affa331972263980f8a2af4cfd5f37ad42d3d",
+          "version": "3.0.0"
+        }
+      },
+      {
         "package": "DefaultsWrapper",
         "repositoryURL": "https://github.com/Pyroh/DefaultsWrapper.git",
         "state": {

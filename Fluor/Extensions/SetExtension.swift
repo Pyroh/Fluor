@@ -17,3 +17,9 @@ extension Set: UserDefaultsConvertible where Element: UserDefaultsConvertible {
         Set(object.compactMap(Element.instanciate(from:)))
     }
 }
+
+infix operator ?->: TernaryPrecedence
+
+func ?-><T>(lhs: @autoclosure () -> Bool, rhs: @autoclosure () -> T?) -> T? {
+    lhs() ? rhs() : nil
+}

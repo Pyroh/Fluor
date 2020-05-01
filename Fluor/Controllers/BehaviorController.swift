@@ -10,8 +10,7 @@ import Cocoa
 import os.log
 
 class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewControllerDelegate, SwitchMethodDidChangeObserver, ActiveApplicationDidChangeObserver {
-
-    @IBOutlet var statusMenuController: StatusMenuController!
+    @IBOutlet weak var statusMenuController: StatusMenuController!
     @IBOutlet var defaultModeViewController: DefaultModeViewController!
     
     @objc dynamic private var isKeySwitchCapable: Bool = false
