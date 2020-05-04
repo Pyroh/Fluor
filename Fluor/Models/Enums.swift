@@ -26,6 +26,7 @@
 //  SOFTWARE.
 //
 
+import DefaultsWrapper
 
 @objc enum FKeyMode: Int {
     case apple = 0
@@ -46,6 +47,15 @@
         case .other: return .apple
         }
     }
+    
+    var label: String {
+        switch self {
+        case .apple:
+            return NSLocalizedString("Apple keys", comment: "")
+        case .other:
+            return NSLocalizedString("Function keys", comment: "")
+        }
+    }
 }
 
 @objc enum AppBehavior: Int {
@@ -61,6 +71,17 @@
             return .apple
         default:
             return .inferred
+        }
+    }
+    
+    var label: String {
+        switch self {
+        case .inferred:
+            return NSLocalizedString("Same as default", comment: "")
+        case .apple:
+            return NSLocalizedString("Apple keys", comment: "")
+        case .other:
+            return NSLocalizedString("Function keys", comment: "")
         }
     }
 }
@@ -92,4 +113,42 @@ enum NotificationSource {
     case fnKey
     case behaviorManager
     case undefined
+}
+
+struct UserNotificationEnablement: OptionSet {
+    let rawValue: Int
+    
+    static let appSwitch: Self = .init(rawValue: 1 << 0)
+    static let appKey: Self = .init(rawValue: 1 << 1)
+    static let globalKey: Self = .init(rawValue: 1 << 2)
+    
+    static let all: Self = [.appSwitch, .appKey, .globalKey]
+    static let none: Self = []
+    
+    static func from(_ vc: UserNotificationEnablementViewController) -> Self {
+        guard !vc.everytime else { return .all }
+        return Self.none
+            .union(vc.activeAppSwitch ? .appSwitch : .none)
+            .union(vc.activeAppFnKey ? .appKey : .none)
+            .union(vc.globalFnKey ? .globalKey : .none)
+    }
+    
+    func apply(to vc: UserNotificationEnablementViewController) {
+        if self == .all {
+            vc.everytime = true
+            vc.activeAppSwitch = true
+            vc.activeAppFnKey = true
+            vc.globalFnKey = true
+        } else if self == .none {
+            vc.everytime = false
+            vc.activeAppSwitch = false
+            vc.activeAppFnKey = false
+            vc.globalFnKey = false
+        } else {
+            vc.everytime = false
+            vc.activeAppSwitch = self.contains(.appSwitch)
+            vc.activeAppFnKey = self.contains(.appKey)
+            vc.globalFnKey = self.contains(.globalKey)
+        }
+    }
 }

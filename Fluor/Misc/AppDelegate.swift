@@ -53,6 +53,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             rnctrl.window?.orderFrontRegardless()
         }
         
+        UserNotificationHelper.askUserAtLaunch()
+        
         self.loadMainMenu()
     }
     

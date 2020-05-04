@@ -13,8 +13,8 @@
                     <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="Fluor_NewPreferencesWindowAutosaveName" animationBehavior="default" id="N9r-FQ-Oq3">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
+                        <rect key="contentRect" x="310" y="368" width="252" height="142"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="3200" height="1800"/>
                         <toolbar key="toolbar" implicitIdentifier="5526E627-5D87-4E3B-8C80-8A97591F0C13" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="regular" id="36O-Cx-98l">
                             <allowedToolbarItems/>
                             <defaultToolbarItems/>
@@ -29,7 +29,7 @@
                 </windowController>
                 <customObject id="Lau-Ab-QeI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="71" y="72"/>
+            <point key="canvasLocation" x="63" y="227"/>
         </scene>
         <!--Preferences-->
         <scene sceneID="jca-4Z-HAq">
@@ -37,6 +37,7 @@
                 <tabViewController title="Preferences" tabStyle="toolbar" id="glG-bk-x2Q" customClass="PreferencesTabViewController" customModule="Fluor" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="General" identifier="general_tab" image="NSPreferencesGeneral" id="Hob-Dv-Dm7"/>
+                        <tabViewItem label="Notifications" identifier="notification_tab" image="NSInfo" id="hM9-Ia-nxv"/>
                         <tabViewItem label="Advanced" identifier="advanced_tab" image="NSAdvanced" id="18q-Zg-Tl1"/>
                         <tabViewItem label="Updates" identifier="updates_tab" image="NSNetwork" id="dHq-vD-kde"/>
                     </tabViewItems>
@@ -52,24 +53,25 @@
                     <connections>
                         <outlet property="tabView" destination="74u-gV-eCB" id="GkP-2N-jjl"/>
                         <segue destination="bdY-l4-Nw7" kind="relationship" relationship="tabItems" id="vU4-rd-oIX"/>
+                        <segue destination="qEK-qg-cnW" kind="relationship" relationship="tabItems" id="R7Y-LJ-AmD"/>
                         <segue destination="UoT-kw-xfb" kind="relationship" relationship="tabItems" id="wRt-Fo-0fY"/>
                         <segue destination="dlC-Ac-YKV" kind="relationship" relationship="tabItems" id="YgV-xl-9Rw"/>
                     </connections>
                 </tabViewController>
                 <customObject id="N1Y-oQ-rKI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="71" y="483"/>
+            <point key="canvasLocation" x="63" y="585"/>
         </scene>
         <!--General-->
         <scene sceneID="T0C-QJ-uIj">
             <objects>
                 <viewController title="General" id="bdY-l4-Nw7" sceneMemberID="viewController">
                     <view key="view" id="UiA-dD-6AV">
-                        <rect key="frame" x="0.0" y="0.0" width="460" height="143"/>
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="143"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rfe-Cs-a5q">
-                                <rect key="frame" x="20" y="20" width="420" height="103"/>
+                                <rect key="frame" x="20" y="20" width="500" height="103"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IwQ-dZ-J8e">
                                         <rect key="frame" x="-2" y="87" width="135" height="18"/>
@@ -189,7 +191,7 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="420" id="i9k-27-o1N"/>
+                                    <constraint firstAttribute="width" constant="500" id="i9k-27-o1N"/>
                                     <constraint firstItem="x7F-UY-WoD" firstAttribute="trailing" secondItem="BPe-ZE-s6t" secondAttribute="trailing" id="mb8-ne-IfM"/>
                                 </constraints>
                                 <visibilityPriorities>
@@ -221,18 +223,74 @@
                 <customObject id="YAM-vM-LLT" customClass="SUUpdater"/>
                 <userDefaultsController representsSharedInstance="YES" id="XlE-y8-iHG"/>
             </objects>
-            <point key="canvasLocation" x="732" y="287"/>
+            <point key="canvasLocation" x="772" y="96"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="A7N-3K-0lb">
+            <objects>
+                <viewController id="qEK-qg-cnW" sceneMemberID="viewController">
+                    <view key="view" id="7Ag-Hi-mSI">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="232"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="gvD-8M-Fb6">
+                                <rect key="frame" x="20" y="20" width="500" height="192"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Uem-bV-FYl">
+                                        <rect key="frame" x="-2" y="176" width="115" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Send notification " id="Jmi-kR-PLT">
+                                            <font key="font" metaFont="systemSemibold" size="13"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="mI7-ow-FOa">
+                                        <rect key="frame" x="0.0" y="165" width="96" height="5"/>
+                                    </box>
+                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Fs5-Bh-qB8">
+                                        <rect key="frame" x="0.0" y="0.0" width="225" height="159"/>
+                                        <connections>
+                                            <segue destination="Xyq-oP-Aha" kind="embed" id="oMO-RO-NUd"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="500" id="lSF-C6-qZ0"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="gvD-8M-Fb6" firstAttribute="top" secondItem="7Ag-Hi-mSI" secondAttribute="top" constant="20" symbolic="YES" id="0dS-Ju-GoJ"/>
+                            <constraint firstAttribute="trailing" secondItem="gvD-8M-Fb6" secondAttribute="trailing" constant="20" symbolic="YES" id="VuL-q2-LMI"/>
+                            <constraint firstItem="gvD-8M-Fb6" firstAttribute="leading" secondItem="7Ag-Hi-mSI" secondAttribute="leading" constant="20" symbolic="YES" id="jPh-47-Zam"/>
+                            <constraint firstAttribute="bottom" secondItem="gvD-8M-Fb6" secondAttribute="bottom" constant="20" symbolic="YES" id="ml2-DC-sAU"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="w5o-fr-3kk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="772" y="343"/>
         </scene>
         <!--Advanced-->
         <scene sceneID="wGj-uS-Xsc">
             <objects>
                 <viewController title="Advanced" id="UoT-kw-xfb" sceneMemberID="viewController">
                     <view key="view" id="7VI-c4-LV7">
-                        <rect key="frame" x="0.0" y="0.0" width="460" height="137"/>
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="137"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jhp-CV-4VK">
-                                <rect key="frame" x="20" y="20" width="420" height="97"/>
+                                <rect key="frame" x="20" y="20" width="500" height="97"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tGV-Gc-DcZ">
                                         <rect key="frame" x="-2" y="81" width="142" height="18"/>
@@ -313,7 +371,7 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="420" id="JRV-bF-NS4"/>
+                                    <constraint firstAttribute="width" constant="500" id="JRV-bF-NS4"/>
                                 </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
@@ -342,21 +400,21 @@
                 <customObject id="EY0-VE-ERr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="fml-C9-lDv"/>
             </objects>
-            <point key="canvasLocation" x="732" y="483"/>
+            <point key="canvasLocation" x="772" y="586"/>
         </scene>
         <!--Updates-->
         <scene sceneID="rrS-pL-MCx">
             <objects>
                 <viewController title="Updates" id="dlC-Ac-YKV" sceneMemberID="viewController">
                     <view key="view" id="jGP-93-eOQ">
-                        <rect key="frame" x="0.0" y="0.0" width="460" height="114"/>
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="114"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="250.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fy6-0l-ufy">
-                                <rect key="frame" x="20" y="20" width="420" height="74"/>
+                                <rect key="frame" x="20" y="20" width="500" height="74"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SpF-mM-jPb">
-                                        <rect key="frame" x="-2" y="58" width="424" height="18"/>
+                                        <rect key="frame" x="-2" y="58" width="504" height="18"/>
                                         <buttonCell key="cell" type="check" title="Automaticaly check for updates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xgt-53-WGT">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -366,10 +424,10 @@
                                         </connections>
                                     </button>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="750" verticalHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="18z-fd-v5J">
-                                        <rect key="frame" x="0.0" y="38" width="420" height="14"/>
+                                        <rect key="frame" x="0.0" y="38" width="500" height="14"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="anx-98-FUa">
-                                                <rect key="frame" x="-2" y="-2" width="424" height="18"/>
+                                                <rect key="frame" x="-2" y="-2" width="504" height="18"/>
                                                 <buttonCell key="cell" type="check" title="Automaticaly download updates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="RZl-MW-RaS">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -387,18 +445,18 @@
                                         </customSpacing>
                                     </stackView>
                                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Yyz-Tu-fIA">
-                                        <rect key="frame" x="0.0" y="27" width="420" height="5"/>
+                                        <rect key="frame" x="0.0" y="27" width="500" height="5"/>
                                     </box>
                                     <stackView orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="750" verticalHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rxy-QV-ZxC">
-                                        <rect key="frame" x="0.0" y="0.0" width="420" height="21"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="500" height="21"/>
                                         <beginningViews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" verticalHuggingPriority="750" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TRF-Ao-73C">
-                                                <rect key="frame" x="0.0" y="0.0" width="317" height="21"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="397" height="21"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oN7-9d-NkH">
                                                         <rect key="frame" x="-2" y="4" width="79" height="14"/>
                                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Last Checked:" id="TZA-yl-nGe">
-                                                            <font key="font" metaFont="message" size="11"/>
+                                                            <font key="font" metaFont="controlContent" size="11"/>
                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -407,7 +465,7 @@
                                                         <rect key="frame" x="75" y="4" width="102" height="14"/>
                                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Yesterday at 16:28" id="tQx-sm-17A">
                                                             <dateFormatter key="formatter" dateStyle="medium" timeStyle="short" doesRelativeDateFormatting="YES" id="DX2-WR-kjA"/>
-                                                            <font key="font" metaFont="message" size="11"/>
+                                                            <font key="font" metaFont="controlContent" size="11"/>
                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -428,7 +486,7 @@
                                         </beginningViews>
                                         <endViews>
                                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="azr-yA-N14">
-                                                <rect key="frame" x="319" y="-7" width="107" height="32"/>
+                                                <rect key="frame" x="399" y="-7" width="107" height="32"/>
                                                 <buttonCell key="cell" type="push" title="Check now" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Vtq-y9-sm5">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -449,7 +507,7 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="420" id="UMU-Cy-HRA"/>
+                                    <constraint firstAttribute="width" constant="500" id="UMU-Cy-HRA"/>
                                 </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
@@ -476,12 +534,159 @@
                 <customObject id="uno-mT-3BM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <customObject id="AeM-5q-gZ3" customClass="SUUpdater"/>
             </objects>
-            <point key="canvasLocation" x="732" y="664"/>
+            <point key="canvasLocation" x="772" y="783"/>
+        </scene>
+        <!--User Notification Enablement View Controller-->
+        <scene sceneID="0q3-2b-oin">
+            <objects>
+                <viewController storyboardIdentifier="NotificationsEnablement" id="Xyq-oP-Aha" customClass="UserNotificationEnablementViewController" customModule="Fluor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" misplaced="YES" id="O86-Ya-eHz">
+                        <rect key="frame" x="0.0" y="0.0" width="442" height="144"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="749" verticalStackHuggingPriority="749" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ccL-vU-XQT">
+                                <rect key="frame" x="2" y="2" width="438" height="140"/>
+                                <subviews>
+                                    <box wantsLayer="YES" verticalHuggingPriority="750" alphaValue="0.0" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="the-Rh-Waq">
+                                        <rect key="frame" x="0.0" y="137" width="438" height="5"/>
+                                        <connections>
+                                            <binding destination="Xyq-oP-Aha" name="hidden" keyPath="self.isShownInAlert" id="wp3-Pj-2DF">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </box>
+                                    <box wantsLayer="YES" verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="dMP-vG-wz9">
+                                        <rect key="frame" x="0.0" y="128" width="438" height="5"/>
+                                        <connections>
+                                            <binding destination="Xyq-oP-Aha" name="hidden" keyPath="self.isShownInAlert" id="CRk-qW-vqW">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </box>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="DuT-be-oc1">
+                                        <rect key="frame" x="-2" y="106" width="442" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="When do you want notifications to be sent ?" id="0PF-9f-i6n">
+                                            <font key="font" metaFont="systemSemibold" size="13"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <connections>
+                                            <binding destination="Xyq-oP-Aha" name="hidden" keyPath="self.isShownInAlert" id="PBS-YZ-aXJ">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </textField>
+                                    <box wantsLayer="YES" verticalHuggingPriority="750" alphaValue="0.0" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="GfC-Ck-xdF">
+                                        <rect key="frame" x="0.0" y="95" width="438" height="5"/>
+                                        <connections>
+                                            <binding destination="Xyq-oP-Aha" name="hidden" keyPath="self.isShownInAlert" id="nHh-vA-cTk">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </box>
+                                    <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RIj-jJ-KoX">
+                                        <rect key="frame" x="-2" y="73" width="335" height="18"/>
+                                        <buttonCell key="cell" type="check" title="When the mode changes with the active application" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="x50-mP-zRP">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="checkBoxDidChange:" target="Xyq-oP-Aha" id="BKF-Sh-nve"/>
+                                            <binding destination="Xyq-oP-Aha" name="value" keyPath="self.activeAppSwitch" id="NDC-9T-Mc8"/>
+                                        </connections>
+                                    </button>
+                                    <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wPj-fI-9t4">
+                                        <rect key="frame" x="-2" y="51" width="409" height="18"/>
+                                        <buttonCell key="cell" type="check" title="When the current application mode is set by pressing the fn key" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="B11-db-6JL">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="checkBoxDidChange:" target="Xyq-oP-Aha" id="Bw6-7j-ZQL"/>
+                                            <binding destination="Xyq-oP-Aha" name="value" keyPath="self.activeAppFnKey" id="91x-pf-eht"/>
+                                        </connections>
+                                    </button>
+                                    <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="n0k-OL-Xcb">
+                                        <rect key="frame" x="-2" y="29" width="332" height="18"/>
+                                        <buttonCell key="cell" type="check" title="When the global mode is set by pressing the fn key" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="hIk-un-EuO">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="checkBoxDidChange:" target="Xyq-oP-Aha" id="qkz-BW-xXm"/>
+                                            <binding destination="Xyq-oP-Aha" name="value" keyPath="self.globalFnKey" id="Frh-j1-geL"/>
+                                        </connections>
+                                    </button>
+                                    <box wantsLayer="YES" verticalHuggingPriority="750" alphaValue="0.0" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="k4b-4i-mDA">
+                                        <rect key="frame" x="0.0" y="20" width="438" height="5"/>
+                                    </box>
+                                    <button horizontalHuggingPriority="750" verticalHuggingPriority="750" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="vBF-l6-MnN">
+                                        <rect key="frame" x="-2" y="-2" width="82" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Everytime" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="hgm-4a-jDl">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="checkBoxDidChange:" target="Xyq-oP-Aha" id="yvw-bC-zR0"/>
+                                            <binding destination="Xyq-oP-Aha" name="value" keyPath="self.everytime" id="TJl-I9-GD9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ccL-vU-XQT" secondAttribute="trailing" constant="2" id="2Z7-z4-qDH"/>
+                            <constraint firstItem="ccL-vU-XQT" firstAttribute="top" secondItem="O86-Ya-eHz" secondAttribute="top" constant="2" id="K4B-rz-lU8"/>
+                            <constraint firstAttribute="bottom" secondItem="ccL-vU-XQT" secondAttribute="bottom" constant="2" id="OJH-sQ-ELc"/>
+                            <constraint firstItem="ccL-vU-XQT" firstAttribute="leading" secondItem="O86-Ya-eHz" secondAttribute="leading" constant="2" id="SYD-7Z-CU8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bottomConstraint" destination="OJH-sQ-ELc" id="dus-fb-FAJ"/>
+                        <outlet property="leadingConstraint" destination="SYD-7Z-CU8" id="v61-4P-Z75"/>
+                        <outlet property="topConstraint" destination="K4B-rz-lU8" id="seb-09-45X"/>
+                        <outlet property="trailiingConstraint" destination="2Z7-z4-qDH" id="ekc-8X-UoV"/>
+                    </connections>
+                </viewController>
+                <customObject id="g9T-QR-unO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1343" y="343"/>
         </scene>
     </scenes>
     <resources>
         <image name="AppleMode" width="16" height="16"/>
         <image name="NSAdvanced" width="32" height="32"/>
+        <image name="NSInfo" width="32" height="32"/>
         <image name="NSNetwork" width="32" height="32"/>
         <image name="NSPreferencesGeneral" width="32" height="32"/>
         <image name="OtherMode" width="16" height="16"/>

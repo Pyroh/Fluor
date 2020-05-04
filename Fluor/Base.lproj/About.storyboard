@@ -47,14 +47,8 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="roundRect" bezelStyle="roundedRect" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" inset="2" id="geB-hC-nNd">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="label" size="12"/>
-                                            <menu key="menu" id="5ZI-r2-byH">
-                                                <items>
-                                                    <menuItem title="Item 1" id="KO5-TP-BFf"/>
-                                                    <menuItem title="Item 2" id="Fye-14-HgY"/>
-                                                    <menuItem title="Item 3" id="esd-nS-68t"/>
-                                                </items>
-                                            </menu>
+                                            <font key="font" metaFont="controlContent"/>
+                                            <menu key="menu" id="5ZI-r2-byH"/>
                                         </popUpButtonCell>
                                         <connections>
                                             <action selector="changeVersion:" target="95L-5H-oMn" id="9qU-ez-Frk"/>
@@ -70,7 +64,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="roundRect" title="Update" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DN8-JH-bOp">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="label" size="12"/>
+                                            <font key="font" metaFont="controlContent"/>
                                         </buttonCell>
                                     </button>
                                 </toolbarItem>
@@ -299,7 +293,7 @@ Gw
                                 <rect key="frame" x="81" y="128" width="94" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Release notes" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3LZ-kH-mRF">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="label" size="12"/>
+                                    <font key="font" metaFont="controlContent"/>
                                 </buttonCell>
                                 <connections>
                                     <segue destination="95L-5H-oMn" kind="show" id="SMK-ak-iCJ"/>
