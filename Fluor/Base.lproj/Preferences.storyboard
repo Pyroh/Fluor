@@ -102,8 +102,8 @@
                                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="aHs-kY-jFz">
                                                     <font key="font" metaFont="system"/>
                                                     <segments>
-                                                        <segment image="AppleMode" width="32" selected="YES"/>
-                                                        <segment image="OtherMode" width="32" tag="1"/>
+                                                        <segment toolTip="Media key mode" image="AppleMode" width="32" selected="YES"/>
+                                                        <segment toolTip="Function key mode" image="OtherMode" width="32" tag="1"/>
                                                     </segments>
                                                 </segmentedCell>
                                                 <connections>
@@ -138,8 +138,8 @@
                                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="J3t-x7-5C6">
                                                     <font key="font" metaFont="system"/>
                                                     <segments>
-                                                        <segment image="AppleMode" width="32" selected="YES"/>
-                                                        <segment image="OtherMode" width="32" tag="1"/>
+                                                        <segment toolTip="Media key mode" image="AppleMode" width="32" selected="YES"/>
+                                                        <segment toolTip="Function key mode" image="OtherMode" width="32" tag="1"/>
                                                     </segments>
                                                 </segmentedCell>
                                                 <connections>
@@ -456,7 +456,7 @@
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oN7-9d-NkH">
                                                         <rect key="frame" x="-2" y="4" width="79" height="14"/>
                                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Last Checked:" id="TZA-yl-nGe">
-                                                            <font key="font" metaFont="controlContent" size="11"/>
+                                                            <font key="font" metaFont="menu" size="11"/>
                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -465,7 +465,7 @@
                                                         <rect key="frame" x="75" y="4" width="102" height="14"/>
                                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Yesterday at 16:28" id="tQx-sm-17A">
                                                             <dateFormatter key="formatter" dateStyle="medium" timeStyle="short" doesRelativeDateFormatting="YES" id="DX2-WR-kjA"/>
-                                                            <font key="font" metaFont="controlContent" size="11"/>
+                                                            <font key="font" metaFont="menu" size="11"/>
                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -540,8 +540,8 @@
         <scene sceneID="0q3-2b-oin">
             <objects>
                 <viewController storyboardIdentifier="NotificationsEnablement" id="Xyq-oP-Aha" customClass="UserNotificationEnablementViewController" customModule="Fluor" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="O86-Ya-eHz">
-                        <rect key="frame" x="0.0" y="0.0" width="442" height="144"/>
+                    <view key="view" id="O86-Ya-eHz">
+                        <rect key="frame" x="0.0" y="0.0" width="409" height="144"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="749" verticalStackHuggingPriority="749" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ccL-vU-XQT">

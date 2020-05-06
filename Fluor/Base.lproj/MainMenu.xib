@@ -31,13 +31,13 @@
                     <segmentedCell key="cell" borderStyle="border" focusRingType="none" alignment="left" style="roundRect" trackingMode="selectOne" id="qZf-Wa-JJt">
                         <font key="font" metaFont="label" size="12"/>
                         <segments>
-                            <segment toolTip="Change mode relative to the active application" image="AppSwitch" imageScaling="proportionallyUpOrDown" selected="YES">
+                            <segment toolTip="Change mode with the active application" image="AppSwitch" imageScaling="proportionallyUpOrDown" selected="YES">
                                 <nil key="label"/>
                             </segment>
-                            <segment toolTip="Change mode for the active application when the fn key is pressed" image="MixedSwitch" imageScaling="proportionallyUpOrDown" tag="1">
+                            <segment toolTip="Set mode for the active application when the fn key is pressed" image="MixedSwitch" imageScaling="proportionallyUpOrDown" tag="1">
                                 <nil key="label"/>
                             </segment>
-                            <segment toolTip="Change mode when the fn key is pressed" image="FnKey">
+                            <segment toolTip="Set the default mode when the fn key is pressed" image="FnKey">
                                 <nil key="label"/>
                             </segment>
                         </segments>
@@ -216,8 +216,8 @@
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="Vfh-zJ-Axi">
                                 <font key="font" metaFont="label" size="12"/>
                                 <segments>
-                                    <segment toolTip="Switch to Apple mode" image="AppleMode" imageScaling="proportionallyUpOrDown" selected="YES"/>
-                                    <segment toolTip="Switch to function key mode" image="OtherMode" imageScaling="proportionallyUpOrDown" tag="1"/>
+                                    <segment toolTip="Media key mode" image="AppleMode" imageScaling="proportionallyUpOrDown" selected="YES"/>
+                                    <segment toolTip="Function key mode" image="OtherMode" imageScaling="proportionallyUpOrDown" tag="1"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
@@ -290,15 +290,9 @@
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="1I5-bW-HGh">
                                 <font key="font" metaFont="label" size="12"/>
                                 <segments>
-                                    <segment toolTip="Same as default mode" image="DefaultMode" selected="YES">
-                                        <nil key="label"/>
-                                    </segment>
-                                    <segment toolTip="Switch to Apple mode" image="AppleMode" tag="1">
-                                        <nil key="label"/>
-                                    </segment>
-                                    <segment toolTip="Switch to Function mode" image="OtherMode">
-                                        <nil key="label"/>
-                                    </segment>
+                                    <segment toolTip="Same as default mode" image="DefaultMode" selected="YES"/>
+                                    <segment toolTip="Media key mode" image="AppleMode" tag="1"/>
+                                    <segment toolTip="Function key mode" image="OtherMode"/>
                                 </segments>
                             </segmentedCell>
                             <connections>

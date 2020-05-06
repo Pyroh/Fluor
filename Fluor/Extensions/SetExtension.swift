@@ -39,8 +39,3 @@ extension Set: UserDefaultsConvertible where Element: UserDefaultsConvertible {
     }
 }
 
-infix operator ?->: TernaryPrecedence
-
-func ?-><T>(lhs: @autoclosure () -> Bool, rhs: @autoclosure () -> T?) -> T? {
-    lhs() ? rhs() : nil
-}

@@ -56,14 +56,14 @@ enum UserNotificationHelper {
             return
         }
         guard BehaviorManager.default.userNotificationEnablement.contains(.appSwitch) else { return }
-        let title = NSLocalizedString("Keyboard mode changed", comment: "")
+        let title = NSLocalizedString("F-Keys mode changed", comment: "")
         let message = mode.label
         send(title: title, message: message)
     }
     
     static func sendFKeyChangedAppBehaviorTo(_ behavior: AppBehavior, appName: String) {
         guard BehaviorManager.default.userNotificationEnablement.contains(.appKey) else { return }
-        let title = String(format: NSLocalizedString("Keyboard mode changed for %@", comment: ""), appName)
+        let title = String(format: NSLocalizedString("F-Keys mode changed for %@", comment: ""), appName)
         let message = behavior.label
         send(title: title, message: message)
     }
@@ -228,7 +228,7 @@ enum UserNotificationHelper {
         let alert = NSAlert()
         alert.icon = NSImage(imageLiteralResourceName: "QuestionMark")
         alert.messageText = NSLocalizedString("Enable notifications ?", comment: "")
-        alert.informativeText = NSLocalizedString("Fluor can send a notification when the keyboard mode change.", comment: "")
+        alert.informativeText = NSLocalizedString("Fluor can send a notification when the F-Keys mode change.", comment: "")
         if suppressible {
             alert.showsSuppressionButton = true
             alert.suppressionButton?.title = NSLocalizedString("Don't ask me on startup again", comment: "")

@@ -51,7 +51,7 @@ import DefaultsWrapper
     var label: String {
         switch self {
         case .apple:
-            return NSLocalizedString("Apple keys", comment: "")
+            return NSLocalizedString("Media keys", comment: "")
         case .other:
             return NSLocalizedString("Function keys", comment: "")
         }
@@ -79,7 +79,7 @@ import DefaultsWrapper
         case .inferred:
             return NSLocalizedString("Same as default", comment: "")
         case .apple:
-            return NSLocalizedString("Apple keys", comment: "")
+            return NSLocalizedString("Media keys", comment: "")
         case .other:
             return NSLocalizedString("Function keys", comment: "")
         }

@@ -128,15 +128,9 @@
                                                                                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="q73-3D-poM">
                                                                                                 <font key="font" metaFont="system"/>
                                                                                                 <segments>
-                                                                                                    <segment toolTip="Default" image="DefaultMode" width="32" selected="YES">
-                                                                                                        <nil key="label"/>
-                                                                                                    </segment>
-                                                                                                    <segment toolTip="Apple keys" image="AppleMode" width="32" tag="1">
-                                                                                                        <nil key="label"/>
-                                                                                                    </segment>
-                                                                                                    <segment toolTip="Function keys" image="OtherMode" width="32">
-                                                                                                        <nil key="label"/>
-                                                                                                    </segment>
+                                                                                                    <segment toolTip="Same as default mode" image="DefaultMode" width="32" selected="YES"/>
+                                                                                                    <segment toolTip="Media key mode" image="AppleMode" width="32" tag="1"/>
+                                                                                                    <segment toolTip="Function key mode" image="OtherMode" width="32"/>
                                                                                                 </segments>
                                                                                             </segmentedCell>
                                                                                             <connections>
@@ -156,10 +150,6 @@
                                                                                 </stackView>
                                                                                 <button translatesAutoresizingMaskIntoConstraints="NO" id="Jny-9j-WOO">
                                                                                     <rect key="frame" x="213" y="8" width="24" height="24"/>
-                                                                                    <constraints>
-                                                                                        <constraint firstAttribute="height" constant="24" id="QXL-4k-1nK"/>
-                                                                                        <constraint firstAttribute="width" constant="24" id="WMs-as-Qo9"/>
-                                                                                    </constraints>
                                                                                     <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Service" imagePosition="only" alternateImage="App" enabled="NO" imageScaling="proportionallyUpOrDown" inset="2" id="NKc-Hc-rii">
                                                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                                         <font key="font" metaFont="system"/>
@@ -239,7 +229,7 @@
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kDJ-2C-TWd" userLabel="StatusBarLabel">
                                         <rect key="frame" x="144" y="6" width="33" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Twm-uj-Z9c">
-                                            <font key="font" metaFont="message" size="11"/>
+                                            <font key="font" metaFont="menu" size="11"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -255,7 +245,7 @@
                                         <rect key="frame" x="8" y="3" width="83" height="19"/>
                                         <buttonCell key="cell" type="roundTextured" title="Show all" alternateTitle="Hide services" bezelStyle="texturedRounded" alignment="center" controlSize="small" borderStyle="border" inset="2" id="Yb5-hU-zbp">
                                             <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="message" size="11"/>
+                                            <font key="font" metaFont="menu" size="11"/>
                                         </buttonCell>
                                         <connections>
                                             <binding destination="d1L-i9-UVk" name="value" keyPath="self.showAll" id="t2D-qG-4Jy"/>
@@ -303,11 +293,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="App" width="32" height="32"/>
+        <image name="App" width="24" height="24"/>
         <image name="AppleMode" width="16" height="16"/>
         <image name="DefaultMode" width="16" height="16"/>
         <image name="NSApplicationIcon" width="32" height="32"/>
         <image name="OtherMode" width="16" height="16"/>
-        <image name="Service" width="32" height="32"/>
+        <image name="Service" width="24" height="24"/>
     </resources>
 </document>
