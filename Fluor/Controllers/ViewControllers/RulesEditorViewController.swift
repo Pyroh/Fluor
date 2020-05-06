@@ -105,8 +105,8 @@ class RulesEditorViewController: NSViewController, BehaviorDidChangeObserver {
             let bundle = Bundle(url: url)!
             let id = bundle.bundleIdentifier!
             
-            AppManager.default.propagate(behavior: .apple, forApp: id, at: url, from: .rule)
-            return Rule(id: id, url: url, behavior: .apple)
+            AppManager.default.propagate(behavior: .media, forApp: id, at: url, from: .rule)
+            return Rule(id: id, url: url, behavior: .media)
         }
         rulesSet.formUnion(items)
     }

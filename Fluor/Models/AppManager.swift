@@ -57,7 +57,7 @@ class AppManager: BehaviorDidChangePoster {
     /// The defaut behavior manager.
     static let `default`: AppManager = AppManager()
     
-    @Defaults(key: .keyboardMode, defaultValue: .apple)
+    @Defaults(key: .keyboardMode, defaultValue: .media)
     var defaultFKeyMode: FKeyMode
     
     @Defaults(key: .switchMethod, defaultValue: .window)
@@ -75,7 +75,7 @@ class AppManager: BehaviorDidChangePoster {
     @Defaults(key: .restoreStateAsBeforeStartup, defaultValue: false)
     var shouldRestorePreviousState: Bool 
     
-    @Defaults(key: .onQuitState, defaultValue: .apple)
+    @Defaults(key: .onQuitState, defaultValue: .media)
     var onQuitState: FKeyMode
     
     @Defaults(key: .disabledOnLunch, defaultValue: false)
@@ -176,10 +176,10 @@ class AppManager: BehaviorDidChangePoster {
         switch behavior {
         case .inferred:
             return self.defaultFKeyMode
-        case .apple:
-            return .apple
-        case .other:
-            return .other
+        case .media:
+            return .media
+        case .function:
+            return .function
         }
     }
     

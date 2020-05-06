@@ -42,8 +42,8 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
     private var fnDownTimestamp: TimeInterval? = nil
     private var shouldHandleFNKey: Bool = false
     
-    private var currentMode: FKeyMode = .apple
-    private var onLaunchKeyboardMode: FKeyMode = .apple
+    private var currentMode: FKeyMode = .media
+    private var onLaunchKeyboardMode: FKeyMode = .media
     private var currentAppID: String = ""
     private var currentAppURL: URL?
     private var currentAppName: String?
@@ -212,10 +212,10 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
         catch { AppErrorManager.terminateApp(withReason: error.localizedDescription) }
         
         switch mode {
-        case .apple:
+        case .media:
             os_log("Switch to Apple Mode for %@", self.currentAppID)
             self.statusMenuController.statusItem.image = AppManager.default.useLightIcon ? #imageLiteral(resourceName: "AppleMode") : #imageLiteral(resourceName: "IconAppleMode") 
-        case .other:
+        case .function:
             NSLog("Switch to Other Mode for %@", self.currentAppID)
             self.statusMenuController.statusItem.image = AppManager.default.useLightIcon ? #imageLiteral(resourceName: "OtherMode") : #imageLiteral(resourceName: "IconOtherMode")
         }

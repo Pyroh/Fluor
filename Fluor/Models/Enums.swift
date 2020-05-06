@@ -29,46 +29,46 @@
 import DefaultsWrapper
 
 @objc enum FKeyMode: Int {
-    case apple = 0
-    case other
+    case media = 0
+    case function
     
     var behavior: AppBehavior {
         switch self {
-        case .apple:
-            return .apple
-        case .other:
-            return .other
+        case .media:
+            return .media
+        case .function:
+            return .function
         }
     }
     
     var counterPart: FKeyMode {
         switch self {
-        case .apple: return .other
-        case .other: return .apple
+        case .media: return .function
+        case .function: return .media
         }
     }
     
     var label: String {
         switch self {
-        case .apple:
-            return NSLocalizedString("Media keys", comment: "")
-        case .other:
-            return NSLocalizedString("Function keys", comment: "")
+        case .media:
+            return NSLocalizedString("Media key", comment: "")
+        case .function:
+            return NSLocalizedString("Function key", comment: "")
         }
     }
 }
 
 @objc enum AppBehavior: Int {
     case inferred = 0
-    case apple
-    case other
+    case media
+    case function
     
     var counterPart: AppBehavior {
         switch self {
-        case .apple:
-            return .other
-        case .other:
-            return .apple
+        case .media:
+            return .function
+        case .function:
+            return .media
         default:
             return .inferred
         }
@@ -78,10 +78,10 @@ import DefaultsWrapper
         switch self {
         case .inferred:
             return NSLocalizedString("Same as default", comment: "")
-        case .apple:
-            return NSLocalizedString("Media keys", comment: "")
-        case .other:
-            return NSLocalizedString("Function keys", comment: "")
+        case .media:
+            return NSLocalizedString("Media key", comment: "")
+        case .function:
+            return NSLocalizedString("Function key", comment: "")
         }
     }
 }
