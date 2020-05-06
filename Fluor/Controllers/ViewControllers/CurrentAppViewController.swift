@@ -79,7 +79,7 @@ class CurrentAppViewController: NSViewController, BehaviorDidChangeObserver, Act
     /// - parameter sender: The object that sent the action.
     @IBAction func behaviorChanged(_ sender: NSSegmentedControl) {
         guard let behavior = AppBehavior(rawValue: sender.selectedSegment), let url = self.currentAppURL else { return }
-        BehaviorManager.default.propagate(behavior: behavior, forApp: self.currentAppID, at: url, from: .mainMenu)
+        AppManager.default.propagate(behavior: behavior, forApp: self.currentAppID, at: url, from: .mainMenu)
     }
     
     // MARK: - Private functions
@@ -94,7 +94,7 @@ class CurrentAppViewController: NSViewController, BehaviorDidChangeObserver, Act
         
         self.currentAppID = id
         self.currentAppURL = url
-        let behavior = BehaviorManager.default.behaviorForApp(id: id)
+        let behavior = AppManager.default.behaviorForApp(id: id)
         
         behaviorSegment.setSelected(true, forSegment: behavior.rawValue)
         appIconView.image = app.icon

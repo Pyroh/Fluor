@@ -46,6 +46,6 @@ class RuleCellView: NSTableCellView {
             return AppErrorManager.showError(withReason: "Can't set behavior")
         }
         
-        BehaviorManager.default.propagate(behavior: item.behavior, forApp: item.id, at: item.url, from: item.notificationSource)
+        AppManager.default.propagate(behavior: item.behavior, forApp: item.id, at: item.url, from: item.notificationSource)
     }
 }

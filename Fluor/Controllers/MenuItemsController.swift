@@ -53,7 +53,7 @@ class MenuItemsController: NSObject, SwitchMethodDidChangeObserver, TriggerSecti
         switchingPlaceHolder?.view = switchMethodViewController.view
         statePlaceHolder?.view = defaultModeViewController.view
         currentPlaceHolder?.view = currentAppViewController.view
-        if case SwitchMethod.key = BehaviorManager.default.switchMethod {
+        if case SwitchMethod.key = AppManager.default.switchMethod {
             currentAppViewController.shrinkView()
         }
     }

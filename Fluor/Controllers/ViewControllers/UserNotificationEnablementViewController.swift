@@ -55,12 +55,12 @@ final class UserNotificationEnablementViewController: NSViewController, Storyboa
     
     override func viewWillAppear() {
         self.adaptStackConstraints()
-        guard !isShownInAlert, BehaviorManager.default.userNotificationEnablement != .none else {
+        guard !isShownInAlert, AppManager.default.userNotificationEnablement != .none else {
             if !isShownInAlert { UserNotificationEnablement.none.apply(to: self) }
             return
         }
         UserNotificationHelper.ifAuthorized(perform: {
-            BehaviorManager.default.userNotificationEnablement.apply(to: self)
+            AppManager.default.userNotificationEnablement.apply(to: self)
         }) {
             UserNotificationEnablement.none.apply(to: self)
         }
@@ -85,7 +85,7 @@ final class UserNotificationEnablementViewController: NSViewController, Storyboa
     private func checkAuthorizations() {
         UserNotificationHelper.askUser { (isAuthorized) in
             if isAuthorized {
-                BehaviorManager.default.userNotificationEnablement = .from(self)
+                AppManager.default.userNotificationEnablement = .from(self)
             } else {
                 UserNotificationEnablement.none.apply(to: self)
             }

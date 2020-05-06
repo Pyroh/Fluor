@@ -34,7 +34,7 @@ class PreferencesTabViewController: NSTabViewController, TriggerSectionVisibilit
         let visible = sender.state == .off
         if !visible {
             self.postSwitchMethodDidChangeNotification(method: .window)
-            BehaviorManager.default.switchMethod = .window            
+            AppManager.default.switchMethod = .window            
         }
         self.postTriggerSectionVisibilityDidChange(visible: visible)
     }

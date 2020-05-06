@@ -1,5 +1,5 @@
 //
-//  BehaviorManager.swift
+//  AppManager.swift
 // 
 //  Fluor
 //
@@ -52,10 +52,10 @@ extension UserDefaultsKeyName {
 
 /// This class holds all per-application keyboard behaviors.
 /// It also takes care of NSUserDefaults reading and synchronizing.
-class BehaviorManager: BehaviorDidChangePoster {
+class AppManager: BehaviorDidChangePoster {
     
     /// The defaut behavior manager.
-    static let `default`: BehaviorManager = BehaviorManager()
+    static let `default`: AppManager = AppManager()
     
     @Defaults(key: .keyboardMode, defaultValue: .apple)
     var defaultFKeyMode: FKeyMode

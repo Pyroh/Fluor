@@ -48,7 +48,7 @@ class RulesEditorViewController: NSViewController, BehaviorDidChangeObserver {
         itemsArrayController.addObserver(self, forKeyPath: "canRemove", options: [], context: nil)
         itemsArrayController.addObserver(self, forKeyPath: "canAdd", options: [], context: nil)
         
-        self.rulesSet = BehaviorManager.default.rules
+        self.rulesSet = AppManager.default.rules
         
         self.tableContentAnimator = TableViewContentAnimator(tableView: tableView, arrayController: itemsArrayController)
     }
@@ -105,7 +105,7 @@ class RulesEditorViewController: NSViewController, BehaviorDidChangeObserver {
             let bundle = Bundle(url: url)!
             let id = bundle.bundleIdentifier!
             
-            BehaviorManager.default.propagate(behavior: .apple, forApp: id, at: url, from: .rule)
+            AppManager.default.propagate(behavior: .apple, forApp: id, at: url, from: .rule)
             return Rule(id: id, url: url, behavior: .apple)
         }
         rulesSet.formUnion(items)
@@ -115,7 +115,7 @@ class RulesEditorViewController: NSViewController, BehaviorDidChangeObserver {
     private func removeRule() {
         guard let items = itemsArrayController.selectedObjects as? [Rule] else { return }
         items.forEach { (item) in
-            BehaviorManager.default.propagate(behavior: .inferred, forApp: item.id, at: item.url, from: .rule)
+            AppManager.default.propagate(behavior: .inferred, forApp: item.id, at: item.url, from: .rule)
         }
         itemsArrayController.remove(self)
     }

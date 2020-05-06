@@ -20,7 +20,7 @@
 		3F2FA3FF1D79D094003E2AD8 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA3FE1D79D094003E2AD8 /* StatusMenuController.swift */; };
 		3F2FA4011D79D66D003E2AD8 /* DefaultModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA4001D79D66D003E2AD8 /* DefaultModeViewController.swift */; };
 		3F2FA4031D7A059F003E2AD8 /* CurrentAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA4021D7A059F003E2AD8 /* CurrentAppViewController.swift */; };
-		3F2FA4051D7A1F87003E2AD8 /* BehaviorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA4041D7A1F87003E2AD8 /* BehaviorManager.swift */; };
+		3F2FA4051D7A1F87003E2AD8 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA4041D7A1F87003E2AD8 /* AppManager.swift */; };
 		3F3433341E50C53A009F4D86 /* ReleaseNotes.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 3F3433331E50C53A009F4D86 /* ReleaseNotes.rtf */; };
 		3F4ABD0E201937B30075B178 /* RulesEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4ABD0C201937B30075B178 /* RulesEditor.storyboard */; };
 		3F4ABD1020193B8D0075B178 /* RulesEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4ABD0F20193B8D0075B178 /* RulesEditorViewController.swift */; };
@@ -93,7 +93,7 @@
 		3F2FA3FE1D79D094003E2AD8 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		3F2FA4001D79D66D003E2AD8 /* DefaultModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultModeViewController.swift; sourceTree = "<group>"; };
 		3F2FA4021D7A059F003E2AD8 /* CurrentAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentAppViewController.swift; sourceTree = "<group>"; };
-		3F2FA4041D7A1F87003E2AD8 /* BehaviorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorManager.swift; sourceTree = "<group>"; };
+		3F2FA4041D7A1F87003E2AD8 /* AppManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		3F3433331E50C53A009F4D86 /* ReleaseNotes.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = ReleaseNotes.rtf; sourceTree = "<group>"; };
 		3F3CFB4322131B5E00002089 /* Fluor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fluor.entitlements; sourceTree = "<group>"; };
 		3F4ABD0D201937B30075B178 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/RulesEditor.storyboard; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 		3F4ABD13201941820075B178 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3F2FA4041D7A1F87003E2AD8 /* BehaviorManager.swift */,
+				3F2FA4041D7A1F87003E2AD8 /* AppManager.swift */,
 				3F8F93BC1EEAF1EB00FCE91F /* RuleValueTransformer.swift */,
 				3FC44EF91D7F169A0065D433 /* Enums.swift */,
 				3FC44EFB1D7F16CB0065D433 /* Items.swift */,
@@ -481,7 +481,7 @@
 				3FE7E0E01D7CA14600DC754D /* LaunchAtLoginController.m in Sources */,
 				3FF655CA20751D1600C8D2FC /* PFMoveApplication.m in Sources */,
 				3F8879931FBF5F2A005C28E6 /* PreferencesTabViewController.swift in Sources */,
-				3F2FA4051D7A1F87003E2AD8 /* BehaviorManager.swift in Sources */,
+				3F2FA4051D7A1F87003E2AD8 /* AppManager.swift in Sources */,
 				3F6D52CE20696E2100517E57 /* LinkButton.swift in Sources */,
 				3FC44EFA1D7F169A0065D433 /* Enums.swift in Sources */,
 			);

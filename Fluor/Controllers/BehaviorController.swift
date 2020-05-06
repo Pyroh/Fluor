@@ -51,9 +51,9 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
     private var switchMethod: SwitchMethod = .window
     
     func setupController() {
-        self.onLaunchKeyboardMode = BehaviorManager.default.getCurrentFKeyMode()
+        self.onLaunchKeyboardMode = AppManager.default.getCurrentFKeyMode()
         self.currentMode = self.onLaunchKeyboardMode
-        self.switchMethod = BehaviorManager.default.switchMethod
+        self.switchMethod = AppManager.default.switchMethod
         
         self.applyAsObserver()
         
@@ -62,7 +62,7 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(appMustWake(notification:)), name: NSWorkspace.sessionDidBecomeActiveNotification, object: nil)
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(appMustWake(notification:)), name: NSWorkspace.didWakeNotification, object: nil)
         
-        guard !BehaviorManager.default.isDisabled else { return }
+        guard !AppManager.default.isDisabled else { return }
         if let currentApp = NSWorkspace.shared.frontmostApplication, let id = currentApp.bundleIdentifier ?? currentApp.executableURL?.lastPathComponent {
             self.adaptModeForApp(withId: id)
 //            self.updateAppBehaviorViewFor(app: currentApp, id: id)
@@ -79,12 +79,12 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
     }
     
     func performTerminationCleaning() {
-        if BehaviorManager.default.shouldRestoreStateOnQuit {
+        if AppManager.default.shouldRestoreStateOnQuit {
             let state: FKeyMode
-            if BehaviorManager.default.shouldRestorePreviousState {
+            if AppManager.default.shouldRestorePreviousState {
                 state = self.onLaunchKeyboardMode
             } else {
-                state = BehaviorManager.default.onQuitState
+                state = AppManager.default.onQuitState
             }
             
             do { try FKeyManager.setCurrentFKeyMode(state) }
@@ -111,7 +111,7 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
         self.currentAppName = app.localizedName
         self.currentAppID = id
         self.currentAppURL = app.bundleURL
-        if !BehaviorManager.default.isDisabled {
+        if !AppManager.default.isDisabled {
             self.adaptModeForApp(withId: id)
         }
     }
@@ -140,7 +140,7 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
             self.adaptModeForApp(withId: self.currentAppID)
         case .key:
             self.stopObservingBehaviorDidChange()
-            self.currentMode = BehaviorManager.default.defaultFKeyMode
+            self.currentMode = AppManager.default.defaultFKeyMode
             self.changeKeyboard(mode: currentMode)
         }
     }
@@ -200,8 +200,8 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
     /// - parameter id: The app's bundle id.
     private func adaptModeForApp(withId id: String) {
         guard self.switchMethod != .key else { return }
-        let behavior = BehaviorManager.default.behaviorForApp(id: id)
-        let mode = BehaviorManager.default.keyboardStateFor(behavior: behavior)
+        let behavior = AppManager.default.behaviorForApp(id: id)
+        let mode = AppManager.default.keyboardStateFor(behavior: behavior)
         guard mode != self.currentMode else { return }
         self.currentMode = mode
         self.changeKeyboard(mode: mode)
@@ -214,10 +214,10 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
         switch mode {
         case .apple:
             os_log("Switch to Apple Mode for %@", self.currentAppID)
-            self.statusMenuController.statusItem.image = BehaviorManager.default.useLightIcon ? #imageLiteral(resourceName: "AppleMode") : #imageLiteral(resourceName: "IconAppleMode") 
+            self.statusMenuController.statusItem.image = AppManager.default.useLightIcon ? #imageLiteral(resourceName: "AppleMode") : #imageLiteral(resourceName: "IconAppleMode") 
         case .other:
             NSLog("Switch to Other Mode for %@", self.currentAppID)
-            self.statusMenuController.statusItem.image = BehaviorManager.default.useLightIcon ? #imageLiteral(resourceName: "OtherMode") : #imageLiteral(resourceName: "IconOtherMode")
+            self.statusMenuController.statusItem.image = AppManager.default.useLightIcon ? #imageLiteral(resourceName: "OtherMode") : #imageLiteral(resourceName: "IconOtherMode")
         }
         
         UserNotificationHelper.sendModeChangedTo(mode)
@@ -238,7 +238,7 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
                 if self.shouldHandleFNKey, let timestamp = self.fnDownTimestamp {
                     let delta = (event.timestamp - timestamp) * 1000
                     self.shouldHandleFNKey = false
-                    if event.keyCode == 63, delta <= BehaviorManager.default.fnKeyMaximumDelay {
+                    if event.keyCode == 63, delta <= AppManager.default.fnKeyMaximumDelay {
                         switch self.switchMethod {
                         case .key:
                             self.fnKeyPressedImpactsGlobal()
@@ -258,7 +258,7 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
     
     private func fnKeyPressedImpactsGlobal() {
         let mode = self.currentMode.counterPart
-        BehaviorManager.default.defaultFKeyMode = mode
+        AppManager.default.defaultFKeyMode = mode
         UserNotificationHelper.holdNextModeChangedNotification = true
         self.changeKeyboard(mode: mode)
         self.currentMode = mode
@@ -267,8 +267,8 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
     
     private func fnKeyPressedImpactsApp() {
         guard let url = self.currentAppURL else { AppErrorManager.terminateApp(withReason: "An unexpected error occured") }
-        let appBehavior = BehaviorManager.default.behaviorForApp(id: self.currentAppID)
-        let defaultBehavior = BehaviorManager.default.defaultFKeyMode.behavior
+        let appBehavior = AppManager.default.behaviorForApp(id: self.currentAppID)
+        let defaultBehavior = AppManager.default.defaultFKeyMode.behavior
         
         let newAppBehavior: AppBehavior
         
@@ -284,7 +284,7 @@ class BehaviorController: NSObject, BehaviorDidChangeObserver, DefaultModeViewCo
         }
         
         UserNotificationHelper.holdNextModeChangedNotification = self.currentAppName != nil
-        BehaviorManager.default.propagate(behavior: newAppBehavior, forApp: self.currentAppID , at: url, from: .fnKey)
+        AppManager.default.propagate(behavior: newAppBehavior, forApp: self.currentAppID , at: url, from: .fnKey)
         if let name = self.currentAppName {
             UserNotificationHelper.sendFKeyChangedAppBehaviorTo(newAppBehavior, appName: name)
         }

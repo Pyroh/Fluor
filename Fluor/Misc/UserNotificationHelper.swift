@@ -34,7 +34,7 @@ enum UserNotificationHelper {
     static var holdNextModeChangedNotification: Bool = false
     
     static func askUserAtLaunch() {
-        guard !BehaviorManager.default.hideNotificationAuthorizationPopup else { return }
+        guard !AppManager.default.hideNotificationAuthorizationPopup else { return }
         if #available(OSX 10.14, *) {
             askOnStartupIfNeeded()
         } else {
@@ -55,21 +55,21 @@ enum UserNotificationHelper {
             holdNextModeChangedNotification.toggle()
             return
         }
-        guard BehaviorManager.default.userNotificationEnablement.contains(.appSwitch) else { return }
+        guard AppManager.default.userNotificationEnablement.contains(.appSwitch) else { return }
         let title = NSLocalizedString("F-Keys mode changed", comment: "")
         let message = mode.label
         send(title: title, message: message)
     }
     
     static func sendFKeyChangedAppBehaviorTo(_ behavior: AppBehavior, appName: String) {
-        guard BehaviorManager.default.userNotificationEnablement.contains(.appKey) else { return }
+        guard AppManager.default.userNotificationEnablement.contains(.appKey) else { return }
         let title = String(format: NSLocalizedString("F-Keys mode changed for %@", comment: ""), appName)
         let message = behavior.label
         send(title: title, message: message)
     }
     
     static func sendGlobalModeChangedTo(_ mode: FKeyMode) {
-        guard BehaviorManager.default.userNotificationEnablement.contains(.globalKey) else { return }
+        guard AppManager.default.userNotificationEnablement.contains(.globalKey) else { return }
         let title = NSLocalizedString("Default mode changed", comment: "")
         let message = mode.label
         send(title: title, message: message)
@@ -109,7 +109,7 @@ enum UserNotificationHelper {
                 }
             }
         } else {
-            guard BehaviorManager.default.sendLegacyUserNotifications else { return unauthorizedAction() }
+            guard AppManager.default.sendLegacyUserNotifications else { return unauthorizedAction() }
             action()
         }
     }
@@ -136,22 +136,22 @@ enum UserNotificationHelper {
                                 AppErrorManager.showError(withReason: error.localizedDescription)
                             }
                             if isAuthorized {
-                                BehaviorManager.default.userNotificationEnablement = .from(avc)
+                                AppManager.default.userNotificationEnablement = .from(avc)
                             } else {
-                                BehaviorManager.default.userNotificationEnablement = .none
+                                AppManager.default.userNotificationEnablement = .none
                             }
                         }
                     }
                 } else {
-                    BehaviorManager.default.userNotificationEnablement = .none
+                    AppManager.default.userNotificationEnablement = .none
                 }
-                BehaviorManager.default.hideNotificationAuthorizationPopup = alert.suppressionButton?.state == .on
+                AppManager.default.hideNotificationAuthorizationPopup = alert.suppressionButton?.state == .on
             }
         }
     }
     
     private static func legacyAskOnStartupIfNeededStartup() {
-        guard !BehaviorManager.default.sendLegacyUserNotifications else { return }
+        guard !AppManager.default.sendLegacyUserNotifications else { return }
         let alert = makeAlert(suppressible: true)
         let avc = makeAccessoryView()
         alert.buttons.first?.bind(.enabled, to: avc, withKeyPath: "canEnableNotifications", options: nil)
@@ -161,8 +161,8 @@ enum UserNotificationHelper {
         let result = alert.runModal()
         
         if result == .alertFirstButtonReturn {
-            BehaviorManager.default.sendLegacyUserNotifications = true
-            BehaviorManager.default.userNotificationEnablement = .from(avc)
+            AppManager.default.sendLegacyUserNotifications = true
+            AppManager.default.userNotificationEnablement = .from(avc)
         }
     }
     
@@ -197,7 +197,7 @@ enum UserNotificationHelper {
     }
     
     private static func legacyAskIfNeeded(then action: (Bool) -> ()) {
-        guard BehaviorManager.default.sendLegacyUserNotifications else { return }
+        guard AppManager.default.sendLegacyUserNotifications else { return }
         let alert = makeAlert()
         NSApp.activate(ignoringOtherApps: true)
         let result = alert.runModal()

@@ -92,8 +92,8 @@ class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate, MenuCont
     
     /// Adapt status bar icon from user's settings.
     private func adaptStatusMenuIcon() {
-        let disabledApp = BehaviorManager.default.isDisabled
-        let usesLightIcon = BehaviorManager.default.useLightIcon
+        let disabledApp = AppManager.default.isDisabled
+        let usesLightIcon = AppManager.default.useLightIcon
         switch (disabledApp, usesLightIcon) {
         case (false, false): statusItem.image = #imageLiteral(resourceName: "IconAppleMode")
         case (false, true): statusItem.image = #imageLiteral(resourceName: "AppleMode")
@@ -200,9 +200,9 @@ class StatusMenuController: NSObject, NSMenuDelegate, NSWindowDelegate, MenuCont
     @IBAction func toggleApplicationState(_ sender: NSMenuItem) {
         let disabled = sender.state == .off
         if disabled {
-            self.statusItem.image = BehaviorManager.default.useLightIcon ? #imageLiteral(resourceName: "LighIconDisabled") : #imageLiteral(resourceName: "IconDisabled")
+            self.statusItem.image = AppManager.default.useLightIcon ? #imageLiteral(resourceName: "LighIconDisabled") : #imageLiteral(resourceName: "IconDisabled")
         } else {
-            self.statusItem.image = BehaviorManager.default.useLightIcon ? #imageLiteral(resourceName: "AppleMode") : #imageLiteral(resourceName: "IconAppleMode")
+            self.statusItem.image = AppManager.default.useLightIcon ? #imageLiteral(resourceName: "AppleMode") : #imageLiteral(resourceName: "IconAppleMode")
         }
         self.behaviorController.setApplicationIsEnabled(disabled)
     }

@@ -34,7 +34,7 @@ class RunningAppsViewController: NSViewController, NSTableViewDelegate {
     @IBOutlet var itemsArrayController: NSArrayController!
     
     @objc dynamic var runningAppsArray = [RunningApp]()
-    @objc dynamic var showAll: Bool = BehaviorManager.default.showAllRunningProcesses {
+    @objc dynamic var showAll: Bool = AppManager.default.showAllRunningProcesses {
         didSet { self.reloadData() }
     }
     @objc dynamic var searchPredicate: NSPredicate?
@@ -66,7 +66,7 @@ class RunningAppsViewController: NSViewController, NSTableViewDelegate {
             let url = app.bundleURL ?? app.executableURL else { return }
         let isApp = app.activationPolicy == .regular
         guard self.showAll || isApp else { return }
-        let behavior = BehaviorManager.default.behaviorForApp(id: id)
+        let behavior = AppManager.default.behaviorForApp(id: id)
         let item = RunningApp(id: id, url: url, behavior: behavior, pid: app.processIdentifier, isApp: isApp)
         
         self.runningAppsArray.append(item)
@@ -98,7 +98,7 @@ class RunningAppsViewController: NSViewController, NSTableViewDelegate {
             let isApp = app.activationPolicy == .regular
             guard showAll || isApp else { return nil }
             
-            let behavior = BehaviorManager.default.behaviorForApp(id: id)
+            let behavior = AppManager.default.behaviorForApp(id: id)
             let pid = app.processIdentifier
             
             return RunningApp(id: id, url: url, behavior: behavior, pid: pid, isApp: isApp)

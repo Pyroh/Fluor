@@ -41,14 +41,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         ValueTransformer.setValueTransformer(RuleValueTransformer(), forName: NSValueTransformerName("RuleValueTransformer"))
         
         // Check accessibility
-        if !AXIsProcessTrusted() && !BehaviorManager.default.hasAlreadyAnsweredAccessibility {
+        if !AXIsProcessTrusted() && !AppManager.default.hasAlreadyAnsweredAccessibility {
             let options : NSDictionary = [kAXTrustedCheckOptionPrompt.takeRetainedValue(): true]
             AXIsProcessTrustedWithOptions(options)
-            BehaviorManager.default.hasAlreadyAnsweredAccessibility = true
+            AppManager.default.hasAlreadyAnsweredAccessibility = true
         }
         
-        if BehaviorManager.default.lastRunVersion != self.getBundleVersion() {
-            BehaviorManager.default.lastRunVersion = self.getBundleVersion()
+        if AppManager.default.lastRunVersion != self.getBundleVersion() {
+            AppManager.default.lastRunVersion = self.getBundleVersion()
             let rnctrl = ReleaseNotesWindowController.instantiate()
             rnctrl.window?.orderFrontRegardless()
         }
