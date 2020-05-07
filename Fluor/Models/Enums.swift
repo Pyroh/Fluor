@@ -51,9 +51,9 @@ import DefaultsWrapper
     var label: String {
         switch self {
         case .media:
-            return NSLocalizedString("Media key", comment: "")
+            return NSLocalizedString("Media keys", comment: "")
         case .function:
-            return NSLocalizedString("Function key", comment: "")
+            return NSLocalizedString("Function keys", comment: "")
         }
     }
 }
@@ -79,9 +79,9 @@ import DefaultsWrapper
         case .inferred:
             return NSLocalizedString("Same as default", comment: "")
         case .media:
-            return NSLocalizedString("Media key", comment: "")
+            return NSLocalizedString("Media keys", comment: "")
         case .function:
-            return NSLocalizedString("Function key", comment: "")
+            return NSLocalizedString("Function keys", comment: "")
         }
     }
 }

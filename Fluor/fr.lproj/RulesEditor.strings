@@ -1,4 +1,3 @@
-
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "3Tm-fC-RsQ"; */
 "3Tm-fC-RsQ.title" = "Text Cell";
 
@@ -8,23 +7,24 @@
 /* Class = "CocoaBindingsConnection"; ibShadowedDisplayPattern = "%{value1}@ rules"; ObjectID = "Ddg-CJ-Ktm"; */
 "Ddg-CJ-Ktm.ibShadowedDisplayPattern" = "%{value1}@ règles";
 
-/* Class = "NSToolbarItem"; paletteLabel = "Search"; ObjectID = "Fxg-EK-kQD"; */
-"Fxg-EK-kQD.paletteLabel" = "Rechercher";
-
-/* Class = "NSSegmentedCell"; Xfv-1b-Hu4.ibShadowedToolTips[0] = "Apple keys"; ObjectID = "Xfv-1b-Hu4"; */
-"Xfv-1b-Hu4.ibShadowedToolTips[0]" = "Touches Apple";
-
-/* Class = "NSSegmentedCell"; Xfv-1b-Hu4.ibShadowedToolTips[1] = "Function keys"; ObjectID = "Xfv-1b-Hu4"; */
-"Xfv-1b-Hu4.ibShadowedToolTips[1]" = "Touches de fonction";
-
-/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "Y1u-Fa-sgm"; */
-"Y1u-Fa-sgm.title" = "Label";
-
 /* Class = "NSWindow"; title = "Rules"; ObjectID = "eXk-yp-Np1"; */
 "eXk-yp-Np1.title" = "Règles";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Search"; ObjectID = "Fxg-EK-kQD"; */
+"Fxg-EK-kQD.paletteLabel" = "Rechercher";
 
 /* Class = "NSSegmentedCell"; qsY-JB-wQQ.ibShadowedToolTips[0] = "Add rule"; ObjectID = "qsY-JB-wQQ"; */
 "qsY-JB-wQQ.ibShadowedToolTips[0]" = "Ajouter une règle";
 
 /* Class = "NSSegmentedCell"; qsY-JB-wQQ.ibShadowedToolTips[1] = "Delete selected rule"; ObjectID = "qsY-JB-wQQ"; */
 "qsY-JB-wQQ.ibShadowedToolTips[1]" = "Supprimer la règle selectionnée";
+
+/* Class = "NSSegmentedCell"; Xfv-1b-Hu4.ibShadowedToolTips[0] = "Media keys mode"; ObjectID = "Xfv-1b-Hu4"; */
+"Xfv-1b-Hu4.ibShadowedToolTips[0]" = "Touches Apple";
+
+/* Class = "NSSegmentedCell"; Xfv-1b-Hu4.ibShadowedToolTips[1] = "Function keys mode"; ObjectID = "Xfv-1b-Hu4"; */
+"Xfv-1b-Hu4.ibShadowedToolTips[1]" = "Touches de fonction";
+
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "Y1u-Fa-sgm"; */
+"Y1u-Fa-sgm.title" = "Label";
+
