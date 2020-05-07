@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>2294</string>
+	<string>2323</string>
 	<key>FLGithubURL</key>
 	<string>https://github.com/Pyroh/Fluor</string>
 	<key>FLPyrolyseURL</key>
@@ -54,8 +54,10 @@
 	<key>NSSupportsAutomaticGraphicsSwitching</key>
 	<false/>
 	<key>SUFeedURL</key>
-	<string>https://updates.pyrolyse.it/Fluor/2.0/appcast.xml</string>
+	<string>https://updates.pyrolyse.co/Fluor/2.0/appcast.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
+	<key>SUPublicEDKey</key>
+	<string>2SzTTYB9kulc+kJ8i0YdyKel2RoNIRKrJ8xp/wXWVyk=</string>
 </dict>
 </plist>

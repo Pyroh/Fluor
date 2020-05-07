@@ -195,7 +195,7 @@ Gw
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5UU-cQ-CW9">
                                         <rect key="frame" x="-2" y="0.0" width="154" height="11"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Copyright (c) Pyrolyse 2016-2019" id="D9M-Xx-uVv">
-                                            <font key="font" metaFont="toolTip" size="9"/>
+                                            <font key="font" metaFont="label" size="9"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -279,12 +279,6 @@ Gw
                                     <font key="font" metaFont="systemSemibold" size="13"/>
                                 </buttonCell>
                                 <color key="contentTintColor" name="linkColor" catalog="System" colorSpace="catalog"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="growFactor">
-                                        <real key="value" value="1.1000000000000001"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="growsOnHover" value="NO"/>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="goToSupport:" target="Syy-eU-950" id="0zW-dT-oR8"/>
                                 </connections>

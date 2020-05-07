@@ -208,15 +208,12 @@ enum UserNotificationHelper {
         let alert = NSAlert()
         alert.alertStyle = .critical
         alert.messageText = NSLocalizedString("Notifications are not allowed from Fluor", comment: "")
-        alert.informativeText = NSLocalizedString("""
-        To munually allow notifications from Fluor :
-         1. Open System Preferences
-         2. Navigate to Notifications
-         3. Find Fluor in the list
-         4. Active the "Allow Notifications from Fluor" switch.
-        """, comment: "")
+        alert.informativeText = "To allow notifications from Fluor follow these steps:"
         alert.addButton(withTitle: NSLocalizedString("I allowed it", comment: ""))
         alert.addButton(withTitle: NSLocalizedString("I won't allow it", comment: ""))
+        
+        let vc = NSStoryboard(name: .preferences, bundle: nil).instantiateController(withIdentifier: "DebugAuthorization") as? NSViewController
+        alert.accessoryView = vc?.view
         
         NSApp.activate(ignoringOtherApps: true)
         let result = alert.runModal()
@@ -228,7 +225,7 @@ enum UserNotificationHelper {
         let alert = NSAlert()
         alert.icon = NSImage(imageLiteralResourceName: "QuestionMark")
         alert.messageText = NSLocalizedString("Enable notifications ?", comment: "")
-        alert.informativeText = NSLocalizedString("Fluor can send a notification when the F-Keys mode change.", comment: "")
+        alert.informativeText = NSLocalizedString("Fluor can send notifications when the F-Keys mode change.", comment: "")
         if suppressible {
             alert.showsSuppressionButton = true
             alert.suppressionButton?.title = NSLocalizedString("Don't ask me on startup again", comment: "")
