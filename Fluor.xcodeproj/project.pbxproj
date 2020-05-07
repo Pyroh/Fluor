@@ -16,6 +16,7 @@
 		3F16ECE123EDDF66008BC89A /* SetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F16ECE023EDDF66008BC89A /* SetExtension.swift */; };
 		3F244071245D73180061960A /* UserNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F244070245D73180061960A /* UserNotificationHelper.swift */; };
 		3F2571F41FDBD43500020194 /* TableViewContentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2571F31FDBD43500020194 /* TableViewContentAnimator.swift */; };
+		3F266BA1246489D70005395F /* MultilinesCheckBoxLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F266BA0246489D70005395F /* MultilinesCheckBoxLabel.swift */; };
 		3F2CAE6A246038E30046D711 /* UserNotificationEnablementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CAE69246038E30046D711 /* UserNotificationEnablementViewController.swift */; };
 		3F2CAE6C246438590046D711 /* LinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CAE6B246438590046D711 /* LinkButton.swift */; };
 		3F2FA3FF1D79D094003E2AD8 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FA3FE1D79D094003E2AD8 /* StatusMenuController.swift */; };
@@ -90,6 +91,7 @@
 		3F16ECE023EDDF66008BC89A /* SetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetExtension.swift; sourceTree = "<group>"; };
 		3F244070245D73180061960A /* UserNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationHelper.swift; sourceTree = "<group>"; };
 		3F2571F31FDBD43500020194 /* TableViewContentAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewContentAnimator.swift; sourceTree = "<group>"; };
+		3F266BA0246489D70005395F /* MultilinesCheckBoxLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilinesCheckBoxLabel.swift; sourceTree = "<group>"; };
 		3F2CAE69246038E30046D711 /* UserNotificationEnablementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationEnablementViewController.swift; sourceTree = "<group>"; };
 		3F2CAE6B246438590046D711 /* LinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkButton.swift; sourceTree = "<group>"; };
 		3F2FA3FE1D79D094003E2AD8 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				3F15629B23FE892A00CD0773 /* MoverImageView.swift */,
 				3F9EDD29245C7BAF0047D1AC /* MenuItemView.swift */,
 				3F2CAE6B246438590046D711 /* LinkButton.swift */,
+				3F266BA0246489D70005395F /* MultilinesCheckBoxLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				3FC44EFC1D7F16CB0065D433 /* Items.swift in Sources */,
 				3F2FA3FF1D79D094003E2AD8 /* StatusMenuController.swift in Sources */,
 				3FE784DD2052F591007F6200 /* NSViewExtension.swift in Sources */,
+				3F266BA1246489D70005395F /* MultilinesCheckBoxLabel.swift in Sources */,
 				3FE38EAC221DBE880019B889 /* ReleaseNotesViewController.swift in Sources */,
 				3F84FE81200E655E00871275 /* StoryboardInstantiableProtocol.swift in Sources */,
 				3F16ECE123EDDF66008BC89A /* SetExtension.swift in Sources */,

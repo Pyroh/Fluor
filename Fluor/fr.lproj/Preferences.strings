@@ -11,7 +11,7 @@
 "aHs-kY-jFz.ibShadowedToolTips[1]" = "Mode touches de fonction";
 
 /* Class = "NSButtonCell"; title = "When the current application mode is set by pressing the fn key"; ObjectID = "B11-db-6JL"; */
-"B11-db-6JL.title" = "Lors de la modification du mode pour l'application active par l'appui de la touche fn";
+"ezd-7Z-VvY.title" = "Lors de la modification du mode pour l'application active par l'appui de la touche fn";
 
 /* Class = "NSViewController"; title = "General"; ObjectID = "bdY-l4-Nw7"; */
 "bdY-l4-Nw7.title" = "Général";
@@ -41,7 +41,7 @@
 "hgm-4a-jDl.title" = "Pour tout évènement";
 
 /* Class = "NSButtonCell"; title = "When the global mode is set by pressing the fn key"; ObjectID = "hIk-un-EuO"; */
-"hIk-un-EuO.title" = "Lors de la modification du mode par défaut par l'appui de la touche fn";
+"fT0-a8-Fn0.title" = "Lors de la modification du mode par défaut par l'appui de la touche fn";
 
 /* Class = "NSTabViewItem"; label = "Notifications"; ObjectID = "hM9-Ia-nxv"; */
 "hM9-Ia-nxv.label" = "Notifications";
@@ -110,7 +110,7 @@
 "Vtq-y9-sm5.title" = "Vérifier maintenant";
 
 /* Class = "NSButtonCell"; title = "When the mode changes with the active application"; ObjectID = "x50-mP-zRP"; */
-"x50-mP-zRP.title" = "Lorsque le mode change avec l'application active";
+"tcj-WZ-834.title" = "Lorsque le mode change avec l'application active";
 
 /* Class = "NSButtonCell"; title = "Automaticaly check for updates"; ObjectID = "xgt-53-WGT"; */
 "xgt-53-WGT.title" = "Vérification automatique des mises à jour";
