@@ -126,8 +126,8 @@
                                                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Xfv-1b-Hu4">
                                                                                         <font key="font" metaFont="system"/>
                                                                                         <segments>
-                                                                                            <segment toolTip="Media key mode" image="AppleMode" selected="YES"/>
-                                                                                            <segment toolTip="Function key mode" image="OtherMode" width="34" tag="1"/>
+                                                                                            <segment toolTip="Media keys mode" image="AppleMode" selected="YES"/>
+                                                                                            <segment toolTip="Function keys mode" image="OtherMode" width="34" tag="1"/>
                                                                                         </segments>
                                                                                     </segmentedCell>
                                                                                     <connections>

@@ -47,7 +47,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="roundRect" bezelStyle="roundedRect" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" inset="2" id="geB-hC-nNd">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="controlContent"/>
+                                            <font key="font" metaFont="label" size="12"/>
                                             <menu key="menu" id="5ZI-r2-byH"/>
                                         </popUpButtonCell>
                                         <connections>
@@ -64,7 +64,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="roundRect" title="Update" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DN8-JH-bOp">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="controlContent"/>
+                                            <font key="font" metaFont="label" size="12"/>
                                         </buttonCell>
                                     </button>
                                 </toolbarItem>
@@ -215,7 +215,7 @@ Gw
                             <stackView wantsLayer="YES" distribution="fill" orientation="horizontal" alignment="top" spacing="16" horizontalStackHuggingPriority="750" verticalStackHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DaJ-Kd-pAj">
                                 <rect key="frame" x="37" y="63" width="182" height="50"/>
                                 <subviews>
-                                    <button toolTip="Pyrolyse Website" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LAF-Vr-LJH" customClass="LinkButton" customModule="Fluor" customModuleProvider="target">
+                                    <button toolTip="Pyrolyse Website" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LAF-Vr-LJH" customClass="PoppingLinkButton" customModule="Fluor" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="heN-g5-tQa"/>
@@ -229,7 +229,7 @@ Gw
                                             <action selector="goToWebpage:" target="Syy-eU-950" id="HSh-3A-DGL"/>
                                         </connections>
                                     </button>
-                                    <button toolTip="Twitter Account" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tcP-8l-Eun" customClass="LinkButton" customModule="Fluor" customModuleProvider="target">
+                                    <button toolTip="Twitter Account" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tcP-8l-Eun" customClass="PoppingLinkButton" customModule="Fluor" customModuleProvider="target">
                                         <rect key="frame" x="66" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="78O-XL-WXs"/>
@@ -243,7 +243,7 @@ Gw
                                             <action selector="goToTwitter:" target="Syy-eU-950" id="ooU-Hc-Udm"/>
                                         </connections>
                                     </button>
-                                    <button toolTip="Fork me on GitHub" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="z33-BR-yuW" customClass="LinkButton" customModule="Fluor" customModuleProvider="target">
+                                    <button toolTip="Fork me on GitHub" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="z33-BR-yuW" customClass="PoppingLinkButton" customModule="Fluor" customModuleProvider="target">
                                         <rect key="frame" x="132" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="SfO-p3-rQD"/>
@@ -269,7 +269,7 @@ Gw
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i2i-Ca-L3z" customClass="LinkButton" customModule="Fluor" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i2i-Ca-L3z">
                                 <rect key="frame" x="69" y="30" width="118" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="kbO-VN-pYj"/>
@@ -293,7 +293,7 @@ Gw
                                 <rect key="frame" x="81" y="128" width="94" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Release notes" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3LZ-kH-mRF">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="controlContent"/>
+                                    <font key="font" metaFont="label" size="12"/>
                                 </buttonCell>
                                 <connections>
                                     <segue destination="95L-5H-oMn" kind="show" id="SMK-ak-iCJ"/>

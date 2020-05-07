@@ -29,7 +29,7 @@
 		3F697A0C1F88D47C007BA558 /* MoverEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F697A0B1F88D47C007BA558 /* MoverEffectView.swift */; };
 		3F6D52CA2069659800517E57 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F6D52C82069659800517E57 /* About.storyboard */; };
 		3F6D52CC2069667300517E57 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D52CB2069667300517E57 /* AboutViewController.swift */; };
-		3F6D52CE20696E2100517E57 /* LinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D52CD20696E2100517E57 /* LinkButton.swift */; };
+		3F6D52CE20696E2100517E57 /* PoppingLinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D52CD20696E2100517E57 /* PoppingLinkButton.swift */; };
 		3F7291F22028BC6B005C9B70 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7291F12028BC6B005C9B70 /* PreferencesWindowController.swift */; };
 		3F7C349C1ED5EBAA0020C538 /* BehaviorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7C349B1ED5EBAA0020C538 /* BehaviorController.swift */; };
 		3F820C412219B63F00004813 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F820C432219B63F00004813 /* Preferences.storyboard */; };
@@ -103,7 +103,7 @@
 		3F697A0B1F88D47C007BA558 /* MoverEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoverEffectView.swift; sourceTree = "<group>"; };
 		3F6D52C92069659800517E57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/About.storyboard; sourceTree = "<group>"; };
 		3F6D52CB2069667300517E57 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		3F6D52CD20696E2100517E57 /* LinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkButton.swift; sourceTree = "<group>"; };
+		3F6D52CD20696E2100517E57 /* PoppingLinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoppingLinkButton.swift; sourceTree = "<group>"; };
 		3F7291F12028BC6B005C9B70 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		3F7C349B1ED5EBAA0020C538 /* BehaviorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorController.swift; sourceTree = "<group>"; };
 		3F820C422219B63F00004813 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Preferences.storyboard; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 				3F4E36C22111EF7A00CDCAA0 /* CheckableMenuItem.swift */,
 				3F8F93BA1EEAC9B900FCE91F /* RuleCellView.swift */,
 				3F697A0B1F88D47C007BA558 /* MoverEffectView.swift */,
-				3F6D52CD20696E2100517E57 /* LinkButton.swift */,
+				3F6D52CD20696E2100517E57 /* PoppingLinkButton.swift */,
 				3F15629B23FE892A00CD0773 /* MoverImageView.swift */,
 				3F9EDD29245C7BAF0047D1AC /* MenuItemView.swift */,
 			);
@@ -482,7 +482,7 @@
 				3FF655CA20751D1600C8D2FC /* PFMoveApplication.m in Sources */,
 				3F8879931FBF5F2A005C28E6 /* PreferencesTabViewController.swift in Sources */,
 				3F2FA4051D7A1F87003E2AD8 /* AppManager.swift in Sources */,
-				3F6D52CE20696E2100517E57 /* LinkButton.swift in Sources */,
+				3F6D52CE20696E2100517E57 /* PoppingLinkButton.swift in Sources */,
 				3FC44EFA1D7F169A0065D433 /* Enums.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

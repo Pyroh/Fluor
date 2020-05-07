@@ -216,8 +216,8 @@
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="Vfh-zJ-Axi">
                                 <font key="font" metaFont="label" size="12"/>
                                 <segments>
-                                    <segment toolTip="Media key mode" image="AppleMode" imageScaling="proportionallyUpOrDown" selected="YES"/>
-                                    <segment toolTip="Function key mode" image="OtherMode" imageScaling="proportionallyUpOrDown" tag="1"/>
+                                    <segment toolTip="Media keys mode" image="AppleMode" imageScaling="proportionallyUpOrDown" selected="YES"/>
+                                    <segment toolTip="Function keys mode" image="OtherMode" imageScaling="proportionallyUpOrDown" tag="1"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
@@ -291,8 +291,8 @@
                                 <font key="font" metaFont="label" size="12"/>
                                 <segments>
                                     <segment toolTip="Same as default mode" image="DefaultMode" selected="YES"/>
-                                    <segment toolTip="Media key mode" image="AppleMode" tag="1"/>
-                                    <segment toolTip="Function key mode" image="OtherMode"/>
+                                    <segment toolTip="Media keys mode" image="AppleMode" tag="1"/>
+                                    <segment toolTip="Function keys mode" image="OtherMode"/>
                                 </segments>
                             </segmentedCell>
                             <connections>

@@ -128,9 +128,9 @@
                                                                                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="q73-3D-poM">
                                                                                                 <font key="font" metaFont="system"/>
                                                                                                 <segments>
-                                                                                                    <segment toolTip="Same as default mode" image="DefaultMode" width="32" selected="YES"/>
-                                                                                                    <segment toolTip="Media key mode" image="AppleMode" width="32" tag="1"/>
-                                                                                                    <segment toolTip="Function key mode" image="OtherMode" width="32"/>
+                                                                                                    <segment toolTip="Same as default" image="DefaultMode" width="32" selected="YES"/>
+                                                                                                    <segment toolTip="Media keys mode" image="AppleMode" width="32" tag="1"/>
+                                                                                                    <segment toolTip="Function keys mode" image="OtherMode" width="32"/>
                                                                                                 </segments>
                                                                                             </segmentedCell>
                                                                                             <connections>

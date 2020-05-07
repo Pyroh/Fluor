@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -102,8 +103,8 @@
                                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="aHs-kY-jFz">
                                                     <font key="font" metaFont="system"/>
                                                     <segments>
-                                                        <segment toolTip="Media key mode" image="AppleMode" width="32" selected="YES"/>
-                                                        <segment toolTip="Function key mode" image="OtherMode" width="32" tag="1"/>
+                                                        <segment toolTip="Media keys mode" image="AppleMode" width="32" selected="YES"/>
+                                                        <segment toolTip="Function keys mode" image="OtherMode" width="32" tag="1"/>
                                                     </segments>
                                                 </segmentedCell>
                                                 <connections>
@@ -138,8 +139,8 @@
                                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="J3t-x7-5C6">
                                                     <font key="font" metaFont="system"/>
                                                     <segments>
-                                                        <segment toolTip="Media key mode" image="AppleMode" width="32" selected="YES"/>
-                                                        <segment toolTip="Function key mode" image="OtherMode" width="32" tag="1"/>
+                                                        <segment toolTip="Media keys mode" image="AppleMode" width="32" selected="YES"/>
+                                                        <segment toolTip="Function keys mode" image="OtherMode" width="32" tag="1"/>
                                                     </segments>
                                                 </segmentedCell>
                                                 <connections>
@@ -456,7 +457,7 @@
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oN7-9d-NkH">
                                                         <rect key="frame" x="-2" y="4" width="79" height="14"/>
                                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Last Checked:" id="TZA-yl-nGe">
-                                                            <font key="font" metaFont="menu" size="11"/>
+                                                            <font key="font" metaFont="label" size="11"/>
                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -465,7 +466,7 @@
                                                         <rect key="frame" x="75" y="4" width="102" height="14"/>
                                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Yesterday at 16:28" id="tQx-sm-17A">
                                                             <dateFormatter key="formatter" dateStyle="medium" timeStyle="short" doesRelativeDateFormatting="YES" id="DX2-WR-kjA"/>
-                                                            <font key="font" metaFont="menu" size="11"/>
+                                                            <font key="font" metaFont="label" size="11"/>
                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -681,6 +682,89 @@
                 <customObject id="g9T-QR-unO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1343" y="343"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="kpH-HJ-Pxe">
+            <objects>
+                <viewController id="kDW-fa-EAS" sceneMemberID="viewController">
+                    <view key="view" id="syX-NU-iua">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <gridView fixedFrame="YES" xPlacement="leading" yPlacement="center" rowAlignment="firstBaseline" rowSpacing="8" columnSpacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="csm-81-gAo">
+                                <rect key="frame" x="67" y="160" width="243" height="88"/>
+                                <rows>
+                                    <gridRow id="W3h-VG-AIC"/>
+                                    <gridRow id="mcm-0X-aet"/>
+                                    <gridRow id="XHy-gU-rWN"/>
+                                    <gridRow id="air-o1-gyr"/>
+                                </rows>
+                                <columns>
+                                    <gridColumn xPlacement="trailing" leadingPadding="3" id="hLT-Pq-VZy"/>
+                                    <gridColumn id="cS3-dY-qCY"/>
+                                </columns>
+                                <gridCells>
+                                    <gridCell row="W3h-VG-AIC" column="hLT-Pq-VZy" id="bBE-rI-Qu1">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AGD-wB-f1e">
+                                            <rect key="frame" x="3" y="72" width="14" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="1." id="mjv-jW-mRK">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="W3h-VG-AIC" column="cS3-dY-qCY" id="w2B-hy-49t">
+                                        <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8qI-Dr-L1b" customClass="PoppingLinkButton" customModule="Fluor" customModuleProvider="target">
+                                            <rect key="frame" x="23" y="72" width="220" height="16"/>
+                                            <buttonCell key="cell" type="bevel" title="Open Notifications preference pane" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="mPR-ps-i1t">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
+                                        </button>
+                                    </gridCell>
+                                    <gridCell row="mcm-0X-aet" column="hLT-Pq-VZy" id="rxn-WW-ir8">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Oqh-g1-AyR">
+                                            <rect key="frame" x="1" y="48" width="16" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="2." id="lXR-Ye-zzj">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="mcm-0X-aet" column="cS3-dY-qCY" id="Pmy-bl-dI3"/>
+                                    <gridCell row="XHy-gU-rWN" column="hLT-Pq-VZy" id="QHZ-ag-opT">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LL1-Ld-nlt">
+                                            <rect key="frame" x="1" y="24" width="16" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="3." id="Cvg-Yl-ZC5">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="XHy-gU-rWN" column="cS3-dY-qCY" id="79L-iU-5Ao"/>
+                                    <gridCell row="air-o1-gyr" column="hLT-Pq-VZy" id="bAJ-qD-6Ie">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pct-4v-v3M">
+                                            <rect key="frame" x="1" y="0.0" width="16" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="4." id="hS1-Lr-eWX">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="air-o1-gyr" column="cS3-dY-qCY" id="zt9-0q-16y"/>
+                                </gridCells>
+                            </gridView>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="iwq-Gx-o7c" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1363" y="643"/>
         </scene>
     </scenes>
     <resources>
