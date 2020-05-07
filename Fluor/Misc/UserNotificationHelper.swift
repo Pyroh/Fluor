@@ -225,7 +225,7 @@ enum UserNotificationHelper {
         let alert = NSAlert()
         alert.icon = NSImage(imageLiteralResourceName: "QuestionMark")
         alert.messageText = NSLocalizedString("Enable notifications ?", comment: "")
-        alert.informativeText = NSLocalizedString("Fluor can send notifications when the F-Keys mode change.", comment: "")
+        alert.informativeText = NSLocalizedString("Fluor can send notifications when the F-Keys mode changes.", comment: "")
         if suppressible {
             alert.showsSuppressionButton = true
             alert.suppressionButton?.title = NSLocalizedString("Don't ask me on startup again", comment: "")
