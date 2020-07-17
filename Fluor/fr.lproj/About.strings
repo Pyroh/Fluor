@@ -1,0 +1,27 @@
+/* Class = "NSButtonCell"; title = "Release notes"; ObjectID = "3LZ-kH-mRF"; */
+"3LZ-kH-mRF.title" = "Notes de version";
+
+/* Class = "NSTextFieldCell"; title = "Copyright (c) Pyrolyse 2016-2019"; ObjectID = "D9M-Xx-uVv"; */
+"D9M-Xx-uVv.title" = "Copyright (c) Pyrolyse 2016-2019";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "Iyh-kg-rFF"; */
+"Iyh-kg-rFF.title" = "Window";
+
+/* Class = "NSButtonCell"; title = "Technical support"; ObjectID = "k51-I5-gTD"; */
+"k51-I5-gTD.title" = "Support technique";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Pyrolyse Website"; ObjectID = "LAF-Vr-LJH"; */
+"LAF-Vr-LJH.ibShadowedToolTip" = "Site web Pyrolyse";
+
+/* Class = "NSTextFieldCell"; title = "Version"; ObjectID = "nBp-xh-w5r"; */
+"nBp-xh-w5r.title" = "Version";
+
+/* Class = "NSTextFieldCell"; title = "Fluor"; ObjectID = "Rb1-qw-yPI"; */
+"Rb1-qw-yPI.title" = "Fluor";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Twitter Account"; ObjectID = "tcP-8l-Eun"; */
+"tcP-8l-Eun.ibShadowedToolTip" = "Compte Twitter";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Fork me on GitHub"; ObjectID = "z33-BR-yuW"; */
+"z33-BR-yuW.ibShadowedToolTip" = "Fork me on GitHub";
+

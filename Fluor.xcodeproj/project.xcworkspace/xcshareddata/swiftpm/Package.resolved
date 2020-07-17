@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CoreGeometry",
+        "repositoryURL": "https://gitlab.com/Pyroh/CoreGeometry.git",
+        "state": {
+          "branch": null,
+          "revision": "a59affa331972263980f8a2af4cfd5f37ad42d3d",
+          "version": "3.0.0"
+        }
+      },
+      {
+        "package": "DefaultsWrapper",
+        "repositoryURL": "https://github.com/Pyroh/DefaultsWrapper.git",
+        "state": {
+          "branch": null,
+          "revision": "649794e5c7af45f69d1e128a3c9fd0fe1cde282e",
+          "version": "1.2.0"
+        }
+      },
+      {
+        "package": "SmoothOperators",
+        "repositoryURL": "https://github.com/Pyroh/SmoothOperators.git",
+        "state": {
+          "branch": null,
+          "revision": "12f0d7cc9ade6bc826a822f9d2021b4dd394c4a0",
+          "version": "0.4.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
