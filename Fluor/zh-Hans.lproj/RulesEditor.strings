@@ -1,0 +1,30 @@
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "3Tm-fC-RsQ"; */
+"3Tm-fC-RsQ.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "Bp2-iW-iXC"; */
+"Bp2-iW-iXC.title" = "Label";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedDisplayPattern = "%{value1}@ rules"; ObjectID = "Ddg-CJ-Ktm"; */
+"Ddg-CJ-Ktm.ibShadowedDisplayPattern" = "规则数量: %{value1}@";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Search"; ObjectID = "Fxg-EK-kQD"; */
+"Fxg-EK-kQD.paletteLabel" = "搜索";
+
+/* Class = "NSSegmentedCell"; Xfv-1b-Hu4.ibShadowedToolTips[0] = "Media keys mode"; ObjectID = "Xfv-1b-Hu4"; */
+"Xfv-1b-Hu4.ibShadowedToolTips[0]" = "媒体键模式";
+
+/* Class = "NSSegmentedCell"; Xfv-1b-Hu4.ibShadowedToolTips[1] = "Function keys mode"; ObjectID = "Xfv-1b-Hu4"; */
+"Xfv-1b-Hu4.ibShadowedToolTips[1]" = "功能键模式";
+
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "Y1u-Fa-sgm"; */
+"Y1u-Fa-sgm.title" = "Label";
+
+/* Class = "NSWindow"; title = "Rules"; ObjectID = "eXk-yp-Np1"; */
+"eXk-yp-Np1.title" = "规则";
+
+/* Class = "NSSegmentedCell"; qsY-JB-wQQ.ibShadowedToolTips[0] = "Add rule"; ObjectID = "qsY-JB-wQQ"; */
+"qsY-JB-wQQ.ibShadowedToolTips[0]" = "添加规则";
+
+/* Class = "NSSegmentedCell"; qsY-JB-wQQ.ibShadowedToolTips[1] = "Delete selected rule"; ObjectID = "qsY-JB-wQQ"; */
+"qsY-JB-wQQ.ibShadowedToolTips[1]" = "删除选中规则";

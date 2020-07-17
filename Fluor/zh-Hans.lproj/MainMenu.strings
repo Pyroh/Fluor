@@ -1,0 +1,72 @@
+
+/* Class = "NSSegmentedCell"; 1I5-bW-HGh.ibShadowedToolTips[0] = "Same as default mode"; ObjectID = "1I5-bW-HGh"; */
+"1I5-bW-HGh.ibShadowedToolTips[0]" = "与默认模式相同";
+
+/* Class = "NSSegmentedCell"; 1I5-bW-HGh.ibShadowedToolTips[1] = "Media keys mode"; ObjectID = "1I5-bW-HGh"; */
+"1I5-bW-HGh.ibShadowedToolTips[1]" = "媒体键模式";
+
+/* Class = "NSSegmentedCell"; 1I5-bW-HGh.ibShadowedToolTips[2] = "Function keys mode"; ObjectID = "1I5-bW-HGh"; */
+"1I5-bW-HGh.ibShadowedToolTips[2]" = "功能键模式";
+
+/* Class = "NSTextFieldCell"; title = "Trigger"; ObjectID = "AiN-Qo-Ikx"; */
+"AiN-Qo-Ikx.title" = "切换方式";
+
+/* Class = "NSMenuItem"; title = "Running applications..."; ObjectID = "Ark-Du-XrQ"; */
+"Ark-Du-XrQ.title" = "运行中的应用...";
+
+/* Class = "NSMenuItem"; title = "Disabled"; ObjectID = "DqN-qz-yQz"; */
+"DqN-qz-yQz.title" = "禁用";
+
+/* Class = "NSMenuItem"; title = "About Fluor"; ObjectID = "Ib7-Rw-HnK"; */
+"Ib7-Rw-HnK.title" = "关于 Fluor";
+
+/* Class = "NSMenuItem"; title = "Manage rules..."; ObjectID = "MHf-OK-jHk"; */
+"MHf-OK-jHk.title" = "规则...";
+
+/* Class = "NSMenuItem"; title = "Default mode"; ObjectID = "PtY-YF-jEr"; */
+"PtY-YF-jEr.title" = "默认模式";
+
+/* Class = "NSMenuItem"; title = "sep2"; ObjectID = "QCJ-IJ-MMQ"; */
+"QCJ-IJ-MMQ.title" = "sep2";
+
+/* Class = "NSMenuItem"; title = "Quit"; ObjectID = "QjA-WT-wFW"; */
+"QjA-WT-wFW.title" = "退出";
+
+/* Class = "NSTextFieldCell"; title = "Default mode"; ObjectID = "S28-Jt-nN1"; */
+"S28-Jt-nN1.title" = "默认模式";
+
+/* Class = "NSSegmentedCell"; Vfh-zJ-Axi.ibShadowedToolTips[0] = "Media keys mode"; ObjectID = "Vfh-zJ-Axi"; */
+"Vfh-zJ-Axi.ibShadowedToolTips[0]" = "媒体键模式";
+
+/* Class = "NSSegmentedCell"; Vfh-zJ-Axi.ibShadowedToolTips[1] = "Function keys mode"; ObjectID = "Vfh-zJ-Axi"; */
+"Vfh-zJ-Axi.ibShadowedToolTips[1]" = "功能键模式";
+
+/* Class = "NSMenuItem"; title = "Start Fluor at login"; ObjectID = "eWy-d7-62P"; */
+"eWy-d7-62P.title" = "自动启动";
+
+/* Class = "NSButtonCell"; title = "Ask permission"; ObjectID = "gP8-wU-Xyk"; */
+"gP8-wU-Xyk.title" = "请求权限";
+
+/* Class = "NSMenuItem"; title = "Switch method"; ObjectID = "hM4-Z2-ndk"; */
+"hM4-Z2-ndk.title" = "Switch method";
+
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "nND-dO-QEg"; */
+"nND-dO-QEg.title" = "Label";
+
+/* Class = "NSSegmentedCell"; qZf-Wa-JJt.ibShadowedToolTips[0] = "Change mode with the active application"; ObjectID = "qZf-Wa-JJt"; */
+"qZf-Wa-JJt.ibShadowedToolTips[0]" = "随活动的应用自动切换模式";
+
+/* Class = "NSSegmentedCell"; qZf-Wa-JJt.ibShadowedToolTips[1] = "Set mode for the active application when the fn key is pressed"; ObjectID = "qZf-Wa-JJt"; */
+"qZf-Wa-JJt.ibShadowedToolTips[1]" = "通过按 fn 键为活动的应用切换模式";
+
+/* Class = "NSSegmentedCell"; qZf-Wa-JJt.ibShadowedToolTips[2] = "Set the default mode when the fn key is pressed"; ObjectID = "qZf-Wa-JJt"; */
+"qZf-Wa-JJt.ibShadowedToolTips[2]" = "通过按 fn 键切换默认模式";
+
+/* Class = "NSMenuItem"; title = "sep1"; ObjectID = "qvx-bn-WPk"; */
+"qvx-bn-WPk.title" = "sep1";
+
+/* Class = "NSMenuItem"; title = "Preferences..."; ObjectID = "sjb-Ql-h6c"; */
+"sjb-Ql-h6c.title" = "偏好设置...";
+
+/* Class = "NSMenuItem"; title = "Current application"; ObjectID = "ulH-vE-QEF"; */
+"ulH-vE-QEF.title" = "当前应用";
