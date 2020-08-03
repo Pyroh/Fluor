@@ -1,0 +1,45 @@
+
+/* Class = "NSButtonCell"; title = "Release notes"; ObjectID = "3LZ-kH-mRF"; */
+"3LZ-kH-mRF.title" = "发行说明";
+
+/* Class = "NSTextFieldCell"; title = "Copyright (c) Pyrolyse 2016-2019"; ObjectID = "D9M-Xx-uVv"; */
+"D9M-Xx-uVv.title" = "版权所有 (c) Pyrolyse 2016-2019";
+
+/* Class = "NSButtonCell"; title = "Update"; ObjectID = "DN8-JH-bOp"; */
+"DN8-JH-bOp.title" = "更新";
+
+/* Class = "NSToolbarItem"; label = "Custom View"; ObjectID = "F1c-dv-XMN"; */
+"F1c-dv-XMN.label" = "Custom View";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Custom View"; ObjectID = "F1c-dv-XMN"; */
+"F1c-dv-XMN.paletteLabel" = "Custom View";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "Iyh-kg-rFF"; */
+"Iyh-kg-rFF.title" = "Window";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Pyrolyse Website"; ObjectID = "LAF-Vr-LJH"; */
+"LAF-Vr-LJH.ibShadowedToolTip" = "Pyrolyse 网站";
+
+/* Class = "NSTextFieldCell"; title = "Fluor"; ObjectID = "Rb1-qw-yPI"; */
+"Rb1-qw-yPI.title" = "Fluor";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "Xar-Fu-9dh"; */
+"Xar-Fu-9dh.title" = "Window";
+
+/* Class = "NSToolbarItem"; label = "Custom View"; ObjectID = "c5J-iu-x6L"; */
+"c5J-iu-x6L.label" = "Custom View";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Custom View"; ObjectID = "c5J-iu-x6L"; */
+"c5J-iu-x6L.paletteLabel" = "Custom View";
+
+/* Class = "NSButtonCell"; title = "Technical support"; ObjectID = "k51-I5-gTD"; */
+"k51-I5-gTD.title" = "技术支持";
+
+/* Class = "NSTextFieldCell"; title = "Version"; ObjectID = "nBp-xh-w5r"; */
+"nBp-xh-w5r.title" = "版本";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Twitter Account"; ObjectID = "tcP-8l-Eun"; */
+"tcP-8l-Eun.ibShadowedToolTip" = "Twitter 帐号";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Fork me on GitHub"; ObjectID = "z33-BR-yuW"; */
+"z33-BR-yuW.ibShadowedToolTip" = "Fork me on GitHub";

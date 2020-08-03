@@ -1,0 +1,117 @@
+
+/* Class = "NSTextFieldCell"; title = "When do you want notifications to be sent ?"; ObjectID = "0PF-9f-i6n"; */
+"0PF-9f-i6n.title" = "您希望何时收到通知？";
+
+/* Class = "NSTabViewItem"; label = "Advanced"; ObjectID = "18q-Zg-Tl1"; */
+"18q-Zg-Tl1.label" = "高级";
+
+/* Class = "NSTextFieldCell"; title = "3."; ObjectID = "Cvg-Yl-ZC5"; */
+"Cvg-Yl-ZC5.title" = "3.";
+
+/* Class = "NSTextFieldCell"; title = "Default mode on launch"; ObjectID = "F4H-9X-Gkc"; */
+"F4H-9X-Gkc.title" = "启动时的默认模式";
+
+/* Class = "NSTabViewItem"; label = "General"; ObjectID = "Hob-Dv-Dm7"; */
+"Hob-Dv-Dm7.label" = "一般";
+
+/* Class = "NSTextFieldCell"; title = "Find and select Fluor in the list"; ObjectID = "IKU-zN-gyv"; */
+"IKU-zN-gyv.title" = "Find and select Fluor in the list";
+
+/* Class = "NSSegmentedCell"; J3t-x7-5C6.ibShadowedToolTips[0] = "Media keys mode"; ObjectID = "J3t-x7-5C6"; */
+"J3t-x7-5C6.ibShadowedToolTips[0]" = "媒体键模式";
+
+/* Class = "NSSegmentedCell"; J3t-x7-5C6.ibShadowedToolTips[1] = "Function keys mode"; ObjectID = "J3t-x7-5C6"; */
+"J3t-x7-5C6.ibShadowedToolTips[1]" = "功能键模式";
+
+/* Class = "NSTextFieldCell"; title = "Send notification "; ObjectID = "Jmi-kR-PLT"; */
+"Jmi-kR-PLT.title" = "发送通知 ";
+
+/* Class = "NSWindow"; title = "Preferences"; ObjectID = "N9r-FQ-Oq3"; */
+"N9r-FQ-Oq3.title" = "偏好设置";
+
+/* Class = "NSButtonCell"; title = "Automaticaly download updates"; ObjectID = "RZl-MW-RaS"; */
+"RZl-MW-RaS.title" = "自动下载更新";
+
+/* Class = "NSTextFieldCell"; title = "Last Checked:"; ObjectID = "TZA-yl-nGe"; */
+"TZA-yl-nGe.title" = "最后检查时间:";
+
+/* Class = "NSViewController"; title = "Advanced"; ObjectID = "UoT-kw-xfb"; */
+"UoT-kw-xfb.title" = "高级";
+
+/* Class = "NSButtonCell"; title = "Check now"; ObjectID = "Vtq-y9-sm5"; */
+"Vtq-y9-sm5.title" = "立即检查";
+
+/* Class = "NSSegmentedCell"; aHs-kY-jFz.ibShadowedToolTips[0] = "Media keys mode"; ObjectID = "aHs-kY-jFz"; */
+"aHs-kY-jFz.ibShadowedToolTips[0]" = "媒体键模式";
+
+/* Class = "NSSegmentedCell"; aHs-kY-jFz.ibShadowedToolTips[1] = "Function keys mode"; ObjectID = "aHs-kY-jFz"; */
+"aHs-kY-jFz.ibShadowedToolTips[1]" = "功能键模式";
+
+/* Class = "NSViewController"; title = "General"; ObjectID = "bdY-l4-Nw7"; */
+"bdY-l4-Nw7.title" = "一般";
+
+/* Class = "NSButtonCell"; title = "Restore startup mode"; ObjectID = "cXi-qe-jsD"; */
+"cXi-qe-jsD.title" = "恢复启动时的模式";
+
+/* Class = "NSButtonCell"; title = "Open Notifications preference pane"; ObjectID = "caw-E4-tuY"; */
+"caw-E4-tuY.title" = "打开通知偏好设置";
+
+/* Class = "NSTabViewItem"; label = "Updates"; ObjectID = "dHq-vD-kde"; */
+"dHq-vD-kde.label" = "更新";
+
+/* Class = "NSViewController"; title = "Updates"; ObjectID = "dlC-Ac-YKV"; */
+"dlC-Ac-YKV.title" = "更新";
+
+/* Class = "NSTextFieldCell"; title = "When the current application mode is set by pressing the fn key"; ObjectID = "ezd-7Z-VvY"; */
+"ezd-7Z-VvY.title" = "当按 fn 键切换当前应用模式时";
+
+/* Class = "NSTextFieldCell"; title = "When the global mode is set by pressing the fn key"; ObjectID = "fT0-a8-Fn0"; */
+"fT0-a8-Fn0.title" = "当按 fn 键切换全局模式时";
+
+/* Class = "NSTabViewController"; title = "Preferences"; ObjectID = "glG-bk-x2Q"; */
+"glG-bk-x2Q.title" = "偏好设置";
+
+/* Class = "NSTabViewItem"; label = "Notifications"; ObjectID = "hM9-Ia-nxv"; */
+"hM9-Ia-nxv.label" = "通知";
+
+/* Class = "NSButtonCell"; title = "Everytime"; ObjectID = "hgm-4a-jDl"; */
+"hgm-4a-jDl.title" = "全部通知";
+
+/* Class = "NSTextFieldCell"; title = "Activate the Allow Notification from Fluor switch"; ObjectID = "hv4-f4-B7v"; */
+"hv4-f4-B7v.title" = "Activate the Allow Notification from Fluor switch";
+
+/* Class = "NSButtonCell"; title = "Use light menu icon"; ObjectID = "j3E-2l-1wC"; */
+"j3E-2l-1wC.title" = "使用浅色菜单栏图标";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedIsNilPlaceholder = "280ms"; ObjectID = "kjd-tC-eHL"; */
+"kjd-tC-eHL.ibShadowedIsNilPlaceholder" = "280ms";
+
+/* Class = "NSButtonCell"; title = "Start Fluor at login"; ObjectID = "kkr-ac-7zW"; */
+"kkr-ac-7zW.title" = "登陆时启动 Fluor";
+
+/* Class = "NSTextFieldCell"; title = "2."; ObjectID = "lXR-Ye-zzj"; */
+"lXR-Ye-zzj.title" = "2.";
+
+/* Class = "NSTextFieldCell"; title = "1."; ObjectID = "mjv-jW-mRK"; */
+"mjv-jW-mRK.title" = "1.";
+
+/* Class = "NSButtonCell"; title = "Reset mode on quit"; ObjectID = "o0g-Zi-PDV"; */
+"o0g-Zi-PDV.title" = "退出时将模式重置为";
+
+/* Class = "NSButtonCell"; title = "Always show all running processes"; ObjectID = "oGT-JF-Yp4"; */
+"oGT-JF-Yp4.title" = "总是显示所有正在运行的进程";
+
+/* Class = "NSButtonCell"; title = "Hide the trigger method selection section"; ObjectID = "qxq-5O-b7c"; */
+"qxq-5O-b7c.title" = "隐藏菜单中的切换方式";
+
+/* Class = "NSTextFieldCell"; title = "Fn key release maximum delay:"; ObjectID = "sJJ-c6-Cuv"; */
+"sJJ-c6-Cuv.title" = "Fn 键释放最大延迟:";
+
+/* Class = "NSTextFieldCell"; title = "Yesterday at 16:28"; ObjectID = "tQx-sm-17A"; */
+"tQx-sm-17A.title" = "昨天 16:28";
+
+/* Class = "NSTextFieldCell"; title = "When the mode changes with the active application"; ObjectID = "tcj-WZ-834"; */
+"tcj-WZ-834.title" = "当模式随活动应用程序而改变时";
+
+/* Class = "NSButtonCell"; title = "Automaticaly check for updates"; ObjectID = "xgt-53-WGT"; */
+"xgt-53-WGT.title" = "自动检查更新";
