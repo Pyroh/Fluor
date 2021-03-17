@@ -8,7 +8,7 @@
 
 ![](https://github.com/Pyroh/Fluor/blob/master/ressources/banner.png?raw=true)
 
-> Want to know how **Fluor** development is going ? Follow [**@Pyroh13453**](https://twitter.com/pyroh13453).
+> Want to know how **Fluor** development is going ? Follow [**@Pyroh13453**](https://twitter.com/__pyroh).
 
 # What is Fluor ?
 **Fluor** is a tool that allows you to automatically change the behavior of the keyboard's fn keys depending on the active application. It's that simple.
