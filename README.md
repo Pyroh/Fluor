@@ -18,7 +18,7 @@ There's two main ways to install **Fluor**:
 
 1. Download the [latest release](https://github.com/Pyroh/Fluor/releases), open the DMG and drag the application to your `/Applications` folder.
 2. Install via [Homebrew Cask](https://caskroom.github.io):  
-`$ brew cask install fluor`
+`$ brew install --cask fluor`
 
 You can also build it from source, but this is not recommended if your are only going to use **Fluor** in the regular way, and not hack it. 
 
