@@ -6,7 +6,7 @@
 [![License](https://img.shields.io/badge/license-MIT-71787A.svg)](https://tldrlegal.com/license/mit-license)
 
 
-![](https://github.com/Pyroh/Fluor/blob/master/ressources/banner.png?raw=true)
+![](https://github.com/Pyroh/Fluor/blob/main/ressources/banner.png?raw=true)
 
 > Want to know how **Fluor** development is going ? [**Follow me on Twitter**](https://twitter.com/__pyroh).
 
@@ -23,34 +23,34 @@ There's two main ways to install **Fluor**:
 You can also build it from source, but this is not recommended if your are only going to use **Fluor** in the regular way, and not hack it. 
 
 # How does it work?
-<img src="https://github.com/Pyroh/Fluor/blob/master/ressources/statusbar.png?raw=true" width=327pt>
+<img src="https://github.com/Pyroh/Fluor/blob/main/ressources/statusbar.png?raw=true" width=327pt>
 
 **Fluor** lies in your status bar and makes you see instantaneously which mode your keyboard is on:
 
-- <img src="https://github.com/Pyroh/Fluor/blob/master/Fluor/Assets.xcassets/iconAppleModeTemplate.imageset/iconAppleModeTemplate@2x.png?raw=true" width=16pt> means that the keyboard's fn keys act like the default Apple function keys.
-- <img src="https://github.com/Pyroh/Fluor/blob/master/Fluor/Assets.xcassets/iconOtherModeTemplate.imageset/iconOtherModeTemplate@2x.png?raw=true" width=16pt> means that the keyboard's fn keys act like these good old function keys (F1, F2, F3, you got it...).
+- <img src="https://github.com/Pyroh/Fluor/blob/main/Fluor/Assets.xcassets/IconAppleMode.imageset/IconAppleMode@2x.png?raw=true" width=16pt> means that the keyboard's fn keys act like the default Apple function keys.
+- <img src="https://github.com/Pyroh/Fluor/blob/main/Fluor/Assets.xcassets/IconOtherMode.imageset/IconOtherMode@2x.png?raw=true" width=16pt> means that the keyboard's fn keys act like these good old function keys (F1, F2, F3, you got it...).
 
 ## Fluor's menu
 This is what you get when you click on **Fluor** in the status bar:
 
-<img src="https://github.com/Pyroh/Fluor/blob/master/ressources/mainmenu.png?raw=true" width=279pt>
+<img src="https://github.com/Pyroh/Fluor/blob/main/ressources/mainmenu.png?raw=true" width=279pt>
 
 You can choose the default mode. Whenever **Fluor** runs it will activate the default mode for your keyboard's fn keys.
 
 **Fluor** also displays the active application and its associated rule that you can change on the go.  
-<img src="https://github.com/Pyroh/Fluor/blob/master/Fluor/Assets.xcassets/defaultModeTemplate.imageset/defaultModeTemplate@2x.png?raw=true" width=16pt> is the default rule and means that the application will adopt default Fluor's keyboard behaviour.
+<img src="https://github.com/Pyroh/Fluor/blob/main/Fluor/Assets.xcassets/DefaultMode.imageset/DefaultModeLight@2x.png?raw=true" width=16pt> is the default rule and means that the application will adopt default Fluor's keyboard behaviour.
 
 You can also disable **Fluor** if you need to. It will set the keyboard's behaviour as it was prior to the application's launch. 
 
 ## Rules Editor
-<img src="https://github.com/Pyroh/Fluor/blob/master/ressources/ruleseditor.png?raw=true" width=412pt>
+<img src="https://github.com/Pyroh/Fluor/blob/main/ressources/ruleseditor.png?raw=true" width=412pt>
 
 This panel allows you to see all the rules you set at once. You can modify or delete any rule. Adding a rule will prompt a file selector in which you'll be able to select the application you want to set a rule for.
 
 ## Running Applications
-<img src="https://github.com/Pyroh/Fluor/blob/master/ressources/runningapps.png?raw=true" width=412pt>
+<img src="https://github.com/Pyroh/Fluor/blob/main/ressources/runningapps.png?raw=true" width=412pt>
 
-Sometimes it is not possible to select an application in the *Rules Editor*, especially for Steam games. This panel lets you set a rule for any running application. Of course the rules you set in this panel will be available directly in the *Rules Editor*. You can also remove a rule by setting the application behaviour to <img src="https://github.com/Pyroh/Fluor/blob/master/Fluor/Assets.xcassets/defaultModeTemplate.imageset/defaultModeTemplate@2x.png?raw=true" width=16pt>, it will also disappear from the *Rules Editor* panel.
+Sometimes it is not possible to select an application in the *Rules Editor*, especially for Steam games. This panel lets you set a rule for any running application. Of course the rules you set in this panel will be available directly in the *Rules Editor*. You can also remove a rule by setting the application behaviour to <img src="https://github.com/Pyroh/Fluor/blob/main/Fluor/Assets.xcassets/DefaultMode.imageset/DefaultModeLight@2x.png?raw=true" width=16pt>, it will also disappear from the *Rules Editor* panel.
 
 # Why is it open source ?
 I made **Fluor** because I needed such an application. I wanted it simple, nicely designed and free and I didn't find such a thing on the internet. Once it was done I used it for a little while, cleaned up the code and decided to give it to others for free. What was a requirement for me can well be a requirement for others too.  
