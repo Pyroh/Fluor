@@ -47,11 +47,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             AppManager.default.hasAlreadyAnsweredAccessibility = true
         }
         
-        if AppManager.default.lastRunVersion != self.getBundleVersion() {
-            AppManager.default.lastRunVersion = self.getBundleVersion()
-            let rnctrl = ReleaseNotesWindowController.instantiate()
-            rnctrl.window?.orderFrontRegardless()
-        }
+        /// Release notes server burned down, literally
+//        if AppManager.default.lastRunVersion != self.getBundleVersion() {
+//            AppManager.default.lastRunVersion = self.getBundleVersion()
+//            let rnctrl = ReleaseNotesWindowController.instantiate()
+//            rnctrl.window?.orderFrontRegardless()
+//        }
         
         UserNotificationHelper.askUserAtLaunch()
         

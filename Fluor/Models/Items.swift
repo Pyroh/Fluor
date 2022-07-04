@@ -34,6 +34,7 @@ class Item: NSObject, Identifiable {
     
     let id: String
     @objc let url: URL
+    @objc let path: String
     @objc dynamic var behavior: AppBehavior 
     
     @objc var icon: NSImage { NSWorkspace.shared.icon(forFile: self.url.path) }
@@ -46,6 +47,7 @@ class Item: NSObject, Identifiable {
     init(id: String, url: URL, behavior: AppBehavior) {
         self.id = id
         self.url = url
+        self.path = url.path
         self.behavior = behavior
     }
 }

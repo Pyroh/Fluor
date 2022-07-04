@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="WsI-4J-azc">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="WsI-4J-azc">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="16096"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="20037"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -44,10 +44,10 @@
                                     <nil key="toolTip"/>
                                     <popUpButton key="view" verticalHuggingPriority="750" id="yo2-eq-ZQ8">
                                         <rect key="frame" x="0.0" y="14" width="114" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <popUpButtonCell key="cell" type="roundRect" bezelStyle="roundedRect" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" inset="2" id="geB-hC-nNd">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="label" size="12"/>
+                                            <font key="font" metaFont="cellTitle"/>
                                             <menu key="menu" id="5ZI-r2-byH"/>
                                         </popUpButtonCell>
                                         <connections>
@@ -57,14 +57,14 @@
                                         </connections>
                                     </popUpButton>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="1EC27B26-128F-4D64-BAAE-826801E78F4A" label="Custom View" paletteLabel="Custom View" sizingBehavior="auto" id="c5J-iu-x6L">
+                                <toolbarItem implicitItemIdentifier="1EC27B26-128F-4D64-BAAE-826801E78F4A" label="Custom View" paletteLabel="Custom View" title="Update" sizingBehavior="auto" id="c5J-iu-x6L">
                                     <nil key="toolTip"/>
                                     <button key="view" hidden="YES" verticalHuggingPriority="750" id="5ah-Yh-nHh">
                                         <rect key="frame" x="0.0" y="14" width="82" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <buttonCell key="cell" type="roundRect" title="Update" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DN8-JH-bOp">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="label" size="12"/>
+                                            <font key="font" metaFont="cellTitle"/>
                                         </buttonCell>
                                     </button>
                                 </toolbarItem>
@@ -157,7 +157,7 @@ AAAAAAEGA
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSApplicationIcon" id="FdP-h6-dcd"/>
                             </imageView>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="f0o-nD-tlj">
-                                <rect key="frame" x="8" y="427" width="14" height="14"/>
+                                <rect key="frame" x="8" y="424" width="14" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="4wh-Wg-2GW"/>
                                     <constraint firstAttribute="width" constant="14" id="XRM-jP-NMb"/>
@@ -194,7 +194,7 @@ Gw
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5UU-cQ-CW9">
                                         <rect key="frame" x="-2" y="0.0" width="154" height="11"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Copyright (c) Pyrolyse 2016-2019" id="D9M-Xx-uVv">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Copyright (c) Pyrolyse 2016-2022" id="D9M-Xx-uVv">
                                             <font key="font" metaFont="label" size="9"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -270,11 +270,11 @@ Gw
                                 </customSpacing>
                             </stackView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i2i-Ca-L3z">
-                                <rect key="frame" x="69" y="30" width="118" height="17"/>
+                                <rect key="frame" x="70" y="30" width="117" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="kbO-VN-pYj"/>
                                 </constraints>
-                                <buttonCell key="cell" type="bevel" title="Technical support" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="k51-I5-gTD">
+                                <buttonCell key="cell" type="bevel" title="Technical support" bezelStyle="rounded" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="k51-I5-gTD">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="systemSemibold" size="13"/>
                                 </buttonCell>
@@ -285,9 +285,9 @@ Gw
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RRV-0A-eR9">
                                 <rect key="frame" x="81" y="128" width="94" height="19"/>
-                                <buttonCell key="cell" type="roundRect" title="Release notes" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3LZ-kH-mRF">
+                                <buttonCell key="cell" type="roundRect" title="Release notes" bezelStyle="roundedRect" alignment="center" enabled="NO" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3LZ-kH-mRF">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="label" size="12"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
                                 <connections>
                                     <segue destination="95L-5H-oMn" kind="show" id="SMK-ak-iCJ"/>
@@ -329,6 +329,6 @@ Gw
         <image name="ButtonTwitter" width="50" height="50"/>
         <image name="ButtonWeb" width="50" height="50"/>
         <image name="NSApplicationIcon" width="32" height="32"/>
-        <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
+        <image name="NSStopProgressFreestandingTemplate" width="15" height="15"/>
     </resources>
 </document>

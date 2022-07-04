@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="W33-Be-Q5Y">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="W33-Be-Q5Y">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <capability name="Search Toolbar Item" minToolsVersion="12.0" minSystemVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,31 +16,27 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="320" height="480"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="3200" height="1800"/>
-                        <toolbar key="toolbar" implicitIdentifier="1EEC2327-407B-4B2B-A439-BD7C40F619F6" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="zFq-f3-1of">
+                        <toolbar key="toolbar" implicitIdentifier="1EEC2327-407B-4B2B-A439-BD7C40F619F6" centeredItem="pHL-vl-eQM" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="zFq-f3-1of">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="8mb-UB-zuJ"/>
-                                <toolbarItem implicitItemIdentifier="5EBFC9BC-26C6-4D20-A076-267AA4D0A188" label="" paletteLabel="Search" id="Fxg-EK-kQD">
+                                <searchToolbarItem implicitItemIdentifier="4E044FC8-1103-415F-BDE3-41A2A6E00B79" label="Search" paletteLabel="Search" visibilityPriority="1001" id="pHL-vl-eQM">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="96" height="22"/>
-                                    <size key="maxSize" width="10000" height="22"/>
-                                    <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" id="u4h-7o-Mar">
-                                        <rect key="frame" x="0.0" y="14" width="96" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="VdT-wy-YnL">
-                                            <font key="font" metaFont="system"/>
+                                    <searchField key="view" verticalHuggingPriority="750" textCompletion="NO" id="4rq-e7-sMl">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="21"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" id="tFo-5u-CVO">
+                                            <font key="font" usesAppearanceFont="YES"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </searchFieldCell>
                                         <connections>
-                                            <action selector="filterRuleList:" target="W33-Be-Q5Y" id="FWS-KX-eFO"/>
+                                            <action selector="filterRuleList:" target="W33-Be-Q5Y" id="S0m-Q5-0r7"/>
                                         </connections>
                                     </searchField>
-                                </toolbarItem>
+                                </searchToolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
-                                <toolbarItem reference="8mb-UB-zuJ"/>
-                                <toolbarItem reference="Fxg-EK-kQD"/>
-                                <toolbarItem reference="8mb-UB-zuJ"/>
+                                <searchToolbarItem reference="pHL-vl-eQM"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -59,24 +56,24 @@
             <objects>
                 <viewController id="UlX-TY-g5g" customClass="RulesEditorViewController" customModule="Fluor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="3sp-g2-HUP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="340" height="480"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="56" horizontalPageScroll="10" verticalLineScroll="56" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuc-ja-QaT">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="0.0" width="340" height="480"/>
                                 <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="t0p-Ha-0Qj">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="340" height="480"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="54" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="anD-et-bWl">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="399"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="340" height="399"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="317" minWidth="40" maxWidth="1000" id="Dby-eA-9YS">
+                                                <tableColumn width="308" minWidth="40" maxWidth="1000" id="Dby-eA-9YS">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -89,7 +86,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="Kqn-bd-jZp" customClass="RuleCellView" customModule="Fluor" customModuleProvider="target">
-                                                            <rect key="frame" x="1" y="1" width="317" height="54"/>
+                                                            <rect key="frame" x="11" y="1" width="317" height="54"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cCP-Si-p9c">
@@ -104,14 +101,14 @@
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSApplicationIcon" id="2Fc-hq-NCR"/>
                                                                             <connections>
                                                                                 <binding destination="Kqn-bd-jZp" name="value" keyPath="objectValue.icon" id="WuV-6R-C9q"/>
-                                                                                <binding destination="Kqn-bd-jZp" name="toolTip" keyPath="objectValue.url.path" id="anr-Hc-yQM"/>
+                                                                                <binding destination="Kqn-bd-jZp" name="toolTip" keyPath="objectValue.path" id="FI8-Hf-oGf"/>
                                                                             </connections>
                                                                         </imageView>
                                                                         <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="agd-lq-cct">
-                                                                            <rect key="frame" x="56" y="4" width="245" height="41"/>
+                                                                            <rect key="frame" x="56" y="3" width="245" height="42"/>
                                                                             <subviews>
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mpq-BA-DRn">
-                                                                                    <rect key="frame" x="-2" y="25" width="39" height="16"/>
+                                                                                    <rect key="frame" x="-2" y="26" width="39" height="16"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" id="Bp2-iW-iXC">
                                                                                         <font key="font" metaFont="systemSemibold" size="13"/>
                                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -122,7 +119,7 @@
                                                                                     </connections>
                                                                                 </textField>
                                                                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Yv-Hg-qNW">
-                                                                                    <rect key="frame" x="-2" y="-2" width="73" height="24"/>
+                                                                                    <rect key="frame" x="-2" y="-1" width="69" height="24"/>
                                                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Xfv-1b-Hu4">
                                                                                         <font key="font" metaFont="system"/>
                                                                                         <segments>
@@ -196,13 +193,13 @@
                                 </scroller>
                             </scrollView>
                             <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="titlebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="A0h-Wb-Ggw" customClass="MoverEffectView" customModule="Fluor" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="26"/>
+                                <rect key="frame" x="0.0" y="0.0" width="340" height="26"/>
                                 <subviews>
                                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="6ab-du-qF9">
-                                        <rect key="frame" x="0.0" y="23" width="320" height="5"/>
+                                        <rect key="frame" x="0.0" y="23" width="340" height="5"/>
                                     </box>
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FQS-Uv-JNd">
-                                        <rect key="frame" x="144" y="6" width="33" height="14"/>
+                                        <rect key="frame" x="154" y="6" width="33" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Y1u-Fa-sgm">
                                             <font key="font" metaFont="message" size="11"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -217,7 +214,7 @@
                                         </connections>
                                     </textField>
                                     <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ttC-Xk-L6o">
-                                        <rect key="frame" x="2" y="2" width="51" height="21"/>
+                                        <rect key="frame" x="13" y="2" width="51" height="21"/>
                                         <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="rounded" trackingMode="momentary" id="qsY-JB-wQQ">
                                             <font key="font" metaFont="message" size="11"/>
                                             <segments>
@@ -234,7 +231,7 @@
                                     <constraint firstItem="6ab-du-qF9" firstAttribute="leading" secondItem="A0h-Wb-Ggw" secondAttribute="leading" id="0EG-kd-EMc"/>
                                     <constraint firstItem="FQS-Uv-JNd" firstAttribute="centerY" secondItem="A0h-Wb-Ggw" secondAttribute="centerY" id="3Si-N8-Ltp"/>
                                     <constraint firstAttribute="trailing" secondItem="6ab-du-qF9" secondAttribute="trailing" id="BOS-CG-Fsl"/>
-                                    <constraint firstItem="ttC-Xk-L6o" firstAttribute="leading" secondItem="A0h-Wb-Ggw" secondAttribute="leading" constant="4" id="E9n-AE-ePq"/>
+                                    <constraint firstItem="ttC-Xk-L6o" firstAttribute="leading" secondItem="A0h-Wb-Ggw" secondAttribute="leading" constant="16" id="E9n-AE-ePq"/>
                                     <constraint firstItem="6ab-du-qF9" firstAttribute="top" secondItem="A0h-Wb-Ggw" secondAttribute="top" id="Zje-Op-L0N"/>
                                     <constraint firstItem="FQS-Uv-JNd" firstAttribute="centerX" secondItem="A0h-Wb-Ggw" secondAttribute="centerX" id="iji-aT-KRW"/>
                                     <constraint firstItem="ttC-Xk-L6o" firstAttribute="centerY" secondItem="A0h-Wb-Ggw" secondAttribute="centerY" id="pWI-kM-cA8"/>
@@ -267,14 +264,14 @@
                     </connections>
                 </arrayController>
             </objects>
-            <point key="canvasLocation" x="501" y="192"/>
+            <point key="canvasLocation" x="539" y="192"/>
         </scene>
     </scenes>
     <resources>
         <image name="AppleMode" width="16" height="16"/>
-        <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSAddTemplate" width="14" height="13"/>
         <image name="NSApplicationIcon" width="32" height="32"/>
-        <image name="NSRemoveTemplate" width="11" height="11"/>
+        <image name="NSRemoveTemplate" width="14" height="4"/>
         <image name="OtherMode" width="16" height="16"/>
     </resources>
 </document>

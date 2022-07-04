@@ -44,13 +44,12 @@ class RulesEditorViewController: NSViewController, BehaviorDidChangeObserver {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.startObservingBehaviorDidChange()
         itemsArrayController.addObserver(self, forKeyPath: "canRemove", options: [], context: nil)
         itemsArrayController.addObserver(self, forKeyPath: "canAdd", options: [], context: nil)
         
         self.rulesSet = AppManager.default.rules
-        
         self.tableContentAnimator = TableViewContentAnimator(tableView: tableView, arrayController: itemsArrayController)
+        self.startObservingBehaviorDidChange()
     }
     
     deinit {

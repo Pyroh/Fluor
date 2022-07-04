@@ -45,7 +45,10 @@ extension StoryboardInstantiable {
         if let id = sceneIdentifier {
             return NSStoryboard(name: storyboardName, bundle: bundle).instantiateController(withIdentifier: id) as! Self
         } else {
-            return NSStoryboard(name: storyboardName, bundle: bundle).instantiateInitialController() as! Self
+            guard
+                let object = NSStoryboard(name: storyboardName, bundle: bundle).instantiateInitialController() as? Self
+            else { fatalError("Unable to instantiate initial controller from the \(storyboardName) storyboard.") }
+            return object
         }
     }
 }
