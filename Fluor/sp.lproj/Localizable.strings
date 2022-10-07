@@ -1,0 +1,48 @@
+/* No comment provided by engineer. */
+"Default mode changed" = "Modo predeterminado cambiado";
+
+/* No comment provided by engineer. */
+"Don't ask me on startup again" = "No volver a preguntarme de nuevo al inicio de sesión";
+
+/* No comment provided by engineer. */
+"Don't enable notifications" = "No habilitar notificaciones";
+
+/* No comment provided by engineer. */
+"Enable notifications" = "Habilitar notificaciones";
+
+/* No comment provided by engineer. */
+"Enable notifications ?" = "¿Habilitar notificaciones?";
+
+/* No comment provided by engineer. */
+"F-Keys mode changed" = "Modo de F-Keys cambiado";
+
+/* No comment provided by engineer. */
+"F-Keys mode changed for %@" = "Modo de F-Keys cambiado por %@";
+
+/* No comment provided by engineer. */
+"Fluor can send notifications when the F-Keys mode changes." = "Fluor puede enviar notificaciones cuando cambia el modo de las F-Keys.";
+
+/* No comment provided by engineer. */
+"Function keys" = "Teclas de Función";
+
+/* No comment provided by engineer. */
+"I allowed it" = "Lo permití";
+
+/* No comment provided by engineer. */
+"I won't allow it" = "No lo permitiré";
+
+/* No comment provided by engineer. */
+"Media keys" = "Teclas multimedia";
+
+/* No comment provided by engineer. */
+"Notifications are not allowed from Fluor" = "No se permiten notificaciones de Fluor";
+
+/* No comment provided by engineer. */
+"Same as default" = "Igual que el modo predeterminado";
+
+/* No comment provided by engineer. */
+"Sorry, an unexpected error occurred." = "Lo sentimos, ocurrió un error inesperado.";
+
+/* No comment provided by engineer. */
+"version %@" = "versión %@";
+
